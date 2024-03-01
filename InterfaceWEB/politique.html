@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; /* Police de caractères par défaut */
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: darkgrey;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+
+        .navbar img{
+            width: 100%;
+        }
+
+        .navbar-brand {
+            margin-right: auto;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .navbar-brand img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--darkblue);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 100px); /* Hauteur de la fenêtre moins la hauteur de la navbar */
+            margin-bottom: 100px; /* Marge inférieure pour le footer */
+        }
+
+        .empty-div {
+            flex: 1;
+            height: 115vh;
+            background-color: lightgrey; /* Couleur de fond des divs vides */
+        }
+
+        .content {
+            flex: 3;
+            padding: 20px;
+            background-color: #fff; /* Couleur de fond du contenu */
+            border: 1px solid #ccc; /* Bordure */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre */
+        }
+
+        h1, h2 {
+            color: #6d597a; /* Couleur bleue pour les titres */
+        }
+
+        ul {
+            margin-bottom: 15px; /* Marge inférieure pour les listes */
+            padding-left: 20px; /* Retrait à gauche pour les listes */
+        }
+
+        p {
+            margin-bottom: 15px; /* Marge inférieure pour les paragraphes */
+        }
+
+        span.hotel-name {
+            color:#6d597a; /* Couleur bleue pour le nom de l'hôtel */
+            font-weight: bold; /* Police en gras pour le nom de l'hôtel */
+        }
+
+        footer {
+            background-color: #f8f9fa; /* Couleur de fond du footer */
+            color: #6d597a; /* Couleur du texte du footer */
+            padding: 10px ; /* Espacement intérieur du footer */
+            text-align: center; /* Alignement centré du texte */
+            width: 100%; /* Largeur pleine */
+            border-top: 1px solid #ccc; /* Bordure supérieure */
+            z-index: 999; /* Assure que le footer est au-dessus du contenu */
+        }
+
+        footer p {
+            margin: 5px 0; /* Marge autour des paragraphes */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="pageAccueil.html" class="navbar-brand"><img src="./images/home.png" alt="Home">POLITIQUE</a>
+    </nav>
+
+    <div class="container">
+        <div class="empty-div"></div>
+        <div class="content">
+            <h1>Politique de l'hôtel <span class="hotel-name">[Nom de l'Hôtel]</span></h1>
+
+            <p>Nous sommes heureux de vous accueillir à <span class="hotel-name">[Nom de l'Hôtel]</span>. Notre objectif est de vous offrir une expérience de séjour agréable et mémorable. Pour assurer le confort et la sécurité de tous nos clients, nous avons établi les politiques suivantes :</p>
+
+            <h2>Réservations:</h2>
+            <ul>
+                <li>Toutes les réservations sont soumises à disponibilité et doivent être confirmées par l'hôtel.</li>
+                <li>Les tarifs des chambres sont sujets à changement en fonction de la saison, de la durée du séjour et de la demande.</li>
+            </ul>
+
+            <h2>Enregistrement et départ:</h2>
+            <ul>
+                <li>L'heure d'arrivée standard est à partir de 14h00, et l'heure de départ est à 12h00.</li>
+                <li>Les arrivées anticipées et les départs tardifs sont soumis à disponibilité et peuvent être soumis à des frais supplémentaires.</li>
+            </ul>
+
+            <h2>Politique d'annulation:</h2>
+            <ul>
+                <li>Les annulations doivent être effectuées au moins 24 heures avant la date d'arrivée prévue pour éviter des frais d'annulation.</li>
+                <li>Les réservations non honorées seront soumises à des frais correspondant à une nuitée.</li>
+            </ul>
+
+            <h2>Enfants et lits supplémentaires:</h2>
+            <ul>
+                <li>Les enfants de moins de 12 ans séjournent gratuitement dans la chambre des parents s'ils utilisent les lits existants.</li>
+                <li>Des lits supplémentaires peuvent être fournis sur demande et sont soumis à disponibilité.</li>
+            </ul>
+
+            <h2>Politique de paiement:</h2>
+            <ul>
+                <li>Le paiement intégral est requis au moment de la réservation, sauf indication contraire.</li>
+                <li>Nous acceptons les principales cartes de crédit et espèces comme moyen de paiement.</li>
+            </ul>
+
+            <h2>Animaux domestiques:</h2>
+            <ul>
+                <li>Les animaux de compagnie sont les bienvenus dans certaines chambres, sous réserve d'approbation préalable et de frais supplémentaires.</li>
+                <li>Les propriétaires d'animaux sont tenus de respecter les règles de l'hôtel concernant les animaux de compagnie.</li>
+            </ul>
+
+            <h2>Comportement des clients:</h2>
+            <ul>
+                <li>Nous attendons de nos clients qu'ils respectent les autres clients et le personnel de l'hôtel en adoptant un comportement respectueux et civilisé.</li>
+                <li>Tout comportement perturbateur ou irrespectueux pourra entraîner l'expulsion de l'hôtel sans remboursement.</li>
+            </ul>
+
+            <h2>Services et équipements:</h2>
+            <ul>
+                <li>Les services et équipements de l'hôtel sont réservés aux clients enregistrés.</li>
+                <li>Certains services peuvent être soumis à des frais supplémentaires.</li>
+            </ul>
+
+            <h2>Responsabilité:</h2>
+            <ul>
+                <li>L'hôtel n'est pas responsable des biens perdus, volés ou endommagés pendant votre séjour.</li>
+                <li>Nous recommandons à nos clients de souscrire une assurance voyage pour couvrir tout incident imprévu.</li>
+            </ul>
+
+            <p>En acceptant de séjourner dans notre établissement, vous reconnaissez avoir lu, compris et accepté notre politique. Nous sommes ravis de vous accueillir et nous nous efforcerons de rendre votre séjour aussi agréable que possible.</p>
+
+            <p>Pour toute question ou préoccupation supplémentaire, n'hésitez pas à contacter notre équipe à tout moment.</p>
+            
+
+        </div>
+        <div class="empty-div"></div>
+    </div>
+
+
+    <footer>
+        <p>[] est représenté au Québec par nous (Canada) Inc., une licence québécoise. [], Inc. n'est pas responsable du contenu des sites Web externes.</p>
+        <p>© 2024 [], Inc. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
