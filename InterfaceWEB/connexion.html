@@ -22,6 +22,7 @@
     height: 100vh;
     background: url(./images/beach.png) no-repeat center/cover;
     font-size: 14px;
+    letter-spacing: .1rem;
   }
   
   .container {
@@ -53,6 +54,7 @@
   
   .form-connexion form {
     margin: 0 30px;
+    font-family: "Montserrat";
   }
   
   
@@ -62,6 +64,8 @@
     padding: 15px;
     background-color: #efefef;
     border-radius: 5px;
+    letter-spacing: .1rem;
+    font-family: "Montserrat";
   }
   
   
@@ -69,21 +73,24 @@
     border: none;
     padding: 20px;
     margin-top: 5px;
-    background-color: #6d597a;
-    border-radius: 5px;
+    background-color: #16b0c4;
+    border-radius: 12px;
     color: #fff;
     cursor: pointer;
+    font-family: "Montserrat";
+    font-size: larger;
+    letter-spacing: .2rem;
   }
   
 
   .form-connexion button:hover {
-    background-color: #6d6875;
+    background-color: #021b57;
   }
   
   .Salutation-container {
     width: 50%;
     text-align: center;
-    background-color: lightgrey ;
+    background-color: rgb(242, 238, 238) ;
   }
   
   .text {
@@ -103,16 +110,18 @@
   .Salutation button {
     border: none;
     padding: 15px 30px;
-    background-color: #6d597a;
+    background-color: #16b0c4;
     border-radius: 50px;
     color: #fff;
     margin: 10px 0;
     cursor: pointer;
+    font-family: "Montserrat";
+    letter-spacing: .2rem;
   }
   
   .Salutation button:focus,
   .Salutation button:hover {
-    background-color: #686c75;
+    background-color: #021b57;
   }
   
   /* Ajout de l'effet de saut de ligne pour chaque élément du formulaire */
@@ -121,6 +130,16 @@
   .form-connexion button {
     display: block;
     width: 100%;
+  }
+  #msgbienvenue{
+    font-family: "Montserrat";
+    line-height: 25px;
+  }
+
+  #connexiontxt
+  {
+    font-size: 30px;
+    letter-spacing: .3rem;
   }
 
   
@@ -133,11 +152,13 @@
         <div class="container-form">
           <div class="form-connexion">
             <form>
-              <h2>Connexion</h2>
+              <h2 id="connexiontxt">Connexion</h2>
+              <br>
               <label for="email"></label>
               <input name="email" type="email" placeholder="Adresse courriel" required />
               <label for="mot_de_passe"></label>
               <input name="mot_de_passe" type="password" placeholder="Mot de passe" required />
+              <br>
               <button>Connexion</button>
             </form>
           </div>
@@ -146,11 +167,18 @@
           <div class="text">
             <div class="Salutation">
               <h2>Content de vous revoir!</h2>
-              <p>
+              <br>
+              <br>
+              <p id="msgbienvenue">
                 De retour!? Nous sommes content de vous revoir ici. Nous espérons que vous avez eu un endroit sécuritaire où vous reposer.
-              </p>
+             </p>
+             <br>
+              <br>
               <button id="btn-inscription">Pas de compte? Inscrivez-vous.</button>
             </div>
+            <br>
+            <br>
+            <br>
             <p>© 2024 <a href="../pageAccueil.html">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
           </div>
         </div>
