@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -13,16 +13,21 @@
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url(./images/beach.png) no-repeat center/cover;
+    background: url(./images/photoInscription.png) no-repeat center/cover;
     font-size: 14px;
 }
 
 .container {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
     background-color: #fff;
     width: 100%;
     max-width: 65%;
@@ -38,6 +43,7 @@ body {
 }
 
 .form-inscription {
+  
     position: relative;
     width: 100%;
     display: flex;
@@ -45,6 +51,7 @@ body {
     flex-direction: column;
     height: 100%;
     transition: all 0.5s ease-in;
+    font-size: larger;
 }
 
 .form-inscription form {
@@ -53,7 +60,7 @@ body {
 
 .form-inscription input {
     margin: 10px 0;
-    border: none;
+    border: 1px solid black;
     padding: 15px;
     background-color: #efefef;
     border-radius: 5px;
@@ -67,6 +74,7 @@ body {
     background-color: #16b0c4;
     border-radius: 5px;
     color: #fff;
+    letter-spacing: .2rem;
     cursor: pointer;
     width: calc(100% - 30px); /* Largeur ajustée pour compenser les marges */
 }
@@ -96,13 +104,14 @@ body {
 }
 
 .Bienvenue button {
-    border: none;
+    border: 1px solid black;
     padding: 15px 30px;
     background-color: #16b0c4;
     border-radius: 50px;
     color: #fff;
     margin: 10px 0;
     cursor: pointer;
+    letter-spacing: .2rem;
 }
 
 .Bienvenue button:focus,
@@ -116,6 +125,7 @@ body {
 .form-inscription button {
     display: block;
     width: calc(100% - 30px); /* Largeur ajustée pour compenser les marges */
+    border:1px solid black;
 }
 
 
