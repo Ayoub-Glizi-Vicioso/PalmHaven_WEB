@@ -18,7 +18,7 @@
                 die("Connexion échouée: " . $connexion->connect_error);
             } 
 
-            $requete = "SELECT numero, étage, caratéristique  FROM chambre WHERE statut = 'disponible' ";
+            $requete = "SELECT numero, étage, caratéristique , statut  FROM chambre WHERE statut = 'disponible' ";
 
             $resultat = $conn->query($requete);
 

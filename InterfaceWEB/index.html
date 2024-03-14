@@ -9,6 +9,7 @@ défaut dans le système du serveur.-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         :root {
             --blue: #6d597a;
             --darkblue: #6d597a;
@@ -22,6 +23,8 @@ défaut dans le système du serveur.-->
             box-sizing: border-box;
             padding: 0;
             margin: 0;
+            font-family: "Montserrat";
+            letter-spacing: .2rem;
         }
 
         body {
@@ -32,6 +35,7 @@ défaut dans le système du serveur.-->
             padding-top: 50px;
             background-color: white;
             height: 200vh;
+            
         }
 
         /* .navbar {
@@ -195,7 +199,7 @@ défaut dans le système du serveur.-->
         }
 
         footer {
-            background-color: darkgray;
+            background-color: #16b0c4;
             color: var(--white);
             padding: 20px 0;
             text-align: center;
@@ -250,7 +254,7 @@ défaut dans le système du serveur.-->
 
         .affichage-annonce {
             border: 1px solid black;
-            background-color: lightgray;
+            background-color: #16b0c4;
             height: 90%; 
             width: 100%; 
             display: flex; 
@@ -280,7 +284,7 @@ défaut dans le système du serveur.-->
         }
 
         .footer-item:hover {
-            color: var(--darkblue);
+            color: blue;
         }
 
         /* #photo{
@@ -343,7 +347,7 @@ défaut dans le système du serveur.-->
         }
 
         .btn-primary:hover {
-            background-color: lightslategrey; /* Change 'yourDesiredColorOnHover' to the hover color you want */
+            background-color: lightslategrey; 
             border-color: lightslategrey; /* You can also change the border color on hover if needed */
         }
 
@@ -457,8 +461,11 @@ défaut dans le système du serveur.-->
   background-color: var(--primary-color-dark);
 }
 
+#date_fin, #date_debut{
+    font-size: 0.7rem;
+    text-align: center;
 
-
+}
 
 </style>
 </head>
@@ -482,7 +489,7 @@ défaut dans le système du serveur.-->
             <li class="link"><a href="pageAccueil">Accueil</a></li>
             <li class="link"><a href="Aide.html">Aide</a></li>
             <li class="link"><a href="connexionfront.php">Connexion</a></li>
-            <li class="link"><a href="pageAccueil">S'inscire</a></li>
+            <li class="link"><a href="inscriptionfront.php">S'inscire</a></li>
         </ul>
     </nav>
     <header class="section__container header__container">
@@ -497,14 +504,14 @@ défaut dans le système du serveur.-->
               <div class="form__group">
                 <div class="input__group">
                   <input type="date" id="start_date" name="start_date" placeholder="entrer la date de début"> 
-                  <label for="start_date">Date de début réservation</label>
+                  <label for="start_date" id="date_debut">Date de début réservation</label>
                 </div>
                 <br>
               </div>
               <div class="form__group">
                 <div class="input__group">
                     <input type="date" id="end_date" name="end_date"> 
-                    <label for="end_date">Date de fin de réservation</label>
+                     <label for="end_date" id=date_fin >Date de fin de réservation</label>
                 </div>
               </div>
               <br>
@@ -516,13 +523,13 @@ défaut dans le système du serveur.-->
       </header>
 
 
-    <h1>Découvrer votre nouvelle hébergement</h1>
+    <h1>Découvrez votre nouvelle hébergement</h1>
 
     <div class="container">
         <ul class="cards">
             <li class="card">
                 <div>
-                    <h2 class="card-title">Bienvenue sur le site d'<strong><em><u>Hotel Reservation</u></em></strong></h2>
+                    <h2 class="card-title">Bienvenue sur le site de<strong><em><u> PALM HAVEN</u></em></strong></h2>
                     <div class="card-content">
                         <p>Bienvenue sur notre site de réservation d'hôtels !
                             Nous sommes ravis de vous accueillir dans notre univers 
