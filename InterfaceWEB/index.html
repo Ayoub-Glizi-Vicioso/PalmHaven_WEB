@@ -39,7 +39,7 @@ défaut dans le système du serveur.-->
             top: 0;
             left: 0;
             width: 100%;
-            background-color: darkgrey;
+            background-color: #16b0c4;
             color: var(--white);
             display: flex;
             align-items: center;
@@ -195,7 +195,7 @@ défaut dans le système du serveur.-->
             flex: 1; 
             padding: 10px;
             margin-left: 8px; 
-            background-color: #6d597a;
+            background-color: #16b0c4;
             color: white;
             border: none;
             border-radius: 5px;
@@ -242,7 +242,7 @@ défaut dans le système du serveur.-->
         }
 
         #photo{
-            background-image: url(./images/hotel.jpeg);
+            background-image: url(./images/hotel_profil.jpeg);
             background-size: cover; 
             background-repeat: no-repeat; 
             height: auto;
@@ -258,7 +258,7 @@ défaut dans le système du serveur.-->
 
         #swipe{
             text-align: center;
-            color: #6d597a;
+            color: #0d7d8c;
             font-weight: bold;
             font-size: large;
             margin-top: -40px;
@@ -294,6 +294,16 @@ défaut dans le système du serveur.-->
         .card:not(:last-child)::after {
         content: none; /* Supprimer la flèche à droite */
         }
+
+        .btn-primary {
+            background-color: #0d7d8c;
+            border-color: #0d7d8c;
+        }
+
+        .btn-primary:hover {
+            background-color: lightslategrey; /* Change 'yourDesiredColorOnHover' to the hover color you want */
+            border-color: lightslategrey; /* You can also change the border color on hover if needed */
+        }
     </style>
 </head>
 <body>
@@ -306,6 +316,21 @@ défaut dans le système du serveur.-->
             <li class="nav-item"><a href="connexionfront.php" class="nav-link">Connexion</a></li>
         </ul>
     </nav>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="Aide.html">Aide</a>
+            <a class="nav-item nav-link" href="connexionfront.php">Connexion</a>
+          </div>
+        </div>
+      </nav>
 
     <h1>Découvrer votre nouvelle hébergement</h1>
 
@@ -394,29 +419,7 @@ défaut dans le système du serveur.-->
     <br>
     <hr>
 
-    <!-- <h3>Chambre disponible</h3>
-    <div class = "container-room">
-        <div class = "row">
-            <div class="col-lg-4 col-md-6 my-3">
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./images/Suite_Bungalow.png" class="img-chambre" alt="suite-bungalow">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5>Suite Bungalow</h5>
-                          <h6>350 par nuit</h6>
-                          <p class="card-text">Nous mettons à votre disposition 836 Suites en Bungalows, l'option la plus confortable pour vous et votre famille. Les Bungalow Suites sont idéales pour votre repos et votre détente, dans un environnement naturel très spécial. Vous aurez l'impression d'être au paradis ! *Occupation maximale : 4 personnes (3 adultes + 1 enfant ou 2 adultes + 2 enfants ou 1 adulte + 2 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
-                          <a href="#" class="btn btn-primary">Plus d'options</a>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+    
 
     <div class="card mb-3 " style="max-width: 100%;border-top: none;">
         <div class="row g-0">
@@ -437,16 +440,45 @@ défaut dans le système du serveur.-->
         <div class="row g-0">
             <div class="col-md-5">
                 <div class="card-body">
-                    <h5 class="card-title">Double Bungalow</h5>
-                    <p class="card-text">Nous mettons à votre disposition 836 Suites en Bungalows, l'option la plus confortable pour vous et votre famille. Les Bungalow Suites sont idéales pour votre repos et votre détente, dans un environnement naturel très spécial. Vous aurez l'impression d'être au paradis ! *Occupation maximale : 4 personnes (3 adultes + 1 enfant ou 2 adultes + 2 enfants ou 1 adulte + 2 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
+                    <h5 class="card-title">Suite Club Familiale</h5>
+                    <p class="card-text">Chambres familiales de 53 m2 conçues pour garantir aux adultes et aux enfants des vacances vraiment spéciales. Nous disposons de 123 Junior Suites Family Club équipées d'un lit double et de trois lits simples superposés, avec tous les avantages exclusifs d'être situées dans l'espace privé Princess Family Club. *Occupation maximale : 5 personnes (3 adultes + 2 enfants ou 2 adultes + 3 enfants ou 1 adulte + 4 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
                     <a href="#" class="btn btn-primary">Plus d'options</a>
                 </div>
             </div>
             <div class="col-md-6">
-                <img src="./images/Suite_Bungalow.png" class="img-chambre" alt="suite-bungalow">
+                <img src="./images/Club_Familiale_Suite.png" class="img-chambre" alt="Image d'une suite familiale">
             </div>
         </div>
     </div>
+    <div class="card mb-3 " style="max-width: 100%;border-top: none;">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img src="./images/Lune_de_miel_Suite.png" class="img-chambre" alt="suite-bungalow">
+          </div>
+          <div class="col-md-5">
+            <div class="card-body">
+              <h5 class="card-title">Suite Lune de Miel</h5>
+              <p class="card-text">Si vous êtes un couple qui préfère des vacances plus paisibles et romantiques, nos 22 suites lune de miel offrent un bain à remous et une ambiance parfaite. Profitez des services et avantages exclusifs inclus dans cette suite pour les jeunes mariés et aussi pour les couples qui souhaitent partager une expérience romantique. Adultes seulement (+18). *Occupation maximale : 2 adultes *Séjour minimum 4 nuits</p>
+              <a href="#" class="btn btn-primary">Plus d'options</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- <div class="card mb-3" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-5">
+                <div class="card-body">
+                    <h5 class="card-title">Suite Club Familiale Swimout</h5>
+                    <p class="card-text">Savourez le luxe de plonger directement dans la piscine depuis votre terrasse. Nous disposons de 41 Junior Suites Family Club avec un lit double et des lits superposés, offrant aux clients l'accès à tous les services, privilèges et espaces privés réservés aux clients du Family Club. *Occupation maximale : 5 personnes (3 adultes + 2 enfants ou 2 adultes + 3 enfants ou 1 adulte + 4 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
+                    <a href="#" class="btn btn-primary">Plus d'options</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="./images/Club_Familiale.png" class="img-chambre" alt="Image d'une suite familiale avec piscine">
+            </div>
+        </div>
+    </div> -->
     
 
     <div class="affichage-annonce">
