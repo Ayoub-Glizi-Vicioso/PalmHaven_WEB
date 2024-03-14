@@ -349,7 +349,7 @@ défaut dans le système du serveur.-->
             <br>
             <br><br><br><br>
             <div class="container-form">
-                <form action="../backendWEB/AffichageChambre.php" method="post" class="search-form">
+                <form class="search-form">
                     <label for="start_date">Date de début réservation</label>
                     <input type="date" id="start_date" name="start_date" placeholder="entrer la date de début">
                     <label for="end_date">Date de fin de réservation</label>
@@ -390,7 +390,7 @@ défaut dans le système du serveur.-->
     </div>
     <footer>
         <a href="Aide.html" class="footer-item" >Aide</a>
-        <a href="commentairesfront.php" class="footer-item">Review</a>
+        <a href="#revue" class="footer-item">Review</a>
         <a href="politique.html" class="footer-item" target="_blank">Politique</a>
     </footer>
 
