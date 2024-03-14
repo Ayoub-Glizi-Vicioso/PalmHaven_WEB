@@ -161,6 +161,51 @@ h2 {
     margin-bottom: 30px;
 
 }
+#passwordStrengthMeter {
+          height: 10px;
+          background-color: #ddd;
+          width: 0%;
+          margin-top: 5px;
+          border-radius: 3px;
+      }
+
+      #passwordStrengthMeter.weak {
+          background-color: #ff6347; /* Rouge pour un mot de passe faible */
+      }
+
+      #passwordStrengthMeter.medium {
+          background-color: #ffa500; /* Orange pour un mot de passe moyen */
+      }
+
+      #passwordStrengthMeter.strong {
+          background-color: #28a745; /* Vert pour un mot de passe fort */
+      }
+
+      .tooltip {
+          position: relative;
+          display: inline-block;
+      }
+
+      .tooltip .tooltiptext {
+          visibility: hidden;
+          width: 120px;
+          background-color: #555;
+          color: #fff;
+          border-radius: 6px;
+          padding: 5px;
+          position: absolute;
+          z-index: 1;
+          bottom: 125%;
+          left: 50%;
+          margin-left: -60px;
+          opacity: 0;
+          transition: opacity 0.3s;
+      }
+
+      .tooltip:hover .tooltiptext {
+          visibility: visible;
+          opacity: 1;
+      }
 
 </style>
 </head>
@@ -193,11 +238,70 @@ h2 {
               <label for="email"></label>
               <input name="email" type="mailto" placeholder="courriel" required />
               <label for="mot_de_passe"></label>
-              <input name="mot_de_passe" type="password" placeholder="mot de passe" required />
+              <div class="tooltip">
+                <input name="mot_de_passe" id="mot_de_passe" type="password" placeholder="Mot de passe" onkeyup="updatePasswordStrength()" required />
+                <span class="tooltiptext">8 caractères minimum, une minuscule, une majuscule, un chiffre, un caractère spécial</span>
+              </div>
+              <div id="passwordStrengthMeter"></div>
               <button>S'inscrire</button>
             </form>
           </div>
         </div>
       </div>
+
+      <script>
+      function getPasswordStrength(mot_de_passe) {
+        // Vérifier la longueur du mot de passe
+        let lengthScore = mot_de_passe.length >= 8 ? 20 : 0;
+    
+        // Vérifier la présence d'au moins une minuscule, une majuscule, un chiffre et un symbole
+        let lowerCaseRegex = /[a-z]/;
+        let upperCaseRegex = /[A-Z]/;
+        let digitRegex = /[0-9]/;
+        let symbolRegex = /[^a-zA-Z0-9]/;
+        let characterScore = 0;
+    
+        if (lowerCaseRegex.test(mot_de_passe)) {
+            characterScore += 20;
+        }
+    
+        if (upperCaseRegex.test(mot_de_passe)) {
+            characterScore += 20;
+        }
+    
+        if (digitRegex.test(mot_de_passe)) {
+            characterScore += 20;
+        }
+    
+        if (symbolRegex.test(mot_de_passe)) {
+            characterScore += 20;
+        }
+    
+        // Calculer le score total
+        let totalScore = Math.min((lengthScore + characterScore), 100);
+    
+        return totalScore;
+       }
+      
+      function updatePasswordStrength() {
+          const passwordInput = document.getElementById('mot_de_passe');
+          const passwordStrengthMeter = document.getElementById('passwordStrengthMeter');
+          const passwordStrength = getPasswordStrength(passwordInput.value);
+      
+          passwordStrengthMeter.style.width = passwordStrength + '%';
+      
+          // Supprimez toutes les classes existantes
+          passwordStrengthMeter.classList.remove('weak', 'medium', 'strong');
+      
+          // Ajoutez la classe appropriée en fonction de la force du mot de passe
+          if (passwordStrength < 50) {
+              passwordStrengthMeter.classList.add('weak');
+          } else if (passwordStrength < 100) {
+              passwordStrengthMeter.classList.add('medium');
+          } else {
+              passwordStrengthMeter.classList.add('strong');
+          }
+      }
+    </script>
 </body>
 </html>
