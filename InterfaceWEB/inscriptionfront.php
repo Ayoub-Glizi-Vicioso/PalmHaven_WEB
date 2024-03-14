@@ -1,3 +1,18 @@
+
+<?php
+/*Cette en-tête en php permet de mettre en place la connexion à la base de données
+sans cette en-tête, il n'y pas de lien avec le formulaire d'inscription*/
+  session_start(); 
+    // Supprimer toute session existante
+    unset($_SESSION['email']);
+   
+    // Vérifier si le formulaire a été soumis
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Inclure le fichier de connexion
+        require '../backendWEB/inscription.php';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +20,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -13,10 +29,9 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-style: normal;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,8 +41,6 @@ body {
 }
 
 .container {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
     background-color: #fff;
     width: 100%;
     max-width: 65%;
@@ -35,6 +48,7 @@ body {
     position: relative;
     overflow-x: hidden;
     display: flex;
+    border-radius: 5%;
 }
 
 .container-form {
@@ -43,7 +57,6 @@ body {
 }
 
 .form-inscription {
-  
     position: relative;
     width: 100%;
     display: flex;
@@ -51,7 +64,6 @@ body {
     flex-direction: column;
     height: 100%;
     transition: all 0.5s ease-in;
-    font-size: larger;
 }
 
 .form-inscription form {
@@ -60,11 +72,11 @@ body {
 
 .form-inscription input {
     margin: 10px 0;
-    border: 1px solid black;
+    border: none;
     padding: 15px;
     background-color: #efefef;
     border-radius: 5px;
-    width: calc(100% - 30px); /* Largeur ajustée pour compenser les marges */
+    letter-spacing: .1rem;
 }
 
 .form-inscription button {
@@ -72,21 +84,21 @@ body {
     padding: 20px;
     margin-top: 5px;
     background-color: #16b0c4;
-    border-radius: 5px;
+    border-radius: 12px;
     color: #fff;
-    letter-spacing: .2rem;
     cursor: pointer;
-    width: calc(100% - 30px); /* Largeur ajustée pour compenser les marges */
+    font-size: larger;
+    letter-spacing: .2rem;
 }
 
 .form-inscription button:hover {
-    background-color: #3216ec;
+    background-color: #021b57;
 }
 
 .Bienvenue-container {
     width: 50%;
     text-align: center;
-    background-color: lightgrey;
+    background-color: rgb(242, 238, 238);
 }
 
 .text {
@@ -104,7 +116,7 @@ body {
 }
 
 .Bienvenue button {
-    border: 1px solid black;
+    border: none;
     padding: 15px 30px;
     background-color: #16b0c4;
     border-radius: 50px;
@@ -116,20 +128,39 @@ body {
 
 .Bienvenue button:focus,
 .Bienvenue button:hover {
-    background-color: #6d6875;
+    background-color: #021b57;
 }
 
 /* Ajout de l'effet de saut de ligne pour chaque élément du formulaire */
-
 .form-inscription input,
 .form-inscription button {
     display: block;
-    width: calc(100% - 30px); /* Largeur ajustée pour compenser les marges */
-    border:1px solid black;
+    width: 100%;
+    font-family: "Montserrat";
+}
+#btn-connection{
+  margin-top: 20px;
+    background-color: #16b0c4;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Montserrat";
+    letter-spacing: .2rem;
+}
+#btn-connection:hover{
+  background-color: #021b57;
+}
+p{
+    font-family: "Montserrat";
+    line-height: 25px;
 }
 
+h2 {
+  font-family: "Montserrat";
+    font-size: 30px;
+    margin-bottom: 30px;
 
-
+}
 
 </style>
 </head>
@@ -139,17 +170,21 @@ body {
       <div class="text">
         <div class="Bienvenue">
           <h2>Bienvenue!</h2>
+          <br>
           <p>
             Nous sommes ravis de vous accueillir et de vous offrir une expérience exceptionnelle.  N'hésitez pas à parcourir notre site et à découvrir tout ce que nous avons à vous offrir.
           </p>
-          <button id="btn-connection">Retour page de connexion</button>
+          <br>
+          <button onclick="window.location.href='connexionfront.php'"id="btn-connection">Retour page de connexion</button>
         </div>
-        <p>© 2024 <a href="../pageAccueil.html">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
+        <br>
+        <br>
+        <p>© 2024 <a href="politique.html">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
       </div>
     </div>
     <div class="container-form">
           <div class="form-inscription">
-            <form>
+          <form method="POST">
               <h2>Inscription</h2>
               <label for="prenom"></label>
               <input name="prenom" type="text" placeholder="prénom" required />
@@ -158,7 +193,7 @@ body {
               <label for="email"></label>
               <input name="email" type="mailto" placeholder="courriel" required />
               <label for="mot_de_passe"></label>
-              <input name="mot_de_passe" type="password" placeholder="Mot de passe" required />
+              <input name="mot_de_passe" type="password" placeholder="mot de passe" required />
               <button>S'inscrire</button>
             </form>
           </div>

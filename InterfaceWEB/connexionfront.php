@@ -1,3 +1,17 @@
+<?php 
+/*Cette en-tête en php permet de mettre en place la connexion à la base de données
+sans cette en-tête, il n'y pas de lien avec le formulaire de connexion*/
+session_start();
+    // Supprimer toute session existante
+    unset($_SESSION['email']);
+  
+    // Vérifier si le formulaire a été soumis
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Inclure le fichier de connexion
+        require '../backendWEB/connexion.php';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +30,7 @@
   }
     
   body {
-    font-family: "DM Sans", sans-serif;
+    font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
@@ -155,7 +169,7 @@
     <div class="container">
         <div class="container-form">
           <div class="form-connexion">
-            <form>
+            <form method="POST" action="">
               <h2 id="connexiontxt">Connexion</h2>
               <br>
               <label for="email"></label>
@@ -178,14 +192,15 @@
              </p>
              <br>
               <br>
-              <button id="btn-inscription">Pas de compte? Inscrivez-vous.</button>
+              <button id="btn-inscription" onclick="window.location.href='inscriptionfront.php'">Pas de compte? Inscrivez-vous.</button>
             </div>
             <br>
             <br>
             <br>
-            <p>© 2024 <a href="../pageAccueil.html">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
+            <p>© 2024 <a href="index.html">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
           </div>
         </div>
       </div>
 </body>
 </html>
+
