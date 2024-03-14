@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url(./images/photoInscription.png) no-repeat center/cover;
+            font-size: 14px;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 65%;
+            height: 75%;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            border-radius: 5%;
+        }
+
+        #zone_text {
+            width: 50%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #Barre_nav {
+            width: 50%;
+            text-align: center;
+            background-color: rgb(242, 238, 238);
+            padding: 20px;
+            border-radius: 5%;
+        }
+        #Barre_nav button {
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #16b0c4;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    font-size: larger;
+    letter-spacing: .2rem;
+}
+
+#Barre_nav button:hover {
+    background-color: #021b57;
+}
+
+        button {
+            border: none;
+            padding: 20px;
+            margin-top: 5px;
+            background-color: #16b0c4;
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-size: larger;
+            letter-spacing: .2rem;
+        }
+
+        button:hover {
+            background-color: #021b57;
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        p {
+            font-family: "Montserrat";
+            line-height: 25px;
+        }
+
+        h2 {
+            font-family: "Montserrat";
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="Barre_nav">
+            <button id="btn_reservations">Mes réservations</button>
+            <button id="btn_effacer_compte">Supprimer mon compte</button>
+            <button id="btn_voir_reservations">Voir mes réservations</button>
+        </div>
+        <div id="zone_text">
+            <div id="btn_retour">
+                <button>Navigation</button>
+            </div>
+            <div class="text">
+                <h2>Titre</h2>
+                <p>Contenu du texte</p>
+                <div id="effacer_compte">
+                    <form>
+                        <label for="email"></label>
+                        <input name="email" type="text" placeholder="email" required>
+                        <label for="mot_de_passe"></label>
+                        <input name="mot_de_passe" type="text" placeholder="mot de passe" required>
+                        <button>Effacer Compte</button>
+                    </form>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
