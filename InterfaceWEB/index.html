@@ -34,7 +34,7 @@ défaut dans le système du serveur.-->
             height: 200vh;
         }
 
-        .navbar {
+        /* .navbar {
             position: sticky;
             top: 0;
             left: 0;
@@ -83,6 +83,48 @@ défaut dans le système du serveur.-->
 
         .nav-link:hover {
             color: var(--darkblue);
+        } */
+
+        nav {
+            max-width: var(--max-width);
+            height: 2%;
+            margin:auto;
+            padding: 2rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+        }
+
+        /* .nav__logo{
+            font-size: 1.5rem;
+            font-weight: 60;
+            color: var(--text-dark);
+
+        } */
+        .nav_logo img {
+            width: 150px;
+            margin-right: 10px;
+        }
+
+        .nav__links{
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link{
+            margin-right: 20px;
+        }
+        .link a{
+            font-weight: 500;
+            color: rgba(152, 150, 150, 0.932);
+            transition:  0.3;
+        }
+
+        .link a:hover{
+            color: (--primary-color);
         }
 
         .container {
@@ -241,7 +283,7 @@ défaut dans le système du serveur.-->
             color: var(--darkblue);
         }
 
-        #photo{
+        /* #photo{
             background-image: url(./images/hotel_profil.jpeg);
             background-size: cover; 
             background-repeat: no-repeat; 
@@ -249,7 +291,7 @@ défaut dans le système du serveur.-->
             width: 100%;
             background-position: center;
 
-        }
+        } */
 
         .blanc{
             color: black;
@@ -304,10 +346,124 @@ défaut dans le système du serveur.-->
             background-color: lightslategrey; /* Change 'yourDesiredColorOnHover' to the hover color you want */
             border-color: lightslategrey; /* You can also change the border color on hover if needed */
         }
-    </style>
+
+
+        .header__container {
+  padding: 1rem 1rem 5rem 1rem;
+}
+
+.header__image__container {
+  position: relative;
+  min-height: 500px;
+  background-image: linear-gradient(
+      to right,
+      rgba(83, 108, 123, 0.4),
+      rgba(235, 238, 245, 0.1)
+    ),
+    url("./images/hotel_profil.jpeg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 2rem;
+}
+
+.header__content {
+  max-width: 600px;
+  padding: 5rem 2rem;
+  
+}
+.header__content h3, .header__content h4 {
+  color: white; /* Changement de la couleur du texte en blanc */
+}
+
+.booking__container {
+  position: absolute;
+  bottom: -5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 6rem);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+}
+
+.booking__container form {
+  width: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.booking__container .input__group {
+  width: 100%;
+  position: relative;
+}
+
+.booking__container label {
+    position: absolute;
+    top: 0; /* Positionner le label au-dessus du champ d'entrée */
+    left: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    pointer-events: none;
+    transition: 0.3s;
+    transform: translateY(-100%);
+}
+
+.booking__container input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid var(--primary-color);
+  color: var(--text-dark);
+ 
+}
+
+.booking__container input:focus ~ label {
+  font-size: 0.8rem;
+  top: 0;
+}
+
+.booking__container .form__group p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.booking__container .btn {
+  padding: 1rem;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.booking__container .btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+
+
+
+</style>
 </head>
 <body>
-    <nav class="navbar">
+    <!-- <nav class="navbar">
         <a href="pageAccueil.html" target="_SELF" class="navbar-brand">
             <img src="images/home.png" alt="page d'accueil">Reservation
         </a>
@@ -315,22 +471,50 @@ défaut dans le système du serveur.-->
             <li class="nav-item"><a href="Aide.html" class="nav-link">Aide</a></li>
             <li class="nav-item"><a href="connexionfront.php" class="nav-link">Connexion</a></li>
         </ul>
+    </nav> -->
+
+
+    <nav>
+        <div class="nav_logo">
+            <img src="./images/PalmHaven_Logo.webp" alt="Logo PalmHaven">
+        </div>
+        <ul class ="nav__links">
+            <li class="link"><a href="pageAccueil">Accueil</a></li>
+            <li class="link"><a href="Aide.html">Aide</a></li>
+            <li class="link"><a href="connexionfront.php">Connexion</a></li>
+            <li class="link"><a href="pageAccueil">S'inscire</a></li>
+        </ul>
     </nav>
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="Aide.html">Aide</a>
-            <a class="nav-item nav-link" href="connexionfront.php">Connexion</a>
+    <header class="section__container header__container">
+        <div class="header__image__container">
+          <div class="header__content">
+            <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
+            <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
+          </div>
+          <div class="booking__container">
+            <form action="../backendWEB/AffichageChambre.php" method="post" class="search-form">
+              
+              <div class="form__group">
+                <div class="input__group">
+                  <input type="date" id="start_date" name="start_date" placeholder="entrer la date de début"> 
+                  <label for="start_date">Date de début réservation</label>
+                </div>
+                <br>
+              </div>
+              <div class="form__group">
+                <div class="input__group">
+                    <input type="date" id="end_date" name="end_date"> 
+                    <label for="end_date">Date de fin de réservation</label>
+                </div>
+              </div>
+              <br>
+              <input type="submit" value="Rechercher">
+            </form>
+            
           </div>
         </div>
-      </nav>
+      </header>
+
 
     <h1>Découvrer votre nouvelle hébergement</h1>
 
@@ -398,9 +582,8 @@ défaut dans le système du serveur.-->
     </div>
     <br>
     <hr>
-    <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
-    <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
-        <div id="photo">
+    
+        <!-- <div id="photo">
             <br>
             <br><br><br><br>
             <div class="container-form">
@@ -410,10 +593,11 @@ défaut dans le système du serveur.-->
                     <label for="end_date">Date de fin de réservation</label>
                     <input type="date" id="end_date" name="end_date">
                     <input type="submit" value="Rechercher">
-                 </form>
+                 
+                </form>
                  <br>
                  <br><br><br><br>
-        </div>
+        </div> -->
     </div>
 
     <br>
@@ -429,7 +613,7 @@ défaut dans le système du serveur.-->
           <div class="col-md-5">
             <div class="card-body">
               <h5 class="card-title">Suite Bungalow</h5>
-              <p class="card-text">Nous mettons à votre disposition 836 Suites en Bungalows, l'option la plus confortable pour vous et votre famille. Les Bungalow Suites sont idéales pour votre repos et votre détente, dans un environnement naturel très spécial. Vous aurez l'impression d'être au paradis ! *Occupation maximale : 4 personnes (3 adultes + 1 enfant ou 2 adultes + 2 enfants ou 1 adulte + 2 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
+              <p class="card-text">Nous mettons à votre disposition 1 Suite en Bungalow, l'option la plus confortable pour vous et votre famille. La Suite Bungalow est idéale pour votre repos et votre détente, dans un environnement naturel très spécial. Vous aurez l'impression d'être au paradis ! *Occupation maximale : 4 personnes (3 adultes + 1 enfant ou 2 adultes + 2 enfants ou 1 adulte + 2 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
               <a href="#" class="btn btn-primary">Plus d'options</a>
             </div>
           </div>
@@ -441,7 +625,7 @@ défaut dans le système du serveur.-->
             <div class="col-md-5">
                 <div class="card-body">
                     <h5 class="card-title">Suite Club Familiale</h5>
-                    <p class="card-text">Chambres familiales de 53 m2 conçues pour garantir aux adultes et aux enfants des vacances vraiment spéciales. Nous disposons de 123 Junior Suites Family Club équipées d'un lit double et de trois lits simples superposés, avec tous les avantages exclusifs d'être situées dans l'espace privé Princess Family Club. *Occupation maximale : 5 personnes (3 adultes + 2 enfants ou 2 adultes + 3 enfants ou 1 adulte + 4 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
+                    <p class="card-text">Chambres familiales de 53 m2 conçues pour garantir aux adultes et aux enfants des vacances vraiment spéciales. Nous disposons d'une Suite Club Familiale équipée d'un lit double et de trois lits simples superposés, avec tous les avantages exclusifs d'être situées dans l'espace privé Palm Haven. *Occupation maximale : 5 personnes (3 adultes + 2 enfants ou 2 adultes + 3 enfants ou 1 adulte + 4 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
                     <a href="#" class="btn btn-primary">Plus d'options</a>
                 </div>
             </div>
@@ -458,7 +642,7 @@ défaut dans le système du serveur.-->
           <div class="col-md-5">
             <div class="card-body">
               <h5 class="card-title">Suite Lune de Miel</h5>
-              <p class="card-text">Si vous êtes un couple qui préfère des vacances plus paisibles et romantiques, nos 22 suites lune de miel offrent un bain à remous et une ambiance parfaite. Profitez des services et avantages exclusifs inclus dans cette suite pour les jeunes mariés et aussi pour les couples qui souhaitent partager une expérience romantique. Adultes seulement (+18). *Occupation maximale : 2 adultes *Séjour minimum 4 nuits</p>
+              <p class="card-text">Si vous êtes un couple qui préfère des vacances plus paisibles et romantiques, notre Suite lune de miel offre un bain à remous et une ambiance parfaite. Profitez des services et avantages exclusifs inclus dans cette suite pour les jeunes mariés et aussi pour les couples qui souhaitent partager une expérience romantique. Adultes seulement (+18). *Occupation maximale : 2 adultes *Séjour minimum 4 nuits</p>
               <a href="#" class="btn btn-primary">Plus d'options</a>
             </div>
           </div>
