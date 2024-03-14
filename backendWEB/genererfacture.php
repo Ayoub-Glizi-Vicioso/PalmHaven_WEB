@@ -23,12 +23,12 @@ if ($conn->connect_error) {
 }
 
 // Préparer la requête SQL pour récupérer les informations du client
-$email_client = $_SESSION['email'];
+$id_utilisateur = $_SESSION['id_utilisateur'];
 $sql = "SELECT nom, prenom, email
         FROM utilisateurs
-        WHERE email = ?";
+        WHERE id_utilisateur = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $email_client);
+$stmt->bind_param("i", $id_utilisateur);
 
 // Exécuter la requête pour récupérer les informations du client
 
@@ -40,12 +40,11 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     
     // Préparer la requête SQL pour récupérer les informations de réservation
-    //ajouter une facon de reconnaitre a quel client appartient une reservation (ajouter champ email dans la table reservation)
     $sql_reservation = "SELECT id_chambre, date_debut, date_fin, prix
                         FROM reservations
-                        WHERE email_client = ?";
+                        WHERE id_utilisateur = ?";
     $stmt_reservation = $conn->prepare($sql_reservation);
-    $stmt_reservation->bind_param("s", $email_client);
+    $stmt_reservation->bind_param("s", $id_utilisateur);
 
     // Exécuter la requête pour les informations de réservation
     $stmt_reservation->execute();

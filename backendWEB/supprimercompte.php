@@ -32,7 +32,7 @@ if (isset($_SESSION['email'], $_POST['email'], $_POST['mot_de_passe'])) {
             echo "<p>Erreur lors de la suppression de l'utilisateur : " . $stmt->error . "</p>";
         }
 
-        // Fermer la connexion à la base de données
+        
         $stmt->close();
         $conn->close();
     } else {
