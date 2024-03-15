@@ -1,25 +1,64 @@
 <?php
-// ajouter attribut disponible et prix dans la table chambre de la base de donnees
-session_start();
+
+header('Content-Type: application/json');
+
 
 if (!isset($_SESSION['email'])) {
-    header('Location: connexion.php');
+    http_response_code(401); 
+    echo json_encode(array('message' => 'Vous devez être connecté pour effectuer cette action.'));
     exit;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_reservation'])) {
-    require('connexion.php'); 
+require('connexion.php');
 
-    $id_reservation = $_POST['id_reservation'];
-    $id_chambre = $_POST['id_chambre'];
-    $date_debut = $_POST['date_debut'];
-    $date_fin = $_POST['date_fin'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $data = json_decode(file_get_contents("php://input"));
 
-    $date_debut_obj = new DateTime($date_debut);
-    $date_fin_obj = new DateTime($date_fin);
-    $duree_reservation = $date_debut_obj->diff($date_fin_obj)->days;
+    if (isset($data->id_reservation) && isset($data->id_chambre) && isset($data->date_debut) && isset($data->date_fin)) {
+        $id_reservation = $data->id_reservation;
+        $id_chambre = $data->id_chambre;
+        $date_debut = $data->date_debut;
+        $date_fin = $data->date_fin;
 
-    // si la chambre est dispo pour les nouvelles dates
+        // calculer la duree de la reservation
+        $date_debut_obj = new DateTime($date_debut);
+        $date_fin_obj = new DateTime($date_fin);
+        $duree_reservation = $date_debut_obj->diff($date_fin_obj)->days;
+
+        //fonction faite en dessous
+        $total_reservations = verifierDisponibiliteChambre($id_chambre, $date_debut, $date_fin, $id_reservation);
+
+        if ($total_reservations == 0) {
+            // fonction faite en dessous
+            if (modifierReservation($id_reservation, $id_chambre, $date_debut, $date_fin)) {
+                //fonction faite en dessous
+                mettreAJourDisponibiliteChambre($id_chambre, $date_debut, $date_fin);
+
+                http_response_code(200); 
+                echo json_encode(array('message' => 'La réservation a été modifiée avec succès.'));
+            } else {
+                http_response_code(500); // Internal Server Error
+                echo json_encode(array('message' => 'Une erreur est survenue lors de la modification de la réservation.'));
+            }
+        } else {
+            http_response_code(400); 
+            echo json_encode(array('message' => 'La chambre n\'est pas disponible pour les dates sélectionnées.'));
+        }
+    } else {
+        http_response_code(400); 
+        echo json_encode(array('message' => 'Les paramètres id_reservation, id_chambre, date_debut et date_fin sont requis.'));
+    }
+} else {
+    http_response_code(405); 
+    echo json_encode(array('message' => 'Méthode non autorisée.'));
+}
+
+$conn->close();
+
+// Fonction pour verifier si une chambre est disponible
+function verifierDisponibiliteChambre($id_chambre, $date_debut, $date_fin, $id_reservation) {
+    global $conn;
+
     $sql_check_disponibilite = "SELECT COUNT(*) AS total_reservations
                                 FROM reservations
                                 WHERE id_chambre = ? AND
@@ -33,36 +72,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_reservation'])) {
     $row_check_disponibilite = $result_check_disponibilite->fetch_assoc();
     $total_reservations = $row_check_disponibilite['total_reservations'];
 
-    if ($total_reservations == 0) {
-        // modifier la reservation
-        $sql_update_reservation = "UPDATE reservations
-                                   SET id_chambre = ?, date_debut = ?, date_fin = ?
-                                   WHERE id_reservation = ?";
-        $stmt_update_reservation = $conn->prepare($sql_update_reservation);
-        $stmt_update_reservation->bind_param("isss", $id_chambre, $date_debut, $date_fin, $id_reservation);
-
-        if ($stmt_update_reservation->execute()) {
-            // rendre la chambre dispo pour les dates changes
-            mettreAJourDisponibiliteChambre($id_chambre, $date_debut, $date_fin);
-        
-            echo "La réservation a été modifiée avec succès.";
-        } else {
-            echo "Une erreur est survenue lors de la modification de la réservation.";
-        }
-
-        $stmt_update_reservation->close();
-    } else {
-        echo "La chambre n'est pas disponible pour les dates sélectionnées.";
-    }
-
     $stmt_check_disponibilite->close();
-}
-    header('Location: reservations.php');
-    exit;
-?>
 
-<?php
-// fonction pour mettre a jour les dispo des chambres apres la modification
+    return $total_reservations;
+}
+
+// Fonction pour modifier une reservation
+function modifierReservation($id_reservation, $id_chambre, $date_debut, $date_fin) {
+    global $conn;
+
+    $sql_update_reservation = "UPDATE reservations
+                               SET id_chambre = ?, date_debut = ?, date_fin = ?
+                               WHERE id_reservation = ?";
+    $stmt_update_reservation = $conn->prepare($sql_update_reservation);
+    $stmt_update_reservation->bind_param("isss", $id_chambre, $date_debut, $date_fin, $id_reservation);
+    $result = $stmt_update_reservation->execute();
+
+    $stmt_update_reservation->close();
+
+    return $result;
+}
+
+// Fonction pour faire la maj des disponibilites d'une chambre
 function mettreAJourDisponibiliteChambre($id_chambre, $date_debut, $date_fin) {
     global $conn;
 
