@@ -6,6 +6,7 @@ défaut dans le système du serveur.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         :root {
             --blue: #6d597a;
@@ -348,7 +349,7 @@ défaut dans le système du serveur.-->
         <div id="photo">
             <br>
             <br><br><br><br>
-            <div class="container-form">
+            <div method="get" class="container-form">
                 <form class="search-form">
                     <label for="start_date">Date de début réservation</label>
                     <input type="date" id="start_date" name="start_date" placeholder="entrer la date de début">
@@ -364,26 +365,6 @@ défaut dans le système du serveur.-->
     <br>
     <hr>
 
-    <h3>Chambre disponible</h3>
-    <div class = "container-room">
-        <div class = "row">
-            <div class="col-lg-4 col-md-6 my-3">
-                
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                    <img src="./images/Suite_Bungalow.png" class="card-img-top" alt="suite-bungalow">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-            </div>
-            <div class="col-lg-12 text-center mt-5">
-                <a href="" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Plus d'options>>></a>
-        </div>
-
-    </div>
-
     
 
     <div class="affichage-annonce">
@@ -394,7 +375,7 @@ défaut dans le système du serveur.-->
         <a href="politique.html" class="footer-item" target="_blank">Politique</a>
     </footer>
 
-
+        <script src="../backendWEB/AffichageChambre.js"></script>
     
 </body>
 </html>
