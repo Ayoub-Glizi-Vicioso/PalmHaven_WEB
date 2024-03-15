@@ -1,56 +1,63 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('commentaire');
+$(document).ready(function() {
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
+    // Fonction pour récupérer les messages déjà existants depuis le serveur
 
-        const titre = form.querySelector('input[name="titre"]').value;
-        const contenu = form.querySelector('input[name="contenu"]').value;
-        const etoile = form.querySelector('input[name="etoile"]:checked').value;
+    const requeteGet = new XMLHttpRequest();
 
-        const nouveauMessage = document.createElement('div');
-        nouveauMessage.classList.add('boite-temoignage');
+    // Configuration de la requête HTTP GET vers une URL
+    requeteGet.open('GET', '../backendWEB/commentaire.php', true);
 
-        const date = new Date().toISOString(); // Obtenir la date actuelle
-        const dateString = date.replace('T', ' ').substring(0, 19);
+    // Définition de l'en-tête de la requête pour spécifier le type de contenu
+    requeteGet.setRequestHeader('Content-Type', 'application/json');
 
-        nouveauMessage.innerHTML = `
-            <div class="date">${dateString}</div>
-            <div class="entete-boite-temoignage">
-                <div class="profil">
-                    <div class="photo-profil">
-                        <img src="images/votre-image.jpg" />
-                    </div>
-                    <div class="nom-utilisateur">
-                        <strong>Votre Nom</strong>
-                    </div>
-                </div>
-                <div class="avis">
-                    ${genererEtoiles(etoile)}
-                </div>
-            </div>
-            <div class="commentaire-client">
-                <h3>${titre}</h3>
-                <p>${contenu}</p>
-            </div>
-        `;
+    // Définition de la fonction à exécuter une fois la requête terminée
+    requeteGet.onreadystatechange = function () {
 
-        const conteneurMessages = document.querySelector('.conteneur-boites-temoignages');
-        conteneurMessages.appendChild(nouveauMessage);
+        // Vérification si la requête est terminée (readyState === 4)
+        // et si le statut de la réponse est 200 - OK
+        if (requeteGet.readyState === 4 && requeteGet.status === 200) {
 
-        // Effacer les champs du formulaire après la publication
-        form.reset();
-    });
-});
+            // Traitement de la réponse reçue du serveur
+            const messages = JSON.parse(requeteGet.responseText);
 
-function genererEtoiles(nombreEtoiles) {
-    let etoilesHTML = '';
-    for (let i = 0; i < 5; i++) {
-        if (i < nombreEtoiles) {
-            etoilesHTML += '<i class="fas fa-star"></i>';
-        } else {
-            etoilesHTML += '<i class="far fa-star"></i>';
+            if (messages !== null) {
+                
+                let sessionID = messages.pop(); // Dernier élément est l'ID de session
+                let messageIndex = 1; // Index pour les ID des messages
+
+                messages.forEach(function(message) {
+                    let messageDiv = $("<div class='boite-temoignage' id='message-" + messageIndex + "'></div>");
+                    $(".conteneur-boites-temoignages").append(messageDiv);
+
+                    // Création des éléments HTML pour chaque message
+                    let messageTitle = $("<div class='titre'>" + message.Titre + "</div>");
+                    let messageContent = $("<div class='commentaire-client'>" + message.Contenu + "</div>");
+                    let messageDate = $("<div class='date'>" + message.Date + "</div>");
+                    let messageUser = $("<div class='profil'><div class='photo-profil'><img src='images/c-1.jpg' /></div><div class='nom-utilisateur'><strong>" + message.nom_utilisateur + "</strong></div></div>");
+                    let messageStars = $("<div class='avis'></div>");
+                    
+                    for (let i = 0; i < message.etoiles; i++) {
+                        messageStars.append("<i class='fas fa-star'></i>");
+                    }
+                    for (let i = message.etoiles; i < 5; i++) {
+                        messageStars.append("<i class='far fa-star'></i>");
+                    }
+
+                    $("#message-" + messageIndex).append(messageTitle, messageContent, messageDate, messageUser, messageStars);
+
+                    messageIndex++;
+                });
+            }
+            else {
+                console.error("Erreur lors de l'appel.");
+            }
+
         }
-    }
-    return etoilesHTML;
-}
+        else if (requeteGet.readyState === 4 && requeteGet.status !== 200) {
+            console.error('Erreur lors de la requête : ' + requeteGet.status);
+        }
+    };
+
+    requeteGet.send();
+
+});
