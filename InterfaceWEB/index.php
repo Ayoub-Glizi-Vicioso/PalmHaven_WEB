@@ -6,9 +6,11 @@ défaut dans le système du serveur.-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         :root {
             --blue: #6d597a;
             --darkblue: #6d597a;
@@ -22,6 +24,8 @@ défaut dans le système du serveur.-->
             box-sizing: border-box;
             padding: 0;
             margin: 0;
+            font-family: "Montserrat";
+            letter-spacing: .2rem;
         }
 
         body {
@@ -32,14 +36,15 @@ défaut dans le système du serveur.-->
             padding-top: 50px;
             background-color: white;
             height: 200vh;
+            
         }
 
-        .navbar {
+        /* .navbar {
             position: sticky;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: darkgrey;
+            background-color: #16b0c4;
             color: var(--white);
             display: flex;
             align-items: center;
@@ -83,6 +88,48 @@ défaut dans le système du serveur.-->
 
         .nav-link:hover {
             color: var(--darkblue);
+        } */
+
+        nav {
+            max-width: var(--max-width);
+            height: 2%;
+            margin:auto;
+            padding: 2rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+        }
+
+        /* .nav__logo{
+            font-size: 1.5rem;
+            font-weight: 60;
+            color: var(--text-dark);
+
+        } */
+        .nav_logo img {
+            width: 150px;
+            margin-right: 10px;
+        }
+
+        .nav__links{
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link{
+            margin-right: 20px;
+        }
+        .link a{
+            font-weight: 500;
+            color: rgba(152, 150, 150, 0.932);
+            transition:  0.3;
+        }
+
+        .link a:hover{
+            color: (--primary-color);
         }
 
         .container {
@@ -153,7 +200,7 @@ défaut dans le système du serveur.-->
         }
 
         footer {
-            background-color: darkgray;
+            background-color: #16b0c4;
             color: var(--white);
             padding: 20px 0;
             text-align: center;
@@ -195,7 +242,7 @@ défaut dans le système du serveur.-->
             flex: 1; 
             padding: 10px;
             margin-left: 8px; 
-            background-color: #6d597a;
+            background-color: #16b0c4;
             color: white;
             border: none;
             border-radius: 5px;
@@ -206,91 +253,22 @@ défaut dans le système du serveur.-->
             background-color: #b56576;
         }
 
-            /* Style de la section d'affichage des annonces */
+
+        .search-form input[type="date_fin"]{
+            border:
+
+
+        }
+
         .affichage-annonce {
-            border: 1px solid black; /* Bordure de 1px solide noire */
-            background-color: lightgray; /* Fond de couleur gris clair */
-            padding: 10px; /* Espacement intérieur de 10px */
-            border-radius: 5px; /* Coins arrondis de 5px */
-            display: grid; /* Utilisation de la grille pour organiser les éléments */
-            grid-template-columns: repeat(auto-fill, 100%); /* Colonnes de largeur minimale de 250px et flexible */
-            gap: 10px; /* Espacement de 10px entre les éléments */
-        
+            border: 1px solid black;
+            background-color: #16b0c4;
+            height: 90%; 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            flex-wrap: wrap; 
         }
-
-        /* Style des éléments de chambre */
-        .chambre {
-            display: flex; /* Utiliser flexbox pour aligner les éléments horizontalement */
-            align-items: center; /* Aligner les éléments sur l'axe vertical */
-            margin: 0 auto; /* Centrer horizontalement les chambres */
-            padding: 20px; /* Ajouter un espacement autour des chambres */
-            padding-left: 10px;
-            padding-right: 10px;
-            width: 100%;
-            
-        }
-
-        /* Style du conteneur d'image */
-        .image-container {
-            margin-right: 20px; /* Espacement entre l'image et le texte */
-            flex-shrink: 0; /* Empêcher le rétrécissement du conteneur d'image */
-            margin-left: 50px;
-            margin-right: 50px;
-            width: 35%;
-        }
-
-       
-
-
-        .content {
-            flex: 1; /* Le contenu occupe tout l'espace restant */
-            display: flex;
-            flex-direction: column;
-            margin-left: 10px;
-            margin-right: 10px;
-            width: 65%;
-        }
-
-
-        /* Style du titre de la chambre */
-        .chambre h5 {
-            margin: 10px; /* Suppression des marges par défaut */
-        }
-
-        /* Style du paragraphe de la chambre */
-        .chambre .content p {
-            text-align: center;
-            padding: 5px 10px;
-            font-size: 16px;
-        }
-
-        /* Style du lien "Plus d'options" */
-        .chambre a {
-            display: block; /* Affichage en bloc pour occuper toute la largeur */
-            text-align: center; /* Centrage du texte */
-            background-color: #007bff; /* Fond de couleur bleue */
-            color: white; /* Texte de couleur blanche */
-            padding: 5px 10px; /* Remplissage de 5px en haut/bas et 10px à gauche/droite */
-            border-radius: 5px; /* Coins arrondis de 5px */
-            text-decoration: none; /* Suppression du soulignement du lien */
-            margin-top: 10px; /* Marge supérieure de 10px */
-        }
-
-
-
-        /* Style du lien "Plus d'options" au survol */
-        .chambre a:hover {
-            background-color: #0056b3; /* Fond de couleur plus foncée au survol */
-        }
-
-        
-
-        .image-container img {
-            width: 100%; /* Faire en sorte que l'image prenne 100% de la largeur disponible */
-            height: auto; /* Ajuster automatiquement la hauteur pour maintenir les proportions de l'image */
-            align-items: center;
-        }
-
 
         h3{
             padding: 15px;
@@ -314,18 +292,18 @@ défaut dans le système du serveur.-->
         }
 
         .footer-item:hover {
-            color: var(--darkblue);
+            color: blue;
         }
 
-        #photo{
-            background-image: url(./images/hotel.jpeg);
+        /* #photo{
+            background-image: url(./images/hotel_profil.jpeg);
             background-size: cover; 
             background-repeat: no-repeat; 
             height: auto;
             width: 100%;
             background-position: center;
 
-        }
+        } */
 
         .blanc{
             color: black;
@@ -334,7 +312,7 @@ défaut dans le système du serveur.-->
 
         #swipe{
             text-align: center;
-            color: #6d597a;
+            color: #0d7d8c;
             font-weight: bold;
             font-size: large;
             margin-top: -40px;
@@ -342,12 +320,165 @@ défaut dans le système du serveur.-->
             font-style: italic;
 
         }
+        /* Custom CSS */
+        .card-body {
+            padding: 1rem; /* Add padding to the card body */
+            display: flex; /* Utiliser Flexbox pour aligner les éléments verticalement */
+            flex-direction: column; /* Aligner les éléments verticalement */
+            justify-content: center; /* Aligner les éléments verticalement au centre */
+            align-items: center;
+            
+        }
+        .card {
+            border: none;
+            display: flex; /* Utiliser Flexbox pour aligner les éléments */
+            justify-content: center; /* Centrer horizontalement */
+            align-items: center; /* Centrer verticalement */
+            text-align: center; /* Centrer le texte horizontalement */
+            
+         /* Ajoutez de la marge à gauche */
+         /* Ajoutez de la marge à droite */
+        }
 
-        
-    </style>
+        .img-chambre {
+            max-width: 100%; /* Make sure the image doesn't overflow */
+            height: auto;
+            
+        }
+        .card:not(:last-child)::after {
+        content: none; /* Supprimer la flèche à droite */
+        }
+
+        .btn-primary {
+            background-color: #0d7d8c;
+            border-color: #0d7d8c;
+        }
+
+        .btn-primary:hover {
+            background-color: lightslategrey; 
+            border-color: lightslategrey; /* You can also change the border color on hover if needed */
+        }
+
+
+        .header__container {
+  padding: 1rem 1rem 5rem 1rem;
+}
+
+.header__image__container {
+  position: relative;
+  min-height: 500px;
+  background-image: linear-gradient(
+      to right,
+      rgba(83, 108, 123, 0.4),
+      rgba(235, 238, 245, 0.1)
+    ),
+    url("./images/hotel_profil.jpeg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 2rem;
+}
+
+.header__content {
+  max-width: 600px;
+  padding: 5rem 2rem;
+  
+}
+.header__content h3, .header__content h4 {
+  color: white; /* Changement de la couleur du texte en blanc */
+}
+
+.booking__container {
+  position: absolute;
+  bottom: -5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 6rem);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+}
+
+.booking__container form {
+  width: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.booking__container .input__group {
+  width: 100%;
+  position: relative;
+}
+
+.booking__container label {
+    position: absolute;
+    top: 0; /* Positionner le label au-dessus du champ d'entrée */
+    left: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    pointer-events: none;
+    transition: 0.3s;
+    transform: translateY(-100%);
+}
+
+.booking__container input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid var(--primary-color);
+  color: var(--text-dark);
+ 
+}
+
+.booking__container input:focus ~ label {
+  font-size: 0.8rem;
+  top: 0;
+}
+
+.booking__container .form__group p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.booking__container .btn {
+  padding: 1rem;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.booking__container .btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+#date_fin, #date_debut{
+    font-size: 0.7rem;
+    text-align: center;
+
+}
+
+</style>
 </head>
 <body>
-    <nav class="navbar">
+    <!-- <nav class="navbar">
         <a href="pageAccueil.html" target="_SELF" class="navbar-brand">
             <img src="images/home.png" alt="page d'accueil">Reservation
         </a>
@@ -355,15 +486,67 @@ défaut dans le système du serveur.-->
             <li class="nav-item"><a href="Aide.html" class="nav-link">Aide</a></li>
             <li class="nav-item"><a href="connexionfront.php" class="nav-link">Connexion</a></li>
         </ul>
-    </nav>
+    </nav> -->
 
-    <h1>Découvrer votre nouvelle hébergement</h1>
+
+    <nav>
+        <div class="nav_logo">
+            <img src="./images/PalmHaven_Logo.webp" alt="Logo PalmHaven">
+        </div>
+        <ul class ="nav__links">
+            <li class="link"><a href="pageAccueil">Accueil</a></li>
+            <li class="link"><a href="Aide.html">Aide</a></li>
+            <li class="link"><a href="connexionfront.php">Connexion</a></li>
+            <li class="link"><a href="inscriptionfront.php">S'inscire</a></li>
+        </ul>
+    </nav>
+    <header class="section__container header__container">
+        <div class="header__image__container">
+          <div class="header__content">
+            <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
+            <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
+          </div>
+          <div class="booking__container">
+            
+          
+
+          
+          <form  method="get" class="search-form">
+              
+              <div class="form__group">
+                <div class="input__group">
+                  <input type="date" id="start_date" name="start_date" placeholder="entrer la date de début"> 
+                  <label for="start_date" id="date_debut">Date de début réservation</label>
+                </div>
+            </div>
+            <br>
+            
+              <div class="form__group">
+                <div class="input__group">
+                    <input type="date" id="end_date" name="end_date"> 
+                     <label for="end_date" id=date_fin >Date de fin de réservation</label>
+                </div>
+              </div>
+             
+              <input type="submit" value="Rechercher">
+            </form>
+            
+
+
+
+
+          </div>
+        </div>
+      </header>
+
+
+    <h1>Découvrez votre nouvelle hébergement</h1>
 
     <div class="container">
         <ul class="cards">
             <li class="card">
                 <div>
-                    <h2 class="card-title">Bienvenue sur le site d'<strong><em><u>Hotel Reservation</u></em></strong></h2>
+                    <h2 class="card-title">Bienvenue sur le site de<strong><em><u> PALM HAVEN</u></em></strong></h2>
                     <div class="card-content">
                         <p>Bienvenue sur notre site de réservation d'hôtels !
                             Nous sommes ravis de vous accueillir dans notre univers 
@@ -423,30 +606,90 @@ défaut dans le système du serveur.-->
     </div>
     <br>
     <hr>
-    <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
-    <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
-        <div id="photo">
+    
+        <!-- <div id="photo">
             <br>
             <br><br><br><br>
-            <div method="get" class="container-form">
-                <form class="search-form">
+            <div class="container-form">
+                <form action="../backendWEB/AffichageChambre.php" method="post" class="search-form">
                     <label for="start_date">Date de début réservation</label>
                     <input type="date" id="start_date" name="start_date" placeholder="entrer la date de début">
                     <label for="end_date">Date de fin de réservation</label>
                     <input type="date" id="end_date" name="end_date">
                     <input type="submit" value="Rechercher">
-                 </form>
+                 
+                </form>
                  <br>
                  <br><br><br><br>
-        </div>
+        </div> -->
     </div>
 
     <br>
     <hr>
 
     
+
+    <div class="card mb-3 " style="max-width: 100%;border-top: none;">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img src="./images/bungalow/Suite_Bungalow.png" class="img-chambre" alt="suite-bungalow">
+          </div>
+          <div class="col-md-5">
+            <div class="card-body">
+              <h5 class="card-title">Suite Bungalow</h5>
+              <p class="card-text">Nous mettons à votre disposition 1 Suite en Bungalow, l'option la plus confortable pour vous et votre famille. La Suite Bungalow est idéale pour votre repos et votre détente, dans un environnement naturel très spécial. Vous aurez l'impression d'être au paradis ! *Occupation maximale : 4 personnes (3 adultes + 1 enfant ou 2 adultes + 2 enfants ou 1 adulte + 2 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
+              <a href="#" class="btn btn-primary">Plus d'options</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="card mb-3" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-5">
+                <div class="card-body">
+                    <h5 class="card-title">Suite Club Familiale</h5>
+                    <p class="card-text">Chambres familiales de 53 m2 conçues pour garantir aux adultes et aux enfants des vacances vraiment spéciales. Nous disposons d'une Suite Club Familiale équipée d'un lit double et de trois lits simples superposés, avec tous les avantages exclusifs d'être situées dans l'espace privé Palm Haven. *Occupation maximale : 5 personnes (3 adultes + 2 enfants ou 2 adultes + 3 enfants ou 1 adulte + 4 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
+                    <a href="#" class="btn btn-primary">Plus d'options</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="./images/familiale/Club_Familiale_Suite.png" class="img-chambre" alt="Image d'une suite familiale">
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3 " style="max-width: 100%;border-top: none;">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <img src="./images/Lune_de_miel_Suite.png" class="img-chambre" alt="suite-bungalow">
+          </div>
+          <div class="col-md-5">
+            <div class="card-body">
+              <h5 class="card-title">Suite Lune de Miel</h5>
+              <p class="card-text">Si vous êtes un couple qui préfère des vacances plus paisibles et romantiques, notre Suite lune de miel offre un bain à remous et une ambiance parfaite. Profitez des services et avantages exclusifs inclus dans cette suite pour les jeunes mariés et aussi pour les couples qui souhaitent partager une expérience romantique. Adultes seulement (+18). *Occupation maximale : 2 adultes *Séjour minimum 4 nuits</p>
+              <a href="#" class="btn btn-primary">Plus d'options</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- <div class="card mb-3" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-5">
+                <div class="card-body">
+                    <h5 class="card-title">Suite Club Familiale Swimout</h5>
+                    <p class="card-text">Savourez le luxe de plonger directement dans la piscine depuis votre terrasse. Nous disposons de 41 Junior Suites Family Club avec un lit double et des lits superposés, offrant aux clients l'accès à tous les services, privilèges et espaces privés réservés aux clients du Family Club. *Occupation maximale : 5 personnes (3 adultes + 2 enfants ou 2 adultes + 3 enfants ou 1 adulte + 4 enfants) *Enfants 3-12 ans (tous deux inclus)</p>
+                    <a href="#" class="btn btn-primary">Plus d'options</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="./images/Club_Familiale.png" class="img-chambre" alt="Image d'une suite familiale avec piscine">
+            </div>
+        </div>
+    </div> -->
+    
     <h4>Chambre disponible</h4>
-        
+
     <div class="affichage-annonce">
         <div class="chambre">
             <div class="image-container"></div>
@@ -455,14 +698,15 @@ défaut dans le système du serveur.-->
         </div>
     </div>
 
-
+    </div>
     <footer>
         <a href="Aide.html" class="footer-item" >Aide</a>
-        <a href="#revue" class="footer-item">Review</a>
+        <a href="commentairesfront.php" class="footer-item">Review</a>
         <a href="politique.html" class="footer-item" target="_blank">Politique</a>
     </footer>
 
-        <script src="../backendWEB/AffichageChambre.js"></script>
-    
+    <script src="../backendWEB/AffichageChambre.js"></script>
+
+
 </body>
 </html>

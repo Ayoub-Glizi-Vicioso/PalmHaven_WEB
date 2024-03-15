@@ -1,5 +1,6 @@
 <?php
 
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'DELETE' || $_SERVER['REQUEST_METHOD'] == 'GET') {
         require '../backendWEB/commentaire.php';
     }
@@ -11,7 +12,6 @@
     <meta name="viewport" content="width=device-width, intial-scale=1.0">
     <title>Témoignages HTML</title>
     <!-- Feuille de style -->
-    <link rel="stylesheet" href="css/style.css"/>
     <!-- Icône favorite -->
     <link rel="shortcut icon" href="images/fav-icon.png"/>
     <!-- Police Poppins -->
@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <script> </script> 
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         * {
@@ -279,7 +281,7 @@
 
     <nav>
         <div class="nav_logo">
-            <img src="./images/PalmHaven_Logo.webp" alt="Logo PalmHaven">
+            <img src="./images/logo.webp" alt="Logo PalmHaven">
         </div>
         <ul class ="nav__links">
             <li class="link"><a href="pageAccueil">Accueil</a></li>

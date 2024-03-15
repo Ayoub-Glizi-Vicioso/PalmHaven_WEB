@@ -1,6 +1,5 @@
 <?php
 // Démarre une nouvelle session
-
 $serveur = "localhost"; // adresse du serveur MySQL
 $utilisateur = "root"; 
 $motDePasse = ""; 
@@ -21,10 +20,11 @@ if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && 
     $email = $connexion->real_escape_string(trim($_POST['email']));
     $motDePasse = $_POST['mot_de_passe'];
 
+    
     // Vérifier si l'adresse email est déjà utilisée
     $requete = "SELECT * FROM utilisateurs WHERE email = '$email'";
     $resultat = $connexion->query($requete);
-
+    
     if ($resultat->num_rows > 0) {
         echo "<script> alert('Oups ! Cette adresse email est déjà utilisée.');</script>";
     } else {
@@ -35,13 +35,15 @@ if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && 
         } else {
             // Hasher le mot de passe
             $motDePasseHash = password_hash($motDePasse, PASSWORD_DEFAULT);
-
+            
             // Insérer le nouvel utilisateur dans la base de données
             $requete = "INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe) VALUES ('$nom','$prenom','$email', '$motDePasseHash')";
+            
             // Si l'utilisateur est inséré dans la base de données
-            if ($connexion->query($requete) === TRUE) {
+            if ($connexion->query($requete)) {
                 // Rediriger vers la page d'index dans le répertoire IntefaceWEB
-                echo "<script> alert('Création de compte réussie! Veuillez cliquer sur le bouton de retour à la page de connexion et vous connectez.');</script>";
+                header("Location: connexionfront.php");
+                echo "<script> alert('Création de compte réussie!');</script>";
             } else {
                 echo "Erreur lors de l'inscription : " . $connexion->error;
             }
