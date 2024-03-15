@@ -7,6 +7,7 @@ défaut dans le système du serveur.-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
             --blue: #6d597a;
@@ -205,15 +206,91 @@ défaut dans le système du serveur.-->
             background-color: #b56576;
         }
 
+            /* Style de la section d'affichage des annonces */
         .affichage-annonce {
-            border: 1px solid black;
-            background-color: lightgray;
-            height: 90%; 
-            width: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            flex-wrap: wrap; 
+            border: 1px solid black; /* Bordure de 1px solide noire */
+            background-color: lightgray; /* Fond de couleur gris clair */
+            padding: 10px; /* Espacement intérieur de 10px */
+            border-radius: 5px; /* Coins arrondis de 5px */
+            display: grid; /* Utilisation de la grille pour organiser les éléments */
+            grid-template-columns: repeat(auto-fill, 100%); /* Colonnes de largeur minimale de 250px et flexible */
+            gap: 10px; /* Espacement de 10px entre les éléments */
+        
         }
+
+        /* Style des éléments de chambre */
+        .chambre {
+            display: flex; /* Utiliser flexbox pour aligner les éléments horizontalement */
+            align-items: center; /* Aligner les éléments sur l'axe vertical */
+            margin: 0 auto; /* Centrer horizontalement les chambres */
+            padding: 20px; /* Ajouter un espacement autour des chambres */
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100%;
+            
+        }
+
+        /* Style du conteneur d'image */
+        .image-container {
+            margin-right: 20px; /* Espacement entre l'image et le texte */
+            flex-shrink: 0; /* Empêcher le rétrécissement du conteneur d'image */
+            margin-left: 50px;
+            margin-right: 50px;
+            width: 35%;
+        }
+
+       
+
+
+        .content {
+            flex: 1; /* Le contenu occupe tout l'espace restant */
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 65%;
+        }
+
+
+        /* Style du titre de la chambre */
+        .chambre h5 {
+            margin: 10px; /* Suppression des marges par défaut */
+        }
+
+        /* Style du paragraphe de la chambre */
+        .chambre .content p {
+            text-align: center;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        /* Style du lien "Plus d'options" */
+        .chambre a {
+            display: block; /* Affichage en bloc pour occuper toute la largeur */
+            text-align: center; /* Centrage du texte */
+            background-color: #007bff; /* Fond de couleur bleue */
+            color: white; /* Texte de couleur blanche */
+            padding: 5px 10px; /* Remplissage de 5px en haut/bas et 10px à gauche/droite */
+            border-radius: 5px; /* Coins arrondis de 5px */
+            text-decoration: none; /* Suppression du soulignement du lien */
+            margin-top: 10px; /* Marge supérieure de 10px */
+        }
+
+
+
+        /* Style du lien "Plus d'options" au survol */
+        .chambre a:hover {
+            background-color: #0056b3; /* Fond de couleur plus foncée au survol */
+        }
+
+        
+
+        .image-container img {
+            width: 100%; /* Faire en sorte que l'image prenne 100% de la largeur disponible */
+            height: auto; /* Ajuster automatiquement la hauteur pour maintenir les proportions de l'image */
+            align-items: center;
+        }
+
 
         h3{
             padding: 15px;
@@ -265,6 +342,8 @@ défaut dans le système du serveur.-->
             font-style: italic;
 
         }
+
+        
     </style>
 </head>
 <body>
@@ -366,9 +445,17 @@ défaut dans le système du serveur.-->
     <hr>
 
     
-
+    <h4>Chambre disponible</h4>
+        
     <div class="affichage-annonce">
+        <div class="chambre">
+            <div class="image-container"></div>
+            <div class="content">
+            </div>
+        </div>
     </div>
+
+
     <footer>
         <a href="Aide.html" class="footer-item" >Aide</a>
         <a href="#revue" class="footer-item">Review</a>
