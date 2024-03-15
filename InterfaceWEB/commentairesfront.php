@@ -30,20 +30,20 @@
         a {
             text-decoration: none;
         }
-        #temoignages {
+        /* #temoignages {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             width:100%;
-        }
+        } */
         .entete-temoignages {
             letter-spacing: 1px;
             margin: 30px 0px;
             padding: 10px 20px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
         }
         .entete-temoignages h1 {
@@ -153,9 +153,86 @@
             color: #ffffff;
             background-color: #252525;
         }
+
+        nav {
+            max-width: var(--max-width);
+            height: 2%;
+            margin:auto;
+            padding: 2rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+        }
+
+        .nav_logo img {
+            width: 150px;
+            margin-right: 10px;
+        }
+
+        .nav__links{
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .link{
+            margin-right: 20px;
+        }
+        .link a{
+            font-weight: 500;
+            color: rgba(152, 150, 150, 0.932);
+            transition:  0.3;
+        }
+
+        .link a:hover{
+            color: (--primary-color);
+        }
+        .entete-temoignages {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #commentaire {
+    display: flex;
+    flex-direction: column;
+    }
+
+    #commentaire label {
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    #commentaire textarea {
+        resize: vertical;
+    }
+
+    #etoiles {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    #publier,
+    #effacer {
+        margin-left: auto;
+        margin-top: 10px;
+    }
     </style>
 </head>
 <body>
+
+    <nav>
+        <div class="nav_logo">
+            <img src="./images/PalmHaven_Logo.webp" alt="Logo PalmHaven">
+        </div>
+        <ul class ="nav__links">
+            <li class="link"><a href="pageAccueil">Accueil</a></li>
+            <li class="link"><a href="Aide.html">Aide</a></li>
+            <li class="link"><a href="connexionfront.php">Connexion</a></li>
+            <li class="link"><a href="inscriptionfront.php">S'inscire</a></li>
+        </ul>
+    </nav>
+
     <!-- Témoignages -->
     <section id="temoignages">
         <!-- Entête -->
@@ -163,34 +240,32 @@
             <span>Commentaires</span>
             <h1>Avis des Clients</h1>
             <h2>Laissez nous un avis !</h2>
-            <form id="commentaire" action="../backendWEB/commentaire.php" method="post">
+       
+            
+<form id="commentaire" action="../backendWEB/commentaire.php" method="post">
     <label for="titre">Titre du message</label>
     <input id="titre" name="titre" type="text" required> <!-- Utilisation d'un champ de texte simple pour le titre -->
 
     <label for="contenu">Contenu</label>
     <textarea id="contenu" name="contenu" rows="8" required></textarea> <!-- Utilisation d'une zone de texte pour le contenu avec 8 lignes de hauteur -->
-    
-    <button type="submit">Envoyer</button>
-</form>
+
+    <div id = "etoiles">
+        <label for="etoile1">1 étoile</label>
+        <input type="radio" id="etoile2" name="etoile" value="2">
+        <label for="etoile2">2 étoiles</label>
+        <input type="radio" id="etoile3" name="etoile" value="3">
+        <label for="etoile3">3 étoiles</label>
+        <input type="radio" id="etoile4" name="etoile" value="4">
+        <label for="etoile4">4 étoiles</label>
+        <input type="radio" id="etoile5" name="etoile" value="5">
+        <label for="etoile5">5 étoiles</label>
+    </div>
+
+    <button type="submit" id="publier">Envoyer</button>
+    <button type="reset" id="effacer">Effacer</button>
+    </form>
             
-                <label for="etoiles">Niveau d'étoiles</label>
-                <div id="etoiles">
-                    <label for="etoile1">1 étoile</label>
-                    <input type="radio" id="etoile2" name="etoile" value="2">
-                    <label for="etoile2">2 étoiles</label>
-                    <input type="radio" id="etoile3" name="etoile" value="3">
-                    <label for="etoile3">3 étoiles</label>
-                    <input type="radio" id="etoile4" name="etoile" value="4">
-                    <label for="etoile4">4 étoiles</label>
-                    <input type="radio" id="etoile5" name="etoile" value="5">
-                    <label for="etoile5">5 étoiles</label>
-                </div>
-            
-                <button class="bouton" id="publier" type="submit">Publier</button>
-                <button class="bouton" type="reset">Effacer</button>
-            </form>
-            
-        </div>
+
         <!-- Conteneur des boîtes de témoignages -->
         <div class="conteneur-boites-temoignages">
             <!-- Boîte de témoignage 1 -->
@@ -227,6 +302,6 @@
             <!-- Ajouter les autres boîtes de témoignage ici -->
         </div>
     </section>
-    <script src="../backendWEB/commentaire.js"></script>
+<script src="../backendWEB/commentaire.js"></script>
 </body>
 </html>
