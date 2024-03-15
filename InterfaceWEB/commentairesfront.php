@@ -30,6 +30,7 @@
         a {
             text-decoration: none;
         }
+        
         /* #temoignages {
             display: flex;
             justify-content: center;
@@ -37,6 +38,11 @@
             flex-direction: column;
             width:100%;
         } */
+
+        .ligne-horizontale {
+            border-top: 1px solid #ccc; /* Couleur et épaisseur de la ligne */
+            margin-top: 20px; /* Marge en haut de la ligne */
+        }
         .entete-temoignages {
             letter-spacing: 1px;
             margin: 30px 0px;
@@ -44,12 +50,12 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            align-items: center;
+            align-items: center; 
         }
         .entete-temoignages h1 {
             font-size: 2.2rem;
             font-weight: 500;
-            background-color: #202020;
+            background-color: #16b0c4;
             color: #ffffff;
             padding: 10px 20px;
         }
@@ -129,7 +135,7 @@
         @media(max-width:1060px) {
             .boite-temoignage {
                 width:45%;
-                padding: 10px;
+                padding: 5px;
             }
         }
         @media(max-width:790px) {
@@ -156,7 +162,7 @@
 
         nav {
             max-width: var(--max-width);
-            height: 2%;
+            height: 20px;
             margin:auto;
             padding: 2rem 1rem;
             display: flex;
@@ -166,7 +172,7 @@
         }
 
         .nav_logo img {
-            width: 150px;
+            width: 140px;
             margin-right: 10px;
         }
 
@@ -193,7 +199,7 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        #commentaire {
+    #commentaire {
     display: flex;
     flex-direction: column;
     }
@@ -206,17 +212,67 @@
     #commentaire textarea {
         resize: vertical;
     }
+    #commentaire label span {
+    font-size: 0.8rem;
+    color: #777;
+    margin-left: 5px;
+}
 
     #etoiles {
         text-align: center;
         margin-bottom: 10px;
     }
 
-    #publier,
-    #effacer {
-        margin-left: auto;
-        margin-top: 10px;
+    #publier{
+        width: 150px; /* Largeur du bouton */
+        height: 50px; /* Hauteur du bouton */
+        margin-top: 20px; /* Marge en haut */
+        margin-left: 1px; /* Marge à gauche */
+        background-color: #16b0c4;
     }
+    #publier:hover{
+        background-color: lightskyblue; /* Couleur de fond au survol */
+        color: white;
+    }
+
+    #effacer {
+      margin-left: auto;
+      
+
+    }
+    #effacer:hover{
+        background-color: grey;
+
+    }
+    footer {
+        background-color: #16b0c4;
+        color: var(--white);
+        padding: 20px 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    footer a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+    }
+    .footer-item:hover {
+            color: blue;
+    }
+    .affichage-annonce {
+        border: 1px solid black;
+        background-color: #16b0c4;
+        height: 90%; 
+        width: 100%; 
+        display: flex; 
+        flex-direction: column; 
+        flex-wrap: wrap; 
+    }
+
+
     </style>
 </head>
 <body>
@@ -235,37 +291,52 @@
 
     <!-- Témoignages -->
     <section id="temoignages">
+        <div class="ligne-horizontale"></div>
         <!-- Entête -->
         <div class="entete-temoignages">
             <span>Commentaires</span>
             <h1>Avis des Clients</h1>
+            <br>
+            <br>
             <h2>Laissez nous un avis !</h2>
+        
+            
        
             
-<form id="commentaire" action="../backendWEB/commentaire.php" method="post">
-    <label for="titre">Titre du message</label>
-    <input id="titre" name="titre" type="text" required> <!-- Utilisation d'un champ de texte simple pour le titre -->
+        <form id="commentaire" action="../backendWEB/commentaire.php" method="post">
+            <hr>
+            <br>
+            <div id = "etoiles">
+                <input type="radio" id="etoile1" name="etoile" value="1">
+                <label for="etoile1">1 étoile</label>
+                <input type="radio" id="etoile2" name="etoile" value="2">
+                <label for="etoile2">2 étoiles</label>
+                <input type="radio" id="etoile3" name="etoile" value="3">
+                <label for="etoile3">3 étoiles</label>
+                <input type="radio" id="etoile4" name="etoile" value="4">
+                <label for="etoile4">4 étoiles</label>
+                <input type="radio" id="etoile5" name="etoile" value="5">
+                <label for="etoile5">5 étoiles</label>
+            </div>
+            <br>
+            <label for="titre">Titre du message</label>
+            <input id="titre" name="titre" type="text" required placeholder = "Exemple: Mon merveilleux séjour..." maxlength="100"> <!-- Utilisation d'un champ de texte simple pour le titre -->
+            <br>
+            <label for="contenu">Contenu</label>
+            <textarea id="contenu" name="contenu" rows="8" required placeholder="Entrer le contenu ici" maxlength="400"></textarea> <!-- Utilisation d'une zone de texte pour le contenu avec 8 lignes de hauteur -->
 
-    <label for="contenu">Contenu</label>
-    <textarea id="contenu" name="contenu" rows="8" required></textarea> <!-- Utilisation d'une zone de texte pour le contenu avec 8 lignes de hauteur -->
+           
 
-    <div id = "etoiles">
-        <label for="etoile1">1 étoile</label>
-        <input type="radio" id="etoile2" name="etoile" value="2">
-        <label for="etoile2">2 étoiles</label>
-        <input type="radio" id="etoile3" name="etoile" value="3">
-        <label for="etoile3">3 étoiles</label>
-        <input type="radio" id="etoile4" name="etoile" value="4">
-        <label for="etoile4">4 étoiles</label>
-        <input type="radio" id="etoile5" name="etoile" value="5">
-        <label for="etoile5">5 étoiles</label>
-    </div>
-
-    <button type="submit" id="publier">Envoyer</button>
-    <button type="reset" id="effacer">Effacer</button>
-    </form>
+            <button type="reset" id="effacer">Effacer</button>
+            <button type="submit" id="publier">Envoyer</button>
+            
+        </form>
+        <br>
+        
+        
             
 
+        
         <!-- Conteneur des boîtes de témoignages -->
         <div class="conteneur-boites-temoignages">
             <!-- Boîte de témoignage 1 -->
@@ -302,6 +373,15 @@
             <!-- Ajouter les autres boîtes de témoignage ici -->
         </div>
     </section>
+
+    <div class="affichage-annonce">
+
+    </div>
+    <footer>
+        <a href="Aide.html" class="footer-item" >Aide</a>
+        <a href="commentairesfront.php" class="footer-item">Review</a>
+        <a href="politique.html" class="footer-item" target="_blank">Politique</a>
+    </footer>
 <script src="../backendWEB/commentaire.js"></script>
 </body>
 </html>
