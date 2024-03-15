@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mes Réservations</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
         * {
             margin: 0;
@@ -15,155 +16,170 @@
 
         body {
             font-family: "Montserrat", sans-serif;
-            font-weight: 300;
+            font-weight: 400;
             font-style: normal;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url(./images/photoInscription.png) no-repeat center/cover;
-            font-size: 14px;
+            background: url(./images/beach5.jpg) no-repeat center/cover;
+            font-size: 16px;
+            color: #333;
         }
 
         .container {
             background-color: #fff;
             width: 100%;
+            border: 3px solid grey;
+            border-style: double;
             max-width: 65%;
             height: 90%;
             position: relative;
             overflow-x: hidden;
             overflow-y: hidden;
             display: flex;
-            border-radius: 5%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
         #zone_text {
-            width: 55%;
-            text-align: center;
+            width: 65%;
             padding: 20px;
         }
 
         #Barre_nav {
             display: flex;
-            width: 40%;
+            width: 35%;
             flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
-            background-color: rgb(242, 238, 238);
-            padding: 20px;
-            border-radius: 5%;
-        }
-        #Barre_nav button {
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    background-color: #16b0c4;
-    border-radius: 12px;
-    color: #fff;
-    cursor: pointer;
-    font-size: larger;
-    letter-spacing: .2rem;
-}
-
-#Barre_nav button:hover {
-    background-color: #021b57;
-}
-
-
-
-        button {
-            border: none;
-            padding: 20px;
-            margin-top: 5px;
-            background-color: #16b0c4;
-            border-radius: 12px;
-            color: #fff;
-            cursor: pointer;
-            font-size: larger;
-            letter-spacing: .2rem;
+            background-color: #f2f2f2;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
         }
 
-        button:hover {
+        #Barre_nav #btn_reservations {
             background-color: #021b57;
         }
 
-        .text {
+        #Barre_nav button {
+            width: 100%;
+            padding: 15px 0;
+            background-color: #16b0c4;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        #Barre_nav button:hover {
+            background-color: #021b57;
+        }
+
+        #zone_text .text {
             display: flex;
             flex-direction: column;
-            margin-top: 120px;
             align-items: center;
-            height: 100%;
-            font-size: 13px;
+            padding-top: 50px;
         }
-
-        p {
-            font-family: "Montserrat";
-            line-height: 20px;
-        }
-        img{
-            height: 100px;
-            width: 100px
-        }
+        #zone_text button{
+    border-radius: 10px;
+}
 
         h2 {
-            font-family: "Montserrat";
             font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        div #btn_reservations{
-            background-color: #021b57; 
-            cursor: auto;
-
-        }
-
-        table , td , th , tr{
-            border:1px solid lightgray;
-            border-collapse:collapse;
-            padding: 10px;
-        }
-
-        .donnee{
-            background-color: lightgray;
+            margin-bottom: 20px;
             color: #16b0c4;
         }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #16b0c4;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .donnee {
+            background-color: #f2f2f2;
+            color: #16b0c4;
+            font-weight: bold;
+        }
+
+        img {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        button {
+            border: none;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+    padding: 15px 0;
+    background-color: #16b0c4;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+}
+    
     </style>
 </head>
+
 <body>
     <div class="container">
         <div id="Barre_nav">
-            <img src="./images/profil.JPG" ></a> 
+            <img src="./images/profil.JPG" alt="Photo de profil">
             <button id="btn_reservations">Mes réservations</button>
             <button id="btn_effacer_compte">Supprimer mon compte</button>
-            <button id="btn_decon">Deconnexion</button>
+            <button id="btn_decon">Déconnexion</button>
         </div>
         <div id="zone_text">
             <div id="btn_retour">
                 <button onclick="window.location.href='index.html'">Retour à la page d’accueil</button>
             </div>
             <div class="text">
-                <h2>MES RÉSERVATION:</h2>
-                
-                <div id="table">
-                   <table>
-                    <tr>
-                        <td rowspan="2">Numéro de la réservation</td>
-                        <td colspan="2">Date de la réservation</td>
-                    </tr>
-                    <tr>
-                        <td>Date de début</td>
-                        <td>Date de fin </td>
-                    </tr>
-                    <tr id="reservationProfil">
-                        <td class="donnee" id="num_reserv">exemple</td>
-                        <td class="donnee" id="debut">exemple</td>
-                        <td class="donnee" id="fin">exemple</td>
-                    </tr>
-
-                   </table>
-
-                </div>
+                <h2>MES RÉSERVATIONS:</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Numéro de la réservation</th>
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="reservationProfil">
+                            <td class="donnee" id="num_reserv">exemple</td>
+                            <td class="donnee" id="debut">exemple</td>
+                            <td class="donnee" id="fin">exemple</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
