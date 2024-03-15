@@ -1,63 +1,67 @@
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
+    // Appeler la fonction pour récupérer et afficher les messages lorsque le DOM est chargé
+    getMessages();
 
-    // Fonction pour récupérer les messages déjà existants depuis le serveur
+    // Ajout d'un gestionnaire d'événement pour soumettre le formulaire de message
+    document.getElementById('commentaire').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêcher la soumission par défaut du formulaire
+        addMessage(); // Appel de la fonction pour ajouter un message
+    });
 
-    const requeteGet = new XMLHttpRequest();
-
-    // Configuration de la requête HTTP GET vers une URL
-    requeteGet.open('GET', '../backendWEB/commentaire.php', true);
-
-    // Définition de l'en-tête de la requête pour spécifier le type de contenu
-    requeteGet.setRequestHeader('Content-Type', 'application/json');
-
-    // Définition de la fonction à exécuter une fois la requête terminée
-    requeteGet.onreadystatechange = function () {
-
-        // Vérification si la requête est terminée (readyState === 4)
-        // et si le statut de la réponse est 200 - OK
-        if (requeteGet.readyState === 4 && requeteGet.status === 200) {
-
-            // Traitement de la réponse reçue du serveur
-            const messages = JSON.parse(requeteGet.responseText);
-
-            if (messages !== null) {
-                
-                let sessionID = messages.pop(); // Dernier élément est l'ID de session
-                let messageIndex = 1; // Index pour les ID des messages
-
-                messages.forEach(function(message) {
-                    let messageDiv = $("<div class='boite-temoignage' id='message-" + messageIndex + "'></div>");
-                    $(".conteneur-boites-temoignages").append(messageDiv);
-
-                    // Création des éléments HTML pour chaque message
-                    let messageTitle = $("<div class='titre'>" + message.Titre + "</div>");
-                    let messageContent = $("<div class='commentaire-client'>" + message.Contenu + "</div>");
-                    let messageDate = $("<div class='date'>" + message.Date + "</div>");
-                    let messageUser = $("<div class='profil'><div class='photo-profil'><img src='images/c-1.jpg' /></div><div class='nom-utilisateur'><strong>" + message.nom_utilisateur + "</strong></div></div>");
-                    let messageStars = $("<div class='avis'></div>");
-                    
-                    for (let i = 0; i < message.etoiles; i++) {
-                        messageStars.append("<i class='fas fa-star'></i>");
-                    }
-                    for (let i = message.etoiles; i < 5; i++) {
-                        messageStars.append("<i class='far fa-star'></i>");
-                    }
-
-                    $("#message-" + messageIndex).append(messageTitle, messageContent, messageDate, messageUser, messageStars);
-
-                    messageIndex++;
-                });
-            }
-            else {
-                console.error("Erreur lors de l'appel.");
-            }
-
-        }
-        else if (requeteGet.readyState === 4 && requeteGet.status !== 200) {
-            console.error('Erreur lors de la requête : ' + requeteGet.status);
-        }
-    };
-
-    requeteGet.send();
-
+    // Ajout d'un gestionnaire d'événement pour la suppression de messages
+    document.getElementById('deletebutton').addEventListener('click', function() {
+        deleteMessage();
+    });
 });
+
+/// Fonction pour récupérer et afficher les messages depuis l'API
+function getMessages() {
+    fetch('../backendWEB/commentaire.php', {
+        method: 'GET'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur lors de la récupération des messages.');
+        }
+        return response.json();
+    })
+    .then(messages => {
+        // Une fois les messages récupérés, les afficher dans la page
+        const messagesDiv = document.getElementById('conteneur-boites-temoignages');
+        messagesDiv.innerHTML = ''; // Effacer le contenu précédent
+        messages.forEach(message => {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('boite-temoignage');
+            messageElement.innerHTML = `
+                <div class="date">${message.Date}</div>
+                <div class="entete-boite-temoignage">
+                    <div class="profil">
+                        <div class="photo-profil">
+                            <img src="images/photo-profil.jpg" />
+                        </div>
+                        <div class="nom-utilisateur">
+                            <strong>${message.nom_utilisateur}</strong>
+                        </div>
+                    </div>
+                    <div class="avis">
+                        ${generateStars(message.etoiles)}
+                    </div>
+                </div>
+                <div class="commentaire-client">${message.Contenu}</div>
+            `;
+            messagesDiv.appendChild(messageElement);
+        });
+    })
+    .catch(error => {
+        console.error('Erreur:', error);
+    });
+}
+
+// Fonction pour générer les étoiles en fonction du nombre d'étoiles
+function generateStars(stars) {
+    let starHtml = '';
+    for (let i = 0; i < parseInt(stars); i++) {
+        starHtml += '<i class="fas fa-star"></i>';
+    }
+    return starHtml;
+}
