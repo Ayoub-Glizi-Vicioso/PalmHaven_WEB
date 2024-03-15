@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
             
             // Construire la requête SQL pour sélectionner les chambres disponibles entre les dates fournies
-            $requete ="SELECT /*img,*/ type_chambre, numero  
+            $requete ="SELECT img, type_chambre, numero  
             FROM chambre 
             WHERE statut = 'disponible' 
             AND numero NOT IN (
