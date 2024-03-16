@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     // Écouter l'événement submit sur le formulaire
     $('.search-form').on('submit', function(event) {
         // Récupérer les valeurs des champs de date
@@ -53,18 +54,27 @@ $(document).ready(function() {
                         if(valeur[i]["type_chambre"] == 'standard'){
                             nouveauDiv.find('.content').append('<p>Chambres familiales de 53 m2 conçues pour garantir aux adultes et aux enfants des vacances vraiment spéciales. Nous disposons d\'une Suite Club Familiale équipée d\'un lit double et de trois lits simples superposés, avec tous les avantages exclusifs d\'être situées dans l\'espace privé Palm Haven. *Occupation maximale : 5 personnes (3 adultes + 2 enfants ou 2 adultes + 3 enfants ou 1 adulte + 4 enfants) *Enfants 3-12 ans (tous deux inclus)</p>');
 
+                            let lienOptions = $('<a href="../interfaceWEB/chambresDetailsBungalow.html">Plus d\'options</a>');
+                            nouveauDiv.find('.content').append(lienOptions);
                         }
                         if(valeur[i]["type_chambre"] == 'familiale'){
                             nouveauDiv.find('.content').append('<p></p>');
 
+
+                            let lienOptions = $('<a href="../interfaceWEB/chambreDetailFamiliale.html" >Plus d\'options</a>');
+                            nouveauDiv.find('.content').append(lienOptions);
                         }
                         if(valeur[i]["type_chambre"] == 'lune_de_miel'){
                             nouveauDiv.find('.content').append('<p></p>');
 
+                            let lienOptions = $('<a href="">Plus d\'options</a>');
+                            nouveauDiv.find('.content').append(lienOptions);
                         }
+
+                
                         // Ajouter un lien vers plus d'options pour la chambre
-                        let lienOptions = $('<a href="CaracChambre.php?numero_chambre=' + valeur[i]['numero'] + '">Plus d\'options</a>');
-                        nouveauDiv.find('.content').append(lienOptions);
+                    //  let lienOptions = $('<a href="CaracChambre.php?numero_chambre=' + valeur[i]['numero'] + '">Plus d\'options</a>');
+                    //   nouveauDiv.find('.content').append(lienOptions);
 
                         // Ajouter cet élément div à la section affichage-annonce
                         $('.affichage-annonce').append(nouveauDiv);

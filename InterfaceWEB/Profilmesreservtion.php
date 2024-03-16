@@ -134,8 +134,11 @@
         <div id="Barre_nav">
             <img src="./images/profil.JPG" ></a> 
             <button id="btn_reservations">Mes réservations</button>
-            <button id="btn_effacer_compte">Supprimer mon compte</button>
-            <button id="btn_decon">Deconnexion</button>
+            
+            <a href="ProfilSupprimer.php"><button  id="btn_effacer_compte">Supprimer mon compte</button></a>
+            <form action="../backendWEB/deconnexion.php">
+                <button  id="btn_decon">Deconnexion</button>
+            </form>
         </div>
         <div id="zone_text">
             <div id="btn_retour">
@@ -165,5 +168,6 @@
                 </div>
         </div>
     </div>
+
 </body>
 </html>

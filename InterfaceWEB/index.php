@@ -1,5 +1,20 @@
 <!--Cette page est la page d'acceuil. Elle s'appelle index.html, car c'est elle qui doit être ouvert par 
 défaut dans le système du serveur.-->
+
+<?php
+session_start(); // Démarre la session
+
+// Vérifie si l'utilisateur est connecté
+if(isset($_SESSION['email'])) {
+    // Utilisateur connecté : inclure la barre de navigation pour les utilisateurs connectés
+    include 'nav_connected.php';
+} else {
+    // Utilisateur non connecté : inclure la barre de navigation pour les utilisateurs non connectés
+    include 'nav_not_connected.php';
+}
+//unset($_SESSION['email']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +23,8 @@ défaut dans le système du serveur.-->
     <title>Document</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="navpdate.js"></script>
+    
 </head>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -475,6 +492,93 @@ défaut dans le système du serveur.-->
 
 }
 
+
+    /* Style de la section d'affichage des annonces */
+    .affichage-annonce {
+            border: 1px solid black; /* Bordure de 1px solide noire */
+            background-color: lightgray; /* Fond de couleur gris clair */
+            padding: 10px; /* Espacement intérieur de 10px */
+            border-radius: 5px; /* Coins arrondis de 5px */
+            display: grid; /* Utilisation de la grille pour organiser les éléments */
+            grid-template-columns: repeat(auto-fill, 100%); /* Colonnes de largeur minimale de 250px et flexible */
+            gap: 10px; /* Espacement de 10px entre les éléments */
+        }
+
+        /* Style des éléments de chambre */
+        .chambre {
+            display: flex; /* Utiliser flexbox pour aligner les éléments horizontalement */
+            align-items: center; /* Aligner les éléments sur l'axe vertical */
+            margin: 0 auto; /* Centrer horizontalement les chambres */
+            padding: 20px; /* Ajouter un espacement autour des chambres */
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 100%;
+            background-color: white;
+            border: 1px solid lightgray;
+            
+        }
+
+        /* Style du conteneur d'image */
+        .image-container {
+            margin-right: 20px; /* Espacement entre l'image et le texte */
+            flex-shrink: 0; /* Empêcher le rétrécissement du conteneur d'image */
+            margin-left: 50px;
+            margin-right: 50px;
+            width: 35%;
+        }
+
+       
+
+
+        .content {
+            flex: 1; /* Le contenu occupe tout l'espace restant */
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+            margin-right: 10px;
+            width: 65%;
+        }
+
+
+        /* Style du titre de la chambre */
+        .chambre h5 {
+            margin: 10px; /* Suppression des marges par défaut */
+        }
+
+        /* Style du paragraphe de la chambre */
+        .chambre .content p {
+            text-align: center;
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+
+        /* Style du lien "Plus d'options" */
+        .chambre a {
+            display: block; /* Affichage en bloc pour occuper toute la largeur */
+            text-align: center; /* Centrage du texte */
+            background-color: #007bff; /* Fond de couleur bleue */
+            color: white; /* Texte de couleur blanche */
+            padding: 5px 10px; /* Remplissage de 5px en haut/bas et 10px à gauche/droite */
+            border-radius: 5px; /* Coins arrondis de 5px */
+            text-decoration: none; /* Suppression du soulignement du lien */
+            margin-top: 10px; /* Marge supérieure de 10px */
+        }
+
+
+
+        /* Style du lien "Plus d'options" au survol */
+        .chambre a:hover {
+            background-color: #0056b3; /* Fond de couleur plus foncée au survol */
+        }
+
+        
+
+        .image-container img {
+            width: 100%; /* Faire en sorte que l'image prenne 100% de la largeur disponible */
+            height: auto; /* Ajuster automatiquement la hauteur pour maintenir les proportions de l'image */
+            align-items: center;
+        }
+
 </style>
 </head>
 <body>
@@ -489,17 +593,8 @@ défaut dans le système du serveur.-->
     </nav> -->
 
 
-    <nav>
-        <div class="nav_logo">
-            <img src="./images/PalmHaven_Logo.webp" alt="Logo PalmHaven">
-        </div>
-        <ul class ="nav__links">
-            <li class="link"><a href="pageAccueil">Accueil</a></li>
-            <li class="link"><a href="Aide.html">Aide</a></li>
-            <li class="link"><a href="connexionfront.php">Connexion</a></li>
-            <li class="link"><a href="inscriptionfront.php">S'inscire</a></li>
-        </ul>
-    </nav>
+
+
     <header class="section__container header__container">
         <div class="header__image__container">
           <div class="header__content">
@@ -706,7 +801,7 @@ défaut dans le système du serveur.-->
     </footer>
 
     <script src="../backendWEB/AffichageChambre.js"></script>
-
+    
 
 </body>
 </html>

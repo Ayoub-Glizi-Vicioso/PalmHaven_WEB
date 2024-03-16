@@ -1,3 +1,8 @@
+<?php
+
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,12 +127,17 @@
         <div id="Barre_nav">
             <img src="./images/profil.JPG" ></a> 
             <button id="btn_reservations">Mes réservations</button>
+            
+            
             <button id="btn_effacer_compte">Supprimer mon compte</button>
-            <button id="btn_decon">Deconnexion</button>
+
+            <form action="../backendWEB/deconnexion.php">
+                <button  id="btn_decon">Deconnexion</button>
+            </form>
         </div>
         <div id="zone_text">
             <div id="btn_retour">
-                <button onclick="window.location.href='index.html'">Retour à la page d’accueil</button>
+                <button onclick="window.location.href='../interfaceWEB/index.php'">Retour à la page d’accueil</button>
             </div>
             <div class="text">
                 <h2>Aimeriez-vous effacer votre compte?</h2>
@@ -149,17 +159,18 @@
                     vos informations d’authentifications.</p>
                     <br>
                 <div id="effacer_compte">
-                    <form>
+                    <form action="../backendWEB/supprimercompte.php" method="post" >
                         <label for="email"></label>
                         <input name="email" type="text" placeholder="email" required>
                         <br><br>
                         <label for="mot_de_passe"></label>
-                        <input name="mot_de_passe" type="text" placeholder="mot de passe" required>
+                        <input name="mot_de_passe" type="password" placeholder="mot de passe" required>
                         <br>
                         <button>Effacer Compte</button>
                     </form>
                 </div>
         </div>
     </div>
+
 </body>
 </html>
