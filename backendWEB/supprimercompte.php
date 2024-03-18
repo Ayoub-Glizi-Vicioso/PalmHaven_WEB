@@ -9,8 +9,7 @@ if (isset($_SESSION['email'], $_POST['email'], $_POST['mot_de_passe'])) {
 
 
     
-
-
+    
     // Vérifier si l'email de la session correspond à l'email à supprimer
     if ($email_session === $email_a_supprimer) {
         $serveur = "localhost"; 
@@ -20,7 +19,7 @@ if (isset($_SESSION['email'], $_POST['email'], $_POST['mot_de_passe'])) {
         
         $conn = new mysqli($serveur, $utilisateur, $code, $baseDeDonnees);
         if ($conn->connect_error) {
-            echo "<script>alert('Erreur de connexion à la base de données : " . $conn->connect_error . "');</script>";
+            echo ('Erreur de connexion à la base de données : ' . $conn->connect_error  );
             die();
         }
         
@@ -38,7 +37,7 @@ if (isset($_SESSION['email'], $_POST['email'], $_POST['mot_de_passe'])) {
             
             // Vérifier si le mot de passe fourni correspond au hachage enregistré
             if (password_verify($motDePasse, $motDePasseHacheDansLaBase)) {
-
+                
                 
                 // Supprimer d'abord les avis associés à l'utilisateur
                 $sql_suppression_avis = "DELETE FROM avis WHERE id_utilisateur = ?";
@@ -47,27 +46,36 @@ if (isset($_SESSION['email'], $_POST['email'], $_POST['mot_de_passe'])) {
                 $stmt_suppression_avis->execute();
                 $stmt_suppression_avis->close();
                 
+                
+                // Supprimer les réservations de l'utilisateur
+                $requeteSuppressionReservations = "DELETE FROM reservation WHERE id_utilisateur = ?";
+                $stmt = $conn->prepare($requeteSuppressionReservations);
+                $stmt->bind_param("i", $id_utilisateur);
+                $stmt->execute();
+                $stmt->close();
+                
+                
                 // Ensuite, supprimer l'utilisateur
                 $sql_suppression_utilisateur = "DELETE FROM utilisateurs WHERE id_utilisateur = ?";
                 $stmt_suppression_utilisateur = $conn->prepare($sql_suppression_utilisateur);
                 $stmt_suppression_utilisateur->bind_param("i", $id_utilisateur);
-
+                
+              
                 if ($stmt_suppression_utilisateur->execute()) {
-                   // Détruisez toutes les variables de session
+                    // Détruisez toutes les variables de session
                     session_unset();
-                    echo "<script>alert('L\'utilisateur a été supprimé avec succès.');</script>";
-                    header('Location: ../interfaceWEB/index.php'); 
+                    header('Location: ../interfaceWEB/index.php?delete_success=true');
                 } else {
-                    echo "<script>alert('Erreur lors de la suppression de l\'utilisateur : " . $stmt_suppression_utilisateur->error . "');</script>";
+                    echo ("Erreur lors de la suppression de l\'utilisateur : " . $stmt_suppression_utilisateur->error );
                 }
                 $stmt_suppression_utilisateur->close();
 
                 
             } else {
-                echo "<script>alert('Erreur : Le mot de passe fourni est incorrect.');</script>";
+                echo ( 'Le mot de passe fourni est incorrect.');
             }
         } else {
-            echo "<script>alert('Erreur : L\'utilisateur n\'existe pas.');</script>";
+            echo ("Erreur : L\'utilisateur n\'existe pas.");
         }
 
         // Fermer les déclarations et la connexion à la base de données
@@ -75,9 +83,9 @@ if (isset($_SESSION['email'], $_POST['email'], $_POST['mot_de_passe'])) {
         $stmt_suppression->close();
         $conn->close();
     } else {
-        echo "<script>alert('Erreur : Les informations d\'identification ne correspondent pas à l\'utilisateur connecté.');</script>";
+        echo ('Erreur : Les informations d\'identification ne correspondent pas à l\'utilisateur connecté.');
     }
 } else {
-    echo "<script>alert('Erreur : L\'utilisateur n\'est pas connecté ou les données nécessaires ne sont pas fournies.');</script>";
+    echo ('Erreur : L\'utilisateur n\'est pas connecté ou les données nécessaires ne sont pas fournies.');
 }
 ?>

@@ -12,7 +12,16 @@ if(isset($_SESSION['email'])) {
     // Utilisateur non connecté : inclure la barre de navigation pour les utilisateurs non connectés
     include 'nav_not_connected.php';
 }
-//unset($_SESSION['email']);
+
+
+
+// Vérifier si le paramètre de suppression réussie est présent dans l'URL
+if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
+    echo "<script>alert('Votre compte a été supprimé avec succès.');</script>";
+    header('Location: ../interfaceWEB/index.php');
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +32,6 @@ if(isset($_SESSION['email'])) {
     <title>Document</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="navpdate.js"></script>
     
 </head>
     <style>
@@ -749,7 +757,7 @@ if(isset($_SESSION['email'])) {
                 </div>
             </div>
             <div class="col-md-6">
-                <img src="./images/familiale/Club_Familiale_Suite.png" class="img-chambre" alt="Image d'une suite familiale">
+                <img src="./images/familiale/Club_Familiale_Suite.png" class="img-chambre" alt="Image d'une suite familiale"> 
             </div>
         </div>
     </div>

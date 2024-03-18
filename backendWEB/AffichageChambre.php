@@ -55,8 +55,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             $chambres[]=$messageCourant;
                         }
                         
+
+                        $_SESSION['date_debut']=$dateDebut;
+                        $_SESSION['date_fin']=$date_fin;
+                        
                         // Afficher le tableau encodé en JSON
                         echo json_encode($chambres);
+
         }
         
                     

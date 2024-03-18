@@ -1,7 +1,4 @@
-<?php
 
-  
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -125,7 +122,7 @@
 <body>
     <div class="container">
         <div id="Barre_nav">
-            <img src="./images/profil.JPG" ></a> 
+            <!--<img src="./images/profil.JPG" ></a>--> 
             <button id="btn_reservations">Mes réservations</button>
             
             

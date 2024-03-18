@@ -42,8 +42,9 @@ if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && 
             // Si l'utilisateur est inséré dans la base de données
             if ($connexion->query($requete)) {
                 // Rediriger vers la page d'index dans le répertoire IntefaceWEB
-                header("Location: connexionfront.php");
-                echo "<script> alert('Création de compte réussie!');</script>";
+               
+                header("Location: connexionfront.php?inscrip_success=true");
+              
             } else {
                 echo "Erreur lors de l'inscription : " . $connexion->error;
             }

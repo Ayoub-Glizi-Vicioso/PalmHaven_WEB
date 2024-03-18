@@ -284,7 +284,7 @@
             <img src="./images/logo.webp" alt="Logo PalmHaven">
         </div>
         <ul class ="nav__links">
-            <li class="link"><a href="pageAccueil">Accueil</a></li>
+            <li class="link"><a href="index.php">Accueil</a></li>
             <li class="link"><a href="Aide.html">Aide</a></li>
             <li class="link"><a href="connexionfront.php">Connexion</a></li>
             <li class="link"><a href="inscriptionfront.php">S'inscire</a></li>

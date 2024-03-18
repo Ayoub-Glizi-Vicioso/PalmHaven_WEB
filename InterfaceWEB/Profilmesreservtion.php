@@ -132,7 +132,7 @@
 <body>
     <div class="container">
         <div id="Barre_nav">
-            <img src="./images/profil.JPG" ></a> 
+            <!--<img src="./images/profil.JPG" ></a>--> 
             <button id="btn_reservations">Mes réservations</button>
             
             <a href="ProfilSupprimer.php"><button  id="btn_effacer_compte">Supprimer mon compte</button></a>
@@ -142,7 +142,7 @@
         </div>
         <div id="zone_text">
             <div id="btn_retour">
-                <button onclick="window.location.href='index.html'">Retour à la page d’accueil</button>
+                <button onclick="window.location.href='index.php'">Retour à la page d’accueil</button>
             </div>
             <div class="text">
                 <h2>MES RÉSERVATION:</h2>
