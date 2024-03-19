@@ -29,40 +29,42 @@ if(isset($_SESSION['email'])){
         $row_user = $result_user->fetch_assoc();
         $id_utilisateur = $row_user['id_utilisateur'];
         
-        // Requête SQL pour récupérer les réservations de l'utilisateur
-        $requete = "SELECT * FROM reservation WHERE id_utilisateur=?";
-        
-        // Préparer la requête SQL
-        $stmt = $connexion->prepare($requete);
-        
-        // Vérifier si la préparation de la requête a réussi
-        if ($stmt) {
+            // Requête SQL pour récupérer les réservations de l'utilisateur avec les détails de la chambre
+            $requete = "SELECT r.*, c.* FROM reservation r
+            INNER JOIN chambre c ON r.numero_chambre = c.numero
+            WHERE r.id_utilisateur = ?";
+
+            // Préparer la requête SQL
+            $stmt = $connexion->prepare($requete);
+
+            // Vérifier si la préparation de la requête a réussi
+            if ($stmt) {
             // Binder les paramètres à la requête
             $stmt->bind_param("i", $id_utilisateur);
-            
+
             // Exécuter la requête
             $stmt->execute();
-            
+
             // Récupérer les résultats de la requête
             $resultat = $stmt->get_result();
             $reservations = [];
-            
+
             // Parcourir les résultats de la requête
             while ($courant = $resultat->fetch_assoc()) {
-                $reservations[]=$courant;
+            $reservations[]=$courant;
             }
-            
+
             // Afficher le tableau encodé en JSON
             echo json_encode($reservations);
-            
+
             // Fermer la requête préparée
             $stmt->close();
-        } else {
+            } else {
             // La préparation de la requête a échoué
             http_response_code(500); // Internal Server Error
             echo json_encode(['erreur' => 'Erreur lors de la préparation de la requête.', 'code' => 500]);
-        }
-        
+            }
+
         // Fermer la connexion à la base de données
         $connexion->close();
     } else {
