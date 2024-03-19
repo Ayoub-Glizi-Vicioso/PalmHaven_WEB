@@ -226,7 +226,7 @@ h2 {
         </div>
         <br>
         <br>
-        <p>© 2024 <a href="politique.html">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
+        <p>© 2024 <a href="index.php">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
       </div>
     </div>
     <div class="container-form">

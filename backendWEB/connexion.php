@@ -55,7 +55,7 @@ else
             header('Location: index.php'); 
             // Rediriger vers la page d'accueil
         } else {
-            echo "<script> alert('Mot de passe invalide.')</script>";
+            echo "<script> alert('Mot de passe ou utilisateur invalide.')</script>";
         }
     } else {
         echo "<script> alert('Erreur lors de la récupération du mot de passe.')</script>";

@@ -205,7 +205,7 @@ if (isset($_GET['inscrip_success']) && $_GET['inscrip_success'] === 'true') {
             <br>
             <br>
             <br>
-            <p>© 2024 <a href="index.html">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
+            <p>© 2024 <a href="index.php">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
           </div>
         </div>
       </div>

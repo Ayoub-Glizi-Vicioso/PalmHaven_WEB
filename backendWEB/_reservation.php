@@ -1,6 +1,7 @@
 <?php
 
 session_start(); // Démarrer la session
+
 // Vérifier si le formulaire a été soumis
 
 if(isset($_SESSION['email'])){

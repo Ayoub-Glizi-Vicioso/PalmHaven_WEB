@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -147,6 +148,7 @@
 
     #debut , #fin {
         color: white;
+        font-size: 10px;
     }
 
     </style>
@@ -170,54 +172,17 @@
                 <h2>MES RÉSERVATION:</h2>
                 
                 <div id="table">
-                   <table>
-                    <tr>
-                        <td rowspan="2">Numéro de la réservation</td>
-                        <td colspan="2">Date de la réservation</td>
-                        <td rowspan="2">Annulation</td>
-                        <td rowspan="2">Modification</td>
-                        <td rowspan="2">Consulter les factures</td>
-                    </tr>
-                    <tr>
-                        <td>Date de début</td>
-                        <td>Date de fin </td>
-                    </tr>
-                    <tr id="reservationProfil">
-                        <td class="donnee" id="num_reserv">
-                                <form action="">
-                                    <button id="Reservation">exemple</button>
-                                </form>
-                        </td>
-
-
-
-                        <td class="donnee" id="debut">exemple</td>
-                        <td class="donnee" id="fin">exemple</td>
-
-                        <td class="donnee" id="annuler">
-                                <form action="">
-                                    <button id="btn_annuler">annuler</button>
-                                </form>
-                        </td>
-
-                        <td class="donnee" id="modifier">
-                            <form action="">
-                                <button id="btn_modifier">modifier</button>
-                            </form>
-                        </td>
-
-                        <td class="donnee" id="facture">
-                            <form action="">
-                                <button id="btn_facture">facture</button>
-                            </form>
-                        </td>
-                    </tr>
+                   <table id='reservationProfil'>
+                    
 
                    </table>
 
                 </div>
         </div>
     </div>
+
+
+    <script src="../backendWEB/Affichagereservation.js"></script>
 
 </body>
 </html>
