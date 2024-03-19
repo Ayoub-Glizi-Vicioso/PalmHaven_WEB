@@ -3,6 +3,7 @@
 session_start(); // Démarrer la session
 // Vérifier si le formulaire a été soumis
 
+if(isset($_SESSION['email'])){
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if(isset($_POST['numero_chambre'])){
@@ -74,4 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Fermer la connexion
         $connexion->close();
     }
+}
+}else{
+    echo ('vous devais être connecter afin de pour faire une réservation');
 }

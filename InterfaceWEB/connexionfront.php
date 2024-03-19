@@ -14,7 +14,6 @@ session_start();
     // Vérifier si le paramètre de suppression réussie est présent dans l'URL
 if (isset($_GET['inscrip_success']) && $_GET['inscrip_success'] === 'true') {
   echo "<script> alert('Création de compte réussie!');</script>";
-  header("Location: connexionfront.php");
 
 }
 
