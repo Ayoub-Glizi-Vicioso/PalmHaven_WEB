@@ -36,6 +36,60 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
 </head>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 14px; /* Réduire la taille de la police pour les écrans plus petits */
+    }
+
+    .container {
+        max-width: 90%; /* Réduire la largeur de la conteneur pour mieux s'adapter aux petits écrans */
+    }
+
+    .nav__links {
+        flex-direction: column; /* Réorganiser les liens de navigation en colonne pour les écrans plus petits */
+    }
+
+    .booking__container,
+    .search-form {
+        display: grid; /* Utiliser CSS Grid */
+        grid-template-columns: 1fr; /* Une seule colonne */
+        justify-items: center; /* Centrer horizontalement */
+        width: 70%; /* Exemple de modification de la largeur */
+    }
+
+    .annonce,
+    .chambre {
+        display: flex;
+        flex-direction: column; /* Modification de la direction des éléments pour être verticale */
+    }
+
+    .form__group {
+        margin-bottom: 10px; /* Ajouter de l'espace entre les groupes de champs */
+    }
+
+    .input__group {
+        display: flex;
+        flex-direction: column; /* Aligner les éléments verticalement */
+        align-items: flex-start; /* Aligner les éléments à gauche */
+    }
+
+    .search-form input[type="date"],
+    .search-form input[type="submit"] {
+        width: 100%; /* Faire en sorte que les éléments occupent toute la largeur disponible */
+        padding: 10px; /* Ajouter du remplissage pour un meilleur aspect */
+        margin-bottom: 10px; /* Ajouter de l'espace entre les champs */
+    }
+
+    /* Style des étiquettes */
+    .search-form label {
+        font-size: smaller; /* Réduire la taille de la police */
+        margin-bottom: 5px; /* Ajouter de l'espace en bas des étiquettes */
+    }
+}
+
+
+
+
         :root {
             --blue: #6d597a;
             --darkblue: #6d597a;
@@ -293,6 +347,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
             display: flex; 
             flex-direction: column; 
             flex-wrap: wrap; 
+            
         }
 
         h3{
@@ -515,9 +570,8 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
         /* Style des éléments de chambre */
         .chambre {
             display: flex; /* Utiliser flexbox pour aligner les éléments horizontalement */
-            align-items: center; /* Aligner les éléments sur l'axe vertical */
             margin: 0 auto; /* Centrer horizontalement les chambres */
-            padding: 20px; /* Ajouter un espacement autour des chambres */
+            padding: 10px; /* Ajouter un espacement autour des chambres */
             padding-left: 10px;
             padding-right: 10px;
             width: 100%;
@@ -622,7 +676,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
                   <label for="start_date" id="date_debut">Date de début réservation</label>
                 </div>
             </div>
-            <br>
+            <br><br>
             
               <div class="form__group">
                 <div class="input__group">

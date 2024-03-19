@@ -38,7 +38,7 @@
         }
 
         #zone_text {
-            width: 55%;
+            width: 80%;
             text-align: center;
             padding: 20px;
         }
@@ -127,13 +127,35 @@
             background-color: lightgray;
             color: #16b0c4;
         }
+
+    form button{
+        background-color: lightgrey;
+        color:#16b0c4;
+        font-size: 13px;
+        font-family: "Montserrat";
+        line-height: 20px;
+        margin-bottom: 5px;
+        font-weight: bolder;
+
+    }
+
+    form button:hover{
+        color: white;
+        background-color: lightgray;
+        
+    }
+
+    #debut , #fin {
+        color: white;
+    }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div id="Barre_nav">
             <!--<img src="./images/profil.JPG" ></a>--> 
-            <button id="btn_reservations">Mes réservations</button>
+            <button onclick="window.location.href='ProfilSupprimer.php'" id="btn_reservations">Mes réservations</button>
             
             <a href="ProfilSupprimer.php"><button  id="btn_effacer_compte">Supprimer mon compte</button></a>
             <form action="../backendWEB/deconnexion.php">
@@ -152,15 +174,43 @@
                     <tr>
                         <td rowspan="2">Numéro de la réservation</td>
                         <td colspan="2">Date de la réservation</td>
+                        <td rowspan="2">Annulation</td>
+                        <td rowspan="2">Modification</td>
+                        <td rowspan="2">Consulter les factures</td>
                     </tr>
                     <tr>
                         <td>Date de début</td>
                         <td>Date de fin </td>
                     </tr>
                     <tr id="reservationProfil">
-                        <td class="donnee" id="num_reserv">exemple</td>
+                        <td class="donnee" id="num_reserv">
+                                <form action="">
+                                    <button id="Reservation">exemple</button>
+                                </form>
+                        </td>
+
+
+
                         <td class="donnee" id="debut">exemple</td>
                         <td class="donnee" id="fin">exemple</td>
+
+                        <td class="donnee" id="annuler">
+                                <form action="">
+                                    <button id="btn_annuler">annuler</button>
+                                </form>
+                        </td>
+
+                        <td class="donnee" id="modifier">
+                            <form action="">
+                                <button id="btn_modifier">modifier</button>
+                            </form>
+                        </td>
+
+                        <td class="donnee" id="facture">
+                            <form action="">
+                                <button id="btn_facture">facture</button>
+                            </form>
+                        </td>
                     </tr>
 
                    </table>

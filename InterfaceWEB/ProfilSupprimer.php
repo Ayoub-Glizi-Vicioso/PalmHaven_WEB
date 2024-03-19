@@ -123,7 +123,7 @@
     <div class="container">
         <div id="Barre_nav">
             <!--<img src="./images/profil.JPG" ></a>--> 
-            <button id="btn_reservations">Mes réservations</button>
+            <button onclick="window.location.href='Profilmesreservtion.php'" id="btn_reservations">Mes réservations</button>
             
             
             <button id="btn_effacer_compte">Supprimer mon compte</button>

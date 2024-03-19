@@ -1,3 +1,14 @@
+<?php
+
+  // Vérifier si le paramètre de suppression réussie est présent dans l'URL
+  if (isset($_GET['reservation_success']) && $_GET['reservation_success'] === 'true') {
+    echo "<script> alert('Réservation de la chambre réussi');</script>";
+
+  }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -184,7 +195,7 @@
             <div class="room-info">
 
                 <h2>Suite Bungalow</h2>
-                <p><strong>Superficie de la chambre :</strong> 66m<sup>2</sup< /p>
+                <p><strong>Superficie de la chambre :</strong> 66m<sup>2</sup></p>
                         <p><strong>Équipements:</strong> Wi-Fi gratuit, TV à écran plat, minibar, salle de bains
                             privative</p>
                         <p><strong>Prix par nuit:</strong> $350</p>
@@ -193,7 +204,12 @@
                         <p><strong>Description:</strong> Nous mettons à votre disposition 836 suites dans des bungalows,
                             l'option la plus confortable pour vous et votre famille. Les suites en bungalows sont
                             idéales pour votre repos et votre détente, dans un environnement naturel très spécial.</p>
-                        <button id="reserver">Réserver maintenant</button>
+                         
+                            <form action="../backendWEB/_reservation.php" method="post">
+                                <input type="hidden" name="numero_chambre" value="1">
+                                <button type="submit" id="reserver">Réserver maintenant</button>
+                            </form>
+
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 
 if (!isset($_SESSION['email'])) {
     header('Location: connexion.php');
@@ -76,5 +76,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_chambre']) && isset
 
 //fichier pour la page de reservation
 header('Location: reservation.html');
-exit;
+exit;*/
 ?>

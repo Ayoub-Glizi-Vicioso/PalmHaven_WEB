@@ -64,7 +64,7 @@ $(document).ready(function() {
                         let nouveauDiv = $('<div class="chambre"></div>');
                         
                         // Ajouter l'image à l'élément div
-                        nouveauDiv.append('<div class="image-container"><img src="' + valeur[i]['img'] + '" alt="Image de la chambre"></div>');
+                        nouveauDiv.append('<div class="image-container"><img class="chamb" src="' + valeur[i]['img'] + '" alt="Image de la chambre"></div>');
                         
                         // Ajouter le type de chambre à l'élément div
                         nouveauDiv.append('<div class="content"><h5 class="type">' + valeur[i]["type_chambre"] + '</h5></div>');
