@@ -1,3 +1,13 @@
+
+<?php
+// Vérifier si le paramètre de suppression réussie est présent dans l'URL
+if (isset($_GET['annulation_success']) && $_GET['annulation_success'] === 'true') {
+  echo "<script> alert('Annulation réussie!');</script>";
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +40,7 @@
             background-color: #fff;
             width: 100%;
             max-width: 65%;
-            height: 90%;
+            height: 70%;
             position: relative;
             overflow-x: hidden;
             overflow-y: hidden;
@@ -69,6 +79,23 @@
 #Barre_nav button:hover {
     background-color: #021b57;
 }
+input{
+            border: none;
+            padding: 10px;
+            width: 100%;
+            margin-top: 5px;
+            background-color: #16b0c4;
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 10px;
+            letter-spacing: .2rem;
+            text-align: center;
+        }
+
+        input:hover {
+            background-color: #021b57;
+        }
 
 
 
@@ -109,7 +136,9 @@
         h2 {
             font-family: "Montserrat";
             font-size: 24px;
+            margin-top: 10px;
             margin-bottom: 10px;
+            border: 0px;
         }
 
         div #btn_reservations{
@@ -151,6 +180,39 @@
         font-size: 10px;
     }
 
+/* Styles pour la fenêtre modale */
+.annulation {
+    display: none; /* Par défaut, la fenêtre modale est cachée */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    overflow: auto;
+}
+
+.annulation-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    text-align: center;
+}
+
+
+.input{
+    width: 15%;
+}
+
+#id_reservation , #email{
+    background-color: white;
+    border: 1px solid lightgray;
+    color: black;
+}
+
     </style>
 </head>
 <body>
@@ -180,6 +242,30 @@
                 </div>
         </div>
     </div>
+
+    <!-- Structure de la fenêtre modale -->
+<div id="annulation" class="annulation">
+    <div class="annulation-content">
+        <p>Êtes-vous sûr de vouloir annuler cette réservation ?</p>
+        <p>si c'est le cas, afin de confirmer l'annulation saisie le numero de la reservation</p>
+        
+        <form action="../backendWEB/annulerReservation.php" method="post">
+            <label for="id_reservation"></label>
+            <input id="id_reservation" type="number"  name="id_reservation" placeholder="saisissez le numero de la reservation"required>
+            
+            <label for="email"></label>
+            <input id="email" type="email"  name="email" placeholder="saisissez votre email"required>
+            
+            <br>
+            
+            <input id="confirmBtn" type="submit" readonly value="Confirmer">
+        </form id="form_annuler">
+        <form >
+        <input id="cancelBtn" type="cancel" readonly value="Annuler">
+        </form>
+    </div>
+
+</div>
 
 
     <script src="../backendWEB/Affichagereservation.js"></script>

@@ -1,57 +1,43 @@
 <?php
-// ajouter disponible et le prix dans la table chambre
 session_start();
 
-if (!isset($_SESSION['email'])) {
-    header('Location: connexion.php');
-    exit;
-}
-
-if(isset($_GET['id_reservation'])) {
-    require('connexion.php'); 
-
-    $id_reservation = $_GET['id_reservation'];
-
-    // si la reservation existe
-    $sql_check_reservation = "SELECT id_chambre, date_debut, date_fin FROM reservations WHERE id_reservation = ?";
-    $stmt_check_reservation = $conn->prepare($sql_check_reservation);
-    $stmt_check_reservation->bind_param("i", $id_reservation);
-    $stmt_check_reservation->execute();
-    $result_check_reservation = $stmt_check_reservation->get_result();
-
-    if ($result_check_reservation->num_rows > 0) {
-        // recuperer les info de reservation
-        $row_check_reservation = $result_check_reservation->fetch_assoc();
-        $id_chambre = $row_check_reservation['id_chambre'];
-        $date_debut = $row_check_reservation['date_debut'];
-        $date_fin = $row_check_reservation['date_fin'];
-
-        
-        $sql_delete = "DELETE FROM reservations WHERE id_reservation = ?";
-        $stmt_delete = $conn->prepare($sql_delete);
-        $stmt_delete->bind_param("i", $id_reservation);
-
-        if ($stmt_delete->execute()) {
-            // Maj disponibilite de la chambre
-            $sql_update_disponibilite = "UPDATE disponibilite_chambre SET disponible = 1 WHERE id_chambre = ? AND date_disponible BETWEEN ? AND ?";
-            $stmt_update_disponibilite = $conn->prepare($sql_update_disponibilite);
-            $stmt_update_disponibilite->bind_param("iss", $id_chambre, $date_debut, $date_fin);
-            $stmt_update_disponibilite->execute();
-
-            echo "La réservation a été supprimée avec succès.";
-        } else {
-            echo "Une erreur est survenue lors de la suppression de la réservation.";
-        }
-
-        $stmt_delete->close();
-        $stmt_update_disponibilite->close();
-    } else {
-        echo "La réservation n'existe pas.";
+if(isset($_POST['id_reservation'])){
+    $identification_reservation = $_POST['id_reservation']; 
+    $email_saisie = $_POST['email'];
+    $email_session = $_SESSION['email'];
+    
+    $serveur = "localhost"; 
+    $utilisateur = "root"; 
+    $code = ""; 
+    $baseDeDonnees = "palmhaven"; 
+    
+    // Connexion à la base de données
+    $conn = new mysqli($serveur, $utilisateur, $code, $baseDeDonnees);
+    if ($conn->connect_error) {
+        echo ('Erreur de connexion à la base de données : ' . $conn->connect_error  );
+        die();
     }
+    
+    if($email_saisie  == $email_session){
+        // Requête SQL pour supprimer la réservation
+        $sql = "DELETE FROM reservation WHERE numero_reservation = ' $identification_reservation'";
+        
+        if ($conn->query($sql) === TRUE) {
+            
+            header("Location: ../interfaceWEB/Profilmesreservtion.php?annulation_success=true");
 
-    header('Location: reservations.php');
-    exit;
+
+
+        } else {
+            echo "Erreur lors de l'annulation de la réservation : " . $conn->error;
+        }
+        // Fermer la connexion à la base de données
+        $conn->close();
+    }else{
+        echo "Vous essayer de supprimer une reservation qui n'est pas associé à votre compte";
+    }
 } else {
-    echo "L'id de la réservation n'a pas été spécifié.";
+    // Gérer le cas où l'ID de réservation n'est pas fourni
+    echo "ID de réservation non spécifié.";
 }
 ?>
