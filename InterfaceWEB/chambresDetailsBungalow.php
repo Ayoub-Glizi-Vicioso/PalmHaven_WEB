@@ -1,5 +1,7 @@
 <?php
 
+    $numero_chambre=$_GET['numero_chambre'];
+
   // Vérifier si le paramètre de suppression réussie est présent dans l'URL
   if (isset($_GET['reservation_success']) && $_GET['reservation_success'] === 'true') {
     echo "<script> alert('Réservation de la chambre réussi');</script>";
@@ -206,7 +208,7 @@
                             idéales pour votre repos et votre détente, dans un environnement naturel très spécial.</p>
                          
                             <form action="../backendWEB/_reservation.php" method="post">
-                                <input type="hidden" name="numero_chambre" value="1">
+                            <input type="hidden" name="numero_chambre" value="<?php echo isset($_GET['numero_chambre']) ? $_GET['numero_chambre'] : ''; ?>">
                                 <button type="submit" id="reserver">Réserver maintenant</button>
                             </form>
 
