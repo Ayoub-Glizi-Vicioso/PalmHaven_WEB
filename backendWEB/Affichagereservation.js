@@ -14,6 +14,10 @@ $(document).ready(function(){
             // Traitement de la réponse reçue du serveur
             const valeur = JSON.parse(requeteGet.responseText);
             
+            if (valeur.length === 0) {
+                // Si aucune réservation n'est renvoyée, afficher un message
+                $('<br><br><h2>Il n\'y a pas de réservation sous ce compte</h2>').appendTo('#reservationProfil');
+            } else {
             // Créer un fragment de document pour stocker les nouvelles lignes de la table
             var fragment = document.createDocumentFragment();
 
@@ -35,22 +39,19 @@ $(document).ready(function(){
             // Ajouter la deuxième ligne à la table
             fragment.appendChild(trDate);
 
-            if (valeur.length === 0) {
-                // Si aucune réservation n'est renvoyée, afficher un message
-                $('<h2>Il n\'y a pas de réservation</h2>').appendTo('#reservationProfil');
-            } else {
+                // Parcourir les données reçues et créer les éléments HTML correspondants
                 for (let i = 0; i < valeur.length; i++) {
                     // Créer une nouvelle ligne de table
                     var tr = document.createElement('tr');
                     
                     // Ajouter les cellules à la ligne de table
-                    tr.innerHTML = '<td class="donnee" id="num_reserv"><form><button><u>' + valeur[i]['numero_reservation']+ '</u></button></form></td>' +
-                                    '<td class="donnee" id="debut">' + valeur[i]['date_debut']+ '</td>' +
-                                    '<td class="donnee" id="fin">' + valeur[i]['date_fin']+ '</td>' +
-                                    '<td class="donnee" id="annuler"><form><button class="btn_annuler">Annuler</button></form></td>' +
-                                    '<td class="donnee" id="modifier"><form><button class="btn_modifier">Modifier</button></form></td>' +
-                                    '<td class="donnee" id="facture"><form><button class="btn_facture">Facture</button></form></td>';
-    
+                    tr.innerHTML = '<td class="donnee num_reserv"><a href="' + getReservationLink(valeur[i]['type_chambre'], valeur[i]['numero_reservation']) + '">' + valeur[i]['numero_reservation'] + '</a></td>' +
+                                    '<td class="donnee debut">' + valeur[i]['date_debut'] + '</td>' +
+                                    '<td class="donnee fin">' + valeur[i]['date_fin'] + '</td>' +
+                                    '<td class="donnee annuler"><form><button class="btn_annuler">Annuler</button></form></td>' +
+                                    '<td class="donnee modifier"><form><button class="btn_modifier">Modifier</button></form></td>' +
+                                    '<td class="donnee facture"><form><button class="btn_facture">Facture</button></form></td>';
+
                     // Ajouter la ligne de table au fragment
                     fragment.appendChild(tr);
                 }
@@ -64,4 +65,20 @@ $(document).ready(function(){
        
     // Envoi de la requête
     requeteGet.send();
+
+
+
+    // Fonction pour obtenir le lien de réservation en fonction du type de chambre et du numéro de réservation
+    function getReservationLink(typeChambre, numeroReservation) {
+        // Définissez ici la logique pour déterminer l'URL en fonction du type de chambre
+        // Par exemple, vous pouvez utiliser une instruction switch pour différents types de chambres
+        switch (typeChambre) {
+            case 'standard':
+                return '../interfaceWEB/chambresDetailsBungalow.php?numero=' + numeroReservation;
+            case 'familiale':
+                return '../interfaceWEB/chambreDetail.php?numero=' + numeroReservation;
+            default:
+                return '#'; // URL par défaut si le type de chambre n'est pas reconnu
+        }
+    }
 });
