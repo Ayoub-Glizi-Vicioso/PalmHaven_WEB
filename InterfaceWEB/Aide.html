@@ -5,16 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique</title>
     <style>
-        body, html {
-            font-family: Arial, sans-serif;
+         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+         body {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
         }
 
         .container {
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center ;
-            padding-top: 20px;
+
             margin-left: 20px; /* Ajouter une marge à gauche */
             margin-right: 20px; /* Ajouter une marge à droite */
         }
@@ -28,9 +40,10 @@
             position: sticky;
             top: 0;
             left: 0;
+            padding: 0 20px;
             width: calc(100% - 40px); /* Ajuster la largeur de la barre de navigation */
-            background-color: darkgrey;
-            color: var(--white);
+            background-color: #16b0c4;
+            color: white;
             display: flex;
             align-items: center;
             padding: 10px 20px;
@@ -42,17 +55,18 @@
         }
 
         .navbar-brand {
-            margin-right: auto;
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 20px;
-        }
+        display: flex;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 15px;
+    }
 
-        .navbar-brand img {
-            width: 30px;
-            margin-right: 10px;
-        }
+.navbar-brand svg {
+    width: 30px;
+    margin-right: 10px; /* Ajouter une marge entre l'icône et le texte */
+}
 
         .navbar-nav {
             display: flex;
@@ -83,17 +97,17 @@
     
 
         h1, h2 {
-            color: #6d597a; /* Couleur bleue pour les titres */
+            color: #16b0c4; /* Couleur bleue pour les titres */
             margin: 10px;
         }
 
         p {
-            color: #6d597a;
+            color: #000000;
             margin: 20px; /* Marge inférieure pour les paragraphes */
         }
 
         span.hotel-name {
-            color:#6d597a; /* Couleur bleue pour le nom de l'hôtel */
+            color:#000000; /* Couleur bleue pour le nom de l'hôtel */
             font-weight: bold; /* Police en gras pour le nom de l'hôtel */
         }
 
@@ -131,7 +145,7 @@
             margin-right: 10px;
             border-radius: 10px; /* Créer une bordure arrondie */;
             border: none ; /* Supprimer la bordure */
-            background-color: #6d597a; /* Couleur de fond du bouton */
+            background-color: #16b0c4; /* Couleur de fond du bouton */
             color:  white; /* Couleur du texte du bouton */
             font-weight: bold; /* Police en gras */
             cursor: pointer; /* Ajouter un curseur au survol */
@@ -146,11 +160,15 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="index.php" class="navbar-brand"><img src="./images/home.png" alt="Home">AIDE</a>
+        <a href="index.php" class="navbar-brand">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+            </svg>
+        </a>
+        <div class="navbar-brand">ACCUEIL</div>
     </nav>
 
     <div class="container">
-        <div class="empty-div"></div>
         <div class="content">
             <h1>Bonjour, comment pouvons nous vous aider?</h1>
             <p>CONCERNANT:</p>
@@ -176,7 +194,6 @@
             </div>
             <br>
         </div>
-        <div class="empty-div"></div>
     </div>
 
 
