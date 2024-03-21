@@ -34,6 +34,7 @@
         .content {
             margin-left: 20px; /* Marge à gauche */
             margin-right: 20px; /* Marge à droite */
+            margin-bottom: 225px; /* Augmenter la marge inférieure */
         }
 
         .navbar {
@@ -41,7 +42,8 @@
             top: 0;
             left: 0;
             padding: 0 20px;
-            width: calc(100% - 40px); /* Ajuster la largeur de la barre de navigation */
+            width: calc(100% - 40px); 
+            
             background-color: #16b0c4;
             color: white;
             display: flex;
@@ -60,13 +62,16 @@
         color: white;
         text-decoration: none;
         font-weight: bold;
-        font-size: 15px;
-    }
+        font-size: 18px;
+        }
+        .navbar svg{
+            margin:10px;
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
 
-.navbar-brand svg {
-    width: 30px;
-    margin-right: 10px; /* Ajouter une marge entre l'icône et le texte */
-}
+    
 
         .navbar-nav {
             display: flex;
