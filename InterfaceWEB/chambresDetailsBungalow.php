@@ -272,7 +272,11 @@
             <li>Balcon / Terrasse</li>
         </ul>
     </div>
+<<<<<<< Updated upstream
     <script src="./script/scriptChangementImage.js"></script>
+=======
+    <script src="./script/scriptChangement.js"></script>
+>>>>>>> Stashed changes
 </body>
 
 </html>
