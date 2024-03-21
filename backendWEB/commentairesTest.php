@@ -84,38 +84,30 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
     elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
         // Récupération des données DELETE directement depuis php://input
         $donneesJSON = file_get_contents("php://input");
-        
-
+    
         // Décodage des données JSON
         $donnees = json_decode($donneesJSON, true);
     
         // Vérification si les données contiennent l'ID du commentaire à supprimer
         if (isset($donnees['id'])) {
-            // Connexion à la base de données et autres opérations
-    
             // Suppression du commentaire
             $idCommentaire = $donnees['id'];
     
-            // Préparation de la requête de suppression
-            $requete_suppression = "DELETE FROM avis WHERE id_message = ?";
-            $statement_suppression = $connexion->prepare($requete_suppression);
-            $statement_suppression->bind_param("i", $idCommentaire);
+            // Requête SQL pour supprimer le commentaire
+            $requete = "DELETE FROM avis WHERE id_message = ".$idCommentaire;
     
-            // Exécution de la requête de suppression
-            if ($statement_suppression->execute()) {
-                // Succès de la suppression
+            // Exécuter la requête
+            $resultat = $connexion->query($requete);
+    
+            if ($resultat) {
+                // La suppression a réussi
                 http_response_code(200);
-                echo json_encode(array("message" => "Commentaire effacé avec succès."));
+                echo json_encode(array("message" => "Commentaire supprimé avec succès."));
             } else {
-                // Erreur lors de la suppression
+                // La suppression a échoué
                 http_response_code(500);
-                echo json_encode(array("message" => "Erreur lors de l'effacement du commentaire."));
+                echo json_encode(array("message" => "Erreur lors de la suppression du commentaire."));
             }
-
-            // Fermeture du statement
-            $statement_suppression->close();
-    
-            // Fermeture de la connexion et autres opérations de nettoyage
         } else {
             // Si l'ID du commentaire n'est pas fourni dans les données DELETE
             http_response_code(400);

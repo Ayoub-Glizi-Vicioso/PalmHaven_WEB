@@ -171,8 +171,27 @@ $(document).ready(function () {
         // Récupérer l'identifiant du commentaire à effacer
         var idCommentaire = $(this).attr('id');
 
-        // Appel de la fonction pour effacer le commentaire
-        effacerCommentaire(idCommentaire);
+        const requeteDel = new XMLHttpRequest();
+
+        // Configuration de la requête HTTP GET vers une URL
+        requeteDel.open('DELETE', '../backendWEB/commentairesTest.php', false);
+
+        // Définition de l'en-tête de la requête pour spécifier le type de contenu
+        requeteDel.setRequestHeader('Content-Type', 'application/json');
+        
+        // Définition des données JSON à envoyer dans la requête
+        const requeteJSON = JSON.stringify({"id": idCommentaire});
+
+        // Définition de la fonction à exécuter une fois la requête terminée
+        requeteDel.onreadystatechange = function () {
+            alert("Commentaire supprimé avec succès. La page va être rechargée.");
+            // Recharger la page après 1 seconde (1000 millisecondes)
+            setTimeout(function() {
+                window.location.reload();
+            }, 1000);
+        }
+
+        requeteDel.send(requeteJSON);
     });
 });
 
