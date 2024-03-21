@@ -1,17 +1,34 @@
+
+<?php
+
+
+  // Vérifier si le paramètre de suppression réussie est présent dans l'URL
+  if (isset($_GET['reservation_success']) && $_GET['reservation_success'] === 'true') {
+    echo "<script> alert('Réservation de la chambre réussi');</script>";
+    
+}
+if(!isset($_GET['numero'])){
+
+    $btn_reservation_visible = true; 
+
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails de la chambre d'hôtel de type familiale</title>
-
-    <link rel="stylesheet" href="css/pourFAMILIALE/styleFAMILIALE.CSS">
+    <title>Détails de la chambre d'hôtel de type lune de miel</title>
+    <link rel="stylesheet" href="css/pourLUNE/styleLUNE.css">
 </head>
 
 <body>
     <div class="container-chambre">
-        <a id="btn-retour" href="index.php">
+        <a id="btn-retour" href="index.html">
             <svg id="btn-retour" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
                 <path
@@ -22,22 +39,29 @@
         <div class="room-details">
             <div class="room-image">
                 <div class='container-image'>
-                    <img src="./images/familiale/Club_Familiale_Suite.png" alt="Chambre d'hôtel" class="changement-image">
+                    <img src="./images/lunedemiel/Lune_de_miel_Suite.png" alt="Chambre d'hôtel" class="changement-image">
                 </div>
                 <div class="btn-images">
-                    <button class="btn" onclick="avant(2)">◀︎</button>
-                    <button class="btn" onclick="suivant(2)">▶︎</button>
+                    <button class="btn" onclick="avant(3)">◀︎</button>
+                    <button class="btn" onclick="suivant(3)">▶︎</button>
                 </div>
             </div>
             <div class="room-info">
 
-                <h2>Suite Familiale</h2>
-                <p><strong>Superficie de la chambre :</strong> 58m<sup>2</sup< /p>
-                        <p><strong>Équipements:</strong> Wi-Fi gratuit, TV à écran plat, minibar</p>
-                        <p><strong>Prix par nuit:</strong> $350</p>
-                        <p><strong>Capacité : </strong>Occupation maximale : 5 personnes (3 adultes + 2 enfants ou 2 adultes + 3 enfants ou 1 adulte + 4 enfants)</p>
-                        <p><strong>Description:</strong> Ces chambres peuvent accueillir différentes configurations familiales. Ces chambres sont conçues pour offrir une expérience de vacances inoubliable aux familles, avec des installations adaptées aux enfants et aux adultes.</p>
-                        <button id="reserver">Réserver maintenant</button>
+                <h2>Suite Lune de Miel</h2>
+                <p><strong>Superficie de la chambre :</strong> 66m<sup>2</sup< /p>
+                        <p><strong>Équipements:</strong> Wi-Fi gratuit, TV à écran plat, minibar, salle de bains
+                            privative</p>
+                        <p><strong>Prix par nuit:</strong> 300$</p>
+                        <p><strong>Capacité : </strong>2 adultes</p>
+                        <p><strong>Description:</strong> Notre suite de lune de miel est conçue pour vous offrir une expérience inoubliable. Profitez des services exclusifs et des avantages inclus dans cette suite spéciale pour les jeunes mariés et aussi pour les couples qui souhaitent partager une expérience romantique. </p>
+                        
+                        <?php if ($btn_reservation_visible): ?>
+                                <form action="../backendWEB/_reservation.php" method="post">
+                                    <input type="hidden" name="numero_chambre" value="<?php echo isset($_GET['numero_chambre']) ? $_GET['numero_chambre'] : ''; ?>">
+                                    <button type="submit" id="reserver">Réserver maintenant</button>
+                                </form>
+                         <?php endif; ?>
             </div>
         </div>
     </div>
@@ -49,13 +73,15 @@
                     <path
                         d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
                 </svg>
-                <h6>1 lit King et 1 lit superposé triple</h6>
+                <h6>Chambre Supérieure avec 1 lit King-size</h6>
             </div>
             <div class="amenities-boites">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
-                    <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
-                  </svg>
-                <h6>Climatisation</h6>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tv"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M2.5 13.5A.5.5 0 0 1 3 13h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5M13.991 3l.024.001a1.5 1.5 0 0 1 .538.143.76.76 0 0 1 .302.254c.067.1.145.277.145.602v5.991l-.001.024a1.5 1.5 0 0 1-.143.538.76.76 0 0 1-.254.302c-.1.067-.277.145-.602.145H2.009l-.024-.001a1.5 1.5 0 0 1-.538-.143.76.76 0 0 1-.302-.254C1.078 10.502 1 10.325 1 10V4.009l.001-.024a1.5 1.5 0 0 1 .143-.538.76.76 0 0 1 .254-.302C1.498 3.078 1.675 3 2 3zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2" />
+                </svg>
+                <h6>Téléviseur de 55 pouces</h6>
             </div>
             <div class="amenities-boites">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wifi"
@@ -85,21 +111,17 @@
             <li>Fer et planche à repasser</li>
             <li>Téléphone dans la chambre</li>
             <li>Sèche-cheveux</li>
-            <li>1 lit king-size et 1 lit superposé triple</li>
-            <li>Baignoire</li>
+            <li>1 Lit King</li>
             <li>Télévision de 50 pouces</li>
             <li>Climatisation</li>
             <li>Coffre-fort électronique dans la chambre</li>
             <li>Minibar (eau, boissons non alcoolisées, bière) Approvisionnement quotidien</li>
             <li>Cafetière</li>
-            <li>Salle de bains avec douche</li>
+            <li>Salle de bains avec douche et baignoire</li>
             <li>Balcon / Terrasse</li>
-            <li>Piscine pour enfants avec toboggans</li>
         </ul>
     </div>
-
     <script src="./script/scriptChangement.js"></script>
-
 </body>
 
 </html>
