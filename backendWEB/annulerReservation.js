@@ -1,7 +1,7 @@
 $(document).ready(function () {
     document.getElementById("form_modifier").addEventListener("submit", function(event) {
+        console.log('formulaire soumis!');
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
-
 
         let id_reservation = document.getElementById("id_reservation").value;
         console.log(id_reservation);
