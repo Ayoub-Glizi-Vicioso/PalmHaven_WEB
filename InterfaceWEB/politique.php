@@ -1,3 +1,15 @@
+<?php
+session_start(); // Démarre la session
+
+// Vérifie si l'utilisateur est connecté
+if(isset($_SESSION['email'])) {
+    // Utilisateur connecté : inclure la barre de navigation pour les utilisateurs connectés
+    include 'nav_connected.php';
+} else {
+    // Utilisateur non connecté : inclure la barre de navigation pour les utilisateurs non connectés
+    include 'nav_not_connected.php';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -162,17 +174,11 @@
     </style>
   </head>
   <body>
-    <nav>
-      <div class="nav_logo">
-        <img src="./images/PalmHaven_Logo.webp" alt="Logo PalmHaven" />
-      </div>
-      <ul class="nav__links">
-        <li class="link"><a href="#" disabled>Accueil</a></li>
-        <li class="link"><a href="Aide.html">Aide</a></li>
-        <li class="link"><a href="connexionfront.php">Connexion</a></li>
-        <li class="link"><a href="inscriptionfront.php">S'inscire</a></li>
-      </ul>
-    </nav>
+   
+
+
+
+    
     <br>
     <br>
     <hr class="barre-horizontale">
