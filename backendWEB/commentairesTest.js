@@ -5,11 +5,12 @@ $(document).ready(function(){
 
     requestGet.onreadystatechange = function (){
         if (requestGet.readyState === 4 && requestGet.status === 200){
-
+            //a enlever apres 
+            console.log(requestGet.responseText);
             // Traitement de la réponse reçue du serveur
             const commentaires = JSON.parse(requestGet.responseText);
 
-            if(commentaires.length == 0){
+            if(commentaires.length==0){
                 $('<h1>Aucun commentaire.</h1>').appendTo('.conteneur-boites-temoignages');
             }
             else{
