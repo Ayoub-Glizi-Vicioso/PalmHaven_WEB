@@ -61,6 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         // Afficher le tableau encodé en JSON
                         echo json_encode($chambres);
 
+        }else{
+            
         }
         
                     
