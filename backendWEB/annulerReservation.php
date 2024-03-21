@@ -1,47 +1,48 @@
 <?php
 session_start();
 
-if(isset($_POST['id_reservation'])){
+if(preg_match('/\/annulerReservation\.php/', $_SERVER['REQUEST_URI'], $matches)) {
+    if($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+        // Récupération des données de la requête DELETE
+        $donneesJSON = file_get_contents("php://input");
+        $donnees = json_decode($donneesJSON, true);
 
-    //obtenir les renseignements 
-    $identification_reservation = $_POST['id_reservation']; 
-    $email_saisie = $_POST['email'];
-    $email_session = $_SESSION['email'];
-    
+        // Vérification si les données contiennent l'ID de réservation
+        if(isset($donnees['id_reservation'])) {
+            $id_reservation = $donnees['id_reservation'];
+            $email_session = $_SESSION['email'];
 
-    //renseignement de connexion sur la base de données 
-    $serveur = "localhost"; 
-    $utilisateur = "root"; 
-    $code = ""; 
-    $baseDeDonnees = "palmhaven"; 
-    
-    // Connexion à la base de données
-    $conn = new mysqli($serveur, $utilisateur, $code, $baseDeDonnees);
-    if ($conn->connect_error) {
-        echo ('Erreur de connexion à la base de données : ' . $conn->connect_error  );
-        die();
-    }
-    // checker si le email saisie concorde avec  le email de session
-    if($email_saisie  == $email_session){
-        // Requête SQL pour supprimer la réservation
-        $sql = "DELETE FROM reservation WHERE numero_reservation = ' $identification_reservation'";
-        
-        if ($conn->query($sql) === TRUE) {
-            
-            //envoyer l'utilisateur vers cette page
-            header("Location: ../interfaceWEB/Profilmesreservtion.php?annulation_success=true");
-            exit;
+            // Connexion à la base de données
+            $serveur = "localhost"; 
+            $utilisateur = "root"; 
+            $code = ""; 
+            $baseDeDonnees = "palmhaven"; 
+            $conn = new mysqli($serveur, $utilisateur, $code, $baseDeDonnees);
+            if ($conn->connect_error) {
+                die('Erreur de connexion à la base de données : ' . $conn->connect_error);
+            }
 
+            // Requête SQL pour supprimer la réservation
+            $sql = "DELETE FROM reservation WHERE numero_reservation = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $id_reservation);
+
+            if($stmt->execute()) {
+                // Redirection vers la page de profil après l'annulation de la réservation
+                header("Location: ../interfaceWEB/Profilmesreservtion.php?annulation_success=true");
+                exit;
+            } else {
+                echo "Erreur lors de l'annulation de la réservation : " . $conn->error;
+            }
         } else {
-            echo "Erreur lors de l'annulation de la réservation : " . $conn->error;
+            // Si l'ID de réservation n'est pas fourni dans les données DELETE
+            http_response_code(400);
+            echo json_encode(array("message" => "ID de réservation non spécifié."));
         }
-        // Fermer la connexion à la base de données
-        $conn->close();
-    }else{
-        echo "Vous essayer de supprimer une reservation qui n'est pas associé à votre compte";
+    } else {
+        // Gérer le cas où la méthode de la requête n'est pas DELETE
+        http_response_code(405);
+        echo json_encode(array("message" => "Méthode HTTP non autorisée."));
     }
-} else {
-    // Gérer le cas où l'ID de réservation n'est pas fourni
-    echo "ID de réservation non spécifié.";
 }
 ?>

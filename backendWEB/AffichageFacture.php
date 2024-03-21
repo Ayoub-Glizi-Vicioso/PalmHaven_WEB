@@ -3,8 +3,8 @@
 session_start();
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (preg_match('/\/AffichageFacture\.php/', $_SERVER['REQUEST_URI'], $matches)) {
+if (preg_match('/\/AffichageFacture\.php/', $_SERVER['REQUEST_URI'], $matches)) {
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         // Assurez-vous que le numéro de réservation est fourni et est un nombre entier
         if (isset($_SESSION['numero_reservation']) && is_numeric($_SESSION['numero_reservation'])) {
             // Récupérer le numéro de réservation et échapper les caractères spéciaux
@@ -54,21 +54,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
             } else {
                 // La préparation de la requête a échoué
-                http_response_code(500); // Internal Server Error
+                http_response_code(500); 
                 echo json_encode(['erreur' => 'Erreur lors de la préparation de la requête.', 'code' => 500]);
             }
         } else {
             // Le numéro de réservation n'est pas valide
-            http_response_code(400); // Bad Request
+            http_response_code(400); 
             echo json_encode(['erreur' => 'Numéro de réservation non valide.', 'code' => 400]);
         }
     } else {
-        // L'URL ne correspond pas au format attendu
-        http_response_code(400); // Bad Request
-        echo json_encode(['erreur' => 'URL incorrecte.', 'code' => 400]);
+        // Méthode non autorisée
+        http_response_code(405);
+        echo json_encode(['erreur' => 'Méthode non autorisée.', 'code' => 405]);
     }
 } else {
-    // Méthode non autorisée
-    http_response_code(405); // Method Not Allowed
-    echo json_encode(['erreur' => 'Méthode non autorisée.', 'code' => 405]);
+    // L'URL ne correspond pas au format attendu
+    http_response_code(400);
+    echo json_encode(['erreur' => 'URL incorrecte.', 'code' => 400]);
 }
+    

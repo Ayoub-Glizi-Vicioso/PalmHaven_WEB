@@ -11,6 +11,10 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
   
   }
 
+  if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
+    require '../backendWEB/annulerReservation.php';
+  }
+
 
 ?>
 
@@ -107,6 +111,7 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
 
 
     <script src="../backendWEB/Affichagereservation.js"></script>
+    <script src="../backendWEB/annulerReservation.js"></script>
 
 </body>
 </html>
