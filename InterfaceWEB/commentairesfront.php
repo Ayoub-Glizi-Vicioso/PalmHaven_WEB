@@ -2,7 +2,7 @@
 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'DELETE' || $_SERVER['REQUEST_METHOD'] == 'GET') {
-        require '../backendWEB/commentaire.php';
+        require '../backendWEB/commentaireTest.php';
     }
 ?>
 <!DOCTYPE html>
@@ -305,7 +305,7 @@
             
        
             
-        <form id="commentaire" action="../backendWEB/commentaire.php" method="post">
+        <form id="commentaire" action="../backendWEB/commentaireTest.php" method="post">
             <hr>
             <br>
             <div id = "etoiles">
@@ -349,10 +349,6 @@
                 <div class="entete-boite-temoignage">
                     <!-- Profil -->
                     <div class="profil">
-                        <!-- Photo de profil -->
-                        <div class="photo-profil">
-                            <img src="images/c-1.jpg" />
-                        </div>
                         <!-- Nom et pseudo -->
                         <div class="nom-utilisateur">
                             <strong>Touseeq Ijaz</strong>
@@ -384,6 +380,6 @@
         <a href="commentairesfront.php" class="footer-item">Review</a>
         <a href="politique.html" class="footer-item" target="_blank">Politique</a>
     </footer>
-<script src="../backendWEB/commentaire.js"></script>
+<script src="../backendWEB/commentaireTest.js"></script>
 </body>
 </html>
