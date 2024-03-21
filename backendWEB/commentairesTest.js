@@ -48,6 +48,12 @@ $(document).ready(function(){
                     var avis = document.createElement('div');
                     avis.classList.add('avis');
 
+                    // Ajouter le titre
+                    var titre = document.createElement('h2');
+                    titre.classList.add('titre');
+                    titre.textContent = commentaires[i]['Titre']; // Ajout du titre du commentaire
+                    avis.appendChild(titre);
+
                     // Ajouter les étoiles en fonction de la note
                     var nombreEtoiles = parseInt(commentaires[i]['Etoiles']);
                     for (let j = 0; j < nombreEtoiles; j++) {

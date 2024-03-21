@@ -387,6 +387,7 @@
                     </div>
                     <!-- Avis -->
                     <div class="avis">
+                        <h2 class ="titre">Titre</h2>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
