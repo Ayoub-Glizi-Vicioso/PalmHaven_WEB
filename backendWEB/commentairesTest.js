@@ -32,6 +32,9 @@ $(document).ready(function(){
                 // Parcourir les données des commentaires
                 for (let i = 0; i < commentaires.length; i++) {
 
+                    
+                    let emailSession = commentaires[i]['emailSession'];
+
                     // Créer une nouvelle boîte de témoignage
                     var nouvelleBoite = document.createElement('div');
                     nouvelleBoite.classList.add('boite-temoignage');
@@ -81,9 +84,26 @@ $(document).ready(function(){
                         etoileVide.classList.add('far', 'fa-star');
                         avis.appendChild(etoileVide);
                     }
+/*
+                    // Vérifier si l'utilisateur est connecté et si le commentaire lui appartient
+                    if (commentaires[i]['email'] == emailSession){
+                        */
+
+                
+
                     // Ajouter l'avis à l'en-tête
                     entete.appendChild(avis);
 
+                    /*
+                    // Vérifier si l'utilisateur est connecté et si le commentaire lui appartient
+                    if (commentaires[i]['email'] == emailSession){
+                        // Ajouter le bouton pour effacer le commentaire
+                        var boutonEffacer = document.createElement('button');
+                        boutonEffacer.textContent = 'Effacer mon commentaire';
+                        boutonEffacer.classList.add('effacer-commentaire');
+                        entete.appendChild(boutonEffacer);
+*/
+                    
                     // Ajouter l'en-tête à la boîte de témoignage
                     nouvelleBoite.appendChild(entete);
 
@@ -93,7 +113,16 @@ $(document).ready(function(){
                     var paragraphe = document.createElement('p');
                     paragraphe.textContent = commentaires[i]['Contenu'];
                     commentaireClient.appendChild(paragraphe);
+
+                    if (commentaires[i]['email'] == commentaire[i]['emailSession']){
+                    var boutonEffacer = document.createElement('button');
+                    boutonEffacer.textContent = 'Effacer mon commentaire';
+                    boutonEffacer.classList.add('effacer-commentaire');
+                    commentaireClient.appendChild(boutonEffacer);
+                    }
+
                     nouvelleBoite.appendChild(commentaireClient);
+
 
                     // Ajouter la nouvelle boîte de témoignage à la conteneur
                     document.querySelector('.conteneur-boites-temoignages').appendChild(nouvelleBoite);

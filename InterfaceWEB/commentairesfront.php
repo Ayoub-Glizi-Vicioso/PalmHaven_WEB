@@ -95,6 +95,7 @@
         }
         .boite-temoignage {
             width:500px;
+            height:250px;
             box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
             background-color: #ffffff;
             padding: 20px;
@@ -314,7 +315,6 @@
             flex-wrap: wrap; 
         }
         
->>>>>>> Stashed changes
     </style>
 </head>
 <body>
