@@ -22,6 +22,7 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
         if ($resultat->num_rows > 0) {
             $avis = [];
             while ($row = $resultat->fetch_assoc()) {
+                $row['emailSession'] = $_SESSION['email'];
                 $avis[] = $row;
             }
             echo json_encode($avis);
