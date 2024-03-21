@@ -120,6 +120,7 @@
     session_start();
         // Récupérer le numéro de réservation depuis l'URL
         $numero_reservation = $_GET['numero_reservation'];
+        echo $numero_reservation;
         $_SESSION['numero_reservation']=$numero_reservation;
         
     ?>
