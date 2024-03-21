@@ -102,7 +102,7 @@ if ($result_client->num_rows > 0) {
     $nom_fichier = 'facture_' . $_SESSION['email'] . '.pdf';
     $pdf->Output('F', $nom_fichier);
 
-    /
+    
     $stmt_client->close();
     $stmt_reservation->close();
     $conn->close();
