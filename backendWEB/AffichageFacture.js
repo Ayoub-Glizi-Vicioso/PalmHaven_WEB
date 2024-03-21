@@ -60,6 +60,7 @@ $(document).ready(function(){
                 let p = document.createElement('p');
                 p.innerHTML = factureText;
                 $('.facture_text').append(p);
+
             } catch (error) {
                 console.error("Erreur lors de l'analyse de la réponse JSON:", error);
             }
@@ -88,10 +89,12 @@ function nombreJoursEntreDeuxDates(date1, date2) {
     return differenceEnJours;
 }
 
+// Fonction pour calculer les Taxes 
 function calculerTaxe(prix) {
     return prix * 0.15;
 }
 
+// Fonction pour calculer le cout Total 
 function coutTotal(prixSansTaxe, taxe) {
     return prixSansTaxe + taxe;
 }

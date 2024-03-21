@@ -81,15 +81,15 @@ if(isset($_SESSION['email'])){
             // Fermer la connexion
             $connexion->close();
         } else {
-            http_response_code(400); // Bad Request
+            http_response_code(400); 
             echo "Des données requises sont manquantes.";
         }
 
     } else {
-        http_response_code(405); // Method Not Allowed
+        http_response_code(405); 
         echo "La méthode de requête n'est pas autorisée pour cette action.";
     }
 } else {
-http_response_code(401); // Unauthorized
+http_response_code(401); 
 echo "Vous devez être connecté pour effectuer une réservation.";
 }

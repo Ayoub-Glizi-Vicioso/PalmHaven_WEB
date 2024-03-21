@@ -27,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
             
             // Construire la requête SQL pour sélectionner les chambres disponibles entre les dates fournies
-            $requete ="SELECT img, type_chambre, numero  
+            $requete ="SELECT img, type_chambre, numero     /* selectionner les img , type_chambre, numero  */
             FROM chambre 
-            WHERE numero NOT IN (
-                SELECT DISTINCT chambre.numero
-                FROM chambre 
+            WHERE numero NOT IN (   /* sous requete: selection des numeros des chambres qui n'ont pas de reservation associé  */
+                SELECT DISTINCT chambre.numero     
+                FROM chambre      
                 INNER JOIN reservation ON chambre.numero = reservation.numero_chambre 
                 WHERE 
                 (
@@ -45,24 +45,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         )
                         )";
                         
-                        $resultat = $connexion->query($requete);
-                        
-                        $chambres = []; // Initialiser le tableau des chambres ici
-                        
-                        // Parcourir les résultats de la requête
-                        while ($messageCourant = $resultat->fetch_assoc()) {
-                            $chambres[]=$messageCourant;
-                        }
-                        
 
-                        $_SESSION['date_debut']=$dateDebut;
-                        $_SESSION['date_fin']=$dateFin;
-                        
-                        // Afficher le tableau encodé en JSON
-                        echo json_encode($chambres);
+
+            $resultat = $connexion->query($requete);
+            
+            $chambres = []; // Initialiser le tableau des chambres ici
+            
+            // Parcourir les résultats de la requête
+            while ($messageCourant = $resultat->fetch_assoc()) {
+                $chambres[]=$messageCourant;
+            }
+            
+
+            //Stocker les dates dans la variable de session 
+            $_SESSION['date_debut']=$dateDebut;
+            $_SESSION['date_fin']=$dateFin;
+            
+            // Afficher le tableau encodé en JSON
+            echo json_encode($chambres);
 
         }else{
-            
+            // L'URL ne correspond pas à ce qui est attendu
+            http_response_code(404); // Not Found
+            echo json_encode(['erreur' => 'URL non valide.', 'code' => 404]);
         }
         
                     

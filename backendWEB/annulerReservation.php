@@ -9,7 +9,7 @@ if(isset($_POST['id_reservation'])){
     $email_session = $_SESSION['email'];
     
 
-    //
+    //renseignement de connexion sur la base de données 
     $serveur = "localhost"; 
     $utilisateur = "root"; 
     $code = ""; 
@@ -21,16 +21,16 @@ if(isset($_POST['id_reservation'])){
         echo ('Erreur de connexion à la base de données : ' . $conn->connect_error  );
         die();
     }
-    
+    // checker si le email saisie concorde avec  le email de session
     if($email_saisie  == $email_session){
         // Requête SQL pour supprimer la réservation
         $sql = "DELETE FROM reservation WHERE numero_reservation = ' $identification_reservation'";
         
         if ($conn->query($sql) === TRUE) {
             
+            //envoyer l'utilisateur vers cette page
             header("Location: ../interfaceWEB/Profilmesreservtion.php?annulation_success=true");
-
-
+            exit;
 
         } else {
             echo "Erreur lors de l'annulation de la réservation : " . $conn->error;
