@@ -19,9 +19,6 @@ if(isset($_SESSION['email'])){
             $end_date = $_SESSION["date_fin"];
             
             
-            
-            
-            
             // accès à la base de données
             $serveur = "localhost"; 
             $utilisateur = "root"; 
@@ -72,6 +69,7 @@ if(isset($_SESSION['email'])){
                 if ($stmt_insert_reservation->execute()) {
                     // si l'excution se pase bien amener l'utilisateur vers le liens suivant
                     header("Location: ../interfaceWEB/chambresDetailsBungalow.php?reservation_success=true");
+                   
                     exit(); // Assurez de quitter après la redirection
                 } else {
                     echo "Erreur lors de la réservation : " . $connexion->error;

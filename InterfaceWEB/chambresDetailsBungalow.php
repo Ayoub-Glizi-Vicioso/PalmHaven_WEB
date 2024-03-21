@@ -4,8 +4,14 @@
   // Vérifier si le paramètre de suppression réussie est présent dans l'URL
   if (isset($_GET['reservation_success']) && $_GET['reservation_success'] === 'true') {
     echo "<script> alert('Réservation de la chambre réussi');</script>";
+    
+}
+if(!isset($_GET['numero'])){
 
-  }
+    $btn_reservation_visible = true; 
+
+}
+
 
 ?>
 
@@ -53,10 +59,12 @@
                             l'option la plus confortable pour vous et votre famille. Les suites en bungalows sont
                             idéales pour votre repos et votre détente, dans un environnement naturel très spécial.</p>
                          
-                            <form action="../backendWEB/_reservation.php" method="post">
-                            <input type="hidden" name="numero_chambre" value="<?php echo isset($_GET['numero_chambre']) ? $_GET['numero_chambre'] : ''; ?>">
-                                <button type="submit" id="reserver">Réserver maintenant</button>
-                            </form>
+                            <?php if ($btn_reservation_visible): ?>
+                                <form action="../backendWEB/_reservation.php" method="post">
+                                    <input type="hidden" name="numero_chambre" value="<?php echo isset($_GET['numero_chambre']) ? $_GET['numero_chambre'] : ''; ?>">
+                                    <button type="submit" id="reserver">Réserver maintenant</button>
+                                </form>
+                            <?php endif; ?>
 
             </div>
         </div>
