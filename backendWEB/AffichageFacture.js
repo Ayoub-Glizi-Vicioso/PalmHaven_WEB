@@ -45,9 +45,9 @@ $(document).ready(function(){
                                     
                 
                // Construire le contenu de la facture
-                let factureText = 'Facture pour la réservation de <span style="color:blue;"><strong>' + nomClient + '</strong></span> :<br><br>' +
+                let factureText = 'Facture pour la réservation de <span style="color:#16b0c4;"><strong>' + nomClient + '</strong></span> :<br><br>' +
                 'Numéro de réservation : ' + numeroReservation + '<br><br>' +
-                'Nom du client : ' + '<span style="color:blue;"><strong>' + nomClient + '</strong></span>' + '<br><br>' +
+                'Nom du client : ' + '<span style="color:#16b0c4;"><strong>' + nomClient + '</strong></span>' + '<br><br>' +
                 'Type de chambre : ' + typeChambre + '<br><br>' +
                 'Dates de séjour : du ' + dateDebut + ' au ' + dateFin + '<br><br>' +
                 'Prix par nuit : ' + prixParNuit + '$<br><br>' +

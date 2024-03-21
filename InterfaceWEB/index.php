@@ -626,7 +626,7 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
         .chambre a {
             display: block; /* Affichage en bloc pour occuper toute la largeur */
             text-align: center; /* Centrage du texte */
-            background-color: #007bff; /* Fond de couleur bleue */
+            background-color: #16b0c4; /* Fond de couleur bleue */
             color: white; /* Texte de couleur blanche */
             padding: 5px 10px; /* Remplissage de 5px en haut/bas et 10px à gauche/droite */
             border-radius: 5px; /* Coins arrondis de 5px */

@@ -22,7 +22,7 @@
             --text-bg-color: #f0f0f0;
             --input-bg-color: #fafafa;
             --input-border-color: #ccc;
-            --primary-color: #007bff; /* Couleur principale (bleu) */
+            --primary-color: #16b0c4; /* Couleur principale (bleu) */
         }
 
         /* Styles de base */
@@ -91,7 +91,7 @@
             border: none;
             border-radius: 5px;
             background-color: var(--primary-color);
-            color: #fff;
+            color: white;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
@@ -109,7 +109,7 @@
         font-size: 14px;
         text-align: center;
         font-style: italic;
-        color: blue;
+        color: #16b0c4;
         }
 
         
