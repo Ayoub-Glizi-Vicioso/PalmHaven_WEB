@@ -1,7 +1,8 @@
 <?php
 
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'DELETE' || $_SERVER['REQUEST_METHOD'] == 'GET') {
-        require '../backendWEB/commentaire.php';
+        require '../backendWEB/commentaireTest.php';
     }
 ?>
 <!DOCTYPE html>
@@ -11,7 +12,6 @@
     <meta name="viewport" content="width=device-width, intial-scale=1.0">
     <title>Témoignages HTML</title>
     <!-- Feuille de style -->
-    <link rel="stylesheet" href="css/style.css"/>
     <!-- Icône favorite -->
     <link rel="shortcut icon" href="images/fav-icon.png"/>
     <!-- Police Poppins -->
@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <script> </script> 
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         * {
@@ -189,8 +191,7 @@
         .link a{
             font-weight: 500;
             color: rgba(152, 150, 150, 0.932);
-            text-decoration: none;
-            transition: color 0.3s;
+            transition:  0.3;
         }
 
         .link a:hover{
@@ -200,88 +201,90 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        #commentaire {
-        display: flex;
-        flex-direction: column;
-        }
+    #commentaire {
+    display: flex;
+    flex-direction: column;
+    }
 
-        #commentaire label {
-            margin-bottom: 10px;
-            text-align: left;
-        }
+    #commentaire label {
+        margin-bottom: 10px;
+        text-align: left;
+    }
 
-        #commentaire textarea {
-            resize: vertical;
-        }
-        #commentaire label span {
-        font-size: 0.8rem;
-        color: #777;
-        margin-left: 5px;
-        }
+    #commentaire textarea {
+        resize: vertical;
+    }
+    #commentaire label span {
+    font-size: 0.8rem;
+    color: #777;
+    margin-left: 5px;
+}
 
-        #etoiles {
-            text-align: center;
-            margin-bottom: 10px;
-        }
+    #etoiles {
+        text-align: center;
+        margin-bottom: 10px;
+    }
 
-        #publier{
-            width: 150px; /* Largeur du bouton */
-            height: 50px; /* Hauteur du bouton */
-            margin-top: 20px; /* Marge en haut */
-            margin-left: 1px; /* Marge à gauche */
-            background-color: #16b0c4;
-        }
-        #publier:hover{
-            background-color: lightskyblue; /* Couleur de fond au survol */
-            color: white;
-        }
+    #publier{
+        width: 150px; /* Largeur du bouton */
+        height: 50px; /* Hauteur du bouton */
+        margin-top: 20px; /* Marge en haut */
+        margin-left: 1px; /* Marge à gauche */
+        background-color: #16b0c4;
+    }
+    #publier:hover{
+        background-color: lightskyblue; /* Couleur de fond au survol */
+        color: white;
+    }
 
-        #effacer {
-        margin-left: auto;
-        
+    #effacer {
+      margin-left: auto;
+      
 
-        }
-        #effacer:hover{
-            background-color: grey;
+    }
+    #effacer:hover{
+        background-color: grey;
 
-        }
-        footer {
-            background-color: #16b0c4;
+    }
+    footer {
+        background-color: #16b0c4;
+        color: var(--white);
+        padding: 20px 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    footer a {
             color: var(--white);
-            padding: 20px 0;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        footer a {
-                color: var(--white);
-                text-decoration: none;
-                font-weight: bold;
-                margin: 0 10px;
-        }
-        .footer-item:hover {
-                color: blue;
-        }
-        .affichage-annonce {
-            border: 1px solid black;
-            background-color: #16b0c4;
-            height: 90%; 
-            width: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            flex-wrap: wrap; 
-        }
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+    }
+    .footer-item:hover {
+            color: blue;
+    }
+    .affichage-annonce {
+        border: 1px solid black;
+        background-color: #16b0c4;
+        height: 90%; 
+        width: 100%; 
+        display: flex; 
+        flex-direction: column; 
+        flex-wrap: wrap; 
+    }
+
+
     </style>
 </head>
 <body>
 
     <nav>
         <div class="nav_logo">
-            <img src="./images/PalmHaven_Logo.webp" alt="Logo PalmHaven">
+            <img src="./images/logo.webp" alt="Logo PalmHaven">
         </div>
         <ul class ="nav__links">
-            <li class="link"><a href="pageAccueil">Accueil</a></li>
+            <li class="link"><a href="index.php">Accueil</a></li>
             <li class="link"><a href="Aide.html">Aide</a></li>
             <li class="link"><a href="connexionfront.php">Connexion</a></li>
             <li class="link"><a href="inscriptionfront.php">S'inscire</a></li>
@@ -302,7 +305,7 @@
             
        
             
-        <form id="commentaire" action="../backendWEB/commentaire.php" method="post">
+        <form id="commentaire" action="../backendWEB/commentaireTest.php" method="post">
             <hr>
             <br>
             <div id = "etoiles">
@@ -346,10 +349,6 @@
                 <div class="entete-boite-temoignage">
                     <!-- Profil -->
                     <div class="profil">
-                        <!-- Photo de profil -->
-                        <div class="photo-profil">
-                            <img src="images/c-1.jpg" />
-                        </div>
                         <!-- Nom et pseudo -->
                         <div class="nom-utilisateur">
                             <strong>Touseeq Ijaz</strong>
@@ -381,8 +380,6 @@
         <a href="commentairesfront.php" class="footer-item">Review</a>
         <a href="politique.html" class="footer-item" target="_blank">Politique</a>
     </footer>
-    
-<script src="../backendWEB/commentaire.js"></script>
+<script src="../backendWEB/commentaireTest.js"></script>
 </body>
 </html>
-<!--Jai remis en php-->

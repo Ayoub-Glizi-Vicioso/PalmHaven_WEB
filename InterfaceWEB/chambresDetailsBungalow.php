@@ -1,3 +1,15 @@
+<?php
+
+
+  // Vérifier si le paramètre de suppression réussie est présent dans l'URL
+  if (isset($_GET['reservation_success']) && $_GET['reservation_success'] === 'true') {
+    echo "<script> alert('Réservation de la chambre réussi');</script>";
+
+  }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -163,7 +175,7 @@
 
 <body>
     <div class="container-chambre">
-        <a id="btn-retour" href="index.html">
+        <a id="btn-retour" href="index.php">
             <svg id="btn-retour" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
                 <path
@@ -184,7 +196,7 @@
             <div class="room-info">
 
                 <h2>Suite Bungalow</h2>
-                <p><strong>Superficie de la chambre :</strong> 66m<sup>2</sup< /p>
+                <p><strong>Superficie de la chambre :</strong> 66m<sup>2</sup></p>
                         <p><strong>Équipements:</strong> Wi-Fi gratuit, TV à écran plat, minibar, salle de bains
                             privative</p>
                         <p><strong>Prix par nuit:</strong> $350</p>
@@ -193,7 +205,12 @@
                         <p><strong>Description:</strong> Nous mettons à votre disposition 836 suites dans des bungalows,
                             l'option la plus confortable pour vous et votre famille. Les suites en bungalows sont
                             idéales pour votre repos et votre détente, dans un environnement naturel très spécial.</p>
-                        <button id="reserver">Réserver maintenant</button>
+                         
+                            <form action="../backendWEB/_reservation.php" method="post">
+                            <input type="hidden" name="numero_chambre" value="<?php echo isset($_GET['numero_chambre']) ? $_GET['numero_chambre'] : ''; ?>">
+                                <button type="submit" id="reserver">Réserver maintenant</button>
+                            </form>
+
             </div>
         </div>
     </div>

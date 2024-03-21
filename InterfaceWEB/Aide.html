@@ -14,6 +14,7 @@
             flex-direction: row;
             justify-content: center;
             align-items: center ;
+            padding-top: 20px;
             margin-left: 20px; /* Ajouter une marge à gauche */
             margin-right: 20px; /* Ajouter une marge à droite */
         }
@@ -21,61 +22,70 @@
         .content {
             margin-left: 20px; /* Marge à gauche */
             margin-right: 20px; /* Marge à droite */
-            
         }
 
-        
-        nav {
-            max-width: var(--max-width);
-            height: 60px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: calc(100% - 40px); /* Ajuster la largeur de la barre de navigation */
+            background-color: darkgrey;
+            color: var(--white);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            background-color: white;
-            position: fixed; /* Ajouter cette ligne pour fixer le nav en haut de la page */
-            top: 0; /* Fixer le nav en haut de la page */
-            left: 0; /* Aligner le nav à gauche de la page */
-            right: 0; /* Aligner le nav à droite de la page */
-            z-index: 1000;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+        .navbar img{
+            width: 100%;
         }
 
-        
-        .nav_logo img {
-            width: 150px;
+        .navbar-brand {
+            margin-right: auto;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .navbar-brand img {
+            width: 30px;
             margin-right: 10px;
         }
 
-        .nav__links{
-            list-style: none;
+        .navbar-nav {
             display: flex;
-            align-items: center;
-            gap: 2rem;
-            text-decoration: none;
+            list-style: none;
         }
 
-        .link{
+        .nav-item {
             margin-right: 20px;
         }
-        .nav__links a{
-            font-weight: 500;
-            color: rgba(152, 150, 150, 0.932);
-            transition:  0.3;
+
+        .nav-link {
+            color: var(--white);
             text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
         }
 
-        .link a:hover{
-            color: (--primary-color);
+        .nav-link:hover {
+            color: var(--darkblue);
         }
 
         .empty-div {
             flex: 1;
             height: 75vh;
-            width: max-width;
-            background-color:white;  
-        } 
+            background-color: lightgrey; /* Couleur de fond des divs vides */
+        }
 
+    
+
+        h1, h2 {
+            color: #6d597a; /* Couleur bleue pour les titres */
+            margin: 10px;
+        }
 
         p {
             color: #6d597a;
@@ -107,7 +117,7 @@
         margin-left: 20%;
         margin-right: 20%;
         border: solid lightgray 1px;
-        padding: 1px;
+        padding: 3px;
         border-radius: 10px;
         font-style: italic;
         }
@@ -121,7 +131,7 @@
             margin-right: 10px;
             border-radius: 10px; /* Créer une bordure arrondie */;
             border: none ; /* Supprimer la bordure */
-            background-color: #16b0c4; /* Couleur de fond du bouton */
+            background-color: #6d597a; /* Couleur de fond du bouton */
             color:  white; /* Couleur du texte du bouton */
             font-weight: bold; /* Police en gras */
             cursor: pointer; /* Ajouter un curseur au survol */
@@ -132,104 +142,26 @@
             background-color: var(--lightblue); /* Couleur de fond du bouton au survol */
             color: var(--darkblue); /* Couleur du texte du bouton au survol */
         }
-
-        #aide {
-            font-size: 1.3rem;
-            color: #252525;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            letter-spacing: 1px;
-            margin: 30px 0px;
-            padding: 10px 20px; 
-
-            
-        }
-        h1 {
-            font-size: 1.3rem;
-            font-weight: 100;
-            background-color: #16b0c4;
-            color: #ffffff;
-            padding: 10px 20px;
-            text-transform: uppercase;
-            margin: 30px 0px;
-            padding: 10px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center; 
-            
-        }
-        h2 {
-            font-size: 1.6rem;
-            font-weight: 400;
-            color: #3d3d3d;
-            margin-bottom: 20px;
-        }
-        .ligne-horizontale {
-            border-top: 1px solid #ccc; /* Couleur et épaisseur de la ligne */
-            margin-top: 20px; /* Marge en haut de la ligne */
-            width: 100%;
-        }
-        footer {
-            background-color: #16b0c4;
-            color: var(--white);
-            padding: 20px 0;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        footer a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 10px;
-        }
-
-        .footer-item:hover {
-            color: blue;
-        }
-
     </style>
 </head>
 <body>
-   
-        <nav>
-            <div class="nav_logo">
-                <img src="./images/PalmHaven_Logo.webp" alt="Logo PalmHaven">
-            </div>
-            <ul class ="nav__links">
-                <li class="link"><a href="index.html">Accueil</a></li>
-                <li class="link"><a href="Aide.html">Aide</a></li>
-                <li class="link"><a href="connexionfront.php">Connexion</a></li>
-                <li class="link"><a href="inscriptionfront.php">S'inscire</a></li>
-            </ul>
-        </nav>
+    <nav class="navbar">
+        <a href="index.php" class="navbar-brand"><img src="./images/home.png" alt="Home">AIDE</a>
+    </nav>
 
     <div class="container">
-        
         <div class="empty-div"></div>
         <div class="content">
-            <div class="ligne-horizontale"></div>
-            <span id="aide">Aide</span>
-            <h1>Toujours à votre service</h1>
-            <span>Bonjour, nous sommes ravies de vous servir !</span>
-            <br>
-            <br>
-            
+            <h1>Bonjour, comment pouvons nous vous aider?</h1>
+            <p>CONCERNANT:</p>
 
             <div class="aide">
                 <span> Reservation:</span>
-                <a href="AideReservation.html"><button> > </button></a>
+                <a href="AideReservation.html"><button > > </button></a>
             </div>
             <br>
             <div class="aide">
-                <span>Fonctionnement: </span>
+                <span>Comment PALM HAVEN fonctionne: </span>
                 <a href="AideFonctionnement.html"><button> > </button></a>
             </div>
             <br>
@@ -246,18 +178,12 @@
         </div>
         <div class="empty-div"></div>
     </div>
-    <br>
-    <br>
 
 
     <footer>
-        <a href="Aide.html" class="footer-item" >Aide</a>
-        <a href="commentairesfront.php" class="footer-item">Review</a>
-        <a href="politique.html" class="footer-item" target="_blank">Politique</a>
         <p>[] est représenté au Québec par nous (Canada) Inc., une licence québécoise. [], Inc. n'est pas responsable du contenu des sites Web externes.</p>
         <p>© 2024 [], Inc. Tous droits réservés.</p>
     </footer>
-
 
 </body>
 </html>

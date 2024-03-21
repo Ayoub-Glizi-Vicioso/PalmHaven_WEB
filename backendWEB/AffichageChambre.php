@@ -29,8 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             // Construire la requête SQL pour sélectionner les chambres disponibles entre les dates fournies
             $requete ="SELECT img, type_chambre, numero  
             FROM chambre 
-            WHERE statut = 'disponible' 
-            AND numero NOT IN (
+            WHERE numero NOT IN (
                 SELECT DISTINCT chambre.numero
                 FROM chambre 
                 INNER JOIN reservation ON chambre.numero = reservation.numero_chambre 
@@ -55,8 +54,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             $chambres[]=$messageCourant;
                         }
                         
+
+                        $_SESSION['date_debut']=$dateDebut;
+                        $_SESSION['date_fin']=$dateFin;
+                        
                         // Afficher le tableau encodé en JSON
                         echo json_encode($chambres);
+
         }
         
                     

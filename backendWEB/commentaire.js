@@ -1,4 +1,34 @@
-document.addEventListener("DOMContentLoaded", function() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*document.addEventListener("DOMContentLoaded", function() {
+   console.log('helooooooooooooooooo!');
     // Appeler la fonction pour récupérer et afficher les messages lorsque le DOM est chargé
     getMessages();
 
@@ -65,3 +95,4 @@ function generateStars(stars) {
     }
     return starHtml;
 }
+*/

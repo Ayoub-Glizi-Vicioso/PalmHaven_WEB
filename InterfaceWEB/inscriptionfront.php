@@ -2,6 +2,8 @@
 <?php
 /*Cette en-tête en php permet de mettre en place la connexion à la base de données
 sans cette en-tête, il n'y pas de lien avec le formulaire d'inscription*/
+
+error_reporting(E_ALL); ini_set('display_errors', 1);
   session_start(); 
     // Supprimer toute session existante
     unset($_SESSION['email']);
@@ -224,7 +226,7 @@ h2 {
         </div>
         <br>
         <br>
-        <p>© 2024 <a href="politique.html">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
+        <p>© 2024 <a href="index.php">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
       </div>
     </div>
     <div class="container-form">

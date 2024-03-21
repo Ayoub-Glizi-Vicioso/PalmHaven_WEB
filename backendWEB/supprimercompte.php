@@ -1,62 +1,91 @@
 <?php
-header('Content-Type: application/json');
+session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    session_start();
-
-    if (!isset($_SESSION['email'])) {
-        http_response_code(401);
-        echo json_encode(array('message' => 'Vous devez être connecté pour effectuer cette action.'));
-        exit;
-    }
-
-    // Vérifier si les données sont valides
-    if (!isset($_POST['email'], $_POST['mot_de_passe'])) {
-        http_response_code(400);
-        echo json_encode(array('message' => 'Les données nécessaires ne sont pas fournies.'));
-        exit;
-    }
-
+if (isset($_SESSION['email'], $_POST['email'], $_POST['mot_de_passe'])) {
     $email_session = $_SESSION['email'];
+    $id_utilisateur = $_SESSION['id_utilisateur'];
     $email_a_supprimer = $_POST['email'];
-    $mot_de_passe = $_POST['mot_de_passe']; 
+    $motDePasse = $_POST['mot_de_passe'];
 
-    // Verifie que l'email est bien celui qu'il faut supprimer
+
+    
+    
+    // Vérifier si l'email de la session correspond à l'email à supprimer
     if ($email_session === $email_a_supprimer) {
-        $serveur = "localhost";
-        $utilisateur = "root";
-        $mot_de_passe_bdd = ""; // pour ne pas redefinir la variable avec celle du log in 
-        $baseDeDonnees = "palmhaven";
-
-        $conn = new mysqli($serveur, $utilisateur, $mot_de_passe_bdd, $baseDeDonnees);
-
+        $serveur = "localhost"; 
+        $utilisateur = "root"; 
+        $code = ""; 
+        $baseDeDonnees = "palmhaven"; 
+        
+        $conn = new mysqli($serveur, $utilisateur, $code, $baseDeDonnees);
         if ($conn->connect_error) {
-            http_response_code(500);
-            echo json_encode(array('message' => 'Erreur de connexion à la base de données.'));
-            exit;
+            echo ('Erreur de connexion à la base de données : ' . $conn->connect_error  );
+            die();
         }
-
-        // SQL pour faire la suppression
-        $sql = "DELETE FROM utilisateurs WHERE email = ? AND mot_de_passe = ?";
+        
+        // Requête SQL pour récupérer le mot de passe haché de l'utilisateur
+        $sql = "SELECT mot_de_passe FROM utilisateurs WHERE email = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $email_a_supprimer, $mot_de_passe);
+        $stmt->bind_param("s", $email_a_supprimer);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        // Vérifier si l'utilisateur existe
+        if ($result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+            $motDePasseHacheDansLaBase = $row['mot_de_passe'];
+            
+            // Vérifier si le mot de passe fourni correspond au hachage enregistré
+            if (password_verify($motDePasse, $motDePasseHacheDansLaBase)) {
+                
+                
+                // Supprimer d'abord les avis associés à l'utilisateur
+                $sql_suppression_avis = "DELETE FROM avis WHERE id_utilisateur = ?";
+                $stmt_suppression_avis = $conn->prepare($sql_suppression_avis);
+                $stmt_suppression_avis->bind_param("i", $id_utilisateur);
+                $stmt_suppression_avis->execute();
+                $stmt_suppression_avis->close();
+                
+                
+                // Supprimer les réservations de l'utilisateur
+                $requeteSuppressionReservations = "DELETE FROM reservation WHERE id_utilisateur = ?";
+                $stmt = $conn->prepare($requeteSuppressionReservations);
+                $stmt->bind_param("i", $id_utilisateur);
+                $stmt->execute();
+                $stmt->close();
+                
+                
+                // Ensuite, supprimer l'utilisateur
+                $sql_suppression_utilisateur = "DELETE FROM utilisateurs WHERE id_utilisateur = ?";
+                $stmt_suppression_utilisateur = $conn->prepare($sql_suppression_utilisateur);
+                $stmt_suppression_utilisateur->bind_param("i", $id_utilisateur);
+                
+              
+                if ($stmt_suppression_utilisateur->execute()) {
+                    // Détruisez toutes les variables de session
+                    session_unset();
+                    header('Location: ../interfaceWEB/index.php?delete_success=true');
+                } else {
+                    echo ("Erreur lors de la suppression de l\'utilisateur : " . $stmt_suppression_utilisateur->error );
+                }
+                $stmt_suppression_utilisateur->close();
 
-        if ($stmt->execute()) {
-            http_response_code(200);
-            echo json_encode(array('message' => 'L\'utilisateur a été supprimé avec succès.'));
+                
+            } else {
+                echo ( 'Le mot de passe fourni est incorrect.');
+            }
         } else {
-            http_response_code(500);
-            echo json_encode(array('message' => 'Erreur lors de la suppression de l\'utilisateur.'));
+            echo ("Erreur : L\'utilisateur n\'existe pas.");
         }
 
+        // Fermer les déclarations et la connexion à la base de données
         $stmt->close();
+        $stmt_suppression->close();
         $conn->close();
     } else {
-        http_response_code(403);
-        echo json_encode(array('message' => 'Les informations d\'identification ne correspondent pas à l\'utilisateur connecté.'));
+        echo ('Erreur : Les informations d\'identification ne correspondent pas à l\'utilisateur connecté.');
     }
 } else {
-    http_response_code(405);
-    echo json_encode(array('message' => 'Méthode non autorisée.'));
+    echo ('Erreur : L\'utilisateur n\'est pas connecté ou les données nécessaires ne sont pas fournies.');
 }
 ?>

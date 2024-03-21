@@ -10,6 +10,14 @@ session_start();
         // Inclure le fichier de connexion
         require '../backendWEB/connexion.php';
     }
+
+    // Vérifier si le paramètre de suppression réussie est présent dans l'URL
+if (isset($_GET['inscrip_success']) && $_GET['inscrip_success'] === 'true') {
+  echo "<script> alert('Création de compte réussie!');</script>";
+
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -198,7 +206,7 @@ session_start();
             <br>
             <br>
             <br>
-            <p>© 2024 <a href="index.html">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
+            <p>© 2024 <a href="index.php">[HOTEL RESERVATION]</a>, Inc. Tous droits réservés.</p>
           </div>
         </div>
       </div>
