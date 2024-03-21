@@ -22,7 +22,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
 
 // Vérifier si le paramètre de connexion réussie est présent dans l'URL
 if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
-    echo "<script>alert('Bienvenu!');</script>";
+    echo "<script>alert('Bienvenue!');</script>";
 }
 
 
@@ -58,10 +58,15 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
 
             .booking__container,
             .search-form {
+                /* display: grid;
+                grid-template-columns: 1fr;
+                justify-items: center; 
+                width: 70%;  */
                 display: grid; /* Utiliser CSS Grid */
                 grid-template-columns: 1fr; /* Une seule colonne */
                 justify-items: center; /* Centrer horizontalement */
                 width: 70%; /* Exemple de modification de la largeur */
+                
             }
 
             .annonce,
@@ -91,6 +96,12 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
             .search-form label {
                 font-size: smaller; /* Réduire la taille de la police */
                 margin-bottom: 5px; /* Ajouter de l'espace en bas des étiquettes */
+            }
+
+            @media screen and (max-width: 600px) {
+            .search-form {
+                width: 90%; /* Exemple de modification de la largeur pour les écrans plus petits */
+            }
             }
         }
 
@@ -125,74 +136,20 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
             
         }
 
-        /* .navbar {
-            position: sticky;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #16b0c4;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            z-index: 9999;
-        }
-
-        .navbar img{
-            width: 100%;
-        }
-
-        .navbar-brand {
-            margin-right: auto;
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .navbar-brand img {
-            width: 30px;
-            margin-right: 10px;
-        }
-
-        .navbar-nav {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-item {
-            margin-right: 20px;
-        }
-
-        .nav-link {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .nav-link:hover {
-            color: var(--darkblue);
-        } */
-
         nav {
-            max-width: var(--max-width);
-            height: 2%;
-            margin:auto;
-            padding: 2rem 1rem;
+            position: sticky; /* Rendre le navbar sticky */
+            top: 0; /* Fixer le navbar en haut de la page */
+            z-index: 1000; /* Assurer que le navbar reste au-dessus du contenu */
+            background-color: white;
+            padding: 1rem 1rem; /* Ajouter un padding au navbar */
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: white;
+            height: 115px;
+            margin-top: 0px;
         }
 
-        /* .nav__logo{
-            font-size: 1.5rem;
-            font-weight: 60;
-            color: var(--text-dark);
-
-        } */
+        
         .nav_logo img {
             width: 150px;
             margin-right: 10px;
@@ -251,9 +208,14 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
         }
 
         .card-title {
-            color: var(--blue);
+            /* color: var(--blue);
             font-size: 24px;
+            margin-bottom: 10px; */
+            font-size: 1.3rem;
+            color: #16b0c4;
             margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .card-content {
@@ -296,7 +258,7 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
         }
 
         .search-form {
-            max-width: 90%;
+            /* max-width: 90%;
             margin: 0 auto;
             padding: 30px;
             background-color: white;
@@ -305,7 +267,11 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: center; 
+            justify-content: center;  */
+            display: flex; /* Utiliser Flexbox */
+            flex-direction: column; /* Empiler les éléments verticalement */
+            align-items: center; /* Centrer horizontalement */
+            width: 70%; /* Exemple de modification de la largeur */
         }
 
 
@@ -426,6 +392,15 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
          /* Ajoutez de la marge à gauche */
          /* Ajoutez de la marge à droite */
         }
+
+        u {
+            font-size: 1.7rem;
+            color: #16b0c4;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
 
         .img-chambre {
             max-width: 100%; /* Make sure the image doesn't overflow */
@@ -711,7 +686,7 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
         <ul class="cards">
             <li class="card">
                 <div>
-                    <h2 class="card-title">Bienvenue sur le site de<strong><em><u> PALM HAVEN</u></em></strong></h2>
+                    <h2 class="card-title">Bienvenue sur le site de <strong><em><u>PALM HAVEN</u></em></strong></h2>
                     <div class="card-content">
                         <p>Bienvenue sur notre site de réservation d'hôtels !
                             Nous sommes ravis de vous accueillir dans notre univers 
