@@ -173,6 +173,7 @@ if (isset($_GET['inscrip_success']) && $_GET['inscrip_success'] === 'true') {
     </style>
 </head>
 <body>
+  
 
     <div class="container">
         <div class="container-form">
