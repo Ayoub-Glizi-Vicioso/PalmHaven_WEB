@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url(./images/photoInscription.png) no-repeat center/cover;
+            font-size: 14px;
+        }
+
+        .container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 65%;
+            height: 75%;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            border-radius: 5%;
+        }
+
+        .container-form {
+            width: 50%;
+            text-align: center;
+        }
+
+        .form-inscription {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.5s ease-in;
+        }
+
+        .form-inscription form {
+            margin: 0 30px;
+        }
+
+        .form-inscription input {
+            margin: 10px 0;
+            border: none;
+            padding: 15px;
+            background-color: #efefef;
+            border-radius: 5px;
+            letter-spacing: .1rem;
+        }
+
+        .form-inscription button {
+            border: none;
+            padding: 20px;
+            margin-top: 5px;
+            background-color: #16b0c4;
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-size: larger;
+            letter-spacing: .2rem;
+        }
+
+        .form-inscription button:hover {
+            background-color: #021b57;
+        }
+
+        .Bienvenue-container {
+            width: 50%;
+            text-align: center;
+            background-color: rgb(242, 238, 238);
+        }
+
+        .text {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.5s ease-in;
+        }
+
+        .Bienvenue {
+            margin: 0 30px;
+        }
+
+        .Bienvenue button {
+            border: none;
+            padding: 15px 30px;
+            background-color: #16b0c4;
+            border-radius: 50px;
+            color: #fff;
+            margin: 10px 0;
+            cursor: pointer;
+            letter-spacing: .2rem;
+        }
+
+        .Bienvenue button:focus,
+        .Bienvenue button:hover {
+            background-color: #021b57;
+        }
+
+        /* Ajout de l'effet de saut de ligne pour chaque élément du formulaire */
+        .form-inscription input,
+        .form-inscription button {
+            display: block;
+            width: 100%;
+            font-family: "Montserrat";
+        }
+        #btn-connection{
+        margin-top: 20px;
+            background-color: #16b0c4;
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-family: "Montserrat";
+            letter-spacing: .2rem;
+        }
+        #btn-connection:hover{
+        background-color: #021b57;
+        }
+        p{
+            font-family: "Montserrat";
+            line-height: 25px;
+        }
+
+        h2 {
+        font-family: "Montserrat";
+            font-size: 30px;
+            margin-bottom: 30px;
+
+        }
+#passwordStrengthMeter {
+          height: 10px;
+          background-color: #ddd;
+          width: 0%;
+          margin-top: 5px;
+          border-radius: 3px;
+      }
+
+      #passwordStrengthMeter.weak {
+          background-color: #ff6347; /* Rouge pour un mot de passe faible */
+      }
+
+      #passwordStrengthMeter.medium {
+          background-color: #ffa500; /* Orange pour un mot de passe moyen */
+      }
+
+      #passwordStrengthMeter.strong {
+          background-color: #28a745; /* Vert pour un mot de passe fort */
+      }
+
+      .tooltip {
+          position: relative;
+          display: inline-block;
+      }
+
+      .tooltip .tooltiptext {
+          visibility: hidden;
+          width: 120px;
+          background-color: #555;
+          color: #fff;
+          border-radius: 6px;
+          padding: 5px;
+          position: absolute;
+          z-index: 1;
+          bottom: 125%;
+          left: 50%;
+          margin-left: -60px;
+          opacity: 0;
+          transition: opacity 0.3s;
+      }
+
+      .tooltip:hover .tooltiptext {
+          visibility: visible;
+          opacity: 1;
+      }
