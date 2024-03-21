@@ -1,4 +1,19 @@
 $(document).ready(function(){
+    function envoyerCommentaire(titre, contenu, etoiles) {
+        var requestPost = new XMLHttpRequest();
+
+        // Configuration de la requête POST
+        requestPost.open('POST', '../backendWEB/commentairesTest.php', true);
+        requestPost.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        // Préparation des données à envoyer
+        var donnees = 'titre=' + encodeURIComponent(titre) + '&contenu=' + encodeURIComponent(contenu) + '&etoiles=' + encodeURIComponent(etoiles);
+
+        // Envoi de la requête POST
+        requestPost.send(donnees);
+        window.location.href = "../InterfaceWEB/commentairesfront.php";
+    }
+
     var requestGet = new XMLHttpRequest();
 
     requestGet.open('GET', '../backendWEB/commentairesTest.php', true);
@@ -47,6 +62,11 @@ $(document).ready(function(){
                     // Créer l'avis de l'utilisateur
                     var avis = document.createElement('div');
                     avis.classList.add('avis');
+
+                    var titre = document.createElement('h2');
+                    titre.classList.add('titre');
+                    titre.textContent = commentaires[i]['Titre']; // Ajout du titre du commentaire
+                    avis.appendChild(titre);
 
                     // Ajouter les étoiles en fonction de la note
                     var nombreEtoiles = parseInt(commentaires[i]['Etoiles']);
