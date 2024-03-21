@@ -6,7 +6,7 @@ var change_image = document.querySelector('.changement-image');
 // Un tableau contenant les noms des fichiers images
 var images1 = ['Suite_Bungalow.png', 'bungalow2.png', 'bungalow3.png', 'bungalow4.png'];
 var images2 = ['Club_Familiale_Suite.png', 'familiale2.png'];
-var images3 = ['Lune_de_miel_Suite.png','lune2.jpeg', 'lune3.jpeg', 'lune4.jpeg', 'lune5.jpeg' ];
+var images3 = ['Lune_de_miel_Suite.png','lune2.jpeg', 'lune3.jpg', 'lune4.jpg' ];
 var i = 0;  // Image courrante
 
 // Fonction pour passer à l'image précédente
