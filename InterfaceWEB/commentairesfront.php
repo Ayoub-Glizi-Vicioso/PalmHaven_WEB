@@ -2,7 +2,7 @@
 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'DELETE' || $_SERVER['REQUEST_METHOD'] == 'GET') {
-        require '../backendWEB/commentaireTest.php';
+        require '../backendWEB/commentairesTest.php';
     }
 ?>
 <!DOCTYPE html>
@@ -19,6 +19,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script> </script> 
     
     <style>
@@ -305,7 +307,7 @@
             
        
             
-        <form id="commentaire" action="../backendWEB/commentaireTest.php" method="post">
+        <form id="commentaire" action="../backendWEB/commentairesTest.php" method="post">
             <hr>
             <br>
             <div id = "etoiles">
@@ -380,6 +382,6 @@
         <a href="commentairesfront.php" class="footer-item">Review</a>
         <a href="politique.html" class="footer-item" target="_blank">Politique</a>
     </footer>
-<script src="../backendWEB/commentaireTest.js"></script>
+<script src="../backendWEB/commentairesTest.js"></script>
 </body>
 </html>
