@@ -1,9 +1,17 @@
 <?php
 
+    session_start();
+    // Vérifie si l'utilisateur est connecté
+    if(isset($_SESSION['email'])) {
+        // Utilisateur connecté : inclure la barre de navigation pour les utilisateurs connectés
+        include 'nav_connected.php';
+    }
+
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'DELETE' || $_SERVER['REQUEST_METHOD'] == 'GET') {
         require '../backendWEB/commentairesTest.php';
     }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +40,7 @@
             font-family: "Montserrat";
             box-sizing: border-box;
         }
-        
+
         a {
             text-decoration: none;
         }
@@ -283,17 +291,6 @@
 </head>
 <body>
 
-    <nav>
-        <div class="nav_logo">
-            <img src="./images/logo.webp" alt="Logo PalmHaven">
-        </div>
-        <ul class ="nav__links">
-            <li class="link"><a href="index.php">Accueil</a></li>
-            <li class="link"><a href="Aide.html">Aide</a></li>
-            <li class="link"><a href="connexionfront.php">Connexion</a></li>
-            <li class="link"><a href="inscriptionfront.php">S'inscire</a></li>
-        </ul>
-    </nav>
 
     <!-- Témoignages -->
     <section id="temoignages">
