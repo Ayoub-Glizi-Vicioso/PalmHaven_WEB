@@ -64,22 +64,24 @@ if (isset($_GET['annulation_success']) && $_GET['annulation_success'] === 'true'
             padding: 20px;
             border-radius: 5%;
         }
-        #Barre_nav button {
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    background-color: #16b0c4;
-    border-radius: 12px;
-    color: #fff;
-    cursor: pointer;
-    font-size: larger;
-    letter-spacing: .2rem;
-}
 
-#Barre_nav button:hover {
-    background-color: #021b57;
-}
-input{
+        #Barre_nav button {
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #16b0c4;
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-size: larger;
+            letter-spacing: .2rem;
+        }
+
+        #Barre_nav button:hover {
+            background-color: #021b57;
+        }
+
+        input{
             border: none;
             padding: 10px;
             width: 100%;
@@ -158,60 +160,60 @@ input{
             color: #16b0c4;
         }
 
-    form button{
-        background-color: lightgrey;
-        color:#16b0c4;
-        font-size: 13px;
-        font-family: "Montserrat";
-        line-height: 20px;
-        margin-bottom: 5px;
-        font-weight: bolder;
+        form button{
+            background-color: lightgrey;
+            color:#16b0c4;
+            font-size: 13px;
+            font-family: "Montserrat";
+            line-height: 20px;
+            margin-bottom: 5px;
+            font-weight: bolder;
 
-    }
+        }
 
-    form button:hover{
-        color: white;
-        background-color: lightgray;
-        
-    }
+        form button:hover{
+            color: white;
+            background-color: lightgray;
+            
+        }
 
-    #debut , #fin {
-        color: white;
-        font-size: 10px;
-    }
-
-/* Styles pour la fenêtre modale */
-.annulation , .modification{
-    display: none; /* Par défaut, la fenêtre modale est cachée */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-    overflow: auto;
-}
-
-.annulation-content, .modification-content {
-    background-color: white;
-    margin: 2% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
-    text-align: center;
-}
+        #debut , #fin {
+            color: white;
+            font-size: 10px;
+        }
 
 
-.input{
-    width: 15%;
-}
+        .annulation , .modification{
+            display: none; /* Par défaut, la fenêtre  est cachée */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); 
+            overflow: auto;
+        }
 
-#id_reservation , #email , #Ddebut , #Dfin{
-    background-color: white;
-    border: 1px solid lightgray;
-    color: black;
-}
+        .annulation-content, .modification-content {
+            background-color: white;
+            margin: 2% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            text-align: center;
+        }
+
+
+        .input{
+            width: 15%;
+        }
+
+        #id_reservation , #email , #Ddebut , #Dfin{
+            background-color: white;
+            border: 1px solid lightgray;
+            color: black;
+        }
 
 
     </style>

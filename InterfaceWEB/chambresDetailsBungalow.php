@@ -75,7 +75,7 @@
         display: flex; /* Utilise flexbox pour aligner et centrer l'image */
         justify-content: center; /* Centre l'image horizontalement */
         align-items: center; /* Centre l'image verticalement */
-}
+        }
 
     .container-image img {/* Assure que l'image occupe toute la hauteur du conteneur */
         object-fit: cover; 

@@ -22,6 +22,7 @@
     <script> </script> 
     
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         * {
             margin: 0px;
@@ -201,78 +202,78 @@
             text-align: center;
             margin-bottom: 30px;
         }
-    #commentaire {
-    display: flex;
-    flex-direction: column;
-    }
+        #commentaire {
+        display: flex;
+        flex-direction: column;
+        }
 
-    #commentaire label {
-        margin-bottom: 10px;
-        text-align: left;
-    }
+        #commentaire label {
+            margin-bottom: 10px;
+            text-align: left;
+        }
 
-    #commentaire textarea {
-        resize: vertical;
-    }
-    #commentaire label span {
-    font-size: 0.8rem;
-    color: #777;
-    margin-left: 5px;
-}
+        #commentaire textarea {
+            resize: vertical;
+        }
+        #commentaire label span {
+        font-size: 0.8rem;
+        color: #777;
+        margin-left: 5px;
+        }
 
-    #etoiles {
-        text-align: center;
-        margin-bottom: 10px;
-    }
+        #etoiles {
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
-    #publier{
-        width: 150px; /* Largeur du bouton */
-        height: 50px; /* Hauteur du bouton */
-        margin-top: 20px; /* Marge en haut */
-        margin-left: 1px; /* Marge à gauche */
-        background-color: #16b0c4;
-    }
-    #publier:hover{
-        background-color: lightskyblue; /* Couleur de fond au survol */
-        color: white;
-    }
+        #publier{
+            width: 150px; /* Largeur du bouton */
+            height: 50px; /* Hauteur du bouton */
+            margin-top: 20px; /* Marge en haut */
+            margin-left: 1px; /* Marge à gauche */
+            background-color: #16b0c4;
+        }
+        #publier:hover{
+            background-color: lightskyblue; /* Couleur de fond au survol */
+            color: white;
+        }
 
-    #effacer {
-      margin-left: auto;
-      
+        #effacer {
+        margin-left: auto;
+        
 
-    }
-    #effacer:hover{
-        background-color: grey;
+        }
+        #effacer:hover{
+            background-color: grey;
 
-    }
-    footer {
-        background-color: #16b0c4;
-        color: var(--white);
-        padding: 20px 0;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-    footer a {
+        }
+        footer {
+            background-color: #16b0c4;
             color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 10px;
-    }
-    .footer-item:hover {
-            color: blue;
-    }
-    .affichage-annonce {
-        border: 1px solid black;
-        background-color: #16b0c4;
-        height: 90%; 
-        width: 100%; 
-        display: flex; 
-        flex-direction: column; 
-        flex-wrap: wrap; 
-    }
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer a {
+                color: var(--white);
+                text-decoration: none;
+                font-weight: bold;
+                margin: 0 10px;
+        }
+        .footer-item:hover {
+                color: blue;
+        }
+        .affichage-annonce {
+            border: 1px solid black;
+            background-color: #16b0c4;
+            height: 90%; 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            flex-wrap: wrap; 
+        }
 
 
     </style>

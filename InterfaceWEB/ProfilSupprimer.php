@@ -54,21 +54,22 @@
             padding: 20px;
             border-radius: 5%;
         }
-        #Barre_nav button {
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    background-color: #16b0c4;
-    border-radius: 12px;
-    color: #fff;
-    cursor: pointer;
-    font-size: larger;
-    letter-spacing: .2rem;
-}
 
-#Barre_nav button:hover {
-    background-color: #021b57;
-}
+        #Barre_nav button {
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #16b0c4;
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-size: larger;
+            letter-spacing: .2rem;
+        }
+
+        #Barre_nav button:hover {
+            background-color: #021b57;
+        }
 
 
 
