@@ -37,6 +37,9 @@ body, html {
     height: 20px;
     color: white;
 }
+.navbar svg:hover{
+    color:#0a3e45;
+}
 
 .navbar-brand {
     margin-right: auto;

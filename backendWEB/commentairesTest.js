@@ -1,8 +1,10 @@
 $(document).ready(function () {
+    
+    // Fonction pour envoyer un commentaire à la base de données
     function envoyerCommentaire(titre, contenu, etoiles) {
         var requestPost = new XMLHttpRequest();
 
-        // Configuration de la requête POST
+        // Configuration de la requête POST vers le fichier PHP
         requestPost.open('POST', '../backendWEB/commentairesTest.php', true);
         requestPost.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
@@ -14,17 +16,20 @@ $(document).ready(function () {
         window.location.href = "../InterfaceWEB/commentairesfront.php";
     }
 
+    // Création d'une nouvelle requête XMLHttpRequest pour récupérer les commentaires existants
     var requestGet = new XMLHttpRequest();
 
+    // Configuration de la requête GET vers le fichier PHP
     requestGet.open('GET', '../backendWEB/commentairesTest.php', true);
 
     requestGet.onreadystatechange = function () {
         if (requestGet.readyState === 4 && requestGet.status === 200) {
-            //a enlever apres 
+            //TEST! : On peut enlever. 
             console.log(requestGet.responseText);
             // Traitement de la réponse reçue du serveur
             const commentaires = JSON.parse(requestGet.responseText);
 
+            // Vérification s'il y a des commentaires à afficher
             if (commentaires.length == 0) {
                 $('<h1>Aucun commentaire.</h1>').appendTo('.conteneur-boites-temoignages');
             }
@@ -32,10 +37,7 @@ $(document).ready(function () {
                 // Parcourir les données des commentaires
                 for (let i = 0; i < commentaires.length; i++) {
 
-
-                    let emailSession = commentaires[i]['emailSession'];
-
-                    // Créer une nouvelle boîte de témoignage
+                    // Créer une nouvelle boîte de témoignage pour chaque commentaire
                     var nouvelleBoite = document.createElement('div');
                     nouvelleBoite.classList.add('boite-temoignage');
 
@@ -53,7 +55,7 @@ $(document).ready(function () {
                     var profil = document.createElement('div');
                     profil.classList.add('profil');
 
-                    // Ajouter le nom et pseudo de l'utilisateur
+                    // Ajouter le prénom de l'utilisateur
                     var nomUtilisateur = document.createElement('div');
                     nomUtilisateur.classList.add('nom-utilisateur');
                     nomUtilisateur.innerHTML = '<strong>' + commentaires[i]['nom_utilisateur'] + '</strong>';
@@ -84,25 +86,9 @@ $(document).ready(function () {
                         etoileVide.classList.add('far', 'fa-star');
                         avis.appendChild(etoileVide);
                     }
-                    /*
-                                        // Vérifier si l'utilisateur est connecté et si le commentaire lui appartient
-                                        if (commentaires[i]['email'] == emailSession){
-                                            */
-
-
-
+             
                     // Ajouter l'avis à l'en-tête
                     entete.appendChild(avis);
-
-                    /*
-                    // Vérifier si l'utilisateur est connecté et si le commentaire lui appartient
-                    if (commentaires[i]['email'] == emailSession){
-                        // Ajouter le bouton pour effacer le commentaire
-                        var boutonEffacer = document.createElement('button');
-                        boutonEffacer.textContent = 'Effacer mon commentaire';
-                        boutonEffacer.classList.add('effacer-commentaire');
-                        entete.appendChild(boutonEffacer);
-*/
 
                     // Ajouter l'en-tête à la boîte de témoignage
                     nouvelleBoite.appendChild(entete);
@@ -114,17 +100,18 @@ $(document).ready(function () {
                     paragraphe.textContent = commentaires[i]['Contenu'];
                     commentaireClient.appendChild(paragraphe);
 
+                    // Vérification si le commentaire appartient à l'utilisateur connecté
                     if (commentaires[i]['email'] == commentaires[i]['emailSession']) {
+                        // Création du bouton pour effacer le commentaire
                         var boutonEffacer = document.createElement('button');
                         boutonEffacer.textContent = 'Effacer mon commentaire';
                         boutonEffacer.classList.add('effacer-commentaire');
                         boutonEffacer.setAttribute('id', commentaires[i]['id_message']);
-
                         commentaireClient.appendChild(boutonEffacer);
                     }
 
+                    // Ajout de l'avis à l'en-tête
                     nouvelleBoite.appendChild(commentaireClient);
-
 
                     // Ajouter la nouvelle boîte de témoignage à la conteneur
                     document.querySelector('.conteneur-boites-temoignages').appendChild(nouvelleBoite);
@@ -132,39 +119,8 @@ $(document).ready(function () {
             }
         }
     }
-
+    // Envoi de la requête GET
     requestGet.send();
-
-    // Fonction pour envoyer une requête AJAX pour effacer un commentaire
-    function effacerCommentaire(idCommentaire) {
-        // Création de la requête XMLHttpRequest
-        var requestEffacer = new XMLHttpRequest();
-
-        // Configuration de la requête DELETE
-        requestEffacer.open('DELETE', '../backendWEB/commentairesTest.php?id=' + idCommentaire, true);
-
-        // Gestionnaire d'événement de chargement de la réponse
-        requestEffacer.onload = function () {
-            if (requestEffacer.status >= 200 && requestEffacer.status < 400) {
-                // Succès de la requête
-                console.log("Commentaire effacé avec succès.");
-                // Recharger la page pour mettre à jour les commentaires
-                window.location.reload();
-            } else {
-                // Erreur lors de la requête
-                console.error("Erreur lors de l'effacement du commentaire.");
-            }
-        };
-
-        // Gestionnaire d'événement en cas d'erreur
-        requestEffacer.onerror = function () {
-            // Erreur lors de la connexion au serveur
-            console.error("Erreur de connexion au serveur.");
-        };
-
-        // Envoi de la requête DELETE
-        requestEffacer.send();
-    }
 
     // Gestionnaire d'événement pour les boutons "Effacer mon commentaire"
     $(document).on('click', '.effacer-commentaire', function () {
@@ -185,10 +141,8 @@ $(document).ready(function () {
         // Définition de la fonction à exécuter une fois la requête terminée
         requeteDel.onreadystatechange = function () {
             alert("Commentaire supprimé avec succès. La page va être rechargée.");
-            // Recharger la page après 1 seconde (1000 millisecondes)
-            setTimeout(function() {
-                window.location.reload();
-            }, 1000);
+             // Recharge la page immédiatement
+            window.location.reload();
         }
 
         requeteDel.send(requeteJSON);

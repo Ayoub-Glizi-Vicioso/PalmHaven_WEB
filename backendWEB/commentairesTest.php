@@ -15,20 +15,26 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
         die("Connexion échouée: " . $connexion->connect_error);
     }
 
+    // Gestion des requêtes HTTP
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        // Requête pour récupérer les avis des utilisateurs depuis la base de données
         $requete = "SELECT avis.*, utilisateurs.prenom AS nom_utilisateur, utilisateurs.email AS email FROM avis JOIN utilisateurs ON avis.id_utilisateur = utilisateurs.id_utilisateur";
         $resultat = $connexion->query($requete);
 
+        // Vérifie s'il y a des résultats
         if ($resultat->num_rows > 0) {
             $avis = [];
+            // Boucle à travers les résultats et les stocke dans un tableau
             while ($row = $resultat->fetch_assoc()) {
-                $row['emailSession'] = $_SESSION['email'];
+                $row['emailSession'] = $_SESSION['email'];  // Ajoute l'e-mail de session à chaque ligne d'avis
                 $avis[] = $row;
             }
-            echo json_encode($avis);
+            echo json_encode($avis);    // Convertit le tableau en format JSON et l'affiche
         } else {
-            echo json_encode(array()); // Envoyer une réponse JSON vide
+            echo json_encode(array()); // Envoie une réponse JSON vide s'il n'y a pas d'avis
         }
+
+    // Traitement des requêtes POST pour ajouter de nouveaux avis
     } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Récupération de l'adresse e-mail depuis la session
@@ -67,10 +73,8 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
             // Fermeture du statement
             $statement_insertion->close();
 
-
             // Fermeture de la connexion
             $connexion->close();
-
 
             header("Location: ../interfaceWEB/commentairesfront.php");
             exit;
@@ -80,9 +84,12 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
 
         // Fermeture du statement
         $statement_id_utilisateur->close();
-    } // ...
+    }
+    
+    // Traitement des requêtes DELETE pour supprimer des avis
     elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-        // Récupération des données DELETE directement depuis php://input
+
+        // Récupération des données DELETE
         $donneesJSON = file_get_contents("php://input");
     
         // Décodage des données JSON
@@ -90,7 +97,6 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
     
         // Vérification si les données contiennent l'ID du commentaire à supprimer
         if (isset($donnees['id'])) {
-            // Suppression du commentaire
             $idCommentaire = $donnees['id'];
     
             // Requête SQL pour supprimer le commentaire
