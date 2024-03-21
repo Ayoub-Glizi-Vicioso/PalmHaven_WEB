@@ -44,21 +44,23 @@ $(document).ready(function(){
                 console.log(numeroReservation, nomClient, typeChambre, dateDebut, dateFin, prixParNuit, prixTotal, taxe, total);
                                     
                 
-                // Construire le contenu de la facture
-                let factureText = '<br><br><br><br>Facture pour la réservation de ' + nomClient + ' :<br><br>' +
+               // Construire le contenu de la facture
+                let factureText = 'Facture pour la réservation de <span style="color:blue;"><strong>' + nomClient + '</strong></span> :<br><br>' +
                 'Numéro de réservation : ' + numeroReservation + '<br><br>' +
-                'Nom du client : ' + nomClient + '<br><br>' +
+                'Nom du client : ' + '<span style="color:blue;"><strong>' + nomClient + '</strong></span>' + '<br><br>' +
                 'Type de chambre : ' + typeChambre + '<br><br>' +
                 'Dates de séjour : du ' + dateDebut + ' au ' + dateFin + '<br><br>' +
                 'Prix par nuit : ' + prixParNuit + '$<br><br>' +
                 'Prix total : ' + prixTotal + '$<br><br>' +
                 'Taxe : ' + taxe + '$<br><br>' +
                 'Total : ' + total + '$';
+
                 
                 // Remplir l'élément p avec le contenu de la facture
                 let p = document.createElement('p');
                 p.innerHTML = factureText;
                 $('.facture_text').append(p);
+
             } catch (error) {
                 console.error("Erreur lors de l'analyse de la réponse JSON:", error);
             }
@@ -73,20 +75,26 @@ $(document).ready(function(){
 // Fonction pour calculer le nombre de jours entre deux dates
 function nombreJoursEntreDeuxDates(date1, date2) {
     // Convertir les dates en objets Date
-    var date1Obj = new Date(date1);
-    var date2Obj = new Date(date2);
+    let date1Obj = new Date(date1);
+    let date2Obj = new Date(date2);
 
+    if(date1 = date2){
+        return 1;
+
+    }
     // Calculer la différence en jours entre les deux dates
     // ceil arrond à l'entier supérieur.
-    var differenceEnJours = Math.ceil((date2Obj - date1Obj) / (1000 * 60 * 60 * 24));
+    let differenceEnJours = Math.ceil((date2Obj - date1Obj) / (1000 * 60 * 60 * 24));
 
     return differenceEnJours;
 }
 
+// Fonction pour calculer les Taxes 
 function calculerTaxe(prix) {
     return prix * 0.15;
 }
 
+// Fonction pour calculer le cout Total 
 function coutTotal(prixSansTaxe, taxe) {
     return prixSansTaxe + taxe;
 }

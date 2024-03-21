@@ -20,6 +20,13 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
     echo "<script>alert('Votre compte a été supprimé avec succès.');</script>";
 }
 
+// Vérifier si le paramètre de connexion réussie est présent dans l'URL
+if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
+    echo "<script>alert('Bienvenu!');</script>";
+}
+
+
+
 
 ?>
 
@@ -35,56 +42,57 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
 </head>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@media only screen and (max-width: 768px) {
-    body {
-        font-size: 14px; /* Réduire la taille de la police pour les écrans plus petits */
-    }
+        
+        @media only screen and (max-width: 768px) {
+            body {
+                font-size: 14px; /* Réduire la taille de la police pour les écrans plus petits */
+            }
 
-    .container {
-        max-width: 90%; /* Réduire la largeur de la conteneur pour mieux s'adapter aux petits écrans */
-    }
+            .container {
+                max-width: 90%; /* Réduire la largeur de la conteneur pour mieux s'adapter aux petits écrans */
+            }
 
-    .nav__links {
-        flex-direction: column; /* Réorganiser les liens de navigation en colonne pour les écrans plus petits */
-    }
+            .nav__links {
+                flex-direction: column; /* Réorganiser les liens de navigation en colonne pour les écrans plus petits */
+            }
 
-    .booking__container,
-    .search-form {
-        display: grid; /* Utiliser CSS Grid */
-        grid-template-columns: 1fr; /* Une seule colonne */
-        justify-items: center; /* Centrer horizontalement */
-        width: 70%; /* Exemple de modification de la largeur */
-    }
+            .booking__container,
+            .search-form {
+                display: grid; /* Utiliser CSS Grid */
+                grid-template-columns: 1fr; /* Une seule colonne */
+                justify-items: center; /* Centrer horizontalement */
+                width: 70%; /* Exemple de modification de la largeur */
+            }
 
-    .annonce,
-    .chambre {
-        display: flex;
-        flex-direction: column; /* Modification de la direction des éléments pour être verticale */
-    }
+            .annonce,
+            .chambre {
+                display: flex;
+                flex-direction: column; /* Modification de la direction des éléments pour être verticale */
+            }
 
-    .form__group {
-        margin-bottom: 10px; /* Ajouter de l'espace entre les groupes de champs */
-    }
+            .form__group {
+                margin-bottom: 10px; /* Ajouter de l'espace entre les groupes de champs */
+            }
 
-    .input__group {
-        display: flex;
-        flex-direction: column; /* Aligner les éléments verticalement */
-        align-items: flex-start; /* Aligner les éléments à gauche */
-    }
+            .input__group {
+                display: flex;
+                flex-direction: column; /* Aligner les éléments verticalement */
+                align-items: flex-start; /* Aligner les éléments à gauche */
+            }
 
-    .search-form input[type="date"],
-    .search-form input[type="submit"] {
-        width: 100%; /* Faire en sorte que les éléments occupent toute la largeur disponible */
-        padding: 10px; /* Ajouter du remplissage pour un meilleur aspect */
-        margin-bottom: 10px; /* Ajouter de l'espace entre les champs */
-    }
+            .search-form input[type="date"],
+            .search-form input[type="submit"] {
+                width: 100%; /* Faire en sorte que les éléments occupent toute la largeur disponible */
+                padding: 10px; /* Ajouter du remplissage pour un meilleur aspect */
+                margin-bottom: 10px; /* Ajouter de l'espace entre les champs */
+            }
 
-    /* Style des étiquettes */
-    .search-form label {
-        font-size: smaller; /* Réduire la taille de la police */
-        margin-bottom: 5px; /* Ajouter de l'espace en bas des étiquettes */
-    }
-}
+            /* Style des étiquettes */
+            .search-form label {
+                font-size: smaller; /* Réduire la taille de la police */
+                margin-bottom: 5px; /* Ajouter de l'espace en bas des étiquettes */
+            }
+        }
 
 
 
@@ -399,7 +407,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
             font-style: italic;
 
         }
-        /* Custom CSS */
+        
         .card-body {
             padding: 1rem; /* Add padding to the card body */
             display: flex; /* Utiliser Flexbox pour aligner les éléments verticalement */
@@ -435,128 +443,129 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
 
         .btn-primary:hover {
             background-color: lightslategrey; 
-            border-color: lightslategrey; /* You can also change the border color on hover if needed */
+            border-color: lightslategrey; 
         }
 
 
         .header__container {
-  padding: 1rem 1rem 5rem 1rem;
-}
+             padding: 1rem 1rem 5rem 1rem;
+        }
 
-.header__image__container {
-  position: relative;
-  min-height: 500px;
-  background-image: linear-gradient(
-      to right,
-      rgba(83, 108, 123, 0.4),
-      rgba(235, 238, 245, 0.1)
-    ),
-    url("./images/hotel_profil.jpeg");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 2rem;
-}
+        .header__image__container {
+        position: relative;
+        min-height: 500px;
+        background-image: linear-gradient(
+            to right,
+            rgba(83, 108, 123, 0.4),
+            rgba(235, 238, 245, 0.1)
+            ),
+            url("./images/hotel_profil.jpeg");
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 2rem;
+        }
 
-.header__content {
-  max-width: 600px;
-  padding: 5rem 2rem;
-  
-}
-.header__content h3, .header__content h4 {
-  color: white; /* Changement de la couleur du texte en blanc */
-}
-
-.booking__container {
-  position: absolute;
-  bottom: -5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 6rem);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 3rem 2rem;
-  border-radius: 2rem;
-  background-color: rgba(255, 255, 255, 0.7);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
-}
-
-.booking__container form {
-  width: 100%;
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-.booking__container .input__group {
-  width: 100%;
-  position: relative;
-}
-
-.booking__container label {
-    position: absolute;
-    top: 0; /* Positionner le label au-dessus du champ d'entrée */
-    left: 0;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: var(--text-dark);
-    pointer-events: none;
-    transition: 0.3s;
-    transform: translateY(-100%);
-}
-
-.booking__container input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 1rem;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  border-bottom: 1px solid var(--primary-color);
-  color: var(--text-dark);
+        .header__content {
+        max-width: 600px;
+        padding: 5rem 2rem;
+        
+        }
  
-}
+        .header__content h3, .header__content h4 {
+        color: white; /* Changement de la couleur du texte en blanc */
+        }
 
-.booking__container input:focus ~ label {
-  font-size: 0.8rem;
-  top: 0;
-}
+        .booking__container {
+        position: absolute;
+        bottom: -5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 6rem);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 3rem 2rem;
+        border-radius: 2rem;
+        background-color: rgba(255, 255, 255, 0.7);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+        }
 
-.booking__container .form__group p {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--text-light);
-}
+        .booking__container form {
+        width: 100%;
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        }
 
-.booking__container .btn {
-  padding: 1rem;
-  outline: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--white);
-  background-color: var(--primary-color);
-  border-radius: 100%;
-  cursor: pointer;
-  transition: 0.3s;
-}
+        .booking__container .input__group {
+        width: 100%;
+        position: relative;
+        }
 
-.booking__container .btn:hover {
-  background-color: var(--primary-color-dark);
-}
+        .booking__container label {
+            position: absolute;
+            top: 0; /* Positionner le label au-dessus du champ d'entrée */
+            left: 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            pointer-events: none;
+            transition: 0.3s;
+            transform: translateY(-100%);
+        }
 
-#date_fin, #date_debut{
-    font-size: 0.7rem;
-    text-align: center;
+        .booking__container input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 1rem;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid var(--primary-color);
+        color: var(--text-dark);
+        
+        }
 
-}
+        .booking__container input:focus ~ label {
+        font-size: 0.8rem;
+        top: 0;
+        }
+
+        .booking__container .form__group p {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--text-light);
+        }
+
+        .booking__container .btn {
+        padding: 1rem;
+        outline: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--white);
+        background-color: var(--primary-color);
+        border-radius: 100%;
+        cursor: pointer;
+        transition: 0.3s;
+        }
+
+        .booking__container .btn:hover {
+        background-color: var(--primary-color-dark);
+        }
+
+        #date_fin, #date_debut{
+            font-size: 0.7rem;
+            text-align: center;
+
+        }
 
 
-    /* Style de la section d'affichage des annonces */
-    .affichage-annonce {
+        /* Style de la section d'affichage des annonces */
+        .affichage-annonce {
             border: 1px solid black; /* Bordure de 1px solide noire */
             background-color: lightgray; /* Fond de couleur gris clair */
             padding: 10px; /* Espacement intérieur de 10px */

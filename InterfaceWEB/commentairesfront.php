@@ -24,6 +24,7 @@
     <script> </script> 
     
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         * {
             margin: 0px;
@@ -203,49 +204,49 @@
             text-align: center;
             margin-bottom: 30px;
         }
-    #commentaire {
-    display: flex;
-    flex-direction: column;
-    }
+        #commentaire {
+        display: flex;
+        flex-direction: column;
+        }
 
-    #commentaire label {
-        margin-bottom: 10px;
-        text-align: left;
-    }
+        #commentaire label {
+            margin-bottom: 10px;
+            text-align: left;
+        }
 
-    #commentaire textarea {
-        resize: vertical;
-    }
-    #commentaire label span {
-    font-size: 0.8rem;
-    color: #777;
-    margin-left: 5px;
-}
+        #commentaire textarea {
+            resize: vertical;
+        }
+        #commentaire label span {
+        font-size: 0.8rem;
+        color: #777;
+        margin-left: 5px;
+        }
 
-    #etoiles {
-        text-align: center;
-        margin-bottom: 10px;
-    }
+        #etoiles {
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
-    #publier{
-        width: 150px; /* Largeur du bouton */
-        height: 50px; /* Hauteur du bouton */
-        margin-top: 20px; /* Marge en haut */
-        margin-left: 1px; /* Marge à gauche */
-        background-color: #16b0c4;
-    }
-    #publier:hover{
-        background-color: lightskyblue; /* Couleur de fond au survol */
-        color: white;
-    }
+        #publier{
+            width: 150px; /* Largeur du bouton */
+            height: 50px; /* Hauteur du bouton */
+            margin-top: 20px; /* Marge en haut */
+            margin-left: 1px; /* Marge à gauche */
+            background-color: #16b0c4;
+        }
+        #publier:hover{
+            background-color: lightskyblue; /* Couleur de fond au survol */
+            color: white;
+        }
 
-    #effacer {
-      margin-left: auto;
-      
+        #effacer {
+        margin-left: auto;
+        
 
-    }
-    #effacer:hover{
-        background-color: grey;
+        }
+        #effacer:hover{
+            background-color: grey;
 
     }
     footer {

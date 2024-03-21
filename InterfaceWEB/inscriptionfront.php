@@ -24,145 +24,145 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url(./images/photoInscription.png) no-repeat center/cover;
-    font-size: 14px;
-}
+        body {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url(./images/photoInscription.png) no-repeat center/cover;
+            font-size: 14px;
+        }
 
-.container {
-    background-color: #fff;
-    width: 100%;
-    max-width: 65%;
-    height: 75%;
-    position: relative;
-    overflow-x: hidden;
-    display: flex;
-    border-radius: 5%;
-}
+        .container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 65%;
+            height: 75%;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            border-radius: 5%;
+        }
 
-.container-form {
-    width: 50%;
-    text-align: center;
-}
+        .container-form {
+            width: 50%;
+            text-align: center;
+        }
 
-.form-inscription {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-    transition: all 0.5s ease-in;
-}
+        .form-inscription {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.5s ease-in;
+        }
 
-.form-inscription form {
-    margin: 0 30px;
-}
+        .form-inscription form {
+            margin: 0 30px;
+        }
 
-.form-inscription input {
-    margin: 10px 0;
-    border: none;
-    padding: 15px;
-    background-color: #efefef;
-    border-radius: 5px;
-    letter-spacing: .1rem;
-}
+        .form-inscription input {
+            margin: 10px 0;
+            border: none;
+            padding: 15px;
+            background-color: #efefef;
+            border-radius: 5px;
+            letter-spacing: .1rem;
+        }
 
-.form-inscription button {
-    border: none;
-    padding: 20px;
-    margin-top: 5px;
-    background-color: #16b0c4;
-    border-radius: 12px;
-    color: #fff;
-    cursor: pointer;
-    font-size: larger;
-    letter-spacing: .2rem;
-}
+        .form-inscription button {
+            border: none;
+            padding: 20px;
+            margin-top: 5px;
+            background-color: #16b0c4;
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-size: larger;
+            letter-spacing: .2rem;
+        }
 
-.form-inscription button:hover {
-    background-color: #021b57;
-}
+        .form-inscription button:hover {
+            background-color: #021b57;
+        }
 
-.Bienvenue-container {
-    width: 50%;
-    text-align: center;
-    background-color: rgb(242, 238, 238);
-}
+        .Bienvenue-container {
+            width: 50%;
+            text-align: center;
+            background-color: rgb(242, 238, 238);
+        }
 
-.text {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-    transition: all 0.5s ease-in;
-}
+        .text {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.5s ease-in;
+        }
 
-.Bienvenue {
-    margin: 0 30px;
-}
+        .Bienvenue {
+            margin: 0 30px;
+        }
 
-.Bienvenue button {
-    border: none;
-    padding: 15px 30px;
-    background-color: #16b0c4;
-    border-radius: 50px;
-    color: #fff;
-    margin: 10px 0;
-    cursor: pointer;
-    letter-spacing: .2rem;
-}
+        .Bienvenue button {
+            border: none;
+            padding: 15px 30px;
+            background-color: #16b0c4;
+            border-radius: 50px;
+            color: #fff;
+            margin: 10px 0;
+            cursor: pointer;
+            letter-spacing: .2rem;
+        }
 
-.Bienvenue button:focus,
-.Bienvenue button:hover {
-    background-color: #021b57;
-}
+        .Bienvenue button:focus,
+        .Bienvenue button:hover {
+            background-color: #021b57;
+        }
 
-/* Ajout de l'effet de saut de ligne pour chaque élément du formulaire */
-.form-inscription input,
-.form-inscription button {
-    display: block;
-    width: 100%;
-    font-family: "Montserrat";
-}
-#btn-connection{
-  margin-top: 20px;
-    background-color: #16b0c4;
-    border-radius: 12px;
-    color: #fff;
-    cursor: pointer;
-    font-family: "Montserrat";
-    letter-spacing: .2rem;
-}
-#btn-connection:hover{
-  background-color: #021b57;
-}
-p{
-    font-family: "Montserrat";
-    line-height: 25px;
-}
+        /* Ajout de l'effet de saut de ligne pour chaque élément du formulaire */
+        .form-inscription input,
+        .form-inscription button {
+            display: block;
+            width: 100%;
+            font-family: "Montserrat";
+        }
+        #btn-connection{
+        margin-top: 20px;
+            background-color: #16b0c4;
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-family: "Montserrat";
+            letter-spacing: .2rem;
+        }
+        #btn-connection:hover{
+        background-color: #021b57;
+        }
+        p{
+            font-family: "Montserrat";
+            line-height: 25px;
+        }
 
-h2 {
-  font-family: "Montserrat";
-    font-size: 30px;
-    margin-bottom: 30px;
+        h2 {
+        font-family: "Montserrat";
+            font-size: 30px;
+            margin-bottom: 30px;
 
-}
+        }
 #passwordStrengthMeter {
           height: 10px;
           background-color: #ddd;

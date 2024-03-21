@@ -1,5 +1,5 @@
 <?php
-// Inclure le fichier de configuration de la base de données et initialiser la session
+/*// Inclure le fichier de configuration de la base de données et initialiser la session
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'POST' ) {
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'POST' 
         echo json_encode($avis);
     } 
     // Si la méthode est POST, cela signifie qu'un nouvel avis est ajouté
-   /* elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Vérifier si l'utilisateur est connecté
         if (isset($_SESSION['id_utilisateur'])) {
             // Récupérer l'ID de l'utilisateur depuis la session
@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'POST' 
             $requete = "INSERT INTO avis ( titre, contenu, etoile, id_utilisateur) VALUES ('$titre', '$contenu', '$etoile', '$id_utilisateur')";
             $resultat = $connexion->query($requete);
             if ($resultat) {
+                
                 echo json_encode(['message' => 'Avis ajouté avec succès']);
             } else {
                 echo json_encode(['erreur' => 'Erreur lors de l\'ajout de l\'avis']);
@@ -49,5 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'POST' 
             // Si l'utilisateur n'est pas connecté, renvoyer une erreur
             echo json_encode(['erreur' => 'Vous devez être connecté pour laisser un avis']);
         }
-    }*/
+    }
 }
+*/

@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: application/json');
+/*header('Content-Type: application/json');
 
 // envoie une reponse JSON selon le code du statut
 function envoyerRep($code, $message) {
@@ -102,7 +102,7 @@ if ($result_client->num_rows > 0) {
     $nom_fichier = 'facture_' . $_SESSION['email'] . '.pdf';
     $pdf->Output('F', $nom_fichier);
 
-    /
+    
     $stmt_client->close();
     $stmt_reservation->close();
     $conn->close();
@@ -112,5 +112,5 @@ if ($result_client->num_rows > 0) {
 } else {
     envoyerRep(404, 'Aucun client trouvé.');
 }
-
+*/
 ?>

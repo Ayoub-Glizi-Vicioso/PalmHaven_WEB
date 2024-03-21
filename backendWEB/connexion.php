@@ -21,7 +21,7 @@ $requete = "SELECT * FROM utilisateurs WHERE email = '" . $_POST['email'] . "'";
 $resultat = $connexion->query($requete);
 if ($resultat->num_rows == 0) {
     // Utiliser JavaScript pour afficher une alerte
-    echo "<script>alert('Oups! Aucun compte n\'est lié à cet email ! Veuillez vous inscrire ou réessayer.')</script>";
+    echo "Oups! Aucun compte n\'est lié à cet email ! Veuillez vous inscrire ou réessayer.";
     }
 else 
 {
@@ -33,7 +33,7 @@ else
         $utilisateur_id = $resultat_id->fetch_assoc(); // Récupérer l'ID utilisateur
         $_SESSION['id_utilisateur'] = $utilisateur_id['id_utilisateur']; // Stocker l'ID utilisateur dans la session
     } else {
-        echo "<script> alert('Erreur')</script>";
+        echo 'Erreur';
     }
     // Récupérer le mot de passe de l'utilisateur
     $requete = "SELECT mot_de_passe FROM utilisateurs WHERE email = '" . $_POST['email'] . "'";
@@ -50,12 +50,11 @@ else
             
             // Indiquer que l'utilisateur est connecté en JavaScript
             
-            
-            echo "<script> alert('Connexion réussie!')</>";
-            header('Location: index.php'); 
+            echo "Connexion réussie!";
+            header('Location: index.php?conn_success=true'); 
             // Rediriger vers la page d'accueil
         } else {
-            echo "<script> alert('Mot de passe ou utilisateur invalide.')</script>";
+            echo "<script> alert('Mot de passe ou utilisateur invalide.')</scrip>";
         }
     } else {
         echo "<script> alert('Erreur lors de la récupération du mot de passe.')</script>";
