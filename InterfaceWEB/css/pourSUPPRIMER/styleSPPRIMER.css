@@ -1,0 +1,121 @@
+
+        /* importer la police */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        /* style */
+
+        /*Pour tout le document*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;    
+        }
+
+
+        body {
+            font-family: "Montserrat", sans-serif;
+         
+            font-style: normal;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url(../../images/photoInscription.png) no-repeat center/cover;
+            font-size: 14px;
+        }
+
+        .container {   /* l'espace ou va se trouver le contenu: les options de compte et leur texte associé */
+            background-color: #fff; 
+            /*taille*/
+            width: 65%;
+            max-width: 65%; /* limiter la taille */
+            height: 90%;
+
+            position: relative;
+            overflow-x: hidden; /*caché scrollbar*/
+            overflow-y: hidden;
+
+            display: flex;
+            border-radius: 5%;
+        }
+
+        #zone_text { /* zone de texte */
+            width: 55%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #Barre_nav { /* contient la barre de menu amenant l'utilisateur à différente fonctionnalité */
+            display: flex;
+            width: 40%; 
+            flex-direction: column;  /* alignement verticale */
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: rgb(242, 238, 238);
+            padding: 20px;
+            border-radius: 5%;
+        }
+
+        #Barre_nav button { /* boutton de la barre de navigaton*/
+            border: none; 
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #16b0c4; 
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-size: larger;
+            letter-spacing: .2rem;
+        }
+
+        #Barre_nav button:hover {
+            background-color: #021b57; /* changement de couleur on :hover */
+        }
+
+
+
+        button { /* button  */
+            border: none;
+            padding: 20px;
+            margin-top: 5px;
+            background-color: #16b0c4;
+            border-radius: 12px;
+            color: #fff;
+            cursor: pointer;
+            font-size: larger;
+            letter-spacing: .2rem;
+        }
+
+        button:hover {
+            background-color: #021b57; /* changement de couleur on :hover */
+        }
+
+        .text { /* style le texte  */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 13px;
+        }
+
+        p { 
+            font-family: "Montserrat";
+            line-height: 20px;
+        }
+        img{
+            height: 100px;
+            width: 100px
+        }
+
+        h2 {
+            font-family: "Montserrat";
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        div #btn_effacer_compte{ 
+            background-color: #021b57; 
+            cursor: auto;
+
+        }

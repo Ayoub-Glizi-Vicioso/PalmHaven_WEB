@@ -72,7 +72,7 @@
       .empty-div {
         flex: 1;
         height: 140vh;
-        background-image: url('./images/hotel_palm.jpeg'); /* Spécifiez le chemin de votre image */
+        background-image: url('../../images/hotel_palm.jpeg'); /* Spécifiez le chemin de votre image */
         background-size: cover; /* Ajustez la taille de l'image pour couvrir toute la zone */
         background-repeat: no-repeat; /* Empêchez l'image de se répéter */
         

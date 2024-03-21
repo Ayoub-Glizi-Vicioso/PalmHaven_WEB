@@ -335,7 +335,7 @@
         }
 
         /* #photo{
-            background-image: url(./images/hotel_profil.jpeg);
+            background-image: url(../../images/hotel_profil.jpeg);
             background-size: cover; 
             background-repeat: no-repeat; 
             height: auto;
@@ -411,7 +411,7 @@
             rgba(83, 108, 123, 0.4),
             rgba(235, 238, 245, 0.1)
             ),
-            url("./images/hotel_profil.jpeg");
+            url("../../images/hotel_profil.jpeg");
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;
