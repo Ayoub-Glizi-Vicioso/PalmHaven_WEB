@@ -10,7 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST['numero_chambre'])){
         // Vérifier si toutes les données requises sont présentes et valides
         
-        $numero_chambre = $_POST["numero_chambre"];
+
+        // recherche des données necessaire
+        $numero_chambre = $_POST["numero_chambre"]; 
         
         $start_date = $_SESSION["date_debut"];
         $end_date = $_SESSION["date_fin"];
@@ -19,7 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         
         
-        $serveur = "localhost"; // adresse du serveur MySQL
+        // accès à la base de données
+        $serveur = "localhost"; 
         $utilisateur = "root"; 
         $motDePasse = ""; 
         $baseDeDonnees = "palmhaven"; // nom de la base de données MySQL
@@ -32,17 +35,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connexion échouée: " . $connexion->connect_error);
         } 
         
-        // attribuer la reservation a l'id de l'utilisateur
+      
         $email =  $_SESSION['email'];
+      
+        //obtenir le id_utilisateur
         
-        
-        $sql_user = "SELECT id_utilisateur FROM utilisateurs WHERE email = ?";
+        $sql_user = "SELECT id_utilisateur FROM utilisateurs WHERE email = ?"; // selectionne le id_utilsateur à partir de l'email de session 
         $stmt_user = $connexion->prepare($sql_user);
         $stmt_user->bind_param("s", $email);
         $stmt_user->execute();
         $result_user = $stmt_user->get_result();
-        $row_user = $result_user->fetch_assoc();
-        $id_utilisateur = $row_user['id_utilisateur'];
+        $row_user = $result_user->fetch_assoc();        //obtenir le resultat
+        $id_utilisateur = $row_user['id_utilisateur'];  // stocker le resultat dans une variable.
         
         
         
@@ -59,13 +63,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Vous avez déjà réservé cette chambre pour cette période.";
         } else {
             // Si aucune réservation n'existe, procéder à l'insertion de la nouvelle réservation
-            // Exemple de requête d'insertion de réservation
             $sql_insert_reservation = "INSERT INTO reservation (numero_chambre, date_debut , date_fin , id_utilisateur) VALUES (?,?,?,?)";
             $stmt_insert_reservation = $connexion->prepare($sql_insert_reservation);
             $stmt_insert_reservation->bind_param("issi", $numero_chambre, $start_date, $end_date, $id_utilisateur);
             
             if ($stmt_insert_reservation->execute()) {
-                
+                // si l'excution se pase bien amener l'utilisateur vers le liens suivant
                 header("Location: ../interfaceWEB/chambresDetailsBungalow.php?reservation_success=true");
                 
             } else {

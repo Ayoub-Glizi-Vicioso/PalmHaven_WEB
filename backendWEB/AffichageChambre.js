@@ -8,12 +8,13 @@ $(document).ready(function() {
         
         // Vérifier si les champs de date sont vides
         if (!startDate || !endDate ) {
-            event.preventDefault(); // Empêcher le comportement par défaut du formulaire (rechargement de la page)
+            event.preventDefault(); // Empêcher le (rechargement de la page)
             // Afficher l'alerte si les champs de date sont vides
             alert("Saisissez une date de début et de fin");
             return; // Arrêter l'exécution de la fonction si les champs sont vides
         }
 
+        // Vérifier si le champs startDate est supérieur à EnDate
         if(startDate>endDate){
             event.preventDefault();
 
@@ -29,7 +30,7 @@ $(document).ready(function() {
         // Récupérer la date actuelle du système
         let dateActuelle = new Date();
 
-        // Comparer les dates
+        // Comparer les dates avec la date actuelle 
         if (dateActuelle > startDateObj || dateActuelle > endDateObj) {
             event.preventDefault();
 
@@ -44,7 +45,7 @@ $(document).ready(function() {
             // Création d'une nouvelle instance de XMLHttpRequest
             const requeteGet = new XMLHttpRequest();
             
-            // Configuration de la requête HTTP GET vers une URL
+            // Configuration de la requête HTTP GET 
             requeteGet.open('GET', '../backendWEB/AffichageChambre.php?start_date=' + startDate + '&end_date=' + endDate, true);
             
             // Définition de la fonction à exécuter une fois la requête terminée
@@ -70,11 +71,12 @@ $(document).ready(function() {
                         nouveauDiv.append('<div class="content"><h5 class="type">' + valeur[i]["type_chambre"] + '</h5></div>');
                         
                         
-                        // Ajouter le numéro de la chambre à l'élément div (s'il est disponible)
+                        // Ajouter le numéro de la chambre à l'élément div
                         if (valeur[i]['numero']) {
                             nouveauDiv.find('.content').append('<p>Numéro de chambre: ' + valeur[i]['numero'] + '</p>');
                         }
-                        
+
+                         // Ajouter un paragraphe selon le type  de la chambre 
                         if(valeur[i]["type_chambre"] == 'standard'){
                             nouveauDiv.find('.content').append('<p>Chambres familiales de 53 m2 conçues pour garantir aux adultes et aux enfants des vacances vraiment spéciales. Nous disposons d\'une Suite Club Familiale équipée d\'un lit double et de trois lits simples superposés, avec tous les avantages exclusifs d\'être situées dans l\'espace privé Palm Haven. *Occupation maximale : 5 personnes (3 adultes + 2 enfants ou 2 adultes + 3 enfants ou 1 adulte + 4 enfants) *Enfants 3-12 ans (tous deux inclus)</p>');
                             
@@ -89,6 +91,15 @@ $(document).ready(function() {
                             let lienOptions = $('<a href="../interfaceWEB/chambreDetailFamiliale.php?numero_chambre=' + valeur[i]['numero'] + '">Plus d\'options</a>');
                             nouveauDiv.find('.content').append(lienOptions);
                         }
+
+                        if(valeur[i]["type_chambre"] == 'lune-de-miel'){
+                            nouveauDiv.find('.content').append('<p>Si vous êtes un couple qui préfère des vacances plus paisibles et romantiques, notre Suite lune de miel offre un bain à remous et une ambiance parfaite. Profitez des services et avantages exclusifs inclus dans cette suite pour les jeunes mariés et aussi pour les couples qui souhaitent partager une expérience romantique. Adultes seulement (+18). *Occupation maximale : 2 adultes *Séjour minimum 4 nuits</p>');          
+                            
+                            let lienOptions = $('<a href="../interfaceWEB/chambreDetailsLune.php?numero_chambre=' + valeur[i]['numero'] + '">Plus d\'options</a>');
+                            nouveauDiv.find('.content').append(lienOptions);
+                        }
+
+
                         
                         
                         
