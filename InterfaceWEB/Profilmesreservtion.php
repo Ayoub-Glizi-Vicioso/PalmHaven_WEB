@@ -244,7 +244,7 @@ input{
         </div>
     </div>
 
-    <!-- Structure de la fenêtre modale -->
+    <!-- Structure de la fenêtre annulation -->
 <div id="annulation" class="annulation">
     <div class="annulation-content">
         <p>Êtes-vous sûr de vouloir annuler cette réservation ?</p>
@@ -269,14 +269,14 @@ input{
 </div>
 
 
-  <!-- Structure de la fenêtre modale -->
+  <!-- Structure de la fenêtre modification -->
   <div id="modification" class="modification">
     <div class="modification-content">
         <p>Êtes-vous sûr de vouloir modifier cette réservation ?</p>
         <p>si c'est le cas, afin de confirmer la modificationn saisissait le numero de la reservation, votre email ainsi que les modification à apporter</p>
         <p><em><u>NOTE: il est possible que votre demande de modifcation soit refusé, en raison que la chambre est réservé par un autre client pour les dates saisies</u></em></p>
         
-        <form id="form_modifier" action="" method="post">
+        <form id="form_modifier" action="../backendWEB/modificationReservation.php" method="post">
             <label for="nouv_debut"><strong>Saisissait la nouvelle date de début de reservation:</strong></label>
             <input id="Ddebut" type="date" name="nouv_debut" required>
 

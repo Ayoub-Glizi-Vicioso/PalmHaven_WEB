@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 
     // Configuration de la requête HTTP GET vers une URL
-    var requeteGet = new XMLHttpRequest();
+    let requeteGet = new XMLHttpRequest();
     requeteGet.open('GET', '../backendWEB/AffichageReservation.php', true);
             
     // Définition de la fonction à exécuter une fois la requête terminée
@@ -22,7 +22,7 @@ $(document).ready(function(){
                 $('<h2>Il n\'y a pas de réservation</h2>').appendTo('#reservationProfil');
             } else {
             // Créer un fragment de document pour stocker les nouvelles lignes de la table
-            var fragment = document.createDocumentFragment();
+            let fragment = document.createDocumentFragment();
 
             // Créer la première ligne avec les titres des colonnes
             let trHeader = document.createElement('tr');

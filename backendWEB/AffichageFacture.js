@@ -44,16 +44,17 @@ $(document).ready(function(){
                 console.log(numeroReservation, nomClient, typeChambre, dateDebut, dateFin, prixParNuit, prixTotal, taxe, total);
                                     
                 
-                // Construire le contenu de la facture
-                let factureText = '<br><br><br><br>Facture pour la réservation de ' + nomClient + ' :<br><br>' +
+               // Construire le contenu de la facture
+                let factureText = 'Facture pour la réservation de <span style="color:blue;"><strong>' + nomClient + '</strong></span> :<br><br>' +
                 'Numéro de réservation : ' + numeroReservation + '<br><br>' +
-                'Nom du client : ' + nomClient + '<br><br>' +
+                'Nom du client : ' + '<span style="color:blue;"><strong>' + nomClient + '</strong></span>' + '<br><br>' +
                 'Type de chambre : ' + typeChambre + '<br><br>' +
                 'Dates de séjour : du ' + dateDebut + ' au ' + dateFin + '<br><br>' +
                 'Prix par nuit : ' + prixParNuit + '$<br><br>' +
                 'Prix total : ' + prixTotal + '$<br><br>' +
                 'Taxe : ' + taxe + '$<br><br>' +
                 'Total : ' + total + '$';
+
                 
                 // Remplir l'élément p avec le contenu de la facture
                 let p = document.createElement('p');
@@ -73,12 +74,12 @@ $(document).ready(function(){
 // Fonction pour calculer le nombre de jours entre deux dates
 function nombreJoursEntreDeuxDates(date1, date2) {
     // Convertir les dates en objets Date
-    var date1Obj = new Date(date1);
-    var date2Obj = new Date(date2);
+    let date1Obj = new Date(date1);
+    let date2Obj = new Date(date2);
 
     // Calculer la différence en jours entre les deux dates
     // ceil arrond à l'entier supérieur.
-    var differenceEnJours = Math.ceil((date2Obj - date1Obj) / (1000 * 60 * 60 * 24));
+    let differenceEnJours = Math.ceil((date2Obj - date1Obj) / (1000 * 60 * 60 * 24));
 
     return differenceEnJours;
 }
