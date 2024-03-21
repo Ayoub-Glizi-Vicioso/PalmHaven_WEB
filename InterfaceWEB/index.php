@@ -826,7 +826,7 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
     <div class="card mb-3 " style="max-width: 100%;border-top: none;">
         <div class="row g-0">
           <div class="col-md-6">
-            <img src="./images/Lune_de_miel_Suite.png" class="img-chambre" alt="suite-bungalow">
+            <img src="./images/lunedemiel/Lune_de_miel_Suite.png" class="img-chambre" alt="suite-bungalow">
           </div>
           <div class="col-md-5">
             <div class="card-body">
