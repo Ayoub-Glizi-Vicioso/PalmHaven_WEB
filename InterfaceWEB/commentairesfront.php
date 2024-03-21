@@ -1,11 +1,16 @@
 <?php
 
     session_start();
+    
     // Vérifie si l'utilisateur est connecté
     if(isset($_SESSION['email'])) {
         // Utilisateur connecté : inclure la barre de navigation pour les utilisateurs connectés
         include 'nav_connected.php';
+    } else {
+        // Utilisateur non connecté : inclure la barre de navigation pour les utilisateurs non connectés
+        include 'nav_not_connected.php';
     }
+    
 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'DELETE' || $_SERVER['REQUEST_METHOD'] == 'GET') {
