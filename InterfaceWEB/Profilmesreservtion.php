@@ -5,6 +5,12 @@ if (isset($_GET['annulation_success']) && $_GET['annulation_success'] === 'true'
   echo "<script> alert('Annulation réussie!');</script>";
 
 }
+// Vérifier si le paramètre de suppression réussie est présent dans l'URL
+if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
+    echo "<script> alert('Modification réussie!');</script>";
+  
+  }
+
 
 ?>
 

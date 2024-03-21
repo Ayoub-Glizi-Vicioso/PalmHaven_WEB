@@ -77,6 +77,10 @@ function nombreJoursEntreDeuxDates(date1, date2) {
     let date1Obj = new Date(date1);
     let date2Obj = new Date(date2);
 
+    if(date1 = date2){
+        return 1;
+
+    }
     // Calculer la différence en jours entre les deux dates
     // ceil arrond à l'entier supérieur.
     let differenceEnJours = Math.ceil((date2Obj - date1Obj) / (1000 * 60 * 60 * 24));
