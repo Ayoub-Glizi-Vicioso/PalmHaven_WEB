@@ -5,17 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique</title>
     <style>
-        body, html {
-            font-family: Arial, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        body {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 300;
+            font-style: normal;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
         }
 
         .content {
-            flex: 3;
             padding: 20px;
-            background-color: #fff; /* Couleur de fond du contenu */
-            border: 1px solid #ccc; /* Bordure */
-            margin-left: 10px;
-            margin-right: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #969393;
         }
 
         .navbar {
@@ -23,16 +37,23 @@
             top: 0;
             left: 0;
             width: calc(100% - 40px); /* Ajuster la largeur de la barre de navigation */
-            background-color: darkgrey;
-            color: var(--white);
+            background-color:  #16b0c4;
+            color: white;
             display: flex;
             align-items: center;
             padding: 10px 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             z-index: 9999;
         }
-        .navbar img{
-            width: 100%;
+
+        .navbar svg{
+            margin:10px;
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+        .navbar svg:hover{
+            color:#0a3e45;
         }
 
         .navbar-brand {
@@ -69,7 +90,7 @@
         }
 
         h1, h2 {
-            color: #6d597a; /* Couleur bleue pour les titres */
+            color: #16b0c4; /* Couleur bleue pour les titres */
             margin: 10px;
         }
 
@@ -80,7 +101,7 @@
 
         footer {
             background-color: #f8f9fa; /* Couleur de fond du footer */
-            color: #6d597a; /* Couleur du texte du footer */
+            color: #000000; /* Couleur du texte du footer */
             padding: 10px ; /* Espacement intérieur du footer */
             text-align: center; /* Alignement centré du texte */
             width: 100%; /* Largeur pleine */
@@ -97,11 +118,16 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="index.php" class="navbar-brand"><img src="./images/home.png" alt="Home">AIDE</a>
+        <a href="Aide.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+                <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1"/>
+              </svg>
+        </a>
+        <div>AIDE</div>
     </nav>
 
     <div class="content">
-        <h2>Reservations:</h2>
+        <h2>Réservations:</h2>
 
         <p>
             Lorsque vous cliquez sur une offre que vous avez vue sur
@@ -109,7 +135,7 @@
               réservation pour finaliser votre réservation.
         </p>
         
-        <h2>Comment annuler ou changer ma reservation?</h2>
+        <h2>Comment annuler ou changer ma réservation?</h2>
 
         <p>Afin de changer ou d’annuler une réservation, 
            une réservation doit tout d’abord associé a 
@@ -141,7 +167,7 @@
             Contacter le service à la clientèle à l’adresse suivante.
         </p>
         
-        <p>………@hotmail.com</p>
+        <p><a href="mailto:votre@email.com">notre@email.com</a></p>
        
     </div>
 

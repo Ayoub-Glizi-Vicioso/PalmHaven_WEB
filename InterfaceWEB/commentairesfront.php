@@ -248,10 +248,38 @@
         #effacer:hover{
             background-color: grey;
 
-        }
-        footer {
-            background-color: #16b0c4;
+    }
+    footer {
+        background-color: #16b0c4;
+        color: var(--white);
+        padding: 20px 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    footer a {
             color: var(--white);
+<<<<<<< Updated upstream
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+    }
+    .footer-item:hover {
+            color: blue;
+    }
+    .affichage-annonce {
+        border: 1px solid black;
+        background-color: #16b0c4;
+        height: 90%; 
+        width: 100%; 
+        display: flex; 
+        flex-direction: column; 
+        flex-wrap: wrap; 
+    }
+
+
+=======
             padding: 20px 0;
             text-align: center;
             position: fixed;
@@ -276,8 +304,8 @@
             flex-direction: column; 
             flex-wrap: wrap; 
         }
-
-
+        
+>>>>>>> Stashed changes
     </style>
 </head>
 <body>
@@ -293,6 +321,7 @@
             <li class="link"><a href="inscriptionfront.php">S'inscire</a></li>
         </ul>
     </nav>
+    
 
     <!-- Témoignages -->
     <section id="temoignages">
@@ -359,6 +388,7 @@
                     </div>
                     <!-- Avis -->
                     <div class="avis">
+                        <h2 class ="titre">Titre</h2>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
