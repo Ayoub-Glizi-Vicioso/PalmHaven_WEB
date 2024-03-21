@@ -53,8 +53,7 @@
             <h2>Laissez nous un avis !</h2>
         
             
-       
-            
+    
         <form id="commentaire" action="../backendWEB/commentairesTest.php" method="post">
             <hr>
             <br>
@@ -92,33 +91,7 @@
         <!-- Conteneur des boîtes de témoignages -->
         <div class="conteneur-boites-temoignages">
             <!-- Boîte de témoignage 1 -->
-            <div class="boite-temoignage">
-                <!-- Date -->
-                <div class="date">2024-03-16 10:45:20</div>
-                <!-- En-tête -->
-                <div class="entete-boite-temoignage">
-                    <!-- Profil -->
-                    <div class="profil">
-                        <!-- Nom et pseudo -->
-                        <div class="nom-utilisateur">
-                            <strong>Touseeq Ijaz</strong>
-                        </div>
-                    </div>
-                    <!-- Avis -->
-                    <div class="avis">
-                        <h2 class ="titre">Titre</h2>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i><!-- Etoile vide -->
-                    </div>
-                </div>
-                <!-- Commentaires -->
-                <div class="commentaire-client">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, quaerat quis? Provident temporibus architecto asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam tenetur voluptates incidunt blanditiis sed atque cumque.</p>
-                </div>
-            </div>
+            
             <!-- Ajouter les autres boîtes de témoignage ici -->
         </div>
     </section>
