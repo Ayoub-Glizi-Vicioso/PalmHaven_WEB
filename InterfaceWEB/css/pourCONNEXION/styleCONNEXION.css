@@ -74,9 +74,11 @@
           color: #fff;
           cursor: pointer;
           font-family: "Montserrat";
-          font-size: larger;
+          font-size: medium;
           letter-spacing: .2rem;
         }
+
+        
         
 
         .form-connexion button:hover {
@@ -101,6 +103,8 @@
         
         .Salutation {
           margin: 0 30px;
+          overflow-y: auto; /* Ajout de la barre de défilement vertical */
+          max-height: calc(100% - 200px);
         }
         
         .Salutation button {
@@ -113,6 +117,8 @@
           cursor: pointer;
           font-family: "Montserrat";
           letter-spacing: .2rem;
+          overflow: auto;
+          max-height: 50px;
         }
         
         .Salutation button:focus,
@@ -132,10 +138,16 @@
           line-height: 25px;
         }
 
-        #connexiontxt
+        .Salutation h2{
+          display: block;
+          width: 100%;
+
+        }
+
+        #connexiontxt, .Salutation h2
         {
-          font-size: 30px;
-          letter-spacing: .3rem;
+          font-size: 25px;
+          margin-top: 0;
         }
 
   
