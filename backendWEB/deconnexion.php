@@ -9,6 +9,6 @@ session_unset();
 session_destroy();
 
 // Redirigez l'utilisateur vers la page de connexion (ou une autre page)
-header("Location: ../interfaceWEB/index.php");
+header("Location: ../interfaceWEB/index.php?decon_success=true");
 exit();
 ?>

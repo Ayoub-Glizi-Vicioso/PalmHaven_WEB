@@ -1,5 +1,5 @@
 <?php
-// Inclure le fichier de configuration de la base de données et initialiser la session
+/*// Inclure le fichier de configuration de la base de données et initialiser la session
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'POST' ) {
@@ -52,3 +52,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' || $_SERVER['REQUEST_METHOD'] == 'POST' 
         }
     }
 }
+*/

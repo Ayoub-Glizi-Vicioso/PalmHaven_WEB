@@ -20,6 +20,13 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
     echo "<script>alert('Votre compte a été supprimé avec succès.');</script>";
 }
 
+// Vérifier si le paramètre de connexion réussie est présent dans l'URL
+if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
+    echo "<script>alert('Bienvenu!');</script>";
+}
+
+
+
 
 ?>
 
