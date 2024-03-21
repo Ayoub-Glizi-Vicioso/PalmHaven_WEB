@@ -15,6 +15,7 @@ $(document).ready(function(){
             
             // Traitement de la réponse reçue du serveur
             const valeur = JSON.parse(requeteGet.responseText);
+            console.log( valeur);
             
             if (valeur.length === 0) {
                 // Si aucune réservation n'est renvoyée, afficher un message
@@ -44,7 +45,7 @@ $(document).ready(function(){
                 // Parcourir les données reçues et créer les éléments HTML correspondants
                 for (let i = 0; i < valeur.length; i++) {
                     // Créer une nouvelle ligne de table
-                    var tr = document.createElement('tr');
+                    let tr = document.createElement('tr');
                     
                     // Ajouter les cellules à la ligne de table
                     tr.innerHTML = '<td class="donnee" id="num_reserv"><a href="' + getReservationLink(valeur[i]['type_chambre'], valeur[i]['numero_reservation']) + '">' + valeur[i]['numero_reservation'] + '</a></td>' +
@@ -52,15 +53,18 @@ $(document).ready(function(){
                     '<td class="donnee" id="fin">' + valeur[i]['date_fin'] + '</td>' +
                     '<td class="donnee" id="annuler"><form><input class="btn_annuler" readonly value="Annuler"></form></td>' +
                     '<td class="donnee" id="modifier"><form><input class="btn_modifier" readonly value="Modifier"></form></td>' +
-                    '<td class="donnee" id="facture"><form><input class="btn_facture" readonly value="Facture"></form></td>';
-                    
+                    '<td class="donnee" id="facture"><form><a href="facture.php?numero_reservation=' + valeur[i]['numero_reservation'] + '" target="_blank" class="btn_facture" readonly>Facture</a></form></td>';
+
                     // Ajouter la ligne de table au fragment
                     fragment.appendChild(tr);
                     // Récupérer le bouton d'annulation dans la ligne créée
-                     var cancelBtn = tr.querySelector(".btn_annuler");
-                 
+                     let cancelBtn = tr.querySelector(".btn_annuler");
                      // Ajouter un gestionnaire d'événements au bouton d'annulation
-                     cancelBtn.addEventListener("click", openModal);
+                     cancelBtn.addEventListener("click", openAnulation);
+
+                    let modifBtn = tr.querySelector(".btn_modifier");
+
+                    modifBtn.addEventListener("click" , openModification);
                 }
             }
 
@@ -92,7 +96,7 @@ $(document).ready(function(){
 
   
       
-function openModal() {
+function openAnulation() {
     let annulation = document.getElementById("annulation");
     annulation.style.display = "block";
 
@@ -118,7 +122,29 @@ function openModal() {
     });
 }
 
-        
+function openModification() {
+    let modification = document.getElementById("modification");
+    modification.style.display = "block";
+
+    let modifButton = modification.querySelector("#modifBtn");
+
+    modifButton.addEventListener("click", function(event) {
+        modification.style.display = "none";
+    });
+
+    // Ajouter un événement de clic pour empêcher la fermeture automatique
+    modification.addEventListener("click", function(event) {
+        // Empêcher la propagation de l'événement pour éviter la fermeture automatique
+        event.stopPropagation();
+    });
+
+    // Empêcher l'action par défaut du formulaire
+    let form = modification.getElementById("form_modifier");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+    });
+}
+
 
 
 });

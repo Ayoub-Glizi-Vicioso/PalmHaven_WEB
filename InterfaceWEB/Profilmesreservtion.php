@@ -181,7 +181,7 @@ input{
     }
 
 /* Styles pour la fenêtre modale */
-.annulation {
+.annulation , .modification{
     display: none; /* Par défaut, la fenêtre modale est cachée */
     position: fixed;
     z-index: 1;
@@ -193,9 +193,9 @@ input{
     overflow: auto;
 }
 
-.annulation-content {
+.annulation-content, .modification-content {
     background-color: white;
-    margin: 5% auto;
+    margin: 2% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 60%;
@@ -207,11 +207,12 @@ input{
     width: 15%;
 }
 
-#id_reservation , #email{
+#id_reservation , #email , #Ddebut , #Dfin{
     background-color: white;
     border: 1px solid lightgray;
     color: black;
 }
+
 
     </style>
 </head>
@@ -247,11 +248,11 @@ input{
 <div id="annulation" class="annulation">
     <div class="annulation-content">
         <p>Êtes-vous sûr de vouloir annuler cette réservation ?</p>
-        <p>si c'est le cas, afin de confirmer l'annulation saisie le numero de la reservation</p>
+        <p>si c'est le cas, afin de confirmer l'annulation saisissait le numero de la reservation et votre email</p>
         
-        <form action="../backendWEB/annulerReservation.php" method="post">
+        <form id="form_annuler" action="../backendWEB/annulerReservation.php" method="post">
             <label for="id_reservation"></label>
-            <input id="id_reservation" type="number"  name="id_reservation" placeholder="saisissez le numero de la reservation"required>
+            <input id="id_reservation" type="number" name="id_reservation" placeholder="saisissez le numero de la reservation"required>
             
             <label for="email"></label>
             <input id="email" type="email"  name="email" placeholder="saisissez votre email"required>
@@ -259,9 +260,39 @@ input{
             <br>
             
             <input id="confirmBtn" type="submit" readonly value="Confirmer">
-        </form id="form_annuler">
+        </form >
         <form >
-        <input id="cancelBtn" type="cancel" readonly value="Annuler">
+        <input id="cancelBtn" type="submit" readonly value="Annuler">
+        </form>
+    </div>
+
+</div>
+
+
+  <!-- Structure de la fenêtre modale -->
+  <div id="modification" class="modification">
+    <div class="modification-content">
+        <p>Êtes-vous sûr de vouloir modifier cette réservation ?</p>
+        <p>si c'est le cas, afin de confirmer la modificationn saisissait le numero de la reservation, votre email ainsi que les modification à apporter</p>
+        <p><em><u>NOTE: il est possible que votre demande de modifcation soit refusé, en raison que la chambre est réservé par un autre client pour les dates saisies</u></em></p>
+        
+        <form id="form_modifier" action="" method="post">
+            <label for="nouv_debut"><strong>Saisissait la nouvelle date de début de reservation:</strong></label>
+            <input id="Ddebut" type="date" name="nouv_debut" required>
+
+            <label for="nouv_fin"><strong>Saisissait la nouvelle date de fin de réservation:</strong></label>
+            <input id="Dfin" type="date" name="nouv_fin" required>
+            
+            <label for="id_reservation"></label>
+            <input id="id_reservation" type="number"  name="id_reservation" placeholder="saisissez le numero de la reservation"required>
+            
+            <label for="email"></label>
+            <input id="email" type="email"  name="email" placeholder="saisissez votre email"required>
+            
+            <input id="confirmBtn" type="submit" readonly value="Confirmer">
+        </form>
+        <form >
+        <input id="modifBtn" type="submit" readonly value="Annuler">
         </form>
     </div>
 

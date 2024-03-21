@@ -18,7 +18,6 @@ if(isset($_SESSION['email'])) {
 // Vérifier si le paramètre de suppression réussie est présent dans l'URL
 if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
     echo "<script>alert('Votre compte a été supprimé avec succès.');</script>";
-    header('Location: ../interfaceWEB/index.php');
 }
 
 
