@@ -16,7 +16,7 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        $requete = "SELECT avis.*, utilisateurs.prenom AS nom_utilisateur FROM avis INNER JOIN utilisateurs ON avis.id_utilisateur = utilisateurs.id_utilisateur";
+        $requete = "SELECT avis.*, utilisateurs.prenom AS nom_utilisateur, utilisateurs.email AS email FROM avis JOIN utilisateurs ON avis.id_utilisateur = utilisateurs.id_utilisateur";
         $resultat = $connexion->query($requete);
 
         if ($resultat->num_rows > 0) {
@@ -80,7 +80,50 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
 
         // Fermeture du statement
         $statement_id_utilisateur->close();
-    } else {
+    } // ...
+    elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+        // Récupération des données DELETE directement depuis php://input
+        $donneesJSON = file_get_contents("php://input");
+        
+
+        // Décodage des données JSON
+        $donnees = json_decode($donneesJSON, true);
+    
+        // Vérification si les données contiennent l'ID du commentaire à supprimer
+        if (isset($donnees['id'])) {
+            // Connexion à la base de données et autres opérations
+    
+            // Suppression du commentaire
+            $idCommentaire = $donnees['id'];
+    
+            // Préparation de la requête de suppression
+            $requete_suppression = "DELETE FROM avis WHERE id_message = ?";
+            $statement_suppression = $connexion->prepare($requete_suppression);
+            $statement_suppression->bind_param("i", $idCommentaire);
+    
+            // Exécution de la requête de suppression
+            if ($statement_suppression->execute()) {
+                // Succès de la suppression
+                http_response_code(200);
+                echo json_encode(array("message" => "Commentaire effacé avec succès."));
+            } else {
+                // Erreur lors de la suppression
+                http_response_code(500);
+                echo json_encode(array("message" => "Erreur lors de l'effacement du commentaire."));
+            }
+
+            // Fermeture du statement
+            $statement_suppression->close();
+    
+            // Fermeture de la connexion et autres opérations de nettoyage
+        } else {
+            // Si l'ID du commentaire n'est pas fourni dans les données DELETE
+            http_response_code(400);
+            echo json_encode(array("message" => "ID du commentaire non fourni."));
+        }
+    }
+        
+    else{
         // Gestion du cas où la méthode de requête n'est ni GET ni POST
         echo "Méthode de requête non autorisée";
     }
