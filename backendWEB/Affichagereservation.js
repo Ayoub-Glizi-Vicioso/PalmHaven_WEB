@@ -58,13 +58,15 @@ $(document).ready(function(){
                     fragment.appendChild(tr);
                     // Récupérer le bouton d'annulation dans la ligne créée
                 
+
+                    //obtenir les bouttons et ajouter des ecouteurs d'événement afin d'afficher la fenètre de modification et d'annulation
                     let cancelBtn = tr.querySelector(".btn_annuler");
                 
                     cancelBtn.addEventListener("click", openAnulation);
 
-                   let modifBtn = tr.querySelector(".btn_modifier");
+                    let modifBtn = tr.querySelector(".btn_modifier");
 
-                   modifBtn.addEventListener("click" , openModification);
+                    modifBtn.addEventListener("click" , openModification);
                 }
             }
 
@@ -81,15 +83,20 @@ $(document).ready(function(){
 
     // Fonction pour obtenir le lien de réservation en fonction du type de chambre et du numéro de réservation
     function getReservationLink(typeChambre, numeroReservation) {
-        // Définissez ici la logique pour déterminer l'URL en fonction du type de chambre
-        // Par exemple, vous pouvez utiliser une instruction switch pour différents types de chambres
+    
         switch (typeChambre) {
-            case 'standard':
+            case 'standard': // cas standard 
                 return '../interfaceWEB/chambresDetailsBungalow.php?numero=' + numeroReservation;
-            case 'familiale':
-                return '../interfaceWEB/chambreDetail.php?numero=' + numeroReservation;
-            default:
-                return '#'; // URL par défaut si le type de chambre n'est pas reconnu
+                break;
+            case 'familiale': // cas familiale
+                return '../interfaceWEB/chambreDetailFamiliale.php?numero=' + numeroReservation;
+                break;
+            case 'lune-de-miel': // cas lune-de-miel
+                return '../interfaceWEB/chambreDetailsLune.php?numero=' + numeroReservation ; 
+                break;
+            default: //gestion d'erreur
+                console.log("Erreur: le type de la chambre ne correspond pas à des valeur attendu")
+            
         }
     }
 
@@ -97,13 +104,15 @@ $(document).ready(function(){
   
       
     function openAnulation() {
+        // afficher la fenêtre d'annulation
         let annulation = document.getElementById("annulation");
         annulation.style.display = "block";
     
        
+        // obtenir le boutton annuler
         let cancelButton = annulation.querySelector("#cancelBtn"); 
     
-        
+        // Ajouter un événement de clic pour rendre la fenêtre hidden
         cancelButton.addEventListener("click", function(event) {
           
             annulation.style.display = "none";
@@ -124,11 +133,14 @@ $(document).ready(function(){
     
             
     function openModification() {
+        // afficher la fenêtre d'annulation
         let modification = document.getElementById("modification");
         modification.style.display = "block";
     
+          // obtenir le boutton annuler
         let modifButton = modification.querySelector("#modifBtn");
     
+        // Ajouter un événement de clic pour rendre la fenêtre hidden
         modifButton.addEventListener("click", function(event) {
             modification.style.display = "none";
         });

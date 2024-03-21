@@ -69,6 +69,9 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
 
             // Fermeture de la connexion
             $connexion->close();
+
+
+            header("Location: ../interfaceWEB/commentairesfront.php");
             exit;
         } else {
             echo "Utilisateur non trouvé dans la base de données.";
