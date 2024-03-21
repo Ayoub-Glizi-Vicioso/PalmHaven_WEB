@@ -1,6 +1,7 @@
 $(document).ready(function() {
     // Écouter l'événement submit sur le formulaire
     $('.search-form').on('submit', function(event) {
+        
         // Récupérer les valeurs des champs de date
         let startDate = $('#start_date').val();
         let endDate = $('#end_date').val();
@@ -13,31 +14,31 @@ $(document).ready(function() {
             alert("Saisissez une date de début et de fin");
             return; // Arrêter l'exécution de la fonction si les champs sont vides
         }
-
+        
         // Vérifier si le champs startDate est supérieur à EnDate
         if(startDate>endDate){
             event.preventDefault();
-
+            
             alert("La date de début de la réservation doit être inférieur à la date de fin de réservation");
             return;
-
+            
         }
-
-       // Convertir les en objet Date
-        let startDateObj = new Date(startDate);
-        let endDateObj = new Date(endDate);
-
+        
         // Récupérer la date actuelle du système
         let dateActuelle = new Date();
+        
+        // Convertir les en objet Date
+        let startDateObj = new Date(startDate.toString());
+        let endDateObj = new Date(endDate.toString());
+        
 
-        // Comparer les dates avec la date actuelle 
-        if (dateActuelle > startDateObj || dateActuelle > endDateObj) {
+        if (startDateObj <= dateActuelle || endDateObj <= dateActuelle) {
+            
             event.preventDefault();
-
-            alert("La date de début et de fin de la réservation doit être supérieur ou égale à celle d'aujourd'hui");
+            alert("La date de début et/ou de fin de la réservation doit être supérieure à celle d'aujourd'hui");
             return;
-
         }
+        
 
         
         // Fonction pour charger les chambres lorsque l'utilisateur clique sur le bouton "Rechercher"
