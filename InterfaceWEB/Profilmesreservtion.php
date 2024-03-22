@@ -99,10 +99,10 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
             <input id="Dfin" type="date" name="nouv_fin" required>
             
             <label for="id_reservation"></label>
-            <input id="id_reservation" type="number"  name="id_reservation" placeholder="saisissez le numero de la reservation"required>
+            <input id="numero_reservation" type="number"  name="id_reservation" placeholder="saisissez le numero de la reservation"required>
             
             <label for="email"></label>
-            <input id="email" type="email"  name="email" placeholder="saisissez votre email"required>
+            <input id="courriel" type="email"  name="email" placeholder="saisissez votre email"required>
             
             <input id="confirmBtn" type="submit" readonly value="Confirmer">
         </form>
