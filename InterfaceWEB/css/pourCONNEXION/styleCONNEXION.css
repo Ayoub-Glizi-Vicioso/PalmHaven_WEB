@@ -2,51 +2,7 @@
 
       @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap');
       
-@media only screen and (max-width: 768px) {
-  body {
-      font-size: 12px; /* Reduire la taille de la police pour les écrans plus petits */
-  }
 
-  .container {
-      max-width: 90%; /* Ajuster la largeur maximale */
-      overflow-y: auto;
-      overflow-x: auto;
-      display: flex;
-      flex-direction: column;
-  }
-
-  .container-form, .Salutation-container {
-      width: 100%; /* Ajuster la largeur des conteneurs */
-      overflow-y: auto;
-      overflow-x: auto;
-  }
-
-  .form-connexion,
-  .text {
-      max-height: none; /* Annuler la hauteur maximale */
-  }
-
-  .form-connexion form,
-  .text .Salutation {
-      margin: 0 15px; /* Ajuster les marges */
-  }
-
-  .form-connexion input,
-  .form-connexion button,
-  .Salutation button {
-      padding: 12px; /* Ajuster le rembourrage */
-  }
-
-  .Salutation h2 {
-      display: none /* Ajuster la taille de la police */
-  }
-
-  #msgbienvenue {
-      line-height: 20px; /* Ajuster la hauteur de ligne */
-  }
-}
-
-      
       * {
           margin: 0;
           padding: 0;
@@ -196,4 +152,53 @@
           margin-top: 0;
         }
 
-  
+      @media only screen and (min-width: 769px) {
+          #btn-inscription-cache {
+              display: none; /* Cacher le bouton lorsque la largeur de l'écran est supérieure à 768px */
+          }
+      }
+
+    @media only screen and (max-width: 768px) {
+        body {
+            font-size: 12px; /* Reduire la taille de la police pour les écrans plus petits */
+        }
+      
+        .container {
+            width:95%;/* Ajuster la largeur maximale */
+            height: 95%;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+      
+        .Salutation-container {
+            display: none /* Ajuster la taille de la police */
+        }
+        .container-form {
+            display: flex;
+            justify-items: center;
+            width: 95%; /* Ajuster la largeur des conteneurs */
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+      
+        .form-connexion,
+        .text {
+          font-size: 12px;
+        }
+      
+      
+        .form-connexion input,
+        .form-connexion button {
+            padding: 5px; /* Ajuster le rembourrage */
+      
+        }
+      
+      
+        #msgbienvenue {
+            line-height: 20px; /* Ajuster la hauteur de ligne */
+        }
+        #btn-inscription-cache{
+          display: inline-block;
+        }
+      }

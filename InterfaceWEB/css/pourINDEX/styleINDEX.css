@@ -49,16 +49,6 @@
                 font-size: smaller; /* Réduire la taille de la police */
                 margin-bottom: 5px; /* Ajouter de l'espace en bas des étiquettes */
             }
-
-            #signupLink{
-                display: none;
-            }
-
-            nav {
-                height: auto; /* Ajuster la hauteur automatiquement */
-                padding: 1rem; /* Ajouter un remplissage */
-            }
-            
         }
 
 

@@ -39,6 +39,10 @@ session_start();
               <input name="mot_de_passe" type="password" placeholder="Mot de passe" required />
               <br>
               <button>Connexion</button>
+              <br>
+              <button id="btn-inscription-cache" onclick="window.location.href='inscriptionfront.php'">Pas de compte? Inscrivez-vous.</button>
+              
+              
             </form>
           </div>
         </div>
