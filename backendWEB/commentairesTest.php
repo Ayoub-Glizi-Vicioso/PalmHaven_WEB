@@ -80,6 +80,7 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
             exit;
         } else {
             echo "Utilisateur non trouvé dans la base de données.";
+            header("Location: ../interfaceWEB/commentairesfront.php?commentaire_env=false");
         }
 
         // Fermeture du statement

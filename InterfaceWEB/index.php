@@ -25,6 +25,8 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
 
 
 
+
+
 ?>
 
 <!DOCTYPE html>

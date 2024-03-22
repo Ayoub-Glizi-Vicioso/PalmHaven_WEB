@@ -28,6 +28,5 @@ $(document).ready(function () {
         };
 
         xhr.send(formData); // Envoyer les données du formulaire au serveur
-        window.location.href = "../interfaceWEB/chambresDetailsBungalow.php?reservation_success=true";
     });
 });

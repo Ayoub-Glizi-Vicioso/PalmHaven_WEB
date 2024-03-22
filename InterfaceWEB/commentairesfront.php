@@ -10,6 +10,11 @@
         // Utilisateur non connecté : inclure la barre de navigation pour les utilisateurs non connectés
         include 'nav_not_connected.php';
     }
+
+    // Vérifier si le paramètre de suppression réussie est présent dans l'URL
+if (isset($_GET['commentaire_env']) && $_GET['commentaire_env'] === 'false') {
+    echo "<script>alert('Vous devez vous connecter avant de publier un commentaire');</script>";
+}
     
 
 

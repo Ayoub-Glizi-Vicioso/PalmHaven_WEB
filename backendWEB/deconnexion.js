@@ -2,18 +2,15 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".form_deconnexion").addEventListener("submit", function(event) {
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
 
-        // Récupérer le formulaire
-        let form = event.target;
-
         // Créer une nouvelle requête XMLHttpRequest
         let xhr = new XMLHttpRequest();
-        xhr.open(form.method, form.action, true);
+        xhr.open("POST", "../backendWEB/deconnexion.php", true);
 
         // Gérer la réponse de la requête
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    // Redirection vers la page de connexion en cas de succès
+                    // Redirection vers la page d'accueil en cas de succès
                     window.location.href = "../interfaceWEB/index.php";
                 } else {
                     // Afficher un message d'erreur dans la console
@@ -24,6 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         // Envoyer le formulaire
-        xhr.send(new FormData(form));
+        xhr.send();
     });
 });

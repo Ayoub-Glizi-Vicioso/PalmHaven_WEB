@@ -17,6 +17,7 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
 
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
     require '../backendWEB/modificationReservation.php';
+    require '../backendWEB/deconnexion.php';
   }
 
 
@@ -39,9 +40,10 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
             
             <a href="ProfilSupprimer.php"><button  id="btn_effacer_compte">Supprimer mon compte</button></a>
 
-            <form class="form_deconnexion" action="../backendWEB/deconnexion.php" method='post'>
-                <button  id="btn_decon" type="submit">Deconnexion</button>
+            <form class="form_deconnexion" action="../backendWEB/deconnexion.php" method="post">
+                <button type="submit">Déconnexion</button>
             </form>
+
 
         </div>
         <div id="retour">
