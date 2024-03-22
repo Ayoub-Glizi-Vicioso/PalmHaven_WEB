@@ -21,7 +21,7 @@ $requete = "SELECT * FROM utilisateurs WHERE email = '" . $_POST['email'] . "'";
 $resultat = $connexion->query($requete);
 if ($resultat->num_rows == 0) {
     // Utiliser JavaScript pour afficher une alerte
-    echo "Oups! Aucun compte n\'est lié à cet email ! Veuillez vous inscrire ou réessayer.";
+    echo "Oups! Aucun compte n'est lié à cet email ! Veuillez vous inscrire ou réessayer.";
     }
 else 
 {
@@ -54,7 +54,7 @@ else
             header('Location: index.php?conn_success=true'); 
             // Rediriger vers la page d'accueil
         } else {
-            echo "<script> alert('Mot de passe ou utilisateur invalide.')</scrip>";
+            echo "<script> alert('Mot de passe ou utilisateur invalide.')</script>";
         }
     } else {
         echo "<script> alert('Erreur lors de la récupération du mot de passe.')</script>";
