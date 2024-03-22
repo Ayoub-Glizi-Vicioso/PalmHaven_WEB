@@ -14,6 +14,11 @@ if(isset($_SESSION['email'])) {
 }
 
 
+ // Vérifier si le formulaire a été soumis
+ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    // Inclure le fichier de connexion
+    require '../backendWEB/AffichageChambre.php';
+}
 
 // Vérifier si le paramètre de suppression réussie est présent dans l'URL
 if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
@@ -68,7 +73,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
           
 
           
-          <form  method="get" class="search-form">
+          <form  method="get" action="../backendWEB/AffichageChambre.php" class="search-form">
               
               <div class="form__group">
                 <div class="input__group">

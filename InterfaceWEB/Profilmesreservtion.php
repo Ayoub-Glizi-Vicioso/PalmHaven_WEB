@@ -17,7 +17,7 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
 
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
     require '../backendWEB/modificationReservation.php';
-    require '../backendWEB/deconnexion.php';
+  
   }
 
 
