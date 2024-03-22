@@ -60,6 +60,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
             <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
             <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
           </div>
+         
           <div class="booking__container">
             
           
@@ -73,23 +74,23 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
                   <label for="start_date" id="date_debut">Date de début réservation</label>
                 </div>
             </div>
-            <br><br>
+           
             
               <div class="form__group">
-                <div class="input__group">
+                 <div class="input__group">
                     <input type="date" id="end_date" name="end_date"> 
                      <label for="end_date" id=date_fin >Date de fin de réservation</label>
-                </div>
+                 </div>
               </div>
+        
+       
+              <input id="btn_rechercher" type="submit" value="Rechercher">
              
-              <input type="submit" value="Rechercher">
             </form>
             
-
-
-
-
           </div>
+
+
         </div>
       </header>
 
