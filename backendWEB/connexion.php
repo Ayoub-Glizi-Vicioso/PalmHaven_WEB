@@ -54,10 +54,10 @@ else
             header('Location: index.php?conn_success=true'); 
             // Rediriger vers la page d'accueil
         } else {
-            echo "<script> alert('Mot de passe ou utilisateur invalide.')</scrip>";
+            echo ('Mot de passe ou utilisateur invalide.');
         }
     } else {
-        echo "<script> alert('Erreur lors de la récupération du mot de passe.')</script>";
+        echo ('Erreur lors de la récupération du mot de passe.');
     }
 }
 
