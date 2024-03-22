@@ -5,22 +5,34 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('formulaire soumis!');
 
         let nouveau_debut = document.getElementById("Ddebut").value;
-        console.log(nouveau_debut);
         let nouveau_fin = document.getElementById("Dfin").value;
-        console.log(nouveau_fin);
         let id_reservation = document.getElementById("numero_reservation").value;
-        console.log(id_reservation);
         let email = document.getElementById("courriel").value;
-        console.log(email);
-        let url = '../backendWEB/modificationReservation.php';
         
+        let url = '../backendWEB/modificationReservation.php';
+        let requeteJson = JSON.stringify({
+            nouv_debut: nouveau_debut,
+            nouv_fin: nouveau_fin,
+            id_reservation: id_reservation,
+            email: email
+        });
+
         let xhr = new XMLHttpRequest();
         xhr.open('POST', url);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        
-        let params = 'nouv_debut=' + nouveau_debut + '&nouv_fin=' + nouveau_fin + '&id_reservation=' + id_reservation + '&email=' + email;
+        xhr.setRequestHeader('Content-type', 'application/json');
 
-        console.log(params);
-        xhr.send(params);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Redirection vers la page de profil après la modification de la réservation
+                    window.location.href = '../interfaceWEB/Profilmesreservtion.php?modif_success=true';
+                } else {
+                    // Gérer les erreurs
+                    console.error('Erreur de requête :', xhr.status);
+                }
+            }
+        };
+
+        xhr.send(requeteJson);
     });
 });

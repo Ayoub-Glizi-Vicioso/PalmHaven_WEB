@@ -4,33 +4,25 @@ session_start();
 if(preg_match('/\/modificationReservation\.php/', $_SERVER['REQUEST_URI'], $matches)) {
     
     
-    // Obtenir les données POST au format JSON
-    $donneesJSON = file_get_contents("php://input");
-
-    // Décoder les données JSON en tableau associatif
-    $donnees = json_decode($donneesJSON, true);
-    echo $donnees;
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
         
-          // Extraire les valeurs de l'username et du contenu du tableau associatif
-          $date_debut = $donnees['nouv_ddebut'];
-          $date_fin = $donnees['nouv_fin']; 
-
-          $identification_reservation = $donnees['id_reservation']; 
-            $email_saisie = $donnees['email'];
-            
-            $email_session = $_SESSION['email'];
+        // Obtenir les données POST au format JSON
+        $donneesJSON = file_get_contents("php://input");
+    
+        // Décoder les données JSON en tableau associatif
+        $donnees = json_decode($donneesJSON, true);
+        
+        // Extraire les valeurs du tableau associatif
+        $date_debut = $donnees['nouv_debut'];
+        $date_fin = $donnees['nouv_fin']; 
+        $identification_reservation = $donnees['id_reservation']; 
+        $email_saisie = $donnees['email'];
+        $email_session = $_SESSION['email'];
        
-          exit;
-        if(isset($_POST['id_reservation'])){
+          
+        if(isset($donnees['id_reservation'])){
 
-            
-            
-         
-
-        
-            
+                
             $serveur = "localhost"; 
             $utilisateur = "root"; 
             $code = ""; 
