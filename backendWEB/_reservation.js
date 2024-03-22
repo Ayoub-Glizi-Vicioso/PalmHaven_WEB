@@ -1,7 +1,8 @@
 $(document).ready(function () {
     document.getElementById("reservationForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Empêcher le formulaire de se soumettre normalement
-
+        console.log('formulaire soumis!');
+        
         var form = this;
         var formData = new FormData(form); // Créer un objet FormData avec les données du formulaire
 

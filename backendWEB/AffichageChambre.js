@@ -32,7 +32,7 @@ $(document).ready(function() {
         let endDateObj = new Date(endDate.toString());
         
 
-        if (startDateObj <= dateActuelle || endDateObj <= dateActuelle) {
+        if (startDateObj < dateActuelle || endDateObj < dateActuelle) {
             
             event.preventDefault();
             alert("La date de début et/ou de fin de la réservation doit être supérieure à celle d'aujourd'hui");
