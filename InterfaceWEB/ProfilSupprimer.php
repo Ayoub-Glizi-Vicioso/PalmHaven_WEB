@@ -45,13 +45,13 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 
                     <br>
                    
-                    <p>Nous vous encourageons à réfléchir attentivement 
+                    <p id="para2">Nous vous encourageons à réfléchir attentivement 
                     avant de prendre cette décision, car elle entraînera 
                     la perte totale de votre accès à notre service de 
                     réservation. Si vous êtes sûr de vouloir procéder à 
                     la suppression de votre compte, veuillez confirmer 
                     vos informations d’authentifications.</p>
-                    <br>
+                    
                 <div id="effacer_compte">
                     <form id="form_supprimer" action="../backendWEB/supprimercompte.php" method="post" >
                         <label for="email"></label>
@@ -63,6 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
                         <button type="submit">Effacer Compte</button>
                     </form>
                 </div>
+            </div>
         </div>
     </div>
 
