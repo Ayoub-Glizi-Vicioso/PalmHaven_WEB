@@ -1,10 +1,11 @@
 <?php
 
 session_start();
-
 if(preg_match('/\/modificationReservation\.php/', $_SERVER['REQUEST_URI'], $matches)) {
     
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        echo"hello";
+        exit;
         
         if(isset($_POST['id_reservation'])){
 
@@ -80,6 +81,7 @@ if(preg_match('/\/modificationReservation\.php/', $_SERVER['REQUEST_URI'], $matc
 
                         echo "La réservation a été modifiée avec succès.";
                         header("Location: ../interfaceWEB/Profilmesreservtion.php?modif_success=true");
+
                     } else {
                         echo "Une erreur est survenue lors de la modification de la réservation.";
                     }
