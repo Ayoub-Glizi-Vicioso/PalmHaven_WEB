@@ -45,14 +45,14 @@
                     vos informations d’authentifications.</p>
                     <br>
                 <div id="effacer_compte">
-                    <form action="../backendWEB/supprimercompte.php" method="post" >
+                    <form id="form_supprimer" action="../backendWEB/supprimercompte.php" method="post" >
                         <label for="email"></label>
                         <input name="email" type="text" placeholder="email" required>
                         <br><br>
                         <label for="mot_de_passe"></label>
                         <input name="mot_de_passe" type="password" placeholder="mot de passe" required>
                         <br>
-                        <button>Effacer Compte</button>
+                        <button type="submit">Effacer Compte</button>
                     </form>
                 </div>
         </div>

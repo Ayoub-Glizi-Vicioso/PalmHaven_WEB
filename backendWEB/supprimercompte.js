@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    document.getElementById("form_annuler").addEventListener("submit", function(event) {
+    document.getElementById("form_supprimer").addEventListener("submit", function(event) {
         console.log('formulaire soumis!');
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
 
