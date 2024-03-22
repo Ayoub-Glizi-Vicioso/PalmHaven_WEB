@@ -12,8 +12,6 @@ session_start();
     }
 
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +21,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/pourCONNEXION/styleCONNEXION.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
 </head>
 <body>
@@ -31,12 +30,12 @@ session_start();
     <div class="container">
         <div class="container-form">
           <div class="form-connexion">
-            <form method="POST" action="">
+            <form id="form_connexion" method="POST" action="../backendWEB/connexion.php">
               <h2 id="connexiontxt">Connexion</h2>
               <br>
-              <label for="email"></label>
+              <!--<label for="email"></label>-->
               <input name="email" type="email" placeholder="Adresse courriel" required />
-              <label for="mot_de_passe"></label>
+               <!--<label for="mot_de_passe"></label>-->
               <input name="mot_de_passe" type="password" placeholder="Mot de passe" required />
               <br>
               <button>Connexion</button>
@@ -63,6 +62,8 @@ session_start();
           </div>
         </div>
       </div>
+
+      <script src='../backendWEB/connexion.js'></script>
 </body>
 </html>
 
