@@ -32,6 +32,8 @@ body {
 }
 
 #zone_text {
+    display: flex;
+    
     width: 80%;
     text-align: center;
     padding: 20px;
@@ -136,6 +138,7 @@ table , td , th , tr{
     border:1px solid lightgray;
     border-collapse:collapse;
     padding: 10px;
+    width:100px
 }
 
 .donnee{
@@ -204,10 +207,8 @@ form button:hover{
     color: black;
 }
 
-#retour{
-    display:flex;
-    justify-content: center;
-}
+
+
 
 @media only screen and (max-width: 1200px) {
     body {

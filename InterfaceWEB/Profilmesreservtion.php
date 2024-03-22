@@ -48,21 +48,22 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
             <div id="btn_retour">
                 <button onclick="window.location.href='index.php'">Retour à la page d’accueil</button>
              </div>
-        </div>
-        <div id="zone_text">
-            <div class="text">
-                <h2>MES RÉSERVATION:</h2>
-                
-                <div id="table">
-                   <table id='reservationProfil'>
-                    
-
-                   </table>
-
+             <br><br><br>
+             <div id="zone_text">
+                 <div class="text">
+                     <h2>MES RÉSERVATION:</h2>
+                     
+                     <div id="table">
+                         <table id='reservationProfil'>
+                             
+                             
+                             </table>
+                             
+                            </div>
+                        </div>
+                    </div>
                 </div>
-        </div>
-    </div>
-
+                    
     <!-- Structure de la fenêtre annulation -->
 <div id="annulation" class="annulation">
     <div class="annulation-content">
