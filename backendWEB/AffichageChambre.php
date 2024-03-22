@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-if (preg_match('/\/AffichageChambre\.php/', $_SERVER['REQUEST_URI'], $matches)) {
-   
-    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if (preg_match('/\/AffichageChambre\.php/', $_SERVER['REQUEST_URI'], $matches)) {
  
         // Assurez-vous que les champs de date de début et de fin sont présents dans l'URL
         if (isset($_GET['start_date']) && isset($_GET['end_date'])) {
@@ -71,6 +71,11 @@ if (preg_match('/\/AffichageChambre\.php/', $_SERVER['REQUEST_URI'], $matches)) 
                 echo ('erreur => Les champs de date de début et de fin sont obligatoires.');
        }   
         
+    }else{
+        // L'URL ne correspond pas à ce qui est attendu
+        http_response_code(404); // Not Found
+        echo json_encode(['erreur' => 'URL non valide.', 'code' => 404]);
+    }
     } else {
         
         // Méthode non autorisée
@@ -78,11 +83,6 @@ if (preg_match('/\/AffichageChambre\.php/', $_SERVER['REQUEST_URI'], $matches)) 
         echo json_encode(['erreur' => 'Méthode non autorisée.', 'code' => 405]);
     }
     
-}else{
-    // L'URL ne correspond pas à ce qui est attendu
-    http_response_code(404); // Not Found
-    echo json_encode(['erreur' => 'URL non valide.', 'code' => 404]);
-}
             
             
         

@@ -12,9 +12,6 @@ if(!isset($_GET['numero'])){
 
 }
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        require '../backendWEB/_reservation.php';
-    }
 
 
 ?>
@@ -66,11 +63,13 @@ if(!isset($_GET['numero'])){
                             idéales pour votre repos et votre détente, dans un environnement naturel très spécial.</p>
                          
                             <?php if ($btn_reservation_visible): ?>
-                                <form id="reservationForm" action="../backendWEB/_reservation.php" method="post">
+                                <form id="reservationForm" action="../backendWEB/_reservation.php"  method="post">
                                     <input type="hidden" name="numero_chambre" value="<?php echo isset($_GET['numero_chambre']) ? $_GET['numero_chambre'] : ''; ?>">
                                     <button type="submit" id="reserver">Réserver maintenant</button>
                                 </form>
                             <?php endif; ?>
+
+                            
 
             </div>
         </div>

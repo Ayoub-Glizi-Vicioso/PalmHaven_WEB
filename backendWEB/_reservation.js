@@ -1,23 +1,37 @@
 $(document).ready(function () {
-    document.getElementById("reservationForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Empêcher le formulaire de se soumettre normalement
-        console.log('formulaire soumis!');
+    // Sélectionnez le formulaire de réservation
+    const reservationForm = document.getElementById("reservationForm");
 
-        var form = this;
-        var formData = new FormData(form); // Créer un objet FormData avec les données du formulaire
+    // Ajoutez un écouteur d'événements sur la soumission du formulaire
+    reservationForm.addEventListener("submit", function(event) {
+        // Empêchez le formulaire de se soumettre normalement
+        event.preventDefault();
+
+        // Récupérez la valeur du champ "numero_chambre"
+        const numero_chambre = document.querySelector("input[name='numero_chambre']").value;
+
+        // Créez un objet avec les données du formulaire
+        const formData = {
+            numero_chambre: numero_chambre
+        };
+
+        // Convertissez l'objet en chaîne JSON
+        const jsonData = JSON.stringify(formData);
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", form.action, true); // Ouvrir une requête POST vers l'action du formulaire
-        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest"); 
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                // Succès de la requête
-                var response = xhr.responseText;
-                console.log(response); // Afficher la réponse du serveur (peut-être une redirection)
-                // Vous pouvez gérer la réponse en fonction de vos besoins
-            } else {
-                // Erreur lors de la requête
-                console.error("Erreur lors de la requête : " + xhr.status);
+        xhr.open("POST", "../backendWEB/_reservation.php", true); // Ouvrir une requête POST vers l'action du formulaire
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // Vous pouvez gérer la réponse en fonction de vos besoins
+                    const data = JSON.parse(xhr.responseText);
+                    alert(data['message']);
+                } else {
+                    // Erreur lors de la requête
+                    console.error("Erreur lors de la requête : " + xhr.status);
+                }
             }
         };
 
@@ -26,6 +40,6 @@ $(document).ready(function () {
             console.error("Erreur de connexion lors de la requête.");
         };
 
-        xhr.send(formData); // Envoyer les données du formulaire au serveur
+        xhr.send(jsonData); // Envoyer les données du formulaire au serveur
     });
 });
