@@ -44,10 +44,12 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
             </form>
 
         </div>
-        <div id="zone_text">
+        <div id="retour">
             <div id="btn_retour">
                 <button onclick="window.location.href='index.php'">Retour à la page d’accueil</button>
-            </div>
+             </div>
+        </div>
+        <div id="zone_text">
             <div class="text">
                 <h2>MES RÉSERVATION:</h2>
                 

@@ -1,47 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-@media only screen and (max-width: 768px) {
-    body {
-        font-size: 12px; /* Réduire la taille de la police globale */
-    }
 
-    .container {
-        max-width: 90%; /* Réduire la largeur du conteneur principal */
-        height: auto; /* Ajuster la hauteur en fonction du contenu */
-    }
-
-    #Barre_nav {
-        width: 80%; /* Réduire la largeur de la barre de navigation */
-    }
-
-    input[type="text"] {
-        font-size: 12px; /* Réduire la taille de la police pour les champs de saisie */
-        padding: 8px; /* Ajuster le rembourrage pour les champs de saisie */
-    }
-
-    button {
-        font-size: 14px; /* Augmenter la taille de la police pour les boutons */
-        padding: 12px 24px; /* Ajuster le rembourrage pour les boutons */
-    }
-
-    h2 {
-        font-size: 20px; /* Réduire la taille des titres */
-        margin-top: 8px; /* Réduire l'espacement en haut des titres */
-        margin-bottom: 8px; /* Réduire l'espacement en bas des titres */
-    }
-
-    table {
-        font-size: 12px; /* Réduire la taille de la police pour les tableaux */
-    }
-
-    .annulation-content, .modification-content {
-        width: 80%; /* Réduire la largeur des fenêtres modales */
-    }
-
-    .input {
-        width: 20%; /* Ajuster la largeur des champs de saisie */
-    }
-}
 * {
     margin: 0;
     padding: 0;
@@ -66,8 +25,8 @@ body {
     max-width: 65%;
     height: 70%;
     position: relative;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-x: auto;
+    overflow-y: auto;
     display: flex;
     border-radius: 5%;
 }
@@ -243,4 +202,52 @@ form button:hover{
     background-color: white;
     border: 1px solid lightgray;
     color: black;
+}
+
+#retour{
+    display:flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1200px) {
+    body {
+        font-size: 12px; /* Réduire la taille de la police globale */
+    }
+
+    
+    .container {
+        width: 90%; /* Réduire la largeur du conteneur */
+        height: 95%; /* Réduire la hauteur du conteneur */
+        display: flex;
+        flex-direction: column; /* Aligner les éléments en colonne */
+    }
+
+    #Barre_nav {
+        display: flex;
+        flex-direction: row; /* Aligner les éléments en ligne */
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    #zone_text {
+        flex-direction: column; /* Aligner les éléments en colonne */
+        width: 100%; /* Prendre toute la largeur disponible */
+        height: 100%; /* Prendre toute la hauteur disponible */
+    }
+
+    button , input{
+        
+        font-size: 9px;
+        width: smaller;
+
+    }
+
+}
+
+@media screen  and (max-width: 800px ){
+    #zone_text{
+        transform: rotate(270deg);
+        margin-right: 10px;
+    }
+    
 }
