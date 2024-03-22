@@ -68,7 +68,7 @@ if (preg_match('/\/AffichageChambre\.php/', $_SERVER['REQUEST_URI'], $matches)) 
         } else {
                 // Les champs de date de début et de fin ne sont pas présents dans l'URL
                 http_response_code(400); // Bad Request
-                echo json_encode(['erreur' => 'Les champs de date de début et de fin sont obligatoires.', 'code' => 400]);
+                echo ('erreur => Les champs de date de début et de fin sont obligatoires.');
        }   
         
     } else {

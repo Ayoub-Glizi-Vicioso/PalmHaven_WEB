@@ -8,11 +8,11 @@ session_start(); // Démarrer la session
 if(isset($_SESSION['email'])){
     if(preg_match('/\/_reservation\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+            
             if(isset($_POST['numero_chambre']) && isset($_SESSION['date_debut'])  && isset($_SESSION['date_fin']) ){
                 // Vérifier si toutes les données requises sont présentes et valides
                 
-
+                
                 // recherche des données necessaire
                 $numero_chambre = $_POST["numero_chambre"]; 
                 
@@ -25,7 +25,6 @@ if(isset($_SESSION['email'])){
                 $utilisateur = "root"; 
                 $motDePasse = ""; 
                 $baseDeDonnees = "palmhaven"; // nom de la base de données MySQL
-                
                 // Connexion à la base de données
                 $connexion = new mysqli($serveur, $utilisateur, $motDePasse, $baseDeDonnees);
                 
@@ -35,9 +34,9 @@ if(isset($_SESSION['email'])){
                 } 
                 
                 
-            
+                
                 $email =  $_SESSION['email'];
-            
+                
                 //obtenir le id_utilisateur
                 
                 $sql_user = "SELECT id_utilisateur FROM utilisateurs WHERE email = ?"; // selectionne le id_utilsateur à partir de l'email de session 
@@ -68,9 +67,10 @@ if(isset($_SESSION['email'])){
                     $stmt_insert_reservation->bind_param("issi", $numero_chambre, $start_date, $end_date, $id_utilisateur);
                     
                     if ($stmt_insert_reservation->execute()) {
+                        
                         // si l'excution se pase bien amener l'utilisateur vers le liens suivant
                         header("Location: ../interfaceWEB/chambresDetailsBungalow.php?reservation_success=true");
-                    
+                        
                         exit(); // Assurez de quitter après la redirection
                     } else {
                         echo "Erreur lors de la réservation : " . $connexion->error;

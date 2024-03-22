@@ -8,8 +8,7 @@ $(document).ready(function () {
 
         var xhr = new XMLHttpRequest();
         xhr.open("POST", form.action, true); // Ouvrir une requête POST vers l'action du formulaire
-        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest"); // Définir l'en-tête X-Requested-With pour indiquer une requête AJAX
-
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest"); 
         xhr.onload = function() {
             if (xhr.status === 200) {
                 // Succès de la requête
