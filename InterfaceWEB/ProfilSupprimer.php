@@ -1,4 +1,10 @@
+<?php
 
+if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
+    require '../backendWEB/supprimercompte.php';
+  }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/pourSUPPRIMER/styleSPPRIMER.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -47,10 +54,10 @@
                 <div id="effacer_compte">
                     <form id="form_supprimer" action="../backendWEB/supprimercompte.php" method="post" >
                         <label for="email"></label>
-                        <input name="email" type="text" placeholder="email" required>
+                        <input id='email' name="email" type="text" placeholder="email" required>
                         <br><br>
                         <label for="mot_de_passe"></label>
-                        <input name="mot_de_passe" type="password" placeholder="mot de passe" required>
+                        <input id='mot_de_passe' name="mot_de_passe" type="password" placeholder="mot de passe" required>
                         <br>
                         <button type="submit">Effacer Compte</button>
                     </form>

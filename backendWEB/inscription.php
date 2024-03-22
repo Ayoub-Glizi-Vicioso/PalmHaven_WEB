@@ -15,6 +15,14 @@ if ($connexion->connect_error) {
 
 // Récupérer les données du formulaire
 if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['mot_de_passe'])) {
+   
+    // Démarrez une nouvelle session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+   
+   
     $nom = $connexion->real_escape_string(trim($_POST['nom']));
     $prenom = $connexion->real_escape_string(trim($_POST['prenom']));
     $email = $connexion->real_escape_string(trim($_POST['email']));

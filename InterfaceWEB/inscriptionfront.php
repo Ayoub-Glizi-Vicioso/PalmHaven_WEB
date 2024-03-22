@@ -22,6 +22,7 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/pourINSCRIP/styleINSCRIP.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -43,7 +44,7 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
     </div>
     <div class="container-form">
           <div class="form-inscription">
-          <form method="POST">
+          <form id="form_inscription" method="">
               <h2>Inscription</h2>
               <label for="prenom"></label>
               <input name="prenom" type="text" placeholder="prénom" required />
@@ -57,8 +58,8 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
                 <span class="tooltiptext">8 caractères minimum, une minuscule, une majuscule, un chiffre, un caractère spécial</span>
               </div>
               <div id="passwordStrengthMeter"></div>
-              <button>S'inscrire</button>
-            </form>
+              <button type='submit'>S'inscrire</button>
+            </form> 
           </div>
         </div>
       </div>
@@ -117,5 +118,6 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
           }
       }
     </script>
+    <script src="../backendWEB/inscription.js"></script>
 </body>
 </html>
