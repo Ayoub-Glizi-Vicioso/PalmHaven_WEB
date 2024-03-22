@@ -91,7 +91,7 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
         <p>si c'est le cas, afin de confirmer la modificationn saisissait le numero de la reservation, votre email ainsi que les modification à apporter</p>
         <p><em><u>NOTE: il est possible que votre demande de modifcation soit refusé, en raison que la chambre est réservé par un autre client pour les dates saisies</u></em></p>
         
-        <form id="form_modifier" action="../backendWEB/modificationReservation.php" method="">
+        <form id="form_modifier" action="../backendWEB/modificationReservation.php" method="post">
             <label for="nouv_debut"><strong>Saisissait la nouvelle date de début de reservation:</strong></label>
             <input id="Ddebut" type="date" name="nouv_debut" required>
 

@@ -3,18 +3,17 @@
 session_start();
 if(preg_match('/\/modificationReservation\.php/', $_SERVER['REQUEST_URI'], $matches)) {
     
-    echo"hello";
-    exit;
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
+       
         if(isset($_GET['id_reservation'])){
 
-            $identification_reservation = $_GET['id_reservation']; 
-            $email_saisie = $_GET['email'];
+            $identification_reservation = $_POST['id_reservation']; 
+            $email_saisie = $_POST['email'];
             $email_session = $_SESSION['email'];
             
-            $date_debut = $_GET['nouv_debut'];
-            $date_fin = $_GET['nouv_fin'];
+            $date_debut = $_POST['nouv_debut'];
+            $date_fin = $_POST['nouv_fin'];
 
         
             
