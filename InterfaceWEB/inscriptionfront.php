@@ -59,6 +59,8 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
               </div>
               <div id="passwordStrengthMeter"></div>
               <button type='submit'>S'inscrire</button>
+              <br>
+              <button onclick="window.location.href='connexionfront.php'"id="btn-connexion-cache">Retour page de connexion</button>
             </form> 
           </div>
         </div>
