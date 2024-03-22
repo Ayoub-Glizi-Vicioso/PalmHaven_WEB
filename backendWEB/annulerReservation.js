@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    document.getElementById("form_modifier").addEventListener("submit", function(event) {
+    document.getElementById("form_annuler").addEventListener("submit", function(event) {
         console.log('formulaire soumis!');
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
 
@@ -12,15 +12,11 @@ $(document).ready(function () {
         let params = 'id_reservation=' + id_reservation + '&email=' + email;
 
         let xhr = new XMLHttpRequest();
-        xhr.open('DELETE', url + '?' + params, false);
-
+        xhr.open('DELETE', url + '?' + params);
+        
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    // Traitement de la réponse
-                    var response = JSON.parse(xhr.responseText);
-                    console.log(response.message); // Afficher le message de la réponse
-
                     // Redirection vers la page de profil après l'annulation de la réservation
                     window.location.href = '../interfaceWEB/Profilmesreservtion.php?annulation_success=true';
                 } else {
