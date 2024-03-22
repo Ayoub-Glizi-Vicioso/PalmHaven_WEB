@@ -191,7 +191,13 @@ form button:hover{
     width: 15%;
 }
 
-#id_reservation , #email , #Ddebut , #Dfin , #courriel , #numero_reservation{
+#id_reservation , #email , #Ddebut , #Dfin {
+    background-color: white;
+    border: 1px solid lightgray;
+    color: black;
+}
+
+#courriel , #numero_reservation{
     background-color: white;
     border: 1px solid lightgray;
     color: black;
