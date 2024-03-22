@@ -14,7 +14,7 @@ $(document).ready(function () {
         let params = 'nouv_debut=' + nouveau_debut + '&nouv_fin=' + nouveau_fin + '&id_reservation=' + id_reservation + '&email=' + email;
 
         let xhr = new XMLHttpRequest();
-        xhr.open('POST', url, true);
+        xhr.open('POST', url + '?' + params);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
         xhr.onreadystatechange = function () {
@@ -29,6 +29,6 @@ $(document).ready(function () {
             }
         };
 
-        xhr.send(params);
+        xhr.send();
     });
 });

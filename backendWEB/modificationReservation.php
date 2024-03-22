@@ -3,11 +3,11 @@
 session_start();
 if(preg_match('/\/modificationReservation\.php/', $_SERVER['REQUEST_URI'], $matches)) {
     
+    echo"hello";
+    exit;
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        echo"hello";
-        exit;
         
-        if(isset($_POST['id_reservation'])){
+        if(isset($_GET['id_reservation'])){
 
             $identification_reservation = $_GET['id_reservation']; 
             $email_saisie = $_GET['email'];
