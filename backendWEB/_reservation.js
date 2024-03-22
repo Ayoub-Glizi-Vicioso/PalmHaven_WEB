@@ -2,7 +2,7 @@ $(document).ready(function () {
     document.getElementById("reservationForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Empêcher le formulaire de se soumettre normalement
         console.log('formulaire soumis!');
-        
+
         var form = this;
         var formData = new FormData(form); // Créer un objet FormData avec les données du formulaire
 
@@ -28,5 +28,6 @@ $(document).ready(function () {
         };
 
         xhr.send(formData); // Envoyer les données du formulaire au serveur
+        window.location.href = "../interfaceWEB/chambresDetailsBungalow.php?reservation_success=true";
     });
 });
