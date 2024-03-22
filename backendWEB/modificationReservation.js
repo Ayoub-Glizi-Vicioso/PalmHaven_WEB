@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Récupérer la date actuelle du système
-        /* let dateActuelle = new Date();
+         let dateActuelle = new Date();
 
         // Convertir les en objet Date
         let startDateObj = new Date(startDate.toString());
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
             alert("La date de début et/ou de fin de la réservation doit être supérieure à celle d'aujourd'hui");
             return;
-        }*/
+        }
 
 
 

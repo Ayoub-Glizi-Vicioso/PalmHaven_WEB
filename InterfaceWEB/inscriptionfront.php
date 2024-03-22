@@ -44,7 +44,7 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
     </div>
     <div class="container-form">
           <div class="form-inscription">
-          <form id="form_inscription" method="">
+          <form id="form_inscription" action="../backendWEB/inscription.php" method="post">
               <h2>Inscription</h2>
               <label for="prenom"></label>
               <input name="prenom" type="text" placeholder="prénom" required />
