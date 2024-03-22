@@ -14,6 +14,7 @@
         display: flex;
         flex-direction: column;
     }
+
     
 }
 * {
@@ -283,3 +284,16 @@ flex-direction: column;
 flex-wrap: wrap; 
 }
 
+
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 12px; /* Réduire la taille de la police pour les écrans plus petits */
+    }
+
+    .nav__links {
+        flex-direction: column; /* Réorganiser les liens de navigation en colonne pour les écrans plus petits */
+        gap: 0em;
+    }
+
+    
+}
