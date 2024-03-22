@@ -12,6 +12,10 @@ if(!isset($_GET['numero'])){
 
 }
 
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        require '../backendWEB/_reservation.php';
+    }
+
 
 ?>
 
@@ -24,6 +28,8 @@ if(!isset($_GET['numero'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails de la chambre d'hôtel de type bungalow</title>
     <link rel="stylesheet" href="./css/pourBUNGALOW/styleBUNGALOW.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -129,6 +135,7 @@ if(!isset($_GET['numero'])){
     </div>
     
     <script src="./script/scriptChangement.js"></script>
+    <script src="../backendWEB/_reservation.js"></script>
 </body>
 
 </html>
