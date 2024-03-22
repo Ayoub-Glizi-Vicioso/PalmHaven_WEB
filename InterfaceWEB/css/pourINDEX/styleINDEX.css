@@ -49,6 +49,15 @@
                 font-size: smaller; /* Réduire la taille de la police */
                 margin-bottom: 5px; /* Ajouter de l'espace en bas des étiquettes */
             }
+
+            #signupLink{
+                display: none;
+            }
+
+            nav{
+                height: 200px;
+            }
+            
         }
 
 

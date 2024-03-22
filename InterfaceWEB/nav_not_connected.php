@@ -11,4 +11,5 @@
         <li class="link" id="signupLink"><a href="inscriptionfront.php">S'inscrire</a></li>
       
     </ul>
+    
 </nav>

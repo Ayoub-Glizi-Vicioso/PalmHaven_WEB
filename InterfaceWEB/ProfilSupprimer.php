@@ -24,9 +24,10 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
             
             <button id="btn_effacer_compte">Supprimer mon compte</button>
 
-            <form action="../backendWEB/deconnexion.php">
-                <button  id="btn_decon">Deconnexion</button>
+            <form class="form_deconnexion" action="../backendWEB/deconnexion.php" method="post">
+                <button id="btn_decon" type="submit">Deconnexion</button>
             </form>
+
         </div>
         <div id="zone_text">
             <div id="btn_retour">
@@ -66,6 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
     </div>
 
     <script src='../backendWEB/supprimercompte.js'></script>
+    <script src='../backendWEB/deconnexion.js'></script>
 
 </body>
 </html>
