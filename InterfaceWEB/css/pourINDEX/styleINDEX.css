@@ -54,8 +54,9 @@
                 display: none;
             }
 
-            nav{
-                height: 200px;
+            nav {
+                height: auto; /* Ajuster la hauteur automatiquement */
+                padding: 1rem; /* Ajouter un remplissage */
             }
             
         }

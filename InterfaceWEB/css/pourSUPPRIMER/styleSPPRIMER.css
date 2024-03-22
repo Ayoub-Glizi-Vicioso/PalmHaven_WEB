@@ -2,6 +2,44 @@
         /* importer la police */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+
+        @media only screen and (max-width: 768px) {
+            body {
+                font-size: 12px; /* Réduire la taille de la police */
+            }
+        
+            .container {
+                width: 90%; /* Réduire la largeur du conteneur */
+                max-width: 90%; /* Limiter la largeur maximale du conteneur */
+            }
+        
+            #zone_text {
+                width: 100%; /* Utiliser toute la largeur disponible */
+            }
+        
+            #Barre_nav {
+                width: 100%; /* Utiliser toute la largeur disponible */
+            }
+        
+            #Barre_nav button {
+                font-size: 14px; /* Réduire la taille du texte des boutons */
+                padding: 8px 16px; /* Réduire l'espacement interne des boutons */
+            }
+        
+            button {
+                font-size: 14px; /* Réduire la taille du texte des boutons */
+                padding: 16px; /* Réduire l'espacement interne des boutons */
+            }
+        
+            .text {
+                font-size: 12px; /* Réduire la taille du texte */
+            }
+        
+            h2 {
+                font-size: 20px; /* Réduire la taille des titres */
+            }
+        }
+
         /* style */
 
         /*Pour tout le document*/

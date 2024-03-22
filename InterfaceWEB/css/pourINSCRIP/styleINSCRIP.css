@@ -1,5 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Media Queries pour les appareils mobiles */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 12px; /* Réduire la taille de la police */
+    }
+
+    .container {
+        max-width: 100%; /* Ajuster la largeur maximale */
+    }
+
+    .container-form,
+    .Bienvenue-container {
+        width: 100%; /* Utiliser toute la largeur disponible */
+    }
+
+    .form-inscription,
+    .text {
+        margin: 0; /* Supprimer les marges pour économiser de l'espace */
+    }
+
+    .form-inscription input,
+    .form-inscription button,
+    .Bienvenue button {
+        padding: 10px; /* Réduire le remplissage des éléments */
+    }
+
+    h2 {
+        font-size: 24px; /* Réduire la taille du titre */
+    }
+}
+
         * {
             margin: 0;
             padding: 0;

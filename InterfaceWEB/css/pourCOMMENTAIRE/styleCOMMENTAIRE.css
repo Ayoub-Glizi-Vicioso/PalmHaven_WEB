@@ -1,4 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 12px; /* Réduire la taille de la police pour les écrans plus petits */
+    }
+
+    .nav__links {
+        display: flex;
+        flex-direction: column; /* Réorganiser les liens de navigation en colonne pour les écrans plus petits */
+    }
+    .link{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
 * {
     margin: 0px;
     padding: 0px;

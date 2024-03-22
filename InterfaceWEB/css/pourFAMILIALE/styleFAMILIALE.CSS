@@ -1,5 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+@media only screen and (max-width: 768px) {
+    .container-chambre {
+        width: 90%; /* Réduire légèrement la largeur */
+        padding: 20px; /* Réduire le padding */
+        margin: 10px 0; /* Réduire la marge */
+    }
+
+    .room-details {
+        grid-template-columns: 1fr; /* Afficher les détails de la chambre en une seule colonne */
+    }
+
+    .room-details img {
+        width: 100%; /* Ajuster la largeur de l'image */
+        height: auto; /* Redimensionner proportionnellement */
+        border-radius: 0; /* Supprimer la bordure arrondie */
+    }
+
+    .room-info {
+        width: 100%; /* Ajuster la largeur */
+        padding: 10px; /* Réduire le padding */
+    }
+
+    .avantages {
+        width: 90%; /* Ajuster la largeur */
+        padding: 20px; /* Réduire le padding */
+        margin: 10px 0; /* Réduire la marge */
+    }
+
+    .amenities-boites svg {
+        width: 24px; /* Ajuster la taille des icônes */
+        height: 24px; /* Ajuster la taille des icônes */
+    }
+
+    .room-box-extras {
+        width: 90%; /* Ajuster la largeur */
+        padding: 20px; /* Réduire le padding */
+        margin: 10px 0; /* Réduire la marge */
+    }
+
+    #btn-retour {
+        font-size: 14px; /* Ajuster la taille de la police */
+    }
+}
 body {
     font-family: "Montserrat", sans-serif;
     font-weight: 300;
