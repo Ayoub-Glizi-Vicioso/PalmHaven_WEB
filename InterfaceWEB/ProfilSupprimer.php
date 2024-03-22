@@ -58,5 +58,7 @@
         </div>
     </div>
 
+    <script src='../backendWEB/supprimercompte.js'></script>
+
 </body>
 </html>
