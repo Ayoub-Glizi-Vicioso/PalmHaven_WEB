@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
   // Vérifier si le paramètre de suppression réussie est présent dans l'URL
   if (isset($_GET['reservation_success']) && $_GET['reservation_success'] === 'true') {

@@ -22,15 +22,16 @@ $(document).ready(function () {
 
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "../backendWEB/_reservation.php", true);
-        console.log( xhr.open("POST", "../backendWEB/_reservation.php", true));
+       
         xhr.setRequestHeader('Content-Type', 'application/json');
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     // Vous pouvez gérer la réponse en fonction de vos besoins
-                    const data = JSON.parse(xhr.responseText);
-                    alert(data['message']);
+                   
+                    const data= JSON.parse(xhr.responseText);
+                    alert( data['message']);
                 } else {
                     // Erreur lors de la requête
                     console.error("Erreur lors de la requête : " + xhr.status);

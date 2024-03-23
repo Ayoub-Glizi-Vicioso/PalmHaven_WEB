@@ -13,6 +13,9 @@ if(isset($_SESSION['email'])) {
     include 'nav_not_connected.php';
 }
 
+echo $_SESSION['emai'];
+                    
+
 
 
 
@@ -69,7 +72,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
           
 
           
-          <form action="../backendWEB/AffichageChambre.php" class="search-form">
+          <form method="get" action="../backendWEB/AffichageChambre.php" class="search-form">
               
               <div class="form__group">
                 <div class="input__group">

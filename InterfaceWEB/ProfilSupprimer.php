@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
     require '../backendWEB/supprimercompte.php';
   }

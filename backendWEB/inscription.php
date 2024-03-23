@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if(preg_match('/\/inscription\.php/', $_SERVER['REQUEST_URI'], $matches)) {
     

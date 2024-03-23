@@ -30,8 +30,17 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    // Redirection vers la page d'accueil en cas de succès
-                    window.location.href = "index.php";
+                    
+
+                    const data= JSON.parse(xhr.responseText);
+                    alert( data['message']);
+
+                    if(data['succes']=='true'){
+
+                        window.location.href="../interfaceWEB/index.php";
+
+                    }
+                    
 
                    
                 } else {

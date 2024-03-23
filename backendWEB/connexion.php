@@ -39,8 +39,8 @@ if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         $resultat = $connexion->query($requete);
         if ($resultat->num_rows == 0) {
             // Utiliser JavaScript pour afficher une alerte
-            echo "Oups! Aucun compte n\'est lié à cet email ! Veuillez vous inscrire ou réessayer.";
-            }
+            echo json_encode(array("succes" => 'false', "message" => "Oups! Aucun compte n'est lié à cet email ! Veuillez vous inscrire ou réessayer."));
+        }
         else 
         {
                 // Récupérer l'ID utilisateur depuis la base de données
@@ -51,7 +51,8 @@ if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
                 $utilisateur_id = $resultat_id->fetch_assoc(); // Récupérer l'ID utilisateur
                 $_SESSION['id_utilisateur'] = $utilisateur_id['id_utilisateur']; // Stocker l'ID utilisateur dans la session
             } else {
-                echo 'Erreur';
+                echo json_encode(array("succes" => 'false', "message" => "Erreur lors de la récupération de l'ID utilisateur."));
+                exit(); // Arrêter l'exécution du script
             }
             // Récupérer le mot de passe de l'utilisateur
             $requete = "SELECT mot_de_passe FROM utilisateurs WHERE email = '" . $email . "'";
@@ -65,23 +66,19 @@ if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
                 
                 { //La session est créée et l'utilisateur est connecté
                     $_SESSION['email'] = $email;
-                    
-                    // Indiquer que l'utilisateur est connecté en JavaScript
-                    
-                    echo json_encode(array("succes"=>"Connexion réussie!"));
 
-                   
-                    // Rediriger vers la page d'accueil
+                    echo json_encode(array("succes" => 'true', "message" => "Connexion réussie!"));
+                    exit(); // Arrêter l'exécution du script après l'envoi du message de succès
                 } else {
-                    echo ('Mot de passe ou utilisateur invalide.');
+                    echo json_encode(array("succes" => 'false', "message" => "Mot de passe ou utilisateur invalide."));
                 }
             } else {
-                echo ('Erreur lors de la récupération du mot de passe.');
+                echo json_encode(array("succes" => 'false', "message" => "Erreur lors de la récupération du mot de passe."));
             }
         }
 
     } else {
-        echo "<script> alert('methode non autorisé');</script>";
+        echo json_encode(array("succes" => 'false', "message" => "Méthode non autorisée."));
     }
 
         // Fermer la connexion
@@ -90,7 +87,7 @@ if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
 } else {
 // Gérer le cas où la méthode de la requête n'est pas DELETE
 http_response_code(405);
-echo json_encode(array("message" => "Méthode HTTP non autorisée."));
+echo json_encode(array("succes" => 'false', "message" => "Méthode HTTP non autorisée."));
 }
 
 

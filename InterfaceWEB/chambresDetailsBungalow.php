@@ -1,17 +1,17 @@
 <?php
 
+session_start();
 
-  // Vérifier si le paramètre de suppression réussie est présent dans l'URL
-  if (isset($_GET['reservation_success']) && $_GET['reservation_success'] === 'true') {
-    echo "<script> alert('Réservation de la chambre réussi');</script>";
-    
-}
+  
 if(!isset($_GET['numero'])){
 
     $btn_reservation_visible = true; 
 
 }
 
+echo  $_SESSION['date_debut'];
+echo  $_SESSION['date_fin'];
+echo $_SESSION['email'];
 
 
 ?>
@@ -62,12 +62,19 @@ if(!isset($_GET['numero'])){
                             l'option la plus confortable pour vous et votre famille. Les suites en bungalows sont
                             idéales pour votre repos et votre détente, dans un environnement naturel très spécial.</p>
                          
-                            <?php if ($btn_reservation_visible): ?>
-                                <form id="reservationForm" action="../backendWEB/_reservation.php"  method="post">
-                                    <input type="hidden" name="numero_chambre" value="<?php echo isset($_GET['numero_chambre']) ? $_GET['numero_chambre'] : ''; ?>">
+                            <?php
+                            session_start(); // Démarrer la session
+
+                            // Vérifiez si le bouton de réservation est visible
+                            if ($btn_reservation_visible) {
+                                // Affichez le formulaire de réservation
+                                echo '
+                                <form id="reservationForm" method="post">
+                                    <input type="hidden" name="numero_chambre" value="' . (isset($_GET['numero_chambre']) ? $_GET['numero_chambre'] : '') . '">
                                     <button type="submit" id="reserver">Réserver maintenant</button>
-                                </form>
-                            <?php endif; ?>
+                                </form>';
+                            }
+                            ?>
 
                             
 
