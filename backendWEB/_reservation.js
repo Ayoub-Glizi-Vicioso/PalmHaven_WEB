@@ -17,9 +17,12 @@ $(document).ready(function () {
 
         // Convertissez l'objet en chaîne JSON
         const jsonData = JSON.stringify(formData);
+        console.log(jsonData);
+
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../backendWEB/_reservation.php", true); // Ouvrir une requête POST vers l'action du formulaire
+        xhr.open("POST", "../backendWEB/_reservation.php", true);
+        console.log( xhr.open("POST", "../backendWEB/_reservation.php", true));
         xhr.setRequestHeader('Content-Type', 'application/json');
 
         xhr.onreadystatechange = function() {
