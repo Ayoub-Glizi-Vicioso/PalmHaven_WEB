@@ -4,9 +4,9 @@ $(document).ready(function(){
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
 
         let email = document.getElementById('email').value;
-        console.log(email);
+
         let mot_de_passe = document.getElementById('mot_de_passe').value;
-        console.log(mot_de_passe);
+
 
         let url = '../backendWEB/supprimercompte.php'
 

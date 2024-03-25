@@ -4,9 +4,9 @@ $(document).ready(function () {
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
 
         let id_reservation = document.getElementById("id_reservation").value;
-        console.log(id_reservation);
+
         let email = document.getElementById("email").value;
-        console.log(email);
+
 
         let url = '../backendWEB/annulerReservation.php';
         let params = 'id_reservation=' + id_reservation + '&email=' + email;

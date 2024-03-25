@@ -13,7 +13,6 @@ if(isset($_SESSION['email'])) {
     include 'nav_not_connected.php';
 }
 
-echo $_SESSION['emai'];
                     
 
 

@@ -27,23 +27,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 }
                 
                 // Construire la requête SQL pour sélectionner les chambres disponibles entre les dates fournies
-                $requete ="SELECT img, type_chambre, numero     /* selectionner les img , type_chambre, numero  */
+                $requete ="SELECT img, type_chambre, MIN(numero) AS numero
                 FROM chambre 
-                WHERE numero NOT IN (   /* sous requete: selection des numeros des chambres qui n'ont pas de reservation associé  */
-                    SELECT DISTINCT chambre.numero     
-                    FROM chambre      
+                WHERE numero NOT IN (
+                    SELECT DISTINCT chambre.numero
+                    FROM chambre
                     INNER JOIN reservation ON chambre.numero = reservation.numero_chambre 
                     WHERE 
                     (
                         ('$dateDebut' BETWEEN reservation.date_debut AND reservation.date_fin) 
                         OR ('$dateFin' BETWEEN reservation.date_debut AND reservation.date_fin)
-                        ) 
-                        OR 
-                        (
-                            (reservation.date_debut BETWEEN '$dateDebut' AND '$dateFin') 
-                            OR (reservation.date_fin BETWEEN '$dateDebut' AND '$dateFin')
-                            )
-                            )";
+                    ) 
+                    OR 
+                    (
+                        (reservation.date_debut BETWEEN '$dateDebut' AND '$dateFin') 
+                        OR (reservation.date_fin BETWEEN '$dateDebut' AND '$dateFin')
+                    )
+                )
+                GROUP BY type_chambre";
                             
 
 

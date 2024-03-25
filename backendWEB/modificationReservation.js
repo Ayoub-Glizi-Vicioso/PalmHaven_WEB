@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
         
 
@@ -75,11 +74,14 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    // Redirection vers la page de profil après la modification de la réservation
-                    window.location.href = '../interfaceWEB/Profilmesreservtion.php?modif_success=true';
+                    // Vous pouvez gérer la réponse en fonction de vos besoins
+                    const data= JSON.parse(xhr.responseText);
+                    alert( data['message']);
+                    window.location.href="../interfaceWEB/Profilmesreservtion.php"
+
                 } else {
-                    // Gérer les erreurs
-                    console.error('Erreur de requête :', xhr.status);
+                    // Erreur lors de la requête
+                    console.error("Erreur lors de la requête : " + xhr.status);
                 }
             }
         };

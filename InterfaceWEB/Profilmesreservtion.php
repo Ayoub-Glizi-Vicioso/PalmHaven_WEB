@@ -1,26 +1,7 @@
 
 <?php
-// Vérifier si le paramètre de suppression réussie est présent dans l'URL
-if (isset($_GET['annulation_success']) && $_GET['annulation_success'] === 'true') {
-  echo "<script> alert('Annulation réussie!');</script>";
-
-}
-// Vérifier si le paramètre de suppression réussie est présent dans l'URL
-if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
-    echo "<script> alert('Modification réussie!');</script>";
-  
-  }
-
-  if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
-    require '../backendWEB/annulerReservation.php';
-  }
-
-  if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    require '../backendWEB/modificationReservation.php';
-  
-  }
-
-
+ session_start();
+ echo $_SESSION["email"];
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +17,7 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
     <div class="container">
         <div id="Barre_nav">
             <!--<img src="./images/profil.JPG" ></a>--> 
-            <button onclick="window.location.href='ProfilSupprimer.php'" id="btn_reservations">Mes réservations</button>
+            <button onclick="window.location.href='Profilmesreservtion.php'" id="btn_reservations">Mes réservations</button>
             
             <a href="ProfilSupprimer.php"><button  id="btn_effacer_compte">Supprimer mon compte</button></a>
 
@@ -46,26 +27,27 @@ if (isset($_GET['modif_success']) && $_GET['modif_success'] === 'true') {
 
 
         </div>
+
         <div id="retour">
             <div id="btn_retour">
                 <button onclick="window.location.href='index.php'">Retour à la page d’accueil</button>
-             </div>
-             <br><br><br>
-             <div id="zone_text">
-                 <div class="text">
-                     <h2>MES RÉSERVATION:</h2>
-                     
+            </div>
+            
+            <div id="zone_text">
+                <div class="text">
+                    <h2>MES RÉSERVATION:</h2>
+                    
                      <div id="table">
                          <table id='reservationProfil'>
                              
                              
-                             </table>
+                         </table>
                              
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                    
+            </div>
+        </div>
+    </div>
+        
     <!-- Structure de la fenêtre annulation -->
 <div id="annulation" class="annulation">
     <div class="annulation-content">

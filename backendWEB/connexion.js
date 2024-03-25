@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Récupérer les valeurs des champs du formulaire
         let email = document.querySelector("input[name='email']").value;
-        console.log(email);
+
         let mot_de_passe = document.querySelector("input[name='mot_de_passe']").value;
-        console.log(mot_de_passe);
+  
 
         // Construire les données à envoyer
         let data = {
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Convertir les données en format JSON
         let jsonData = JSON.stringify(data);
 
-        console.log(jsonData);
+
 
         // Configurer la requête XMLHttpRequest
         let xhr = new XMLHttpRequest();

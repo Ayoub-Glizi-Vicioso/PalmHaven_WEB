@@ -1,7 +1,11 @@
 <?php
 session_start(); // Démarrer la session
 // Vérifier si le formulaire a été soumis
+
+
+
 if(isset($_SESSION['email'])){
+   
     if(preg_match('/\/_reservation\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         // Vérifier si la requête est une requête POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -82,7 +86,7 @@ $result_check_reservation = $connexion->query($sql_check_reservation);
                     // Renvoyer une réponse JSON indiquant le succès de la réservation
                     
                     http_response_code(200);
-                    echo json_encode(["success" => true, "message" => "Réservation réussie."]);
+                    echo json_encode(["success" => true, "message" => "Réservation réussie.  "]);
                 
                     exit(); // Assurez-vous de quitter après la redirection
                 } else {
