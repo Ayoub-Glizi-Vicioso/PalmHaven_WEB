@@ -71,11 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 echo ('erreur => Les champs de date de début et de fin sont obligatoires.');
        }   
         
-    }else{
-        // L'URL ne correspond pas à ce qui est attendu
-        http_response_code(404); // Not Found
-        echo json_encode(['erreur' => 'URL non valide.', 'code' => 404]);
-    }
+        }else{
+            // L'URL ne correspond pas à ce qui est attendu
+            http_response_code(404); // Not Found
+            echo json_encode(['erreur' => 'URL non valide.', 'code' => 404]);
+        }
     } else {
         
         // Méthode non autorisée

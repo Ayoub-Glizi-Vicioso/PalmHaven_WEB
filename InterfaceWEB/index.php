@@ -47,17 +47,6 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
 </style>
 </head>
 <body>
-    <!-- <nav class="navbar">
-        <a href="pageAccueil.html" target="_SELF" class="navbar-brand">
-            <img src="images/home.png" alt="page d'accueil">Reservation
-        </a>
-        <ul class="navbar-nav">
-            <li class="nav-item"><a href="Aide.html" class="nav-link">Aide</a></li>
-            <li class="nav-item"><a href="connexionfront.php" class="nav-link">Connexion</a></li>
-        </ul>
-    </nav> -->
-
-
 
 
     <header class="section__container header__container">
@@ -69,8 +58,6 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
          
           <div class="booking__container">
             
-          
-
           
           <form method="get" action="../backendWEB/AffichageChambre.php" class="search-form">
               
