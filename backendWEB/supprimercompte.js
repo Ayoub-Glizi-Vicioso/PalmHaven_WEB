@@ -16,12 +16,18 @@ $(document).ready(function(){
         xhr.open('DELETE' , url + '?' + params);
 
         xhr.onreadystatechange = function (){
-            if(xhr.readyState === XMLHttpRequest.DONE){
-                if(xhr.status === 200){
-                    window.location.href = '../interfaceWEB/index.php?delete_success=true';
+            if (xhr.status === 200) {
+                // Vous pouvez gérer la réponse en fonction de vos besoins  
+                const data= JSON.parse(xhr.responseText);
+                alert( data['message']);
+                if(data['succes']=='true'){
+
+                    window.location.href="../interfaceWEB/index.php";
+
                 }
-            }else{
-                console.error('Erreur de requête :' , xhr.status);
+            } else {
+                // Erreur lors de la requête
+                console.error("Erreur lors de la requête : " + xhr.status);
             }
         }
 

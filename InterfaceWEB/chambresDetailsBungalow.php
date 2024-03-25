@@ -9,10 +9,6 @@ if(!isset($_GET['numero'])){
 
 }
 
-echo  $_SESSION['date_debut'];
-echo  $_SESSION['date_fin'];
-echo $_SESSION['email'];
-
 
 ?>
 
