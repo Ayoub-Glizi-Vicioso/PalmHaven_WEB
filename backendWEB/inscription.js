@@ -36,15 +36,14 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    // Redirection vers la page de connexion en cas de succès
-                    alert("La création c'est passé avec succès! Veuillez vous connecter a la page de connexion.")
-                    //window.location.href = "connexionfront.php?inscrip_success=true";
+                     // Vous pouvez gérer la réponse en fonction de vos besoins
                    
-                } else {
-                    // Afficher un message d'erreur en cas d'échec
-                    console.error('Erreur de requête :', xhr.status);
-                    alert("Erreur lors de l'inscription. Veuillez réessayer.");
-                }
+                     const data= JSON.parse(xhr.responseText);
+                     alert( data['message']);
+                 } else {
+                     // Erreur lors de la requête
+                     console.error("Erreur lors de la requête : " + xhr.status);
+                 }
             }
         };
 

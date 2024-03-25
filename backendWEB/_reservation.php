@@ -1,7 +1,7 @@
 <?php
 session_start(); // Démarrer la session
 // Vérifier si le formulaire a été soumis
-/*if(isset($_SESSION['email'])){*/
+if(isset($_SESSION['email'])){
     if(preg_match('/\/_reservation\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         // Vérifier si la requête est une requête POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -104,8 +104,7 @@ $result_check_reservation = $connexion->query($sql_check_reservation);
         }
     }
     
-/*} else {
-    http_response_code(401); 
+} else {
     echo json_encode(array("success" => false, "message" => "Vous devez être connecté pour effectuer une réservation."));
-}*/
+}
 ?>
