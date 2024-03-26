@@ -31,7 +31,7 @@ if(preg_match('/\/annulerReservation\.php/', $_SERVER['REQUEST_URI'], $matches))
 
                 if($conn->query($sql)) {
                     // Redirection vers la page de profil après l'annulation de la réservation
-                    header("Location: ../interfaceWEB/Profilmesreservtion.php?annulation_success=true");
+                    echo json_encode(array("message" => "La réservation a été annuler avec succès."));
                     exit;
                 } else {
                     echo "Erreur lors de l'annulation de la réservation : " . $conn->error;

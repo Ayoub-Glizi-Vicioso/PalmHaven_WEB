@@ -17,8 +17,8 @@ $(document).ready(function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    // Redirection vers la page de profil après l'annulation de la réservation
-                    window.location.href = '../interfaceWEB/Profilmesreservtion.php?annulation_success=true';
+                    const data= JSON.parse(xhr.responseText);
+                    alert( data['message']);
                 } else {
                     // Gérer les erreurs
                     console.error('Erreur de requête :', xhr.status);
