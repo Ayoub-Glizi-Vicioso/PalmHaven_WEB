@@ -175,7 +175,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
     <hr>
 
     
-
+<!--
     <div class="card mb-3 " style="max-width: 100%;border-top: none;">
         <div class="row g-0">
           <div class="col-md-6">
@@ -220,7 +220,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
         </div>
     </div>
 
-    <!-- <div class="card mb-3" style="max-width: 100%;">
+     <div class="card mb-3" style="max-width: 100%;">
         <div class="row g-0">
             <div class="col-md-5">
                 <div class="card-body">
