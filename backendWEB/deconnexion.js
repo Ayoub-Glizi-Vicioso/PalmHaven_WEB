@@ -1,4 +1,4 @@
-/*document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".form_deconnexion").addEventListener("submit", function(event) {
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
 
@@ -23,4 +23,4 @@
         // Envoyer le formulaire
         xhr.send();
     });
-});*/
+});

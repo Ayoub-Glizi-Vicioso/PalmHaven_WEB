@@ -73,8 +73,7 @@ if(preg_match('/\/inscription\.php/', $_SERVER['REQUEST_URI'], $matches)) {
     $connexion->close();
 
 } else {
-    // Gérer le cas où la méthode de la requête n'est pas DELETE
-    http_response_code(405);
-    echo json_encode(['message' => 'Méthode HTTP non autorisée.']);
+
+    echo json_encode(['message' => 'Mauvais url.']);
 }
 ?>
