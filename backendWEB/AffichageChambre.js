@@ -69,7 +69,7 @@ $(document).ready(function() {
                         nouveauDiv.append('<div class="image-container"><img class="chamb" src="' + valeur[i]['img'] + '" alt="Image de la chambre"></div>');
                         
                         // Ajouter le type de chambre à l'élément div
-                        nouveauDiv.append('<div class="content"><h5 class="type">' + valeur[i]["type_chambre"] + '</h5></div>');
+                        nouveauDiv.append('<div class="content"><h5 class="type">Suite : ' + valeur[i]["type_chambre"] + '</h5></div>');
                         
                         
                         // Ajouter le numéro de la chambre à l'élément div
