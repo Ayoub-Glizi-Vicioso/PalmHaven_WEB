@@ -11,12 +11,6 @@ session_start();
         require '../backendWEB/connexion.php';
     }
 
-    // Vérifier si le paramètre de suppression réussie est présent dans l'URL
-if (isset($_GET['inscrip_success']) && $_GET['inscrip_success'] === 'true') {
-  echo "<script> alert('Création de compte réussie!');</script>";
-
-}
-
 
 ?>
 
@@ -27,6 +21,7 @@ if (isset($_GET['inscrip_success']) && $_GET['inscrip_success'] === 'true') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/pourCONNEXION/styleCONNEXION.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
 </head>
 <body>
@@ -35,15 +30,19 @@ if (isset($_GET['inscrip_success']) && $_GET['inscrip_success'] === 'true') {
     <div class="container">
         <div class="container-form">
           <div class="form-connexion">
-            <form method="POST" action="">
+            <form id="form_connexion" method="POST" action="../backendWEB/connexion.php">
               <h2 id="connexiontxt">Connexion</h2>
               <br>
-              <label for="email"></label>
+              <!--<label for="email"></label>-->
               <input name="email" type="email" placeholder="Adresse courriel" required />
-              <label for="mot_de_passe"></label>
+               <!--<label for="mot_de_passe"></label>-->
               <input name="mot_de_passe" type="password" placeholder="Mot de passe" required />
               <br>
               <button>Connexion</button>
+              <br>
+              <button id="btn-inscription-cache" onclick="window.location.href='inscriptionfront.php'">Pas de compte? Inscrivez-vous.</button>
+              
+              
             </form>
           </div>
         </div>
@@ -67,6 +66,8 @@ if (isset($_GET['inscrip_success']) && $_GET['inscrip_success'] === 'true') {
           </div>
         </div>
       </div>
+
+      <script src='../backendWEB/connexion.js'></script>
 </body>
 </html>
 

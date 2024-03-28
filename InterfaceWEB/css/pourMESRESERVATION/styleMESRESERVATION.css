@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 * {
     margin: 0;
     padding: 0;
@@ -24,13 +25,15 @@ body {
     max-width: 65%;
     height: 70%;
     position: relative;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-x: auto;
+    overflow-y: auto;
     display: flex;
     border-radius: 5%;
 }
 
 #zone_text {
+    display: flex;
+    
     width: 80%;
     text-align: center;
     padding: 20px;
@@ -135,6 +138,7 @@ table , td , th , tr{
     border:1px solid lightgray;
     border-collapse:collapse;
     padding: 10px;
+    width:100px
 }
 
 .donnee{
@@ -191,8 +195,60 @@ form button:hover{
     width: 15%;
 }
 
-#id_reservation , #email , #Ddebut , #Dfin{
+#id_reservation , #email , #Ddebut , #Dfin {
     background-color: white;
     border: 1px solid lightgray;
     color: black;
+}
+
+#courriel , #numero_reservation{
+    background-color: white;
+    border: 1px solid lightgray;
+    color: black;
+}
+
+
+
+
+@media only screen and (max-width: 1200px) {
+    body {
+        font-size: 12px; /* Réduire la taille de la police globale */
+    }
+
+    
+    .container {
+        width: 90%; /* Réduire la largeur du conteneur */
+        height: 95%; /* Réduire la hauteur du conteneur */
+        display: flex;
+        flex-direction: column; /* Aligner les éléments en colonne */
+    }
+
+    #Barre_nav {
+        display: flex;
+        flex-direction: row; /* Aligner les éléments en ligne */
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    #zone_text {
+        flex-direction: column; /* Aligner les éléments en colonne */
+        width: 100%; /* Prendre toute la largeur disponible */
+        height: 100%; /* Prendre toute la hauteur disponible */
+    }
+
+    button , input{
+        
+        font-size: 9px;
+        width: smaller;
+
+    }
+
+}
+
+@media screen  and (max-width: 800px ){
+    #zone_text{
+        transform: rotate(270deg);
+        margin-right: 10px;
+    }
+    
 }

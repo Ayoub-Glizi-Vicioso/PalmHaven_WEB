@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap');
+
+    
+
+
         /* Variables CSS */
         :root {
             --main-bg-color: #f4f4f4;
@@ -98,3 +102,36 @@
         font-style: italic;
         color: #16b0c4;
         }
+
+
+        @media only screen and (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Modifier la direction de la flexbox pour empiler les éléments */
+            }
+            
+            .content img {
+                width: 100%; /* Ajuster la largeur de l'image */
+                height: auto; /* Redimensionner proportionnellement */
+                margin-right: 0; /* Supprimer la marge */
+                border-radius: 0; /* Supprimer la bordure arrondie */
+            }
+            
+            div p {
+                width: fit-content; /* Ajuster la largeur du paragraphe */
+                border-radius: 0; /* Supprimer la bordure arrondie */
+            }
+            
+            h1, h2 {
+                font-size: 1.5em; /* Ajuster la taille de la police */
+            }
+            
+            input[type="submit"] {
+                padding: 8px 16px; /* Ajuster le rembourrage */
+                font-size: 14px; /* Ajuster la taille de la police */
+            }
+            
+            #div-text {
+                font-size: 12px; /* Ajuster la taille de la police */
+            }
+        }
+        

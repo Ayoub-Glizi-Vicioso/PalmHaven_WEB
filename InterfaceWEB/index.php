@@ -13,6 +13,9 @@ if(isset($_SESSION['email'])) {
     include 'nav_not_connected.php';
 }
 
+                    
+
+
 
 
 // Vérifier si le paramètre de suppression réussie est présent dans l'URL
@@ -20,10 +23,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
     echo "<script>alert('Votre compte a été supprimé avec succès.');</script>";
 }
 
-// Vérifier si le paramètre de connexion réussie est présent dans l'URL
-if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
-    echo "<script>alert('Bienvenue!');</script>";
-}
+
 
 
 
@@ -38,606 +38,12 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
     <title>Document</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-</head>
+    <link rel="stylesheet" href="css/pourINDEX/styleINDEX.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-        
-        @media only screen and (max-width: 768px) {
-            body {
-                font-size: 14px; /* Réduire la taille de la police pour les écrans plus petits */
-            }
-
-            .container {
-                max-width: 90%; /* Réduire la largeur de la conteneur pour mieux s'adapter aux petits écrans */
-            }
-
-            .nav__links {
-                flex-direction: column; /* Réorganiser les liens de navigation en colonne pour les écrans plus petits */
-            }
-
-            .booking__container,
-            .search-form {
-                /* display: grid;
-                grid-template-columns: 1fr;
-                justify-items: center; 
-                width: 70%;  */
-                display: grid; /* Utiliser CSS Grid */
-                grid-template-columns: 1fr; /* Une seule colonne */
-                justify-items: center; /* Centrer horizontalement */
-                width: 70%; /* Exemple de modification de la largeur */
-                
-            }
-
-            .annonce,
-            .chambre {
-                display: flex;
-                flex-direction: column; /* Modification de la direction des éléments pour être verticale */
-            }
-
-            .form__group {
-                margin-bottom: 10px; /* Ajouter de l'espace entre les groupes de champs */
-            }
-
-            .input__group {
-                display: flex;
-                flex-direction: column; /* Aligner les éléments verticalement */
-                align-items: flex-start; /* Aligner les éléments à gauche */
-            }
-
-            .search-form input[type="date"],
-            .search-form input[type="submit"] {
-                width: 100%; /* Faire en sorte que les éléments occupent toute la largeur disponible */
-                padding: 10px; /* Ajouter du remplissage pour un meilleur aspect */
-                margin-bottom: 10px; /* Ajouter de l'espace entre les champs */
-            }
-
-            /* Style des étiquettes */
-            .search-form label {
-                font-size: smaller; /* Réduire la taille de la police */
-                margin-bottom: 5px; /* Ajouter de l'espace en bas des étiquettes */
-            }
-
-            @media screen and (max-width: 600px) {
-            .search-form {
-                width: 90%; /* Exemple de modification de la largeur pour les écrans plus petits */
-            }
-            }
-        }
-
-
-
-
-        :root {
-            --blue: #6d597a;
-            --darkblue: #6d597a;
-            --platinum: #e5e5e5;
-            --black: #000000;
-            --white: #ffffff;
-            --thumb: #edf2f4;
-        }
-
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-            font-family: "Montserrat";
-            letter-spacing: .2rem;
-        }
-
-        body {
-            font: 16px / 24px "Rubik", sans-serif;
-            color: var(--black);
-            background: var(--platinum);
-            margin: 0;
-            padding-top: 50px;
-            background-color: white;
-            height: 200vh;
-            
-        }
-
-        nav {
-            position: sticky; /* Rendre le navbar sticky */
-            top: 0; /* Fixer le navbar en haut de la page */
-            z-index: 1000; /* Assurer que le navbar reste au-dessus du contenu */
-            background-color: white;
-            padding: 1rem 1rem; /* Ajouter un padding au navbar */
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 115px;
-            margin-top: 0px;
-        }
-
-        
-        .nav_logo img {
-            width: 150px;
-            margin-right: 10px;
-        }
-
-        .nav__links{
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .link{
-            margin-right: 20px;
-        }
-        .link a{
-            font-weight: 500;
-            color: rgba(152, 150, 150, 0.932);
-            transition:  0.3;
-        }
-
-        .link a:hover{
-            color: (--primary-color);
-        }
-
-        .container {
-            max-width: 1400px;
-            padding: 0 15px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 28px;
-            margin: 1em;
-            color: var(--blue);
-            padding: 10px;
-        }
-
-        .cards {
-            display: flex;
-            padding: 25px 0px;
-            list-style: none;
-            overflow-x: scroll;
-            overflow-y: hidden;
-        }
-
-        .card {
-            display: flex;
-            flex-direction: column;
-            flex: 0 0 100%;
-            padding: 20px;
-            border-bottom: 1px solid var(--black);
-            margin-bottom: 20px;
-            position: relative;
-            
-        }
-
-        .card-title {
-            /* color: var(--blue);
-            font-size: 24px;
-            margin-bottom: 10px; */
-            font-size: 1.3rem;
-            color: #16b0c4;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .card-content {
-            color: var(--black);
-        }
-
-        .card-link-wrapper {
-            margin-top: 20px;
-        }
-
-        .card-link {
-            color: var(--blue);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .card-link:hover {
-            color: var(--darkblue);
-        }
-
-        .card:not(:last-child)::after {
-            content: "→";
-            position: absolute;
-            top: 60%;
-            right: 100px;
-            transform: translateY(-50%);
-            font-size: 24px;
-            color: var(--blue);
-        }
-
-        footer {
-            background-color: #16b0c4;
-            color: var(--white);
-            padding: 20px 0;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .search-form {
-            /* max-width: 90%;
-            margin: 0 auto;
-            padding: 30px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: -3px 1px 15px 18px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;  */
-            display: flex; /* Utiliser Flexbox */
-            flex-direction: column; /* Empiler les éléments verticalement */
-            align-items: center; /* Centrer horizontalement */
-            width: 70%; /* Exemple de modification de la largeur */
-        }
-
-
-        .search-form label {
-            flex: 1; 
-            margin-right: 8px; 
-            text-align: right; 
-            font-size: smaller;
-        }
-
-        .search-form input[type="date"] {
-            flex: 2; 
-            padding: 8px;
-            margin-right: 8px; 
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .search-form input[type="submit"] {
-            flex: 1; 
-            padding: 10px;
-            margin-left: 8px; 
-            background-color: #16b0c4;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .search-form input[type="submit"]:hover {
-            background-color: #b56576;
-        }
-
-
-        .search-form input[type="date_fin"]{
-            border:
-
-
-        }
-
-        .affichage-annonce {
-            border: 1px solid black;
-            background-color: #16b0c4;
-            height: 90%; 
-            width: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            flex-wrap: wrap; 
-            
-        }
-
-        h3{
-            padding: 15px;
-            margin: 5px;
-            text-align: center;
-            font-style: italic;
-        }
-
-        h4{
-            margin-bottom: 15px;
-            text-align: center;
-            font-style: italic;
-            font-size: small;
-
-        }
-        footer a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 10px;
-        }
-
-        .footer-item:hover {
-            color: blue;
-        }
-
-        /* #photo{
-            background-image: url(./images/hotel_profil.jpeg);
-            background-size: cover; 
-            background-repeat: no-repeat; 
-            height: auto;
-            width: 100%;
-            background-position: center;
-
-        } */
-
-        .blanc{
-            color: black;
-
-        }
-
-        #swipe{
-            text-align: center;
-            color: #0d7d8c;
-            font-weight: bold;
-            font-size: large;
-            margin-top: -40px;
-            margin-bottom: 20px;
-            font-style: italic;
-
-        }
-        
-        .card-body {
-            padding: 1rem; /* Add padding to the card body */
-            display: flex; /* Utiliser Flexbox pour aligner les éléments verticalement */
-            flex-direction: column; /* Aligner les éléments verticalement */
-            justify-content: center; /* Aligner les éléments verticalement au centre */
-            align-items: center;
-            
-        }
-        .card {
-            border: none;
-            display: flex; /* Utiliser Flexbox pour aligner les éléments */
-            justify-content: center; /* Centrer horizontalement */
-            align-items: center; /* Centrer verticalement */
-            text-align: center; /* Centrer le texte horizontalement */
-            
-         /* Ajoutez de la marge à gauche */
-         /* Ajoutez de la marge à droite */
-        }
-
-        u {
-            font-size: 1.7rem;
-            color: #16b0c4;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        
-
-        .img-chambre {
-            max-width: 100%; /* Make sure the image doesn't overflow */
-            height: auto;
-            
-        }
-        .card:not(:last-child)::after {
-        content: none; /* Supprimer la flèche à droite */
-        }
-
-        .btn-primary {
-            background-color: #0d7d8c;
-            border-color: #0d7d8c;
-        }
-
-        .btn-primary:hover {
-            background-color: lightslategrey; 
-            border-color: lightslategrey; 
-        }
-
-
-        .header__container {
-             padding: 1rem 1rem 5rem 1rem;
-        }
-
-        .header__image__container {
-        position: relative;
-        min-height: 500px;
-        background-image: linear-gradient(
-            to right,
-            rgba(83, 108, 123, 0.4),
-            rgba(235, 238, 245, 0.1)
-            ),
-            url("./images/hotel_profil.jpeg");
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        border-radius: 2rem;
-        }
-
-        .header__content {
-        max-width: 600px;
-        padding: 5rem 2rem;
-        
-        }
- 
-        .header__content h3, .header__content h4 {
-        color: white; /* Changement de la couleur du texte en blanc */
-        }
-
-        .booking__container {
-        position: absolute;
-        bottom: -5rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: calc(100% - 6rem);
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 3rem 2rem;
-        border-radius: 2rem;
-        background-color: rgba(255, 255, 255, 0.7);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .booking__container form {
-        width: 100%;
-        flex: 1;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        }
-
-        .booking__container .input__group {
-        width: 100%;
-        position: relative;
-        }
-
-        .booking__container label {
-            position: absolute;
-            top: 0; /* Positionner le label au-dessus du champ d'entrée */
-            left: 0;
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            pointer-events: none;
-            transition: 0.3s;
-            transform: translateY(-100%);
-        }
-
-        .booking__container input {
-        width: 100%;
-        padding: 10px 0;
-        font-size: 1rem;
-        outline: none;
-        border: none;
-        background-color: transparent;
-        border-bottom: 1px solid var(--primary-color);
-        color: var(--text-dark);
-        
-        }
-
-        .booking__container input:focus ~ label {
-        font-size: 0.8rem;
-        top: 0;
-        }
-
-        .booking__container .form__group p {
-        margin-top: 0.5rem;
-        font-size: 0.8rem;
-        color: var(--text-light);
-        }
-
-        .booking__container .btn {
-        padding: 1rem;
-        outline: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--white);
-        background-color: var(--primary-color);
-        border-radius: 100%;
-        cursor: pointer;
-        transition: 0.3s;
-        }
-
-        .booking__container .btn:hover {
-        background-color: var(--primary-color-dark);
-        }
-
-        #date_fin, #date_debut{
-            font-size: 0.7rem;
-            text-align: center;
-
-        }
-
-
-        /* Style de la section d'affichage des annonces */
-        .affichage-annonce {
-            border: 1px solid black; /* Bordure de 1px solide noire */
-            background-color: lightgray; /* Fond de couleur gris clair */
-            padding: 10px; /* Espacement intérieur de 10px */
-            border-radius: 5px; /* Coins arrondis de 5px */
-            display: grid; /* Utilisation de la grille pour organiser les éléments */
-            grid-template-columns: repeat(auto-fill, 100%); /* Colonnes de largeur minimale de 250px et flexible */
-            gap: 10px; /* Espacement de 10px entre les éléments */
-        }
-
-        /* Style des éléments de chambre */
-        .chambre {
-            display: flex; /* Utiliser flexbox pour aligner les éléments horizontalement */
-            margin: 0 auto; /* Centrer horizontalement les chambres */
-            padding: 10px; /* Ajouter un espacement autour des chambres */
-            padding-left: 10px;
-            padding-right: 10px;
-            width: 100%;
-            background-color: white;
-            border: 1px solid lightgray;
-            
-        }
-
-        /* Style du conteneur d'image */
-        .image-container {
-            margin-right: 20px; /* Espacement entre l'image et le texte */
-            flex-shrink: 0; /* Empêcher le rétrécissement du conteneur d'image */
-            margin-left: 50px;
-            margin-right: 50px;
-            width: 35%;
-        }
-
        
-
-
-        .content {
-            flex: 1; /* Le contenu occupe tout l'espace restant */
-            display: flex;
-            flex-direction: column;
-            margin-left: 10px;
-            margin-right: 10px;
-            width: 65%;
-        }
-
-
-        /* Style du titre de la chambre */
-        .chambre h5 {
-            margin: 10px; /* Suppression des marges par défaut */
-        }
-
-        /* Style du paragraphe de la chambre */
-        .chambre .content p {
-            text-align: center;
-            padding: 5px 10px;
-            font-size: 16px;
-        }
-
-        /* Style du lien "Plus d'options" */
-        .chambre a {
-            display: block; /* Affichage en bloc pour occuper toute la largeur */
-            text-align: center; /* Centrage du texte */
-            background-color: #16b0c4; /* Fond de couleur bleue */
-            color: white; /* Texte de couleur blanche */
-            padding: 5px 10px; /* Remplissage de 5px en haut/bas et 10px à gauche/droite */
-            border-radius: 5px; /* Coins arrondis de 5px */
-            text-decoration: none; /* Suppression du soulignement du lien */
-            margin-top: 10px; /* Marge supérieure de 10px */
-        }
-
-
-
-        /* Style du lien "Plus d'options" au survol */
-        .chambre a:hover {
-            background-color: #0056b3; /* Fond de couleur plus foncée au survol */
-        }
-
-        
-
-        .image-container img {
-            width: 100%; /* Faire en sorte que l'image prenne 100% de la largeur disponible */
-            height: auto; /* Ajuster automatiquement la hauteur pour maintenir les proportions de l'image */
-            align-items: center;
-        }
-
 </style>
 </head>
 <body>
-    <!-- <nav class="navbar">
-        <a href="pageAccueil.html" target="_SELF" class="navbar-brand">
-            <img src="images/home.png" alt="page d'accueil">Reservation
-        </a>
-        <ul class="navbar-nav">
-            <li class="nav-item"><a href="Aide.html" class="nav-link">Aide</a></li>
-            <li class="nav-item"><a href="connexionfront.php" class="nav-link">Connexion</a></li>
-        </ul>
-    </nav> -->
-
-
 
 
     <header class="section__container header__container">
@@ -646,12 +52,11 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
             <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
             <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
           </div>
+         
           <div class="booking__container">
             
           
-
-          
-          <form  method="get" class="search-form">
+          <form method="get" action="../backendWEB/AffichageChambre.php" class="search-form">
               
               <div class="form__group">
                 <div class="input__group">
@@ -659,23 +64,23 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
                   <label for="start_date" id="date_debut">Date de début réservation</label>
                 </div>
             </div>
-            <br><br>
+           
             
               <div class="form__group">
-                <div class="input__group">
+                 <div class="input__group">
                     <input type="date" id="end_date" name="end_date"> 
                      <label for="end_date" id=date_fin >Date de fin de réservation</label>
-                </div>
+                 </div>
               </div>
+        
+       
+              <input id="btn_rechercher" type="submit" value="Rechercher">
              
-              <input type="submit" value="Rechercher">
             </form>
             
-
-
-
-
           </div>
+
+
         </div>
       </header>
 
@@ -768,7 +173,7 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
     <hr>
 
     
-
+<!--
     <div class="card mb-3 " style="max-width: 100%;border-top: none;">
         <div class="row g-0">
           <div class="col-md-6">
@@ -813,7 +218,7 @@ if (isset($_GET['conn_success']) && $_GET['conn_success'] === 'true') {
         </div>
     </div>
 
-    <!-- <div class="card mb-3" style="max-width: 100%;">
+     <div class="card mb-3" style="max-width: 100%;">
         <div class="row g-0">
             <div class="col-md-5">
                 <div class="card-body">

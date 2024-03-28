@@ -21,7 +21,7 @@ $(document).ready(function(){
                 try{
                 // Traitement de la réponse reçue du serveur
                 const valeur = JSON.parse(requeteGet.responseText);
-                console.log(valeur);
+                
                 
 
                             // Accès à la première (et seule) entrée dans le tableau
@@ -40,8 +40,7 @@ $(document).ready(function(){
                 const taxe = calculerTaxe(prixTotal);
                 const total = coutTotal(prixTotal, taxe);
 
-                // Affichage dans la console pour le débogage
-                console.log(numeroReservation, nomClient, typeChambre, dateDebut, dateFin, prixParNuit, prixTotal, taxe, total);
+               
                                     
                 
                // Construire le contenu de la facture

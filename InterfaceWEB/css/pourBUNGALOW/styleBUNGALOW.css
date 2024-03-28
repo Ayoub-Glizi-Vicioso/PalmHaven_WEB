@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+
+
+
+
+
 body {
     font-family: "Montserrat", sans-serif;
     font-weight: 300;
@@ -147,4 +152,43 @@ object-fit: cover;
 #btn-retour :hover{
     color: #90b1ff;
 
+}
+
+
+@media only screen and (max-width: 768px) {
+    body {
+        height: auto; /* Annuler la hauteur fixe */
+    }
+
+    .container-chambre {
+        width: 90%; /* Ajuster la largeur du conteneur */
+        padding: 20px; /* Ajuster le rembourrage */
+        margin: 10px 0; /* Ajuster les marges */
+    }
+
+    .room-details {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .room-details img {
+        border-radius: 0; /* Supprimer la bordure arrondie des images */
+    }
+
+    .avantages {
+        width: 90%; /* Ajuster la largeur */
+        padding: 20px; /* Ajuster le rembourrage */
+        margin: 10px 0; /* Ajuster les marges */
+    }
+
+    .room-box-extras {
+        width: 90%; /* Ajuster la largeur */
+        padding: 20px; /* Ajuster le rembourrage */
+        margin: 10px 0; /* Ajuster les marges */
+    }
+
+    #btn-retour {
+        font-size: 14px; /* Ajuster la taille de la police */
+    }
 }

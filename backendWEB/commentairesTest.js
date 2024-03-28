@@ -24,8 +24,7 @@ $(document).ready(function () {
 
     requestGet.onreadystatechange = function () {
         if (requestGet.readyState === 4 && requestGet.status === 200) {
-            //TEST! : On peut enlever. 
-            console.log(requestGet.responseText);
+            
             // Traitement de la réponse reçue du serveur
             const commentaires = JSON.parse(requestGet.responseText);
 

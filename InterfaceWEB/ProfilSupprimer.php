@@ -1,4 +1,10 @@
+<?php
+session_start();
+if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
+    require '../backendWEB/supprimercompte.php';
+  }
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/pourSUPPRIMER/styleSPPRIMER.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -17,9 +24,10 @@
             
             <button id="btn_effacer_compte">Supprimer mon compte</button>
 
-            <form action="../backendWEB/deconnexion.php">
-                <button  id="btn_decon">Deconnexion</button>
+            <form class="form_deconnexion" action="../backendWEB/deconnexion.php" method="post">
+                <button id="btn_decon" type="submit">Deconnexion</button>
             </form>
+
         </div>
         <div id="zone_text">
             <div id="btn_retour">
@@ -37,26 +45,30 @@
 
                     <br>
                    
-                    <p>Nous vous encourageons à réfléchir attentivement 
+                    <p id="para2">Nous vous encourageons à réfléchir attentivement 
                     avant de prendre cette décision, car elle entraînera 
                     la perte totale de votre accès à notre service de 
                     réservation. Si vous êtes sûr de vouloir procéder à 
                     la suppression de votre compte, veuillez confirmer 
                     vos informations d’authentifications.</p>
-                    <br>
+                    
                 <div id="effacer_compte">
-                    <form action="../backendWEB/supprimercompte.php" method="post" >
+                    <form id="form_supprimer" action="../backendWEB/supprimercompte.php" method="post" >
                         <label for="email"></label>
-                        <input name="email" type="text" placeholder="email" required>
+                        <input id='email' name="email" type="text" placeholder="email" required>
                         <br><br>
                         <label for="mot_de_passe"></label>
-                        <input name="mot_de_passe" type="password" placeholder="mot de passe" required>
+                        <input id='mot_de_passe' name="mot_de_passe" type="password" placeholder="mot de passe" required>
                         <br>
-                        <button>Effacer Compte</button>
+                        <button type="submit">Effacer Compte</button>
                     </form>
                 </div>
+            </div>
         </div>
     </div>
+
+    <script src='../backendWEB/supprimercompte.js'></script>
+    <script src='../backendWEB/deconnexion.js'></script>
 
 </body>
 </html>

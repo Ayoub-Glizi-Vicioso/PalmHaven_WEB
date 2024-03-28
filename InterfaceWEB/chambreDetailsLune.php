@@ -1,18 +1,15 @@
 
 <?php
 
+session_start();
 
-  // Vérifier si le paramètre de suppression réussie est présent dans l'URL
-  if (isset($_GET['reservation_success']) && $_GET['reservation_success'] === 'true') {
-    echo "<script> alert('Réservation de la chambre réussi');</script>";
     
-}
+
 if(!isset($_GET['numero'])){
 
     $btn_reservation_visible = true; 
 
 }
-
 
 ?>
 
@@ -24,6 +21,7 @@ if(!isset($_GET['numero'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails de la chambre d'hôtel de type lune de miel</title>
     <link rel="stylesheet" href="css/pourLUNE/styleLUNE.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -56,12 +54,20 @@ if(!isset($_GET['numero'])){
                         <p><strong>Capacité : </strong>2 adultes</p>
                         <p><strong>Description:</strong> Notre suite de lune de miel est conçue pour vous offrir une expérience inoubliable. Profitez des services exclusifs et des avantages inclus dans cette suite spéciale pour les jeunes mariés et aussi pour les couples qui souhaitent partager une expérience romantique. </p>
                         
-                        <?php if ($btn_reservation_visible): ?>
-                                <form action="../backendWEB/_reservation.php" method="post">
-                                    <input type="hidden" name="numero_chambre" value="<?php echo isset($_GET['numero_chambre']) ? $_GET['numero_chambre'] : ''; ?>">
+                        <?php
+                            session_start(); // Démarrer la session
+
+                            // Vérifiez si le bouton de réservation est visible
+                            if ($btn_reservation_visible) {
+                                // Affichez le formulaire de réservation
+                                echo '
+                                <form id="reservationForm" method="post">
+                                    <input type="hidden" name="numero_chambre" value="' . (isset($_GET['numero_chambre']) ? $_GET['numero_chambre'] : '') . '">
                                     <button type="submit" id="reserver">Réserver maintenant</button>
-                                </form>
-                         <?php endif; ?>
+                                </form>';
+                            }
+                            ?>
+
             </div>
         </div>
     </div>
@@ -122,6 +128,7 @@ if(!isset($_GET['numero'])){
         </ul>
     </div>
     <script src="./script/scriptChangement.js"></script>
+    <script src="../backendWEB/_reservation.js"></script>
 </body>
 
 </html>
