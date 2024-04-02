@@ -11,7 +11,7 @@ if(preg_match('/\/deconnexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         // Détruisez la session
         session_destroy();
 
-        echo json_encode(['message' => "Deconnexion reussi!"]);
+        echo json_encode(['message' => "Déconnexion réussi!"]);
         // Redirigez l'utilisateur vers la page de connexion (ou une autre page)
         
         
