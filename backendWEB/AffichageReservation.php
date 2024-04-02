@@ -32,7 +32,8 @@ if(isset( $_SESSION['email'])){
             // Requête SQL pour récupérer les réservations de l'utilisateur avec les détails de la chambre
             $requete = "SELECT r.*, c.* FROM reservation r
                 INNER JOIN chambre c ON r.numero_chambre = c.numero
-                WHERE r.id_utilisateur = ?";
+                WHERE r.id_utilisateur = ? AND r.date_debut > NOW()";
+
 
         // Préparer la requête SQL
         $stmt = $connexion->prepare($requete);
