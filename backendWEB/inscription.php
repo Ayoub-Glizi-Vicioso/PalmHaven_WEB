@@ -2,8 +2,8 @@
 session_start();
 
 if(preg_match('/\/inscription\.php/', $_SERVER['REQUEST_URI'], $matches)) {
-    
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
         
         // Démarre une nouvelle session
         $serveur = "localhost"; // adresse du serveur MySQL
@@ -58,8 +58,8 @@ if(preg_match('/\/inscription\.php/', $_SERVER['REQUEST_URI'], $matches)) {
                 // Si l'utilisateur est inséré dans la base de données
                 if ($connexion->query($requete)) {
                     // Rediriger vers la page d'index dans le répertoire IntefaceWEB
-                    echo json_encode(['message' => 'Création du compte réussi!']);
-                
+                    echo json_encode(['succes' => 'true', 'message' => 'Création du compte réussie!']);
+
                 } else {
                     echo json_encode(['message' => 'Erreur lors de l\'inscription : ' . $connexion->error]);
                 }

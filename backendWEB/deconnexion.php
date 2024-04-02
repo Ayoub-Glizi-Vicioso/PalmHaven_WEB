@@ -11,10 +11,10 @@ if(preg_match('/\/deconnexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         // Détruisez la session
         session_destroy();
 
-        echo "Deconnexion reussi!";
+        echo json_encode(['message' => "Deconnexion reussi!"]);
         // Redirigez l'utilisateur vers la page de connexion (ou une autre page)
-        header("Location: ../interfaceWEB/index.php");
-        exit();
+        
+        
 
     } else {
         // Gérer le cas où la méthode de la requête n'est pas DELETE

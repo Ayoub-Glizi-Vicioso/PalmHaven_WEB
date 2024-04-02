@@ -2,6 +2,8 @@
 
 session_start(); // Démarrer la session
 
+
+
 if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
     
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -67,7 +69,13 @@ if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
                 { //La session est créée et l'utilisateur est connecté
                     $_SESSION['email'] = $email;
 
+                   //print_r($_SESSION["email"]);
+
+               
+                
+                    
                     echo json_encode(array("succes" => 'true', "message" => "Connexion réussie!"));
+
                     exit(); // Arrêter l'exécution du script après l'envoi du message de succès
                 } else {
                     echo json_encode(array("succes" => 'false', "message" => "Mot de passe ou utilisateur invalide."));

@@ -26,7 +26,7 @@ if(!isset($_GET['numero'])){
 
 <body>
     <div class="container-chambre">
-        <a id="btn-retour" href="index.html">
+        <a id="btn-retour" href="index.php">
             <svg id="btn-retour" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
                 <path

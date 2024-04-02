@@ -2,7 +2,8 @@
 
 session_start();
 
-if(isset($_SESSION['email'])){
+
+if(isset( $_SESSION['email'])){
     if(preg_match('/\/AffichageReservation\.php/', $_SERVER['REQUEST_URI'] , $matches)){
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $email = $_SESSION['email'];
@@ -11,7 +12,6 @@ if(isset($_SESSION['email'])){
             $utilisateur = "root"; 
             $motDePasse = ""; 
             $baseDeDonnees = "palmhaven"; // Nom de la base de données MySQL
-            
             // Connexion à la base de données
             $connexion = new mysqli($serveur, $utilisateur, $motDePasse, $baseDeDonnees);
             
@@ -29,58 +29,60 @@ if(isset($_SESSION['email'])){
             $row_user = $result_user->fetch_assoc();
             $id_utilisateur = $row_user['id_utilisateur'];
             
-                // Requête SQL pour récupérer les réservations de l'utilisateur avec les détails de la chambre
-                $requete = "SELECT r.*, c.* FROM reservation r
+            // Requête SQL pour récupérer les réservations de l'utilisateur avec les détails de la chambre
+            $requete = "SELECT r.*, c.* FROM reservation r
                 INNER JOIN chambre c ON r.numero_chambre = c.numero
                 WHERE r.id_utilisateur = ?";
 
-                // Préparer la requête SQL
-                $stmt = $connexion->prepare($requete);
+        // Préparer la requête SQL
+        $stmt = $connexion->prepare($requete);
 
-                // Vérifier si la préparation de la requête a réussi
-                if ($stmt) {
-                // Binder les paramètres à la requête
-                $stmt->bind_param("i", $id_utilisateur);
-
-                // Exécuter la requête
-                $stmt->execute();
-
-                // Récupérer les résultats de la requête
-                $resultat = $stmt->get_result();
-                $reservations = [];
-
-                // Parcourir les résultats de la requête
-                while ($courant = $resultat->fetch_assoc()) {
+        // Vérifier si la préparation de la requête a réussi
+        if ($stmt) {
+            // Binder les paramètres à la requête
+            $stmt->bind_param("i", $id_utilisateur);
+            
+            // Exécuter la requête
+            $stmt->execute();
+            
+            // Récupérer les résultats de la requête
+            $resultat = $stmt->get_result();
+            $reservations = [];
+            
+            // Parcourir les résultats de la requête
+            while ($courant = $resultat->fetch_assoc()) {
                 $reservations[]=$courant;
-                }
+            }
+            
+            // Afficher le tableau encodé en JSON
+            echo json_encode($reservations);
+            
+            
+            // Fermer la requête préparée
+            $stmt->close();
+        } else {
+            // La préparation de la requête a échoué
+            http_response_code(500); 
+            echo json_encode(['erreur' => 'Erreur lors de la préparation de la requête.', 'code' => 500]);
+        }
 
-                // Afficher le tableau encodé en JSON
-                echo json_encode($reservations);
-
-                // Fermer la requête préparée
-                $stmt->close();
-                } else {
-                // La préparation de la requête a échoué
-                http_response_code(500); 
-                echo json_encode(['erreur' => 'Erreur lors de la préparation de la requête.', 'code' => 500]);
-                }
-
-            // Fermer la connexion à la base de données
-            $connexion->close();
+        // Fermer la connexion à la base de données
+        $connexion->close();
 
         } else {
             // Méthode non autorisée
-            http_response_code(405); 
-            echo json_encode(['erreur' => 'Méthode non autorisée.', 'code' => 405]);
-        }
+                    http_response_code(405); 
+                    echo json_encode(['erreur' => 'Méthode non autorisée.', 'code' => 405]);
+                }
     } else {
         // L'URL ne correspond pas au format attendu
         http_response_code(400); 
         echo json_encode(['erreur' => 'URL incorrecte.', 'code' => 400]);
     }   
 } else {
-    // L'utilisateur n'est pas connecté
-    http_response_code(403); 
-    echo json_encode(['erreur' => 'Vous devez être connecté pour accéder à vos réservations.', 'code' => 403]);
+    //L'utilisateur n'est pas connecté
+    // Afficher le contenu de $_SESSION['email'] dans le logcat du serveur
+    error_log("Email: " . $_SESSION['email']);
+    echo json_encode(['erreur' => 'Vous devez être connecté pour accéder à vos réservations.']);
 }
 ?>
