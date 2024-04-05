@@ -2,6 +2,7 @@
 
 session_start(); // Démarrer la session
 
+require "sessionCreation.php";
 
 
 if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
@@ -66,14 +67,13 @@ if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
                 //Si le mot de passe déhacté correspond
                 if (password_verify($motDePasse, $utilisateur["mot_de_passe"])) 
                 
-                { //La session est créée et l'utilisateur est connecté
-                    $_SESSION['email'] = $email;
+                { 
+                    
+                    //La session est créée et l'utilisateur est connecté
+                    createSession('email', $email);
 
                    //print_r($_SESSION["email"]);
-
                
-                
-                    
                     echo json_encode(array("succes" => 'true', "message" => "Connexion réussie!"));
 
                     exit(); // Arrêter l'exécution du script après l'envoi du message de succès
