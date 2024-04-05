@@ -9,7 +9,7 @@ if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
     
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
-
+        // connexion base de données
         $serveur = "localhost"; // adresse du serveur MySQL
         $utilisateur = "root"; 
         $motDePasse = ""; 
@@ -31,6 +31,7 @@ if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         $donnees = json_decode($donneesJSON, true);
         
     
+        // récupérer les données Json 
         $email = $connexion->real_escape_string(trim($donnees['email']));
         $motDePasse = $donnees['mot_de_passe'];
         
@@ -93,10 +94,8 @@ if(preg_match('/\/connexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         $connexion->close();
 
 } else {
-// Gérer le cas où la méthode de la requête n'est pas DELETE
-http_response_code(405);
-echo json_encode(array("succes" => 'false', "message" => "Méthode HTTP non autorisée."));
-}
 
+    echo json_encode(['message' => 'Mauvais url.']);
+}
 
 ?>

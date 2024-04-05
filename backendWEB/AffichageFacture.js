@@ -24,7 +24,7 @@ $(document).ready(function(){
                 
                 
 
-                            // Accès à la première (et seule) entrée dans le tableau
+                // Accès à la première (et seule) entrée dans le tableau
                 const objet = valeur[0];
 
                 // Récupération des valeurs à partir de l'objet

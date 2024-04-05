@@ -1,8 +1,5 @@
 <?php
 session_start(); // Démarrer la session
-// Vérifier si le formulaire a été soumis
-
-
 
 if(isset($_SESSION['email'])){
    
@@ -22,18 +19,18 @@ if(isset($_SESSION['email'])){
                 if (isset($formData['numero_chambre'])) {
                     // Récupérer le numéro de chambre
                     $numero_chambre = $formData['numero_chambre'];
-                    
-                    // Faire quelque chose avec le numéro de chambre (par exemple, l'insérer dans la base de données)
-                    //echo  "Numéro de chambre reçu : " . $numero_chambre;
+                  
                 } else {
                     // Le numéro de chambre n'a pas été envoyé
-                    //echo "Le numéro de chambre n'a pas été spécifié.";
+                    echo "Le numéro de chambre n'a pas été spécifié.";
                 }
             } else {
                 // Aucune donnée n'a été envoyée
-                //echo "Aucune donnée n'a été envoyée.";
+                echo "Aucune donnée n'a été envoyée.";
             }
             
+
+            // stocker les dates de resevation dans la session
             $start_date = $_SESSION['date_debut'];
             $end_date = $_SESSION["date_fin"];
           
@@ -52,6 +49,7 @@ if(isset($_SESSION['email'])){
                 die("Connexion échouée: " . $connexion->connect_error);
             } 
             
+            // stocker l'email de session dans une varaible
             $email =  $_SESSION['email'];
             
             
@@ -67,14 +65,13 @@ if(isset($_SESSION['email'])){
 
             
             /// Exécution de la requête SELECT
-$sql_check_reservation = "SELECT numero_reservation FROM reservation WHERE id_utilisateur = $id_utilisateur AND numero_chambre = $numero_chambre AND date_debut = '$start_date' AND date_fin = '$end_date'";
-$result_check_reservation = $connexion->query($sql_check_reservation);
+            $sql_check_reservation = "SELECT numero_reservation FROM reservation WHERE id_utilisateur = $id_utilisateur AND numero_chambre = $numero_chambre AND date_debut = '$start_date' AND date_fin = '$end_date'";
+            $result_check_reservation = $connexion->query($sql_check_reservation);
 
             
             // Vérifier si une réservation existe déjà
             if ($result_check_reservation->num_rows > 0) {
-                // Afficher un message à l'utilisateur
-                http_response_code(400);
+                // Afficher un message à l'utilisateur 
                 echo json_encode(["success" => false, "message" => "Vous avez déjà réservé cette chambre pour cette période."]);
             } else {
                 // Si aucune réservation n'existe, procéder à l'insertion de la nouvelle réservation
@@ -82,13 +79,12 @@ $result_check_reservation = $connexion->query($sql_check_reservation);
                 $sql_insert_reservation = "INSERT INTO reservation (numero_chambre, date_debut, date_fin, id_utilisateur) VALUES ('$numero_chambre', '$start_date', '$end_date', $id_utilisateur)";
                 
                 if ($connexion->query($sql_insert_reservation) === TRUE) {
-                    // si l'exécution réussit, redirigez l'utilisateur vers la page de succès
-                    // Renvoyer une réponse JSON indiquant le succès de la réservation
                     
-                    http_response_code(200);
+                    // Renvoyer une réponse JSON indiquant le succès de la réservation
                     echo json_encode(["success" => true, "message" => "Réservation réussie.  "]);
                 
                     exit(); // Assurez-vous de quitter après la redirection
+
                 } else {
                     // en cas d'erreur, affichez le message d'erreur
                     http_response_code(500);
@@ -106,6 +102,10 @@ $result_check_reservation = $connexion->query($sql_check_reservation);
             http_response_code(405); 
             echo json_encode(["success" => false, "message" => "La méthode de requête n'est pas autorisée pour cette action."]);
         }
+    }else{
+        // L'URL ne correspond pas à ce qui est attendu
+        http_response_code(404);
+        echo json_encode(['erreur' => 'URL non valide.', 'code' => 404]);
     }
     
 } else {

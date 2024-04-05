@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+
     document.getElementById("form_connexion").addEventListener("submit", function(event) {
         console.log('Formulaire soumis!');
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
@@ -32,9 +34,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (xhr.status === 200) {
                     
 
+                    // récupérer la réponse de l'api 
                     const data= JSON.parse(xhr.responseText);
                     alert( data['message']);
 
+                    // si la reponse contient succes == true alors on redirige l'utilisateur.
                     if(data['succes']=='true'){
 
                         window.location.href="../interfaceWEB/index.php";

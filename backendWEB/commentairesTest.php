@@ -58,9 +58,9 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
             $id_utilisateur = $row['id_utilisateur'];
 
             // Récupération des données du formulaire
-            $titre = $_POST['titre']; // Assurez-vous de remplacer 'titre' par le nom exact du champ dans votre formulaire
-            $contenu = $_POST['contenu']; // Assurez-vous de remplacer 'contenu' par le nom exact du champ dans votre formulaire
-            $etoiles = $_POST['etoile']; // Assurez-vous de remplacer 'etoiles' par le nom exact du champ dans votre formulaire
+            $titre = $_POST['titre']; 
+            $contenu = $_POST['contenu']; 
+            $etoiles = $_POST['etoile']; 
             $date_systeme = date('Y-m-d H:i:s'); // Date et heure actuelles
 
             // Insertion des données dans la base de données
@@ -127,5 +127,8 @@ if (preg_match('/\/commentairesTest\.php/', $_SERVER['REQUEST_URI'], $matches)) 
         echo "Méthode de requête non autorisée";
     }
 
+} else {
+
+    echo json_encode(['message' => 'Mauvais url.']);
 }
 ?>

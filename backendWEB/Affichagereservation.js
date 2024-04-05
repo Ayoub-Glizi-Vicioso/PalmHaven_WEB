@@ -61,11 +61,9 @@ $(document).ready(function(){
 
                     //obtenir les bouttons et ajouter des ecouteurs d'événement afin d'afficher la fenètre de modification et d'annulation
                     let cancelBtn = tr.querySelector(".btn_annuler");
-                
                     cancelBtn.addEventListener("click", openAnulation);
 
                     let modifBtn = tr.querySelector(".btn_modifier");
-
                     modifBtn.addEventListener("click" , openModification);
                 }
             }
@@ -158,6 +156,5 @@ $(document).ready(function(){
         });
     }
     
-
 
 });

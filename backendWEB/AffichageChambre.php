@@ -3,8 +3,8 @@ session_start();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-        if (preg_match('/\/AffichageChambre\.php/', $_SERVER['REQUEST_URI'], $matches)) {
- 
+    if (preg_match('/\/AffichageChambre\.php/', $_SERVER['REQUEST_URI'], $matches)) {
+
         // Assurez-vous que les champs de date de début et de fin sont présents dans l'URL
         if (isset($_GET['start_date']) && isset($_GET['end_date'])) {
             
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 WHERE numero NOT IN (
                     SELECT DISTINCT chambre.numero
                     FROM chambre
-                    INNER JOIN reservation ON chambre.numero = reservation.numero_chambre 
+                    INNER JOIN reservation ON chambre.numero = reservation.numero_chambre   
                     WHERE 
                     (
                         ('$dateDebut' BETWEEN reservation.date_debut AND reservation.date_fin) 
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         OR (reservation.date_fin BETWEEN '$dateDebut' AND '$dateFin')
                     )
                 )
-                GROUP BY type_chambre";
+                GROUP BY type_chambre"; //filtre les chambres qui ne sont pas déjà réservées pour les dates spécifiées (variables $dateDebut et $dateFin)
                             
 
 
@@ -68,21 +68,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 
         } else {
                 // Les champs de date de début et de fin ne sont pas présents dans l'URL
-                http_response_code(400); // Bad Request
+
                 echo ('erreur => Les champs de date de début et de fin sont obligatoires.');
-       }   
-        
-        }else{
-            // L'URL ne correspond pas à ce qui est attendu
-            http_response_code(404); // Not Found
-            echo json_encode(['erreur' => 'URL non valide.', 'code' => 404]);
-        }
-    } else {
-        
-        // Méthode non autorisée
-        http_response_code(405); // Method Not Allowed
-        echo json_encode(['erreur' => 'Méthode non autorisée.', 'code' => 405]);
+        }   
+    
+    }else{
+        // L'URL ne correspond pas à ce qui est attendu
+        http_response_code(404); 
+        echo json_encode(['erreur' => 'URL non valide.', 'code' => 404]);
     }
+} else {
+    
+    // Méthode non autorisée
+    http_response_code(405); 
+    echo json_encode(['erreur' => 'Méthode non autorisée.', 'code' => 405]);
+}
     
             
             

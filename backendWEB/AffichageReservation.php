@@ -1,7 +1,7 @@
 <?php
 
+session_start();
 
-require "sessionCreation.php";
 
 //print_r($_SESSION["email"]);
 
@@ -31,7 +31,8 @@ if(preg_match('/\/AffichageReservation\.php/', $_SERVER['REQUEST_URI'], $matches
             // Requête SQL pour récupérer les réservations de l'utilisateur avec les détails de la chambre
             $requete = "SELECT r.*, c.* FROM reservation r
                         INNER JOIN chambre c ON r.numero_chambre = c.numero
-                        WHERE r.id_utilisateur = (SELECT id_utilisateur FROM utilisateurs WHERE email = ?) AND r.date_debut > NOW()";
+                        WHERE r.id_utilisateur = (SELECT id_utilisateur FROM utilisateurs WHERE email = ?) AND r.date_debut > NOW()"; 
+                        // filtre les reservations d'un utilisateur selon la date actuelle
 
             // Préparer la requête SQL
             $stmt = $connexion->prepare($requete);
@@ -78,9 +79,8 @@ if(preg_match('/\/AffichageReservation\.php/', $_SERVER['REQUEST_URI'], $matches
     }
 
 } else {
-    // Gérer le cas où la méthode de la requête n'est pas DELETE
-    http_response_code(405);
-    echo json_encode(array("succes" => 'false', "message" => "Méthode HTTP non autorisée."));
-    }
+
+    echo json_encode(['message' => 'Mauvais url.']);
+}
     
 ?>

@@ -18,7 +18,8 @@ $(document).ready(function() {
         // Vérifier si le champs startDate est supérieur à EnDate
         if(startDate>endDate){
             event.preventDefault();
-            
+
+            // alerter l'utilisateur lorsqu'il s'aisit une date de debut inférieur à celle de fin
             alert("La date de début de la réservation doit être inférieur à la date de fin de réservation");
             return;
             
@@ -33,7 +34,8 @@ $(document).ready(function() {
         
 
         if (startDateObj < dateActuelle || endDateObj < dateActuelle) {
-            
+
+            // alerter l'utilisateur lorsqu'il saisit une date inférieure à celle d'ajourd'hui
             event.preventDefault();
             alert("La date de début et/ou de fin de la réservation doit être supérieure à celle d'aujourd'hui");
             return;
@@ -77,10 +79,10 @@ $(document).ready(function() {
                             nouveauDiv.find('.content').append('<p>Numéro de chambre: ' + valeur[i]['numero'] + '</p>');
                         }
 
-                         // Ajouter un paragraphe selon le type  de la chambre 
+                         // Ajouter un paragraphe selon le type  de la chambre + lien vers le type de la description de la chambre
                         if(valeur[i]["type_chambre"] == 'standard'){
                             nouveauDiv.find('.content').append('<p>Chambres familiales de 53 m2 conçues pour garantir aux adultes et aux enfants des vacances vraiment spéciales. Nous disposons d\'une Suite Club Familiale équipée d\'un lit double et de trois lits simples superposés, avec tous les avantages exclusifs d\'être situées dans l\'espace privé Palm Haven. *Occupation maximale : 5 personnes (3 adultes + 2 enfants ou 2 adultes + 3 enfants ou 1 adulte + 4 enfants) *Enfants 3-12 ans (tous deux inclus)</p>');
-                            
+                           
                             let lienOptions = $('<a href="../interfaceWEB/chambresDetailsBungalow.php?numero_chambre=' + valeur[i]['numero'] + '">Plus d\'options</a>');
                             nouveauDiv.find('.content').append(lienOptions);
                             

@@ -36,8 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                     // Vous pouvez gérer la réponse en fonction de vos besoins
-                   
+                    //récupérer le message de l'api et l'afficher
                      const data= JSON.parse(xhr.responseText);
                      alert( data['message']);
                  } else {

@@ -22,10 +22,8 @@ if(preg_match('/\/deconnexion\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         echo json_encode(['message' => 'Méthode HTTP non autorisée.']);
     }
 
+} else {
 
-}else {
-    // Gérer le cas où la méthode de la requête n'est pas DELETE
-    http_response_code(405);
-    echo json_encode(['message' => 'Méthode HTTP non autorisée.']);
+    echo json_encode(['message' => 'Mauvais url.']);
 }
 ?>

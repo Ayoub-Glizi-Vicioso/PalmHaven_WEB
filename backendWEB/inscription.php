@@ -5,7 +5,6 @@ if(preg_match('/\/inscription\.php/', $_SERVER['REQUEST_URI'], $matches)) {
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         
         
-        // Démarre une nouvelle session
         $serveur = "localhost"; // adresse du serveur MySQL
         $utilisateur = "root"; 
         $motDePasse = ""; 
@@ -25,6 +24,7 @@ if(preg_match('/\/inscription\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         // Décoder les données JSON en tableau associatif
         $donnees = json_decode($donneesJSON, true);
         
+        // récuperer les données Json
         $nom = $connexion->real_escape_string(trim($donnees['nom']));
         $prenom = $connexion->real_escape_string(trim($donnees['prenom']));
         $email = $connexion->real_escape_string(trim($donnees['email']));

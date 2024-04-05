@@ -36,9 +36,10 @@ if(preg_match('/\/modificationReservation\.php/', $_SERVER['REQUEST_URI'], $matc
                 die();
             }
             
+            // Vérifier si l'email saisit correspond à l'émail de session
             if($email_saisie  == $email_session){
 
-                
+                //Récupérer le numero de la réseration
                 $sql_get_reservation_id = "SELECT numero_reservation FROM reservation WHERE numero_reservation = ?";
                 $stmt_get_reservation_id = $conn->prepare($sql_get_reservation_id);
                 $stmt_get_reservation_id->bind_param("i", $identification_reservation);
@@ -47,8 +48,11 @@ if(preg_match('/\/modificationReservation\.php/', $_SERVER['REQUEST_URI'], $matc
                 $stmt_get_reservation_id->fetch();
                 $stmt_get_reservation_id->close();
 
+
+                // dans le cas où le résultat est de 0  
                 if($id_reservation==0){
 
+                    //alors indiquer qu'il y a aucune réservation correspondant au numéro saisit
                     echo json_encode(array("message" => "Numéro de reservation introuvable"));
 
                 }else{
@@ -75,10 +79,10 @@ if(preg_match('/\/modificationReservation\.php/', $_SERVER['REQUEST_URI'], $matc
                         (r.date_debut BETWEEN ? AND ?) OR
                         (r.date_fin BETWEEN ? AND ?))) AND
                         r.numero_reservation != ?
-                    GROUP BY c.numero";
+                    GROUP BY c.numero"; //filtre les chambres qui ne sont pas déjà réservées pour les dates spécifiées (variables $date_debut et $date_fin)
         
                 
-                    
+                    // préparer et envoyer la requête sql
                     $stmt_check_disponibilite = $conn->prepare($sql_check_disponibilite);
                     $stmt_check_disponibilite->bind_param("issssssi", $id_chambre, $date_debut, $date_fin, $date_debut, $date_fin, $date_debut, $date_fin, $identification_reservation);
                     $stmt_check_disponibilite->execute();
@@ -86,7 +90,7 @@ if(preg_match('/\/modificationReservation\.php/', $_SERVER['REQUEST_URI'], $matc
                     $stmt_check_disponibilite->fetch();
                     $stmt_check_disponibilite->close();
                     
-                    
+                    // s'il y a une chambre est libre:
                     if ($total_reservations == 0) {
                         // modifier la reservation
                         $sql_update_reservation = "UPDATE reservation
@@ -129,5 +133,8 @@ if(preg_match('/\/modificationReservation\.php/', $_SERVER['REQUEST_URI'], $matc
         echo json_encode(array("message" => "Méthode HTTP non autorisée."));
     }
 
+} else {
+
+    echo json_encode(['message' => 'Mauvais url.']);
 }
 ?>

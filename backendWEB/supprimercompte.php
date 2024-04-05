@@ -1,8 +1,11 @@
 <?php
 session_start();
 
+// Vérifie si la requête est destinée à supprimer un compte utilisateur
 if(preg_match('/\/supprimercompte\.php/', $_SERVER['REQUEST_URI'], $matches)) {
+    // Vérifie si la méthode de la requête est DELETE
     if($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+        // Vérifie si les informations nécessaires sont fournies
         if (isset($_SESSION['email'], $_GET['email'], $_GET['mot_de_passe'])) {
             $email_session = $_SESSION['email'];
             $id_utilisateur = $_SESSION['id_utilisateur'];
@@ -11,6 +14,7 @@ if(preg_match('/\/supprimercompte\.php/', $_SERVER['REQUEST_URI'], $matches)) {
 
             // Vérifier si l'email de la session correspond à l'email à supprimer
             if ($email_session === $email_a_supprimer) {
+                //Préparer la connexion à la base de données
                 $serveur = "localhost"; 
                 $utilisateur = "root"; 
                 $code = ""; 
@@ -63,6 +67,7 @@ if(preg_match('/\/supprimercompte\.php/', $_SERVER['REQUEST_URI'], $matches)) {
                         } else {
                             echo json_encode(['message' => 'Erreur lors de la suppression de l\'utilisateur : ' . $stmt_suppression_utilisateur->error ]);
                         }
+
                         $stmt_suppression_utilisateur->close();
                     } else {
                         echo json_encode(['message' => 'Le mot de passe fourni est incorrect.']);
@@ -85,5 +90,8 @@ if(preg_match('/\/supprimercompte\.php/', $_SERVER['REQUEST_URI'], $matches)) {
          http_response_code(405);
          echo json_encode(['message' => 'Méthode HTTP non autorisée.']);
     }
+} else {
+
+    echo json_encode(['message' => 'Mauvais url.']);
 }
 ?>

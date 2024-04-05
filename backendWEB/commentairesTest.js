@@ -144,6 +144,7 @@ $(document).ready(function () {
             window.location.reload();
         }
 
+        // envoie de la requête
         requeteDel.send(requeteJSON);
     });
 });

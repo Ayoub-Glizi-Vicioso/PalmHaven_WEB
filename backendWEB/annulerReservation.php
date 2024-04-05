@@ -3,15 +3,15 @@ session_start();
 
 if(preg_match('/\/annulerReservation\.php/', $_SERVER['REQUEST_URI'], $matches)) {
     if($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-        // Récupération des données de la requête DELETE
-        
 
         // Vérification si les données contiennent l'ID de réservation
         if(isset($_GET['id_reservation']) && isset($_GET['email']) ) {
+            //obtenir les données de l'url 
             $id_reservation = $_GET['id_reservation'];
             $email= $_GET['email'];
             $email_session = $_SESSION['email'];
 
+            // si l'email saisit et le même que l'email de session
             if($email == $email_session){
 
                 // Connexion à la base de données
@@ -27,7 +27,7 @@ if(preg_match('/\/annulerReservation\.php/', $_SERVER['REQUEST_URI'], $matches))
 
                 // Requête SQL pour supprimer la réservation
                 $sql = "DELETE FROM reservation WHERE numero_reservation = " .$id_reservation ;
-            
+                    // supprime les données d'une réservation
 
                 if($conn->query($sql)) {
                     // Redirection vers la page de profil après l'annulation de la réservation
@@ -49,5 +49,8 @@ if(preg_match('/\/annulerReservation\.php/', $_SERVER['REQUEST_URI'], $matches))
         http_response_code(405);
         echo json_encode(array("message" => "Méthode HTTP non autorisée."));
     }
+} else {
+
+    echo json_encode(['message' => 'Mauvais url.']);
 }
 ?>

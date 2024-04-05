@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", function() {
         let endDateObj = new Date(endDate.toString());
 
 
+        // Alerter l'utilisateur si les dates saisies sont inférieures à la date actuelle.
+
         if (startDateObj < dateActuelle || endDateObj < dateActuelle) {
             
             event.preventDefault();
@@ -54,12 +56,14 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault(); // Empêche le formulaire de se soumettre normalement
         
 
+        // Récupérer les données de l'utilisateur 
         let nouveau_debut = document.getElementById("Ddebut").value;
         let nouveau_fin = document.getElementById("Dfin").value;
         let id_reservation = document.getElementById("numero_reservation").value;
         let email = document.getElementById("courriel").value;
         
         let url = '../backendWEB/modificationReservation.php';
+        //création de l'objet Json
         let requeteJson = JSON.stringify({
             nouv_debut: nouveau_debut,
             nouv_fin: nouveau_fin,
@@ -67,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
             email: email
         });
 
+        // nouvelle requête POST
         let xhr = new XMLHttpRequest();
         xhr.open('POST', url);
         xhr.setRequestHeader('Content-type', 'application/json');
@@ -74,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    // Vous pouvez gérer la réponse en fonction de vos besoins
+                    //Afficher le messsage de l'api et rediriger l'utilisateur vers son profil de reservation 
                     const data= JSON.parse(xhr.responseText);
                     alert( data['message']);
                     window.location.href="../interfaceWEB/Profilmesreservtion.php"

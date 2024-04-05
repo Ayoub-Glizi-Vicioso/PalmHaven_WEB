@@ -19,7 +19,9 @@ $(document).ready(function () {
         const jsonData = JSON.stringify(formData);
     
 
+        //Requete http
         var xhr = new XMLHttpRequest();
+        //post vers le api _reservation.php
         xhr.open("POST", "../backendWEB/_reservation.php", true);
        
         xhr.setRequestHeader('Content-Type', 'application/json');
@@ -27,8 +29,7 @@ $(document).ready(function () {
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    // Vous pouvez gérer la réponse en fonction de vos besoins
-                   
+                    //recupérer la réponse de l'api et l'afficher
                     const data= JSON.parse(xhr.responseText);
                     alert( data['message']);
                 } else {
