@@ -37,18 +37,16 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
 </head>
 <body>
 
-
 <header class="section__container header__container">
     <div class="video-container">
         <video autoplay muted loop>
             <source src="./images/paradis.mp4" type="video/mp4">
         </video>
         <div class="header__content">
-        <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
-        <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
+            <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
+            <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
+        </div>
     </div>
-    </div>
-    
 </header>
          
           <div class="booking__container">
