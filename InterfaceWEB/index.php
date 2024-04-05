@@ -13,20 +13,12 @@ if(isset($_SESSION['email'])) {
     include 'nav_not_connected.php';
 }
 
-                    
-
-
 
 
 // Vérifier si le paramètre de suppression réussie est présent dans l'URL
 if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
     echo "<script>alert('Votre compte a été supprimé avec succès.');</script>";
 }
-
-
-
-
-
 
 ?>
 
@@ -46,16 +38,21 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
 <body>
 
 
-    <header class="section__container header__container">
-        <div class="header__image__container">
-          <div class="header__content">
-            <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
-            <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
-          </div>
+<header class="section__container header__container">
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="./images/paradis.mp4" type="video/mp4">
+        </video>
+        <div class="header__content">
+        <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
+        <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
+    </div>
+    </div>
+    
+</header>
          
           <div class="booking__container">
             
-          
           <form method="get" action="../backendWEB/AffichageChambre.php" class="search-form">
               
               <div class="form__group">
@@ -72,8 +69,6 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
                      <label for="end_date" id=date_fin >Date de fin de réservation</label>
                  </div>
               </div>
-        
-       
               <input id="btn_rechercher" type="submit" value="Rechercher">
              
             </form>
@@ -84,16 +79,21 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
         </div>
       </header>
 
-
     <h1>Découvrez votre nouvel hébergement</h1>
 
     <div class="container">
         <ul class="cards">
+        <li class="card" id="imagecard">
+                <div>
+                    <h2 class="card-title"></h2>
+                    <div class="card-content">
+                    </div>
+                </div>
+            </li>
             <li class="card">
                 <div class="card-image"></div>
                 <div class="card-content">
-                    <img src="image/beach3" alt="">
-                    <h2 class="card-title">Bienvenue sur le site de <strong><em><u>PALM HAVEN</u></em></strong></h2>
+                    <h2 class="card-title">Bienvenue sur le site de <strong><em>PALM HAVEN</em></strong></h2>
                     <div class="card-content">
                         <p>Bienvenue sur notre site de réservation d'hôtels !
                             Nous sommes ravis de vous accueillir dans notre univers 
@@ -101,11 +101,25 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
                     </div>
                 </div>
             </li>
+            <li class="card" id="imagecard1">
+                <div>
+                    <h2 class="card-title"></h2>
+                    <div class="card-content">
+                    </div>
+                </div>
+            </li>
             <li class="card">
                 <div>
-                    <h2 class="card-title">Reservation</h2>
+                    <h2 class="card-title">Réservation</h2>
                     <div class="card-content">
                         <p>Que vous recherchiez un hôtel de luxe pour une escapade romantique, une chambre d'hôtes pittoresque pour une immersion locale, ou un appartement moderne pour un séjour en famille, nous avons tout ce qu'il vous faut. Explorez nos options de réservation et découvrez des hébergements confortables,</p>
+                    </div>
+                </div>
+            </li>
+            <li class="card" id="imagecard2">
+                <div>
+                    <h2 class="card-title"></h2>
+                    <div class="card-content">
                     </div>
                 </div>
             </li>
@@ -126,6 +140,13 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
                 </div>
                 <div class="card-link-wrapper">
                     <a href="connexionfront.php" class="card-link">Connecter vous ici!</a>
+                </div>
+            </li>
+            <li class="card" id="imagecard3">
+                <div>
+                    <h2 class="card-title"></h2>
+                    <div class="card-content">
+                    </div>
                 </div>
             </li>
             <li class="card">
@@ -149,7 +170,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
         </ul>
     </div>
     <div id="swipe">
-        Balayer!
+        Balayez!
     </div>
     <br>
     <hr>

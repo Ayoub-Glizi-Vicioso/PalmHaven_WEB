@@ -126,6 +126,12 @@
             max-width: 1400px;
             padding: 0 15px;
             margin: 0 auto;
+            background-image: linear-gradient(
+                to right,
+                rgba(83, 108, 123, 0.4),
+                #ebeef51a
+                ),
+                url("../../images/beach4.png");
         }
 
         h1 {
@@ -141,17 +147,17 @@
             list-style: none;
             overflow-x: scroll;
             overflow-y: hidden;
+        
         }
 
         .card {
             display: flex;
             flex-direction: column;
-            flex: 0 0 100%;
-            padding: 20px;
+            flex: 0 0 50%;
+            padding: 40px;
             border-bottom: 1px solid var(--black);
             margin-bottom: 20px;
             position: relative;
-            
         }
 
         .card-title {
@@ -244,8 +250,6 @@
             background-color: #b56576;
         }
 
-
-
         .affichage-annonce {
             border: 1px solid black;
             background-color: #16b0c4;
@@ -299,7 +303,7 @@
 
         #swipe{
             text-align: center;
-            color: #0d7d8c;
+            color: #ffffff;
             font-weight: bold;
             font-size: large;
             margin-top: -40px;
@@ -350,29 +354,32 @@
              padding: 1rem 1rem 5rem 1rem;
         }
 
-        .header__image__container {
-        position: relative;
-        min-height: 500px;
-        background-image: linear-gradient(
-            to right,
-            rgba(83, 108, 123, 0.4),
-            rgba(235, 238, 245, 0.1)
-            ),
-            url("../../images/hotel_profil.jpeg");
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        border-radius: 2rem;
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 80vh; /* Ajustez la hauteur selon vos besoins */
+            overflow: hidden;
+            z-index: -2;
         }
 
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Assure que la vidéo couvre tout le conteneur */
+        }
         .header__content {
         max-width: 600px;
         padding: 5rem 2rem;
+        z-index: 3; /* Assurez-vous que le z-index est supérieur à celui de la vidéo */
         
         }
  
         .header__content h3, .header__content h4 {
         color: white; /* Changement de la couleur du texte en blanc */
+        
         }
 
         .booking__container {
@@ -462,7 +469,10 @@
 
         }
 
-
+        .section__container header__container
+        {
+            height: max-content;
+        }
         /* Style de la section d'affichage des annonces */
         .affichage-annonce {
             border: 1px solid black; /* Bordure de 1px solide noire */
@@ -551,6 +561,31 @@
             width: 20px;
             height: 20px;
         }
+        #imagecard1
+        { background-image: linear-gradient(
+                to right,
+                rgba(83, 108, 123, 0.4),
+                #ebeef51a
+                ),
+                url("../../images/beach.png");
+        }
+
+        #imagecard2
+        { background-image: linear-gradient(
+                to right,
+                rgba(83, 108, 123, 0.4),
+                #ebeef51a
+                ),
+                url("../../images/beach2.png");
+        }
+        #imagecard3
+        { background-image: linear-gradient(
+                to right,
+                rgba(83, 108, 123, 0.4),
+                #ebeef51a
+                ),
+                url("../../images/beach5.png");
+        }    
   
 /* Cacher l'élément #saut-de-ligne sur les écrans plus larges */
 @media screen and (min-width: 769px) {
