@@ -85,12 +85,14 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
       </header>
 
 
-    <h1>Découvrez votre nouvelle hébergement</h1>
+    <h1>Découvrez votre nouvel hébergement</h1>
 
     <div class="container">
         <ul class="cards">
             <li class="card">
-                <div>
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <img src="image/beach3" alt="">
                     <h2 class="card-title">Bienvenue sur le site de <strong><em><u>PALM HAVEN</u></em></strong></h2>
                     <div class="card-content">
                         <p>Bienvenue sur notre site de réservation d'hôtels !
