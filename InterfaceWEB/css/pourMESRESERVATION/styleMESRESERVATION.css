@@ -245,6 +245,8 @@ form button:hover{
 
 }
 
+
+
 @media screen  and (max-width: 800px ){
     #zone_text{
         transform: rotate(270deg);
