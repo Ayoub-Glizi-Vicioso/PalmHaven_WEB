@@ -99,7 +99,9 @@
         } */
         .nav_logo img {
             width: 150px;
+            height: 95px;
             margin-right: 10px;
+        
         }
 
         .nav__links{
