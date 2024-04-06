@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
@@ -21,27 +20,27 @@ body {
 
 .container {
     background-color: #fff;
-    width: 100%;
-    max-width: 65%;
-    height: 70%;
+    width: 1000px; /* Agrandir le conteneur */
+    height: 95%; /* Agrandir le conteneur */
     position: relative;
     overflow-x: auto;
     overflow-y: auto;
     display: flex;
     border-radius: 5%;
+    justify-content: space-between; /* Ajout de cet attribut */
+    padding: 20px; /* Ajout de cet attribut */
 }
 
 #zone_text {
     display: flex;
-    
-    width: 80%;
+    width: 65%; /* Ajustement de la largeur */
     text-align: center;
     padding: 20px;
 }
 
 #Barre_nav {
     display: flex;
-    width: 40%;
+    width: 30%; /* Ajustement de la largeur */
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -60,6 +59,7 @@ body {
     cursor: pointer;
     font-size: larger;
     letter-spacing: .2rem;
+    width: 100%; /* Ajustement de la largeur */
 }
 
 #Barre_nav button:hover {
@@ -84,8 +84,6 @@ input:hover {
     background-color: #021b57;
 }
 
-
-
 button {
     border: none;
     padding: 20px;
@@ -96,6 +94,7 @@ button {
     cursor: pointer;
     font-size: larger;
     letter-spacing: .2rem;
+    width: 100%; /* Ajustement de la largeur */
 }
 
 button:hover {
@@ -105,7 +104,7 @@ button:hover {
 .text {
     display: flex;
     flex-direction: column;
-    margin-top: 120px;
+    margin-top: 10px;
     align-items: center;
     height: 100%;
     font-size: 13px;
@@ -132,6 +131,9 @@ div #btn_reservations{
     background-color: #021b57; 
     cursor: auto;
 
+}
+div #btn_retour{
+    font-family: "Montserrat";
 }
 
 table , td , th , tr{
@@ -206,8 +208,6 @@ form button:hover{
     border: 1px solid lightgray;
     color: black;
 }
-
-
 
 
 @media only screen and (max-width: 1200px) {

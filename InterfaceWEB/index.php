@@ -39,13 +39,14 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
 
 <header class="section__container header__container">
     <div class="video-container">
-        <video autoplay muted loop>
-            <source src="./images/paradis.mp4" type="video/mp4">
-        </video>
         <div class="header__content">
+            <h1 id=palmhaven>PALMHAVEN</h1>
             <h3 class="blanc">Hôtels et endroits où séjourner:</h3>
             <h4 class="blanc">Entrez des dates pour découvrir les meilleures offres disponibles.</h4>
         </div>
+        <video autoplay muted loop>
+            <source src="./images/paradis.mp4" type="video/mp4">
+        </video>
     </div>
 </header>
          
