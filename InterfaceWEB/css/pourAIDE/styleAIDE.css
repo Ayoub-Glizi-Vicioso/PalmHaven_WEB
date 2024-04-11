@@ -263,7 +263,8 @@ footer p {
    list-style: none;
    padding: 0;
    margin: 5px; /* Ajoutez une marge pour l'espacement */
-   text-align: left; /* Alignez le texte à gauche */
+  align-items: left; /* Alignez le texte à gauche */
+
  }
  .options-list li {
    margin-bottom: 5px; /* Ajoutez une marge entre chaque élément de la liste */

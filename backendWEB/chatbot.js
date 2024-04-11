@@ -21,8 +21,31 @@ const renderUserMessage = () => {
 };
 
 const renderChatbotResponse = (userInput) => {
-  const res = getChatbotResponse(userInput);
-  renderMessageEle(res);
+  fetch(`/TCH099_PROJET2.0/backendWEB/chatbot.php?option=${userInput}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erreur lors de la récupération de la réponse.');
+      }
+      return response.json(); // Utilisez response.json() pour traiter la réponse comme un objet JSON
+    })
+    .then(data => {
+        if (data.options) {
+            renderMessageEle(data.reponse, 'chatbot');
+            setScrollPosition();
+            renderOptionsAsButtons(data.options, chatBody);
+            setScrollPosition();
+        } else {
+          renderMessageEle(data.reponse, 'chatbot');
+          setScrollPosition();
+
+        }
+      })
+      
+    .catch(error => {
+      console.error('Erreur:', error);
+      renderMessageEle('Une erreur s\'est produite.', 'chatbot');
+      setScrollPosition();
+    });
 };
 
 const renderMessageEle = (txt, type) => {
@@ -37,28 +60,66 @@ const renderMessageEle = (txt, type) => {
   chatBody.append(messageEle);
 };
 
-const getChatbotResponse = (userInput) => {
-  return responseObj[userInput] == undefined
-    ? "Please try something else"
-    : responseObj[userInput];
-};
-
 const setScrollPosition = () => {
   if (chatBody.scrollHeight > 0) {
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 };
 
-// Ajoutez ce code à la fin de votre script JavaScript
+const renderOptionsAsButtons = (options, container) => {
+  const listContainer = document.createElement("ul");
+  listContainer.classList.add("options-list");
 
-// Attendez que le contenu de la page soit chargé
-document.addEventListener("DOMContentLoaded", () => {
-    // Message d'accueil du chatbot
-    const welcomeMessage = "Bonjour! Besoin d'aide? Veuillez sélectionner l'une des options suivantes:";
-    renderMessageEle(welcomeMessage, "chatbot");
+  options.forEach(option => {
+    const listItem = document.createElement("li");
+    const button = document.createElement("button");
+    button.textContent = option;
+    button.addEventListener("click", () => handleOptionClick(option));
+    listItem.appendChild(button);
+    listContainer.appendChild(listItem);
+  });
+
+  container.append(listContainer);
+};
+
+// Fonction pour gérer le clic sur un bouton d'option
+const handleOptionClick = (option) => {
+    fetch(`/TCH099_PROJET2.0/backendWEB/chatbot.php?option=${option}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erreur lors de la récupération de la réponse.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.options) {
+            renderMessageEle(data.reponse, 'chatbot');
+            setScrollPosition();
+            renderOptionsAsButtons(data.options, chatBody);
+            setScrollPosition();
+        } else {
+          renderMessageEle(data.reponse, 'chatbot');
+          setScrollPosition();
+        }
+      })
+      .catch(error => {
+        console.error('Erreur:', error);
+        renderMessageEle('Une erreur s\'est produite.', 'chatbot');
+        setScrollPosition();
+      });
+  };
   
-    const options = ["Réservations", "Autre"];
+  const renderMessageAndOptions = (message, options) => {
+    const container = document.createElement("div");
   
+    // Ajouter la réponse
+    const messageEle = document.createElement("div");
+    const txtNode = document.createTextNode(message);
+    messageEle.classList.add("chatbot-message");
+    messageEle.append(txtNode);
+    container.append(messageEle);
+  
+    // Ajouter les options comme boutons
     const listContainer = document.createElement("ul");
     listContainer.classList.add("options-list");
   
@@ -71,7 +132,20 @@ document.addEventListener("DOMContentLoaded", () => {
       listContainer.appendChild(listItem);
     });
   
-    const chatbotMessage = document.querySelector(".chatbot-message");
-    chatbotMessage.appendChild(listContainer); // Ajoutez la liste à l'intérieur du message du chatbot
-  });
+    container.append(listContainer);
   
+    return container;
+  };
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Message d'accueil du chatbot
+  const welcomeMessage = "Bonjour! Besoin d'aide? Veuillez sélectionner l'une des options suivantes:";
+  const options = ["Réservations", "Autre"];
+  const listContainer = document.createElement("ul");
+  listContainer.classList.add("options-list");
+  const responseContainer = renderMessageAndOptions(welcomeMessage, options);
+  chatBody.append(responseContainer);
+  setScrollPosition()
+
+});
+
