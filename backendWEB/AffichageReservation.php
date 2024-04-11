@@ -2,15 +2,10 @@
 
 session_start();
 
-
-//print_r($_SESSION["email"]);
-
-
 if(preg_match('/\/AffichageReservation\.php/', $_SERVER['REQUEST_URI'], $matches)) {
 
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         if (isset($_SESSION['email'])) {
-            
             // Récupérer l'email de session
             $email = $_SESSION['email'];
 
@@ -32,7 +27,7 @@ if(preg_match('/\/AffichageReservation\.php/', $_SERVER['REQUEST_URI'], $matches
             $requete = "SELECT r.*, c.* FROM reservation r
                         INNER JOIN chambre c ON r.numero_chambre = c.numero
                         WHERE r.id_utilisateur = (SELECT id_utilisateur FROM utilisateurs WHERE email = ?) AND r.date_debut > NOW()"; 
-                        // filtre les reservations d'un utilisateur selon la date actuelle
+                        // Filtre les réservations d'un utilisateur selon la date actuelle
 
             // Préparer la requête SQL
             $stmt = $connexion->prepare($requete);
@@ -54,11 +49,24 @@ if(preg_match('/\/AffichageReservation\.php/', $_SERVER['REQUEST_URI'], $matches
                     $reservations[] = $courant;
                 }
 
-                // Afficher le tableau encodé en JSON
-                echo json_encode($reservations);
-
                 // Fermer la requête préparée
                 $stmt->close();
+
+                // Supprimer les réservations expirées
+                $requeteSuppression = "DELETE FROM reservation WHERE id_utilisateur = (SELECT id_utilisateur FROM utilisateurs WHERE email = ?) AND date_debut <= NOW()";
+                $stmtSuppression = $connexion->prepare($requeteSuppression);
+                if ($stmtSuppression) {
+                    $stmtSuppression->bind_param("s", $email);
+                    $stmtSuppression->execute();
+                    $stmtSuppression->close();
+                } else {
+                    // La préparation de la requête de suppression a échoué
+                    http_response_code(500);
+                    echo json_encode(['erreur' => 'Erreur lors de la préparation de la requête de suppression.', 'code' => 500]);
+                }
+
+                // Afficher le tableau encodé en JSON
+                echo json_encode($reservations);
             } else {
                 // La préparation de la requête a échoué
                 http_response_code(500);
@@ -79,7 +87,6 @@ if(preg_match('/\/AffichageReservation\.php/', $_SERVER['REQUEST_URI'], $matches
     }
 
 } else {
-
     echo json_encode(['message' => 'Mauvais url.']);
 }
     
