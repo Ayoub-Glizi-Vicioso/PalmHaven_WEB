@@ -19,11 +19,13 @@
         <div id="Barre_nav">
             <!--<img src="./images/profil.JPG" ></a>--> 
             <button onclick="window.location.href='Profilmesreservtion.php'" id="btn_reservations">Mes réservations</button>
-            
+          
+            <a href="ProfilSupprimer.php"><button  id="btn_effacer_compte">Supprimer mon compte</button></a>
+
+              
             <form class="form_deconnexion" action="../backendWEB/deconnexion.php" method="post">
                 <button type="submit">Déconnexion</button>
             </form>
-            <a href="ProfilSupprimer.php"><button  id="btn_effacer_compte">Supprimer mon compte</button></a>
 
             
 
