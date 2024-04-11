@@ -266,7 +266,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
 
     </div>
     <footer>
-        <a href="Aide.html" class="footer-item" >Aide</a>
+        <a href="Aide.php" class="footer-item" >Aide</a>
         <a href="commentairesfront.php" class="footer-item">Review</a>
         <a href="politique.php" class="footer-item" target="_blank">Politique</a>
     </footer>
