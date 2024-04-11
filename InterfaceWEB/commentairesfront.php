@@ -105,9 +105,9 @@ if (isset($_GET['commentaire_env']) && $_GET['commentaire_env'] === 'false') {
 
     </div>
     <footer>
-        <a href="Aide.html" class="footer-item" >Aide</a>
+        <a href="Aide.php" class="footer-item" >Aide</a>
         <a href="commentairesfront.php" class="footer-item">Review</a>
-        <a href="politique.html" class="footer-item" target="_blank">Politique</a>
+        <a href="politique.php" class="footer-item" target="_blank">Politique</a>
     </footer>
 <script src="../backendWEB/commentairesTest.js"></script>
 </body>
