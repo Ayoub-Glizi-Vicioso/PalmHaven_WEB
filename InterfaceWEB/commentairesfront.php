@@ -15,12 +15,10 @@
 if (isset($_GET['commentaire_env']) && $_GET['commentaire_env'] === 'false') {
     echo "<script>alert('Vous devez vous connecter avant de publier un commentaire');</script>";
 }
-    
 
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'DELETE' || $_SERVER['REQUEST_METHOD'] == 'GET') {
-        require '../backendWEB/commentairesTest.php';
-    }
+    // if ($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'DELETE' || $_SERVER['REQUEST_METHOD'] == 'GET') {
+    //     require '../backendWEB/commentairesTest.php';
+    // }
 
 ?>
 <!DOCTYPE html>
