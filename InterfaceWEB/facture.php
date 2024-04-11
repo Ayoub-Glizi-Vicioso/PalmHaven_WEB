@@ -20,11 +20,6 @@
         
     ?>
 
-    <form id="form_generer_facture" method="get">
-        <label for="numero_reservation"></label>
-        <input type="hidden" id="numero_reservation" name="numero_reservation" readonly value="<?php echo $numero_reservation; ?>" >
-        <input type="submit"  value="Générer Facture">
-    </form>
 
   
     <div class="container">
@@ -32,9 +27,17 @@
         <div class="content">
             <img src="./images/img.png" alt="Image">
             <div class="facture_text">
-                <p>CLIQUER SUR GÉNÉRER FACTURE</p>
+                <p>appuyer sur le boutton ci-dessous</p>
             </div>
         </div>
+
+        <br>
+        <form id="form_generer_facture" method="get">
+            <label for="numero_reservation"></label>
+            <input type="hidden" id="numero_reservation" name="numero_reservation" readonly value="<?php echo $numero_reservation; ?>" >
+            <input type="submit"  value=" ==> CLIQUER ICI !!! <==">
+        </form>
+        <br>
         <div id="div-text">Veuillez régler le montant total avant la date d'arrivée
             prévue.
             Si vous avez des questions ou des demandes

@@ -43,6 +43,7 @@
 
         .content {
             display: flex;
+            flex-direction: row;
             align-items: center;
             margin-bottom: 20px;
         }
@@ -58,7 +59,7 @@
             background-color: var(--text-bg-color);
             padding: 20px;
             border-radius: 5px;
-            width: 140%;
+            width: 90%;
             text-align: center;
 
         }
@@ -78,13 +79,20 @@
         }
 
         input[type="submit"] {
-            padding: 10px 20px;
+            padding: 15px 25px; /* Augmenter la taille du padding pour plus de visibilité */
             border: none;
             border-radius: 5px;
             background-color: var(--primary-color);
             color: white;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-size: 18px; /* Augmenter la taille de la police */
+            font-weight: bold; /* Mettre en gras */
+            text-transform: uppercase; /* Mettre en majuscules */
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Changer la couleur de fond au survol */
         }
 
         input[type="submit"]:hover {
@@ -94,6 +102,7 @@
         input[type="hidden"] {
             display: none; /* Cacher les inputs de type "hidden" */
         }
+        
 
         #div-text{
         font-family: "Montserrat", sans-serif;
@@ -109,15 +118,20 @@
                 flex-direction: column; /* Modifier la direction de la flexbox pour empiler les éléments */
             }
             
+            .content{
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
             .content img {
-                width: 100%; /* Ajuster la largeur de l'image */
-                height: auto; /* Redimensionner proportionnellement */
+            
                 margin-right: 0; /* Supprimer la marge */
                 border-radius: 0; /* Supprimer la bordure arrondie */
             }
             
             div p {
-                width: fit-content; /* Ajuster la largeur du paragraphe */
+                width: 85%; /* Ajuster la largeur du paragraphe */
                 border-radius: 0; /* Supprimer la bordure arrondie */
             }
             

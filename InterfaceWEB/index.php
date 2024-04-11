@@ -161,7 +161,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
                             une assistance personnalisée.</p>
                     </div>
                     <div class="card-link-wrapper">
-                        <a href="" class="card-link">AJOUTER UN EMAIL .... et liens vers la page FAQ</a>
+                        <a href="./aide.php" class="card-link">Consultez notre page d'aide</a>
                     </div>
                 </div>
             </li>
