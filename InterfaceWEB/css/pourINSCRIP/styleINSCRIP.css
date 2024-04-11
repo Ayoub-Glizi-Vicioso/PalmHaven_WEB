@@ -140,6 +140,12 @@
             margin-bottom: 30px;
 
         }
+        .mot_de_passe{
+            display: block;
+            width: 100%;
+            font-family: "Montserrat";
+
+        }
 #passwordStrengthMeter {
           height: 10px;
           background-color: #ddd;
@@ -162,7 +168,9 @@
 
       .tooltip {
           position: relative;
-          display: inline-block;
+          display: block;
+          width: 100%;
+          font-family: "Montserrat";
       }
 
       .tooltip .tooltiptext {

@@ -45,11 +45,28 @@
         </div>
     </div>
 
-
     <footer>
         <p>[] est représenté au Québec par nous (Canada) Inc., une licence québécoise. [], Inc. n'est pas responsable du contenu des sites Web externes.</p>
         <p>© 2024 [], Inc. Tous droits réservés.</p>
     </footer>
+    <div class="container_">
+      <div class="chat-header">
+        <div class="logo">
+        </div>
+        <div class="title">Clavardage</div>
+      </div>
+      <div class="chat-body"></div>
+      <div class="chatbot-message">
+</div>
+      <div class="chat-input">
+        <div class="input-sec">
+          <input type="text" id="txtInput" placeholder="Écrire un message" autofocus />
+        </div>
+        <div class="send">
+          <button>Envoyer</button>
+</div>
+</div>
 
+    <script src="../backendWEB/chatbot.js"></script>
 </body>
 </html>

@@ -121,9 +121,9 @@ span.hotel-name {
    color:#000000; /* Couleur bleue pour le nom de l'hôtel */
    font-weight: bold; /* Police en gras pour le nom de l'hôtel */
 }
-
-
-footer {
+ 
+ /* Pour que le chatbot ne couvre pas le footer */
+ footer {
    position: sticky;
    bottom: 0;
    background-color: #f8f9fa;
@@ -132,8 +132,9 @@ footer {
    text-align: center;
    width: 100%;
    border-top: 1px solid #ccc;
-   z-index: 999;
-}
+   z-index: 999; /* Assure que le footer est au-dessus du chatbot */
+ }
+ 
 
 footer p { 
    margin: 5px 0; /* Marge autour des paragraphes */
@@ -170,3 +171,116 @@ footer p {
    background-color: var(--lightblue); /* Couleur de fond du bouton au survol */
    color: var(--darkblue); /* Couleur du texte du bouton au survol */
 }
+
+.container_ {
+   --light-color: #fff;
+   height: 600px; /* Hauteur initiale du chatbot */
+   width: 350px;
+   background: var(--light-color);
+   position: fixed;
+   bottom: 50px; /* Positionnement initial du bas */
+   right: 10px;
+   box-shadow: 0px 0px 15px 0px black;
+   z-index: 999; /* Assure que le chatbot est au-dessus du contenu */
+ }
+ 
+.chat-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0px 30px;
+  background-color: #16b0c4;
+  color: var(--light-color);
+  font-size: 1.5rem;
+}
+
+.chat-header .logo {
+  height: 35px;
+  width: 35px;
+  box-shadow: 0px 0px 10px 0px black;
+}
+.chat-header img {
+  height: 100%;
+  width: 100%;
+}
+.chat-header .title {
+  padding-left: 10px;
+}
+.chat-body {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+  align-items: flex-end;
+  overflow-y: auto;
+}
+.chat-input {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ccc;
+}
+.input-sec {
+  flex: 9;
+}
+.send {
+  flex: 1;
+  padding-right: 4px;
+}
+#txtInput {
+  line-height: 30px;
+  font-family: "Montserrat";
+  padding: 8px 10px;
+  border: none;
+  outline: none;
+  caret-color: black;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.chatbot-message,
+.user-message {
+  padding: 8px; 
+  background: #16b0c4;
+  color:white;
+  margin: 5px;
+  font-size: 12px;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 15px 3px 10px 10px;
+}
+.chatbot-message {
+  background: rgb(235, 232, 232);
+  color:black;
+  margin: 5px;
+  font-size: 12px;
+  width:fit-content;
+  height:fit-content;
+  border-radius: 3px 15px 10px 10px;
+}
+
+.options-list {
+   list-style: none;
+   padding: 0;
+   margin: 5px; /* Ajoutez une marge pour l'espacement */
+   text-align: left; /* Alignez le texte à gauche */
+ }
+ .options-list li {
+   margin-bottom: 5px; /* Ajoutez une marge entre chaque élément de la liste */
+ }
+
+ .options-list button {
+   background-color: #16b0c4; /* Couleur de fond bleue */
+   color: white; /* Couleur du texte blanc */
+   font-family: "Montserrat", sans-serif; /* Police de caractères Montserrat */
+   font-weight: bold; /* Police en gras */
+   padding: 5px 10px; /* Ajoutez un espacement autour du texte */
+   border: none; /* Supprimez la bordure */
+   border-radius: 5px; /* Ajoutez des coins arrondis */
+   cursor: pointer; /* Curseur pointer au survol */
+   transition: background-color 0.3s, color 0.3s; /* Animation de transition */
+ }
+ 
+ .options-list button:hover {
+   background-color: #128293; /* Couleur de fond bleu foncé au survol */
+ }

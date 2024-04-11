@@ -528,6 +528,12 @@
             
         }
 
+        /* Ajoutez cet ensemble de règles CSS à votre fichier de style */
+        .chambre:last-child {
+            margin-bottom: 100px; /* Ajustez la valeur selon vos préférences */
+        }
+
+
         /* Style du conteneur d'image */
         .image-container {
             margin-right: 20px; /* Espacement entre l'image et le texte */
