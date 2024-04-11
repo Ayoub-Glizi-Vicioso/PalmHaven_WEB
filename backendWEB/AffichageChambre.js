@@ -119,6 +119,10 @@ $(document).ready(function() {
         // Appeler la fonction chargerChambres pour charger les chambres
 
         chargerChambres();
+        console.log("Défilement vers l'élément...");
+        $('html, body').animate({
+            scrollTop: $('.affichage-annonce').offset().top
+        }, 1000);
         
         // Empêcher le comportement par défaut du formulaire (rechargement de la page)
        event.preventDefault();

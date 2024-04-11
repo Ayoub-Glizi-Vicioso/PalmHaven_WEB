@@ -35,7 +35,7 @@ error_reporting(E_ALL); ini_set('display_errors', 1);
             Nous sommes ravis de vous accueillir et de vous offrir une expérience exceptionnelle.  N'hésitez pas à parcourir notre site et à découvrir tout ce que nous avons à vous offrir.
           </p>
           <br>
-          <button onclick="window.location.href='connexionfront.php'"id="btn-connection">Retour page de connexion</button>
+          <button onclick="window.location.href='connexionfront.php'"id="btn-connection"> Retour à la page de connexion</button>
         </div>
         <br>
         <br>
