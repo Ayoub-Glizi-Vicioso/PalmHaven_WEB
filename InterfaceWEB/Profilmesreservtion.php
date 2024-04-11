@@ -13,36 +13,40 @@
     <link rel="stylesheet" href="css/pourMESRESERVATION/styleMESRESERVATION.css">
 </head>
 <body>
+
+
     <div class="container">
         <div id="Barre_nav">
             <!--<img src="./images/profil.JPG" ></a>--> 
             <button onclick="window.location.href='Profilmesreservtion.php'" id="btn_reservations">Mes réservations</button>
             
-            <a href="ProfilSupprimer.php"><button  id="btn_effacer_compte">Supprimer mon compte</button></a>
-
             <form class="form_deconnexion" action="../backendWEB/deconnexion.php" method="post">
                 <button type="submit">Déconnexion</button>
             </form>
+            <a href="ProfilSupprimer.php"><button  id="btn_effacer_compte">Supprimer mon compte</button></a>
+
+            
 
 
         </div>
 
         <div id="retour">
-            <div id="btn_retour">
-                <button onclick="window.location.href='index.php'">Retour à la page d’accueil</button>
-            </div>
-            
             <div id="zone_text">
                 <div class="text">
-                    <h2>MES RÉSERVATION:</h2>
+                    <h2>MES RÉSERVATIONS:</h2>
                     
-                     <div id="table">
-                         <table id='reservationProfil'>
-                             
-                             
-                         </table>
+                        <div id="table">
+                            <table id='reservationProfil'>
+                                
+                                
+                            </table>
+                        </div>
                              
                 </div>
+            </div>
+
+            <div id="btn_retour">
+                <button onclick="window.location.href='index.php'">Retour à la page d’accueil</button>
             </div>
         </div>
     </div>
