@@ -56,8 +56,6 @@
         <div class="title">Clavardage</div>
       </div>
       <div class="chat-body"></div>
-      <div class="chatbot-message">
-</div>
       <div class="chat-input">
         <div class="input-sec">
           <input type="text" id="txtInput" placeholder="Écrire un message" autofocus />
