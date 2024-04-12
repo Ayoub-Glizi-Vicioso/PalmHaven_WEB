@@ -21,7 +21,7 @@ const renderUserMessage = () => {
 };
 
 const renderChatbotResponse = (userInput) => {
-  fetch(`/TCH099_PROJET2.0/backendWEB/chatbot.php?option=${userInput}`)
+  fetch(`/TCH099/TCH099_PROJET2.0/backendWEB/chatbot.php?option=${userInput}`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Erreur lors de la récupération de la réponse.');
@@ -29,18 +29,19 @@ const renderChatbotResponse = (userInput) => {
       return response.json(); // Utilisez response.json() pour traiter la réponse comme un objet JSON
     })
     .then(data => {
-        if (data.options) {
-            renderMessageEle(data.reponse, 'chatbot');
-            setScrollPosition();
-            renderOptionsAsButtons(data.options, chatBody);
-            setScrollPosition();
-        } else {
-          renderMessageEle(data.reponse, 'chatbot');
-          setScrollPosition();
-
-        }
-      })
-      
+      if (data.reponses) {
+        renderMessageEle(data.reponses, 'chatbot');
+        setScrollPosition();
+      } else if (data.options) {
+        renderMessageEle(data.reponse, 'chatbot');
+        setScrollPosition();
+        renderOptionsAsButtons(data.options, chatBody);
+        setScrollPosition();
+      } else {
+        renderMessageEle(data.reponse, 'chatbot');
+        setScrollPosition();
+      }
+    })
     .catch(error => {
       console.error('Erreur:', error);
       renderMessageEle('Une erreur s\'est produite.', 'chatbot');
@@ -84,7 +85,7 @@ const renderOptionsAsButtons = (options, container) => {
 
 // Fonction pour gérer le clic sur un bouton d'option
 const handleOptionClick = (option) => {
-    fetch(`/TCH099_PROJET2.0/backendWEB/chatbot.php?option=${option}`)
+    fetch(`/TCH099/TCH099_PROJET2.0/backendWEB/chatbot.php?option=${option}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Erreur lors de la récupération de la réponse.');

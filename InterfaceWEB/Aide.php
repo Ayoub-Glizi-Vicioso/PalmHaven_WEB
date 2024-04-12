@@ -56,17 +56,21 @@
         <div class="title">Clavardage</div>
       </div>
       <div class="chat-body"></div>
-      <div class="chatbot-message">
-</div>
+     
       <div class="chat-input">
         <div class="input-sec">
           <input type="text" id="txtInput" placeholder="Écrire un message" autofocus />
         </div>
         <div class="send">
           <button>Envoyer</button>
-</div>
-</div>
+        </div>
+    </div>
+
+    <br><br><br><br><br>
+    <div id="Note"><p>**NOTE: faite attention a l'orthograhe</p></div>
 
     <script src="../backendWEB/chatbot.js"></script>
+    
+
 </body>
 </html>

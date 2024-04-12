@@ -285,3 +285,9 @@ footer p {
  .options-list button:hover {
    background-color: #128293; /* Couleur de fond bleu foncé au survol */
  }
+
+ #Note p {
+   font-size: 10px;
+   text-align: center;
+   color: gray;
+ }
