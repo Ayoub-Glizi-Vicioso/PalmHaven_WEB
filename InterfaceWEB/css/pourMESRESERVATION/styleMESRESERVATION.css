@@ -14,14 +14,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url(../../images/MesReservations.jpg) no-repeat center/cover;
+    background: url(../../images/background.jpg) no-repeat center/cover;
     font-size: 14px;
 }
 
 .container {
     background-color: #fff;
     width: 1000px; /* Agrandir le conteneur */
-    height: 95%; /* Agrandir le conteneur */
+    height: 80%; /* Agrandir le conteneur */
     position: relative;
     overflow-x: auto;
     overflow-y: auto;
@@ -33,9 +33,10 @@ body {
 
 #zone_text {
     display: flex;
-    width: 65%; /* Ajustement de la largeur */
+    width: 85%; /* Ajustement de la largeur */
     text-align: center;
     padding: 20px;
+    margin-top: 30px;
 }
 .text h2 {
     margin-bottom: 30px; /* Ajout de cette ligne pour ajouter de l'espace en bas du titre */
@@ -223,17 +224,12 @@ form button:hover{
     width: 15%;
 }
 
-#id_reservation , #email , #Ddebut , #Dfin {
+#mot_de_passe , #email, #courriel , #numero_reservation , #id_reservation, #Ddebut , #Dfin {
     background-color: white;
     border: 1px solid lightgray;
     color: black;
 }
 
-#courriel , #numero_reservation{
-    background-color: white;
-    border: 1px solid lightgray;
-    color: black;
-}
 
 
 @media only screen and (max-width: 1200px) {

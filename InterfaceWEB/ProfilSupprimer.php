@@ -11,8 +11,8 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/pourSUPPRIMER/styleSPPRIMER.css">
+    <title>Page de Suppression de compte</title>
+    <link rel="stylesheet" href="css/pourSupprimer/styleSpprimer.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -30,9 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 
         </div>
         <div id="zone_text">
-            <div id="btn_retour">
-                <button onclick="window.location.href='../interfaceWEB/index.php'">Retour à la page d’accueil</button>
-            </div>
+           
             <div class="text">
                 <h2>Aimeriez-vous effacer votre compte?</h2>
                 <p> Si vous choisissez de supprimer votre compte sur
@@ -63,7 +61,11 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
                         <button type="submit">Effacer Compte</button>
                     </form>
                 </div>
+                <div id="btn_retour">
+                <button onclick="window.location.href='../interfaceWEB/index.php'">Retour à la page d’accueil</button>
             </div>
+            </div>
+           
         </div>
     </div>
 

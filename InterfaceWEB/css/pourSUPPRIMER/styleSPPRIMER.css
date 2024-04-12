@@ -14,14 +14,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url(../../images/MesReservations.jpg) no-repeat center/cover;
+    background: url(../../images/background.jpg) no-repeat center/cover;
     font-size: 14px;
 }
 
 .container {
     background-color: #fff;
-    width: 1000px; /* Agrandir le conteneur */
-    height: 95%; /* Agrandir le conteneur */
+    width: 60%; /* Agrandir le conteneur */
+    height: 80%; /* Agrandir le conteneur */
     position: relative;
     overflow-x: auto;
     overflow-y: auto;
@@ -33,6 +33,7 @@ body {
 
 #zone_text {
     display: flex;
+    flex-direction: row;
     width: 65%; /* Ajustement de la largeur */
     text-align: center;
     padding: 20px;
@@ -92,7 +93,7 @@ input{
     padding: 10px;
     width: 100%;
     margin-top: 5px;
-    background-color: white;
+    background-color: #16b0c4;
     border-radius: 12px;
     color: #fff;
     cursor: pointer;
@@ -223,13 +224,9 @@ form button:hover{
     width: 15%;
 }
 
-#mot_de_passe , #email  {
-    background-color: white;
-    border: 1px solid lightgray;
-    color: black;
-}
 
-#courriel , #numero_reservation{
+
+#email , #mot_de_passe{
     background-color: white;
     border: 1px solid lightgray;
     color: black;
@@ -277,6 +274,8 @@ form button:hover{
 
     
 
-
-    
 }
+
+
+
+
