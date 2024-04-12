@@ -15,7 +15,7 @@
             padding: 0;
             margin: 0;
             font-family: "Montserrat";
-            letter-spacing: .2rem;
+            letter-spacing: .1rem;
         }
 
         body {
@@ -142,6 +142,9 @@
                 #ebeef51a
                 ),
                 url("../../images/beach4.png");
+                background-size: cover;
+                animation: slideUp 1s ease-out forwards;
+                opacity: 0;
         }
 
         h1 {
@@ -153,12 +156,14 @@
 
         .cards {
             display: flex;
+            position: relative;
             padding: 25px 0px;
             list-style: none;
             overflow-x: scroll;
             overflow-y: hidden;
             margin-right: 5px;
             margin-left: 20px;
+            animation: scrollImages 16s linear infinite;
         
         }
 
@@ -174,9 +179,9 @@
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 50px;
+            border-radius: 5px;
         }
-
+     
 
 .card + .card {
     margin-left: -20px; /* Espacement négatif pour chevaucher les cartes */
@@ -204,7 +209,7 @@
         }
 
         .card-link:hover {
-            color: var(--darkblue);
+            color: #3848af
         }
 
         .card:not(:last-child)::after {
@@ -255,6 +260,7 @@
             margin-right: 8px; 
             border-radius: 5px;
             border: 1px solid #ccc;
+            
         }
 
         .search-form input[type="submit"] {
@@ -600,7 +606,7 @@
                 ),
                 url("../../images/hotel_profil.jpeg");
                 margin-right: 20px;
-                border-radius: 10%;
+                background-position: center;
         }
 
         #imagecard1
@@ -609,9 +615,10 @@
                 rgba(83, 108, 123, 0.4),
                 #ebeef51a
                 ),
-                url("../../images/beach.png");
+                url("../../images/famille.jpg");
                 margin-right: 20px;
-                border-radius: 10%;
+                background-size: cover;
+                background-position: center;
         }
 
         #imagecard2
@@ -620,9 +627,10 @@
                 rgba(83, 108, 123, 0.4),
                 #ebeef51a
                 ),
-                url("../../images/beach2.png");
+                url("../../images/femmechapeau.jpg");
                 margin-right: 20px;
-                border-radius: 10%;
+                background-size: cover;
+                background-position: center;
         }
         #imagecard3
         { background-image: linear-gradient(
@@ -632,9 +640,10 @@
                 ),
                 url("../../images/beach6.jpg");
                 margin-right: 20px;
-                border-radius: 10%;
+                background-size: cover;
+                background-position: center;
         }  
-        #imagecard3
+        #imagecard4
         { background-image: linear-gradient(
                 to right,
                 rgba(83, 108, 123, 0.4),
@@ -642,7 +651,8 @@
                 ),
                 url("../../images/beach3.png");
                 margin-right: 20px;
-                border-radius: 10%;
+                background-size: cover;
+                background-position: center;
         }  
       
 /* Cacher l'élément #saut-de-ligne sur les écrans plus larges */
@@ -699,7 +709,16 @@
     }
 }
 
-
+@keyframes slideUp {
+    from {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
 
 

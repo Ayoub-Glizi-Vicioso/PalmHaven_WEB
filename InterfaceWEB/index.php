@@ -123,7 +123,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
             </li>
             <li class="card">
                 <div>
-                    <h2 class="card-title">Créer un compte ou connecter vous!</h2>
+                    <h2 class="card-title">Créer un compte ou connectez vous!</h2>
                     <div class="card-content">
                         <p>Créez un compte dès maintenant et bénéficiez d'avantages exclusifs ! 
                             En vous inscrivant, vous pourrez profiter d'une expérience de réservation 
@@ -134,10 +134,10 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
                     </div>
                 </div>
                 <div class="card-link-wrapper">
-                    <a href="inscriptionfront.php" class="card-link">Créer un compte ici!</a>
+                    <a href="inscriptionfront.php" class="card-link">Créez un compte ici!</a>
                 </div>
                 <div class="card-link-wrapper">
-                    <a href="connexionfront.php" class="card-link">Connecter vous ici!</a>
+                    <a href="connexionfront.php" class="card-link">Connectez vous ici!</a>
                 </div>
             </li>
             <li class="card" id="imagecard3">
@@ -149,7 +149,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
             </li>
             <li class="card">
                 <div>
-                    <h2 class="card-title">Besoin d'Aide</h2>
+                    <h2 class="card-title">Besoin d'aide ?</h2>
                     <div class="card-content">
                         <p>Besoin d'aide pour finaliser votre réservation ? Notre équipe est là 
                             pour vous guider à chaque étape du processus. Que vous ayez des 
