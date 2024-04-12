@@ -20,12 +20,14 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             margin: 15px 0;
-            /* Ajout de la marge uniquement en haut et en bas */
+            letter-spacing: .4rem;
+
         }
 
         h1 {
             text-align: center;
             margin-bottom: 20px;
+            letter-spacing: .2rem;
         }
 
         .room-details {

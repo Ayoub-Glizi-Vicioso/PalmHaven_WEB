@@ -21,7 +21,7 @@ const renderUserMessage = () => {
 };
 
 const renderChatbotResponse = (userInput) => {
-  fetch(`/TCH099/TCH099_PROJET2.0/backendWEB/chatbot.php?option=${userInput}`)
+  fetch(`/TCH099_PROJET2.0/backendWEB/chatbot.php?option=${userInput}`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Erreur lors de la récupération de la réponse.');
@@ -85,7 +85,7 @@ const renderOptionsAsButtons = (options, container) => {
 
 // Fonction pour gérer le clic sur un bouton d'option
 const handleOptionClick = (option) => {
-    fetch(`/TCH099/TCH099_PROJET2.0/backendWEB/chatbot.php?option=${option}`)
+    fetch(`/TCH099_PROJET2.0/backendWEB/chatbot.php?option=${option}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Erreur lors de la récupération de la réponse.');
@@ -141,7 +141,7 @@ const handleOptionClick = (option) => {
 document.addEventListener("DOMContentLoaded", () => {
   // Message d'accueil du chatbot
   const welcomeMessage = "Bonjour! Besoin d'aide? Veuillez sélectionner l'une des options suivantes:";
-  const options = ["Réservations", "Autre"];
+  const options = ["Réservations","Politique","Autre"];
   const listContainer = document.createElement("ul");
   listContainer.classList.add("options-list");
   const responseContainer = renderMessageAndOptions(welcomeMessage, options);

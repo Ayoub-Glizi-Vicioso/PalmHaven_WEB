@@ -47,7 +47,7 @@ if(!isset($_GET['numero'])){
             <div class="room-info">
 
                 <h2>Suite Lune de Miel</h2>
-                <p><strong>Superficie de la chambre :</strong> 66m<sup>2</sup< /p>
+                <p><strong>Superficie de la chambre :</strong> 66m<sup>2</sup>
                         <p><strong>Équipements:</strong> Wi-Fi gratuit, TV à écran plat, minibar, salle de bains
                             privative</p>
                         <p><strong>Prix par nuit:</strong> 300$</p>
