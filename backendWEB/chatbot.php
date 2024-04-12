@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     }
                 }
                 
-                if ($similiteMaximale >= 60) {
+                if ($similiteMaximale >= 50) {
                     $requeteReponse = "SELECT Reponse FROM chatbot WHERE Question = ?";
                     $statementReponse = $connexion->prepare($requeteReponse);
                     $statementReponse->bind_param('s', $meilleureCorrespondance);
@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             }
                         }
 
-                        if (!empty($meilleureCorrespondance) && $nombreMotsCommunsMax > 30) {
+                        if (!empty($meilleureCorrespondance) && $nombreMotsCommunsMax > 45) {
                             $requeteReponse = "SELECT Reponse FROM chatbot WHERE Question = ?";
                             $statementReponse = $connexion->prepare($requeteReponse);
                             $statementReponse->bind_param('s', $meilleureCorrespondance);

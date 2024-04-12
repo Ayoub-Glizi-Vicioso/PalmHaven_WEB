@@ -23,7 +23,7 @@
             <p>CONCERNANT:</p>
 
             <div class="aide">
-                <span> Reservation:</span>
+                <span> Réservation:</span>
                 <a href="AideReservation.html"><button > > </button></a>
             </div>
             <br>
@@ -67,7 +67,7 @@
     </div>
 
     <br><br><br><br><br>
-    <div id="Note"><p>**NOTE: faite attention a l'orthograhe</p></div>
+    <div id="Note"><p>**NOTE: faite attention à l'orthograhe</p></div>
 
     <script src="../backendWEB/chatbot.js"></script>
     
