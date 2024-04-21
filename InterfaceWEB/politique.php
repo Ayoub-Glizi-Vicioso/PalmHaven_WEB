@@ -11,7 +11,7 @@ if(isset($_SESSION['email'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,10 +19,6 @@ if(isset($_SESSION['email'])) {
     <link rel="stylesheet" href="css/pourPOLITIQUE/stylePOLITIQUE.css">
   </head>
   <body>
-   
-
-
-
     
     <br>
     <br>
@@ -42,11 +38,10 @@ if(isset($_SESSION['email'])) {
           <span class="hotel-name-p">Palm Haven</span>. <em>Notre objectif est de vous
           offrir une expérience de séjour agréable et mémorable. Pour assurer le
           confort et la sécurité de tous nos clients, nous avons établi les
-          politiques suivantes : </em>
+          politiques suivantes :</em>
         </p>
         
-
-        <h2>Réservations:</h2>
+        <h2>Réservations :</h2>
         <ul>
           <li>
             Toutes les réservations sont soumises à disponibilité et doivent
@@ -58,7 +53,7 @@ if(isset($_SESSION['email'])) {
           </li>
         </ul>
 
-        <h2>Enregistrement et départ:</h2>
+        <h2>Enregistrement et départ :</h2>
         <ul>
           <li>
             L'heure d'arrivée standard est à partir de 14h00, et l'heure de
@@ -70,7 +65,7 @@ if(isset($_SESSION['email'])) {
           </li>
         </ul>
 
-        <h2>Politique d'annulation:</h2>
+        <h2>Politique d'annulation :</h2>
         <ul>
           <li>
             Les annulations doivent être effectuées au moins 24 heures avant la
@@ -82,7 +77,7 @@ if(isset($_SESSION['email'])) {
           </li>
         </ul>
 
-        <h2>Enfants et lits supplémentaires:</h2>
+        <h2>Enfants et lits supplémentaires :</h2>
         <ul>
           <li>
             Les enfants de moins de 12 ans séjournent gratuitement dans la
@@ -94,7 +89,7 @@ if(isset($_SESSION['email'])) {
           </li>
         </ul>
 
-        <h2>Politique de paiement:</h2>
+        <h2>Politique de paiement :</h2>
         <ul>
           <li>
             Le paiement intégral est requis au moment de la réservation, sauf
@@ -106,7 +101,7 @@ if(isset($_SESSION['email'])) {
           </li>
         </ul>
 
-        <h2>Animaux domestiques:</h2>
+        <h2>Animaux domestiques :</h2>
         <ul>
           <li>
             Les animaux de compagnie sont les bienvenus dans certaines chambres,
@@ -118,7 +113,7 @@ if(isset($_SESSION['email'])) {
           </li>
         </ul>
 
-        <h2>Comportement des clients:</h2>
+        <h2>Comportement des clients :</h2>
         <ul>
           <li>
             Nous attendons de nos clients qu'ils respectent les autres clients
@@ -131,7 +126,7 @@ if(isset($_SESSION['email'])) {
           </li>
         </ul>
 
-        <h2>Services et équipements:</h2>
+        <h2>Services et équipements :</h2>
         <ul>
           <li>
             Les services et équipements de l'hôtel sont réservés aux clients
@@ -142,7 +137,7 @@ if(isset($_SESSION['email'])) {
           </li>
         </ul>
 
-        <h2>Responsabilité:</h2>
+        <h2>Responsabilité :</h2>
         <ul>
           <li>
             L'hôtel n'est pas responsable des biens perdus, volés ou endommagés

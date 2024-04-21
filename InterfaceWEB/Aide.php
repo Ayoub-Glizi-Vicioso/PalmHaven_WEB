@@ -51,8 +51,6 @@
     </footer>
     <div class="container_">
       <div class="chat-header">
-        <div class="logo">
-        </div>
         <div class="title">Clavardage</div>
       </div>
       <div class="chat-body"></div>

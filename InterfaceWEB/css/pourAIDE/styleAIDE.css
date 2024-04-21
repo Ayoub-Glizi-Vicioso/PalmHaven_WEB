@@ -148,7 +148,7 @@ footer p {
    border: solid lightgray 1px;
    padding: 3px;
    border-radius: 10px;
-   font-style: italic;
+   width:100dp;
 }
 
 .aide span {
