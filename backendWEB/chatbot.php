@@ -17,20 +17,6 @@ function similarity($str1, $str2) {
     return $similarity * 100;
 }
 
-// Fonction pour compter le nombre de mots communs entre deux chaînes de caractères
-function nombreMotsCommuns($str1, $str2) {
-    $mots1 = explode(' ', strtolower($str1));
-    $mots2 = explode(' ', strtolower($str2));
-    
-    $nombreMotsCommuns = 0;
-    foreach ($mots1 as $mot1) {
-        if (in_array($mot1, $mots2)) {
-            $nombreMotsCommuns++;
-        }
-    }
-    
-    return $nombreMotsCommuns;
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (preg_match('/\/chatbot\.php/', $_SERVER['REQUEST_URI'], $matches)) {
@@ -102,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 }
                 
                 if ($similiteMaximale >= 50) {
+           
                     $requeteReponse = "SELECT Reponse FROM chatbot WHERE Question = ?";
                     $statementReponse = $connexion->prepare($requeteReponse);
                     $statementReponse->bind_param('s', $meilleureCorrespondance);
