@@ -17,6 +17,21 @@ function similarity($str1, $str2) {
     return $similarity * 100;
 }
 
+// Fonction pour compter le nombre de mots communs entre deux chaînes de caractères
+function nombreMotsCommuns($str1, $str2) {
+    $mots1 = explode(' ', strtolower($str1));
+    $mots2 = explode(' ', strtolower($str2));
+    
+    $nombreMotsCommuns = 0;
+    foreach ($mots1 as $mot1) {
+        if (in_array($mot1, $mots2)) {
+            $nombreMotsCommuns++;
+        }
+    }
+    
+    return $nombreMotsCommuns;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (preg_match('/\/chatbot\.php/', $_SERVER['REQUEST_URI'], $matches)) {
         if (isset($_GET['option'])) {
@@ -116,40 +131,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
                         echo json_encode(["reponse" => $reponse]);
                     } else {
-                        $requeteMotCle = "SELECT Question, Reponse FROM chatbot";
-                        $resultatMotCle = $connexion->query($requeteMotCle);
+                        
+                        // Seuil de similarité pour considérer une option comme valide malgré une faute de frappe
+                        $seuilSimilarite = 50;
 
-                        $meilleureCorrespondance = "";
-                        $nombreMotsCommunsMax = 0;
+                        // Initialisation d'un tableau pour stocker les options similaires
+                        $optionsSimilaires = [];
 
-                        while ($row = $resultatMotCle->fetch_assoc()) {
-                            $questionBD = $row['Question'];
+                        // Récupérer toutes les options de la base de données
+                        $requeteToutesOptions = "SELECT Question, Reponse FROM chatbot";
+                        $resultatToutesOptions = $connexion->query($requeteToutesOptions);
+
+                        while ($row = $resultatToutesOptions->fetch_assoc()) {
+                            $optionBD = $row['Question'];
                             $reponse = $row['Reponse'];
                             
-                            similar_text($option, $questionBD, $similarity);
-                            $nombreMotsCommuns = $similarity;
-
-                            if ($nombreMotsCommuns > $nombreMotsCommunsMax) {
-                                $meilleureCorrespondance = $questionBD;
-                                $nombreMotsCommunsMax = $nombreMotsCommuns;
+                            // Calculer la similarité entre l'option saisie par l'utilisateur et chaque option de la base de données
+                            $similarity = similarity($option, $optionBD);
+                            
+                            // Si la similarité dépasse le seuil, considérer l'option comme valide
+                            if ($similarity >= $seuilSimilarite) {
+                                // Exécuter la requête pour obtenir la réponse correspondante à l'option valide
+                                $requeteReponse = "SELECT Reponse FROM chatbot WHERE Question = ?";
+                                $statementReponse = $connexion->prepare($requeteReponse);
+                                $statementReponse->bind_param('s', $optionBD);
+                                $statementReponse->execute();
+                                $resultatReponse = $statementReponse->get_result();
+                                
+                                // Si une réponse est trouvée, l'ajouter au tableau des options similaires
+                                if ($resultatReponse->num_rows > 0) {
+                                    $reponse = $resultatReponse->fetch_assoc()['Reponse'];
+                                    $optionsSimilaires[] = ["question" => $optionBD, "reponse" => $reponse];
+                                }
                             }
                         }
 
-                        if (!empty($meilleureCorrespondance) && $nombreMotsCommunsMax > 45) {
-                            $requeteReponse = "SELECT Reponse FROM chatbot WHERE Question = ?";
-                            $statementReponse = $connexion->prepare($requeteReponse);
-                            $statementReponse->bind_param('s', $meilleureCorrespondance);
-                            $statementReponse->execute();
-                            $resultatReponse = $statementReponse->get_result();
-                            
-                            if ($resultatReponse->num_rows == 1) {
-                                $reponse = $resultatReponse->fetch_assoc()['Reponse'];
-                                
-                                echo json_encode(["reponse" => $reponse]);
-                            } else {
-                                echo json_encode(["erreur" => "Aucune réponse trouvée pour cette option."]);
-                            }
-                        } else {
+                        // Si des options similaires ont été trouvées, les renvoyer
+                        if (!empty($optionsSimilaires)) {
+                            echo json_encode(["options_similaires" => $optionsSimilaires]);
+                        }else {
+
                             $optionsSupplementaires = [
                                 "reponse" => "Je suis désolé, je n'ai pas compris votre demande. Voici quelques questions communes :",
                                 "options" => [
