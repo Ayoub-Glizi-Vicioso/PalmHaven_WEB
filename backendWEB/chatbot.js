@@ -1,15 +1,19 @@
+// Sélection des éléments DOM
 const chatBody = document.querySelector(".chat-body");
 const txtInput = document.querySelector("#txtInput");
 const send = document.querySelector(".send");
 
+// Ajout d'un écouteur d'événements pour le clic sur le bouton d'envoi
 send.addEventListener("click", () => renderUserMessage());
 
+// Ajout d'un écouteur d'événements pour la touche "Entrée" lors de la saisie dans le champ de texte
 txtInput.addEventListener("keyup", (event) => {
   if (event.keyCode === 13) {
     renderUserMessage();
   }
 });
 
+// Fonction pour afficher le message de l'utilisateur
 const renderUserMessage = () => {
   const userInput = txtInput.value;
   renderMessageEle(userInput, "user");
@@ -20,6 +24,8 @@ const renderUserMessage = () => {
   }, 600);
 };
 
+
+// Fonction pour obtenir la réponse du chatbot via une requête fetch
 const renderChatbotResponse = (userInput) => {
   fetch(`../backendWEB/chatbot.php?option=${userInput}`)
     .then(response => {
@@ -49,6 +55,7 @@ const renderChatbotResponse = (userInput) => {
     });
 };
 
+// Fonction pour afficher un message dans le chat
 const renderMessageEle = (txt, type) => {
   let className = "user-message";
   if (type !== "user") {
@@ -61,12 +68,14 @@ const renderMessageEle = (txt, type) => {
   chatBody.append(messageEle);
 };
 
+// Fonction pour définir la position de défilement du chat
 const setScrollPosition = () => {
   if (chatBody.scrollHeight > 0) {
     chatBody.scrollTop = chatBody.scrollHeight;
   }
 };
 
+// Fonction pour afficher les options sous forme de boutons
 const renderOptionsAsButtons = (options, container) => {
   const listContainer = document.createElement("ul");
   listContainer.classList.add("options-list");
@@ -110,6 +119,7 @@ const handleOptionClick = (option) => {
       });
   };
   
+  // Fonction pour afficher un message et des options
   const renderMessageAndOptions = (message, options) => {
     const container = document.createElement("div");
   
