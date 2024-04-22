@@ -132,44 +132,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         echo json_encode(["reponse" => $reponse]);
                     } else {
                         
-                        // Seuil de similarité pour considérer une option comme valide malgré une faute de frappe
-                        $seuilSimilarite = 50;
 
-                        // Initialisation d'un tableau pour stocker les options similaires
-                        $optionsSimilaires = [];
+                        // Récupérer les mots saisis par l'utilisateur et les stocker dans un tableau
+                        $motsUtilisateur = explode(' ', $option);
 
-                        // Récupérer toutes les options de la base de données
-                        $requeteToutesOptions = "SELECT Question, Reponse FROM chatbot";
-                        $resultatToutesOptions = $connexion->query($requeteToutesOptions);
+                        // Initialiser un tableau pour stocker les réponses potentielles
+                        $reponsesPotentielles ;
 
-                        while ($row = $resultatToutesOptions->fetch_assoc()) {
-                            $optionBD = $row['Question'];
-                            $reponse = $row['Reponse'];
-                            
-                            // Calculer la similarité entre l'option saisie par l'utilisateur et chaque option de la base de données
-                            $similarity = similarity($option, $optionBD);
-                            
-                            // Si la similarité dépasse le seuil, considérer l'option comme valide
-                            if ($similarity >= $seuilSimilarite) {
-                                // Exécuter la requête pour obtenir la réponse correspondante à l'option valide
-                                $requeteReponse = "SELECT Reponse FROM chatbot WHERE Question = ?";
-                                $statementReponse = $connexion->prepare($requeteReponse);
-                                $statementReponse->bind_param('s', $optionBD);
-                                $statementReponse->execute();
-                                $resultatReponse = $statementReponse->get_result();
-                                
-                                // Si une réponse est trouvée, l'ajouter au tableau des options similaires
-                                if ($resultatReponse->num_rows > 0) {
-                                    $reponse = $resultatReponse->fetch_assoc()['Reponse'];
-                                    $optionsSimilaires[] = ["question" => $optionBD, "reponse" => $reponse];
-                                }
+                        // Parcourir chaque mot saisi par l'utilisateur
+                        foreach ($motsUtilisateur as $mot) {
+                            // Construire la requête SQL dynamique avec LIKE %mot%
+                            $requeteMotCle = "SELECT Question, Reponse FROM chatbot WHERE Question LIKE ?";
+                            $statement = $connexion->prepare($requeteMotCle);
+                            $parametre = "%$mot%";
+                            $statement->bind_param('s', $parametre);
+                            $statement->execute();
+                            $resultat = $statement->get_result();
+
+                            // Parcourir les résultats de la requête et ajouter les réponses potentielles au tableau
+                            while ($row = $resultat->fetch_assoc()) {
+                                $reponsesPotentielles = $row['Reponse'];
                             }
                         }
 
-                        // Si des options similaires ont été trouvées, les renvoyer
-                        if (!empty($optionsSimilaires)) {
-                            echo json_encode(["options_similaires" => $optionsSimilaires]);
-                        }else {
+                        // Si des réponses potentielles ont été trouvées, les renvoyer
+                        if (!empty($reponsesPotentielles)) {
+                            echo json_encode(["reponses" => $reponsesPotentielles]);
+                        } else {
 
                             $optionsSupplementaires = [
                                 "reponse" => "Je suis désolé, je n'ai pas compris votre demande. Voici quelques questions communes :",
