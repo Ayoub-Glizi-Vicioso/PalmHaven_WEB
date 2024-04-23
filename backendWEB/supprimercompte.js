@@ -13,6 +13,7 @@ $(document).ready(function(){
         // Définit l'URL vers laquelle la requête sera envoyée
         let url = '../backendWEB/supprimercompte.php'
 
+        
         // Construit les paramètres à envoyer dans la requête DELETE
         let params = 'email=' + email + '&mot_de_passe=' + mot_de_passe;
 
