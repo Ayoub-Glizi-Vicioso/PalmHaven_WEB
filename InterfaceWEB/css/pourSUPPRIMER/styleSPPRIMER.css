@@ -9,7 +9,7 @@
 body {
     font-family: "Montserrat", sans-serif;
     font-weight: 300;
-    font-style: normal;
+    font-style: smaller;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +21,7 @@ body {
 .container {
     background-color: #fff;
     width: 60%; /* Agrandir le conteneur */
-    height: 80%; /* Agrandir le conteneur */
+    height: 90%; /* Agrandir le conteneur */
     position: relative;
     overflow-x: auto;
     overflow-y: auto;

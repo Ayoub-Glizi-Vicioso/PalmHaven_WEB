@@ -30,9 +30,9 @@ $(document).ready(function(){
                 const data= JSON.parse(xhr.responseText);
                 alert( data['message']); // Affiche un message basé sur la réponse du serveur
                 // Redirige vers une autre page si la suppression du compte réussit
-                if(data['succes']=='true'){
-                    window.location.href="../interfaceWEB/index.php";
-                }
+               // if(data['succes']=='true'){
+              //      window.location.href="../interfaceWEB/index.php";
+               // }
             } else {
                 // Erreur lors de la requête
                 console.error("Erreur lors de la requête : " + xhr.status);
