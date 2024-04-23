@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     //Afficher le messsage de l'api et rediriger l'utilisateur vers son profil de reservation 
                     const data= JSON.parse(xhr.responseText);
                     alert( data['message']);
-                    window.location.href="../interfaceWEB/Profilmesreservtion.php"
+                    window.location.href="../interfaceWEB/Profilmesreservtion.php";
 
                 } else {
                     // Erreur lors de la requête

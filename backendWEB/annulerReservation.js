@@ -26,6 +26,7 @@ $(document).ready(function () {
                     // Récupérer le message de l'api
                     const data= JSON.parse(xhr.responseText);
                     alert( data['message']);
+                    window.location.href="../interfaceWEB/Profilmesreservtion.php";
                 } else {
                     // Dans le cas que c'est des erreurs
                     console.error('Erreur de requête :', xhr.status);
