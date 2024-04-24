@@ -77,6 +77,7 @@ if (isset($_GET['delete_success']) && $_GET['delete_success'] === 'true') {
         </div>
       </header>
 
+    <br>
     <h1>Découvrez votre nouvel hébergement</h1>
 
     <div class="container">
