@@ -18,7 +18,7 @@ March 2024 - April 2024
 
 ## How to Install Dependencies
 
-To run this project locally, you need to have a local server environment set up. We recommend using XAMPP, WAMP, or MAMP, which provide the necessary PHP and MySQL support.
+To run this project locally, you need to have a local server environment set up. We recommend using XAMPP which provide the necessary PHP and MySQL support.
 
 ### Steps to Set Up:
 
