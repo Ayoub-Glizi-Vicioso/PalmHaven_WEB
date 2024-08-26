@@ -1,6 +1,6 @@
-# Hotel Reservation System
+# Palm Haven - Hotel Reservation System
 
-## What is Hotel Reservation System?
+## What is Palm Haven ?
 
 This project is a web-based hotel reservation system developed using JavaScript, PHP, HTML, and CSS. It allows users to search for available hotels, view details about each hotel, and make reservations directly through a user-friendly interface. The system is designed to be run locally on your machine.
 
