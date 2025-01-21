@@ -41,7 +41,7 @@ To run this project locally, you need to have a local server environment set up.
 ## How to Use It
 
 1. **Navigate to Project:**
-   - Open your browser and go to `http://localhost/TCH099_projet2.0`.
+   - Open your browser and go to `http://localhost/PalmHaven_WEB/InterfaceWEB/`.
 
 2. **Explore the Interface:**
    - The main page will display a search form where you can enter your destination and travel dates.
